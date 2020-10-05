@@ -1,0 +1,72 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: denis <denis@student.42.fr>                +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/09/24 21:36:22 by denis             #+#    #+#              #
+#    Updated: 2020/10/05 08:50:11 by denis            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+ASM			=	asm
+NAME		=	$(ASM)
+
+CC			=	gcc
+CFLAGS		=	-Wall -Wextra -Werror
+
+LIB_DIR		=	./libft/
+LIB_A		=	$(LIB_DIR)libft.a
+LIB_HEAD	=	$(LIB_DIR)libft.h
+
+#name all dir
+INC_DIR		=	./includes/
+OBJ_DIR		=	./obj/
+SRC_L_D		=	./srcs/
+
+HEAD		=	$(INC_DIR)asm.h
+INC			=	-I$(LIB_DIR) -I$(INC_DIR)
+
+SRC_ASM 	=	main.c argument_action.c checking_the_data.c cont_action.c data_writing.c \
+				instruction_action.c label_action.c setargz.c utils.c ft_strsplit_whitespaces.c \
+				get_number.c ft_memdup.c assembler_mode.c disassembler_mode.c 
+OBJ_AS		=	$(SRC_ASM:%.c=%.o)
+SRCS_AS		=	$(addprefix $(SRC_L_D), $(SRC_ASM))
+OBJ_ASM		=	$(addprefix $(OBJ_DIR), $(OBJ_AS))
+
+all : $(OBJ_DIR) $(ASM)
+
+#create obj dir
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
+
+#create asm proj
+$(ASM): $(LIB_A) $(OBJ_ASM)
+	@echo "\\033[32m Prepare assembler for the COREWAR project... \033[0m"
+	@$(CC) $(CFLAGS) $(INC) $(OBJ_ASM) $(LIB_A) -o $(ASM)
+
+#create libc
+$(LIB_A):
+	@echo "\\033[34m Prepare libft... \033[0m"
+	@$(MAKE) -sC $(LIB_DIR) CFLAGS="$(CFLAGS)"
+
+#make obj
+$(OBJ_DIR)%.o: $(SRC_L_D)%.c $(HEAD)
+	@$(CC) $(CFLAGS) -c $(INC) $< -o $@
+
+directory: $(OBJDIR)
+
+clean:
+	@rm -rf $(OBJ_DIR) $(LIB_A)
+	@make -C $(LIB_DIR) clean
+	@echo "\\033[31m Deleting object files... \033[0m"
+
+fclean: clean
+	@rm -f $(NAME) $(LIB_A)
+	@make -C $(LIB_DIR) fclean
+	@echo "\\033[31m Deleting $(NAME)... \033[0m"
+
+re: fclean all
+
+.PHONY: clean all re pwdfclean directory
