@@ -6,121 +6,230 @@
 /*   By: denis <denis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 21:04:42 by denis             #+#    #+#             */
-/*   Updated: 2020/10/05 09:01:54 by denis            ###   ########.fr       */
+/*   Updated: 2020/11/27 01:28:53 by denis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ASSEMBLER_H
-# define ASSEMBLER_H
+#ifndef ASM_H
+# define ASM_H
 
+# include <fcntl.h>
+# include <stdlib.h>
 # include "libft.h"
 # include "err_messenger.h"
-# include "../../includes/op.h"
-# include <unistd.h>
-# include <fcntl.h>
+# include "application.h"
 
-# define A 200
-# define B 610
-# define C 150
-# define D 111
-# define E 111
-# define F 771
-# define G 771
-# define H 771
-# define I 200
-# define J 731
-# define K 173
-# define L 200
-# define M 610
-# define N 731
-# define O 200
-# define P 100
-# define MAX_ARGS 4
-# define MAGIC_LENGTH			(4)
-# define T_DIR_SIZE	(int[]){0, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 2, 2, 4, 2, 2, 4}
-# define OCTAL		(int[]){0, 0, 1, 1, 1, 1, 1, 1 ,1, 0, 1, 1, 0, 1, 1, 0, 1}
-# define ARGS_TYPES	(int[]){0, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P}
-# define ALLOWED_ARG_CHARS	"abcdefghijklmnopqrstuvwxyz_0123456789-:%"
-# define ALLOWED_DIR_CHARS	"0123456789-"
-# define ARGS_QTY	(int[]){0, 1, 2, 2, 3, 3, 3, 3, 3, 1, 3, 3, 1, 2, 3, 1, 1}
+# define IND_SIZE				2
+# define REG_SIZE				4
+# define DIR_SIZE				REG_SIZE
 
-typedef struct			s_op
+# define REG_CODE				1
+# define DIR_CODE				2
+# define IND_CODE				3
+
+# define MAX_ARGS_NUMBER		4
+# define MAX_PLAYERS			4
+# define MEM_SIZE				(4 * 1024)
+# define IDX_MOD				(MEM_SIZE / 8)
+# define CHAMP_MAX_SIZE			(MEM_SIZE / 6)
+
+# define COMMENT_CHAR			'#'
+# define ALT_COMMENT			';'
+# define LABEL_CHAR				':'
+# define DIRECT_CHAR			'%'
+# define SEPARATOR_CHAR			','
+
+# define LABEL_CHARS			"abcdefghijklmnopqrstuvwxyz_0123456789"
+
+# define NAME_CMD_STRING		".name"
+# define COMMENT_CMD_STRING		".comment"
+
+# define REG_NUMBER				16
+
+# define CYCLE_TO_DIE			1536
+# define CYCLE_DELTA			50
+# define NBR_LIVE				21
+# define MAX_CHECKS				10
+
+typedef char					t_arg_type;
+
+# define T_REG					1
+# define T_DIR					2
+# define T_IND					4
+# define T_LAB					8
+
+# define PROG_NAME_LENGTH		128
+# define COMMENT_LENGTH			2048
+# define COREWAR_EXEC_MAGIC		0xea83f3
+
+typedef struct					s_l
 {
-	int					u_id;
-	int					inst_id;
-	int					pos;
-	int					octet;
-	int					argu[3];
-	int					argutype[3];
-	int					is_arg_label_or_not[3];
-	int					arg_size[3];
-	int					size;
-	struct s_op     	*next;
-}						t_op;
+	char						name[256];
+	struct s_l					*next;
+}								t_l;
 
-typedef struct			s_opdasm
+typedef struct					s_lbl
 {
-	char				*name;
-	char				**argu;
-	struct s_opdasm		*next;
-}						t_opdasm;
+	int							is_label_or_not;
+	t_l							*names;
+	t_l							*start;
+	int							range_1;
+	int							range_2;
+	int							range_3;
+	char						cmd_name[6];
+	int							cmd_code;
+	int							cmd_type;
+	int							arg_1;
+	int							arg_2;
+	int							arg_3;
+	char						l_name_1[256];
+	char						l_name_2[256];
+	char						l_name_3[256];
+	int							type_1;
+	int							type_2;
+	int							type_3;
+	int							arg_now;
+}								t_lbl;
 
-typedef struct			s_lbl
+typedef struct					s_tw
 {
-	int					u_id;
-	int					pos;
-	char				*name;
-	struct s_lbl		*next;
-}						t_lbl;
+	int							comma;
+	int							arg_counter;
+}								t_tw;
 
-typedef struct			s_ddata
+typedef struct					s_crw
 {
-	int					fd_r;
-	int					fd_w;
-	int					total_size;
-	char				*name;
-	char				*cmnt;
-	t_opdasm			*op;
-}						t_ddata;
+	char						name[PROG_NAME_LENGTH + 1];
+	char						comment[COMMENT_LENGTH + 1];
+	int							code_size;
+	unsigned char				*exec_code;
+	int							ind_wr;
+	int							is_end_comment;
+	int							new_com;
+	int							l_size;
+	t_lbl						*labels;
 
-typedef struct			s_crw
+	int							len;
+	int							fd;
+}								t_crw;
+
+typedef struct					s_dasm
 {
-	int					fd_r;
-	int					fd_w;
-	int					total_size;
-	char				*name;
-	unsigned			line_q;
-	char				*cmnt;
-	t_op		    	*op;
-	t_lbl				*label;
-}						t_crw;
+	char						*cmd_name;
+	unsigned int				arg_type;
+	unsigned char				c;
+	unsigned int				value;
+	unsigned int				arg1;
+	unsigned int				arg2;
+	unsigned int				arg3;
+	unsigned int				dir_size;
+}								t_dasm;
 
-int						call_error(char const *const err);
-void					convloop(t_crw *crwdata);
-void					free_str_arr(char **s, char ***arr, int flag);
-void					checking_the_data(t_crw *crwdata);
-void					data_writing(t_crw *data);
-int						get_argz(t_op *op, char **argv, int argc, t_crw *crwdata);
-int						set_argz(t_op *oper, int argq, int type_allow, char **clnargz);
-int						get_inst(t_crw *crwdata, char **tmp, int inst_id, int tmp_len);
-int						is_an_instruction_or_not(char *s);
-int						get_lbls_instr(t_crw *data, char *s);
-int						get_clean_string(t_crw *data, char **dst);
-char					*add_spaces(char **s);
-char					**ft_strsplit_whitespace(char const *s);
-void					set_arg_value(t_op *op, char *arg, int arg_nr, int arg_type);
-t_crw					*get_data(t_crw *data);
-t_lbl					*set_lbl(t_lbl **label, char *s);
-int     				on_same_line(char *s);
-void					get_multiple_lines(t_crw *data, char **s, int flag);
-void					add_newline(char **s);
-void					check_lengths(char *s, int flag);
-int						only_admitted_chars(char *allowed, char *arg);
-int						check_type(char *arg);
-void					assembler_mode(char *name_of_the_file);
-void					disassembler_mode(char *name_of_the_file);
-t_crw       			*get_asm_data(t_crw *asm_data);
-int						get_number(unsigned char *s, int size);
-void					*ft_memdup(const void *src, size_t n);
+void							if_is_label_or_not(t_crw *champ, int arg_counter,\
+char *line, int *i);
+void							recording_label(t_crw *champ, int *i,\
+int arg_counter, char *line);
+int								skip_everything(char *line);
+void							free_all(t_crw champ, char *str);
+int								switch_args(char *line, int arg_counter,\
+t_crw *champ);
+void							increase_array(t_crw *champ);
+char							*check_name_com(char *line,\
+t_crw *champ);
+int								is_command(char *line, t_crw *champ);
+void							skip_spaces(int i, char *line, t_crw *champ);
+int								is_comment(char *line);
+int								is_name(char **line, int fd,\
+t_crw *champ, int name);
+int								is_main_comment(char **line, int fd,\
+t_crw *champ, int mc);
+int								is_command_or_not(char *line,\
+t_crw *champ);
+int								find_lab_aft_cmd(t_crw *champ,\
+char *l_name, int start,\
+int arg);
+int								is_comment(char *line);
+int								is_label_or_not(char *line, t_crw *champ);
+void							write_4_byte(t_crw *champ,\
+unsigned int to_write);
+void							write_2_byte(t_crw *champ,\
+unsigned int to_write);
+void							write_1_byte(t_crw *champ,\
+unsigned int to_write);
+void							zero_exec(t_crw *champ, int exec_size);
+void							init_array(t_crw *champ);
+int								get_reg_arg_val(t_crw *champ,\
+char *line, int *i);
+int								char_in_label(char el);
+int								get_dir_ind_arg_val(t_crw *champ,\
+char *line, int *i);
+void							find_label(t_crw *champ);
+void							is_file_valid(char *name, t_crw *champ);
+void							check_type_arg(t_crw *champ);
+char							*change_extension(char *filename,\
+char *old, char *new);
+void							to_bin_code(t_crw *champ, int fd);
+void							finish_fill_label_range(t_crw *champ);
+unsigned char					count_code_type_arg(t_crw *champ, int i);
+int								count_code_size(t_crw *champ);
+char							*ft_itoa_1(int n);
+void							write_arg(int wr_fd, t_dasm *dis, \
+int rd_fd, int arg);
+void							check_arg_type(t_dasm *dis, int rd_fd);
+char							*find_cmd(t_dasm *dis);
+void							write_head_elem(char *elem, int cons, \
+int wr_fd, int rd_fd);
+void							disasm_header(int wr_fd, int rd_fd);
+void							disasm_cmd(int wr_fd, int rd_fd);
+
+void							if_is_label(t_crw *champ, \
+int count_arg, char *line, int *i);
+void							recording_label(t_crw *champ, \
+int *i, int count_arg, char *line);
+int								skip_everything(char *line);
+void							free_all(t_crw champ, char *str);
+int								switch_args(char *line, \
+int count_arg, t_crw *champ);
+void							increase_array(t_crw *champ);
+char							*check_name_com(char *line,\
+t_crw *champ);
+int								is_command(char *line, t_crw *champ);
+void							skip_spaces2(int i, char *line);
+int								is_comment(char *line);
+int								is_name(char **line, int fd,\
+t_crw *champ, int name);
+int								is_main_comment(char **line, int fd,\
+t_crw *champ, int mc);
+int								is_command_or_not(char *line,\
+t_crw *champ);
+int								find_lab_aft_cmd(t_crw *champ,\
+char *l_name, int start,\
+int arg);
+int								is_comment(char *line);
+int								is_label(char *line, t_crw *champ);
+void							write_4_byte(t_crw *champ,\
+unsigned int to_write);
+void							write_2_byte(t_crw *champ,\
+unsigned int to_write);
+void							write_1_byte(t_crw *champ,\
+unsigned int to_write);
+void							zero_exec(t_crw *champ, int exec_size);
+void							init_array(t_crw *champ);
+int								get_reg_arg_val(t_crw *champ,\
+char *line, int *i);
+int								char_in_label(char el);
+int								get_dir_ind_arg_val(t_crw *champ,\
+char *line, int *i);
+void							find_label(t_crw *champ);
+void							is_file_valid(char *name, t_crw *champ);
+void							check_type_arg(t_crw *champ);
+char							*change_extension(char *filename,\
+char *old, char *new);
+void							to_bin_code(t_crw *champ, int fd);
+void							finish_fill_label_range(t_crw *champ);
+unsigned char					count_code_type_arg(t_crw *champ, int i);
+int								count_code_size(t_crw *champ);
+int								assembler_mode(char *name_of_the_file);
+int								disassembler_mode(char *name_of_the_file);
 
 #endif

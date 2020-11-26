@@ -3,51 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   assembler_mode.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: denis <denis@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/28 11:32:10 by denis             #+#    #+#             */
-/*   Updated: 2020/09/29 12:59:13 by denis            ###   ########.fr       */
+/*   Created: 2020/11/26 23:07:30 by marvin            #+#    #+#             */
+/*   Updated: 2020/11/26 23:07:30 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+# include "asm.h"
 
-static char	*set_output_name(char *s)
+void	print_usage(void)
 {
-	char	*name;
-	char	**tmp;
-
-	if (ft_strlen(s) < 1)
-		exit(!!ft_printf_fd(2, "ERROR: output file name not defined\n"));
-	tmp = ft_strsplit(s, '.');
-	if (ft_strlen(tmp[0]) > 0)
-		name = ft_strjoin(tmp[0], ".cor");
-	else
-		name = ft_strdup(".cor");
-	if (ft_strlen(name) < 1)
-		exit(!!ft_printf_fd(2, "ERROR: output file name couldn't be set\n"));
-	free_str_arr(NULL, &tmp, 0);
-	return (name);
+	write(1, "Usage: ./asm (champion.s|champion.cor)\n", 40);
+	write(1, "    champion.s   — from assemble to bytecode\n", 47);
+	write(1, "    champion.cor — from bytecode to assemble\n", 47);
 }
 
-void        assembler_mode(char *name_of_the_file)
+void	main_val(int argc, t_crw *champ, char **argv)
 {
-    t_crw   *crwdata;
-    char    *nameoffile;
+	if (argc == 1)
+	{
+		print_usage();
+		exit(0);
+	}
+	init_array(champ);
+	if (argc != 2)
+		exit(0);
+	else
+	{
+		is_file_valid_or_not(argv[1], champ);
+		type_argument_check(champ);
+	}
+	if (champ->l_size == 0)
+		exit(-1);
+}
 
-    crwdata = (t_crw*)ft_memalloc(sizeof(t_crw));
-    get_asm_data(crwdata);
-    crwdata->fd_r = open(name_of_the_file, O_RDONLY);
-    if (crwdata->fd_r < 4 || read(crwdata->fd_r, crwdata->name, 0) < 0)
-        call_error(ER_F_RD);
-    convloop(crwdata);
-    checking_the_data(crwdata);
-    nameoffile = set_output_name(name_of_the_file);
-    crwdata->fd_w = open(nameoffile, O_WRONLY | O_TRUNC | O_CREAT, 0644);
-    if (crwdata->fd_w < 3)
-	   call_error(ERR_F_C);
-	data_writing(crwdata);
-	ft_printf("Writing output program to %s\n", nameoffile);
-    close(crwdata->fd_w);
-    close(crwdata->fd_r);
+int		assembler_mode(char *name_of_the_file)
+{
+	t_crw	crw;
+	int		fd;
+
+	main_validation(argc, &crw, argv);
+	name_of_the_file = change_extension(name_of_the_file, ".s", ".cor");
+	if (!(fd = open(name_of_the_file, O_CREAT | O_WRONLY | O_TRUNC, 0777)))
+		free_all(crw, "Error: invalid file\n");
+	to_bin_code(&crw, fd);
+	write(1, "Writing output program to ", 26);
+	write(1, name_of_the_file, ft_strlen(name_of_the_file));
+	write(1, "\n", 1);
+	free(name_of_the_file);
+	free(crw.exec_code);
+	free_all(crw, NULL);
+	return (0);
 }

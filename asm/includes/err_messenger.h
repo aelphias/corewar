@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   err_messenger.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: denis <denis@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 21:01:39 by denis             #+#    #+#             */
-/*   Updated: 2020/10/04 16:40:47 by denis            ###   ########.fr       */
+/*   Updated: 2020/11/26 22:50:14 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,3 +29,4 @@
 # define LONG_CO "Comment is too long!!!"
 # define MARG_NV "MAX_ARGS value is not valid"
 # define ER_ARGV "One of the arguements is not valid"
+# define ERR_FILE "Unsupportable type of file"

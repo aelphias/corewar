@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: denis <denis@student.42.fr>                +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/24 21:36:22 by denis             #+#    #+#              #
-#    Updated: 2020/10/05 08:50:11 by denis            ###   ########.fr        #
+#    Updated: 2020/11/26 23:43:27 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,9 +28,11 @@ SRC_L_D		=	./srcs/
 HEAD		=	$(INC_DIR)asm.h
 INC			=	-I$(LIB_DIR) -I$(INC_DIR)
 
-SRC_ASM 	=	main.c argument_action.c checking_the_data.c cont_action.c data_writing.c \
-				instruction_action.c label_action.c setargz.c utils.c ft_strsplit_whitespaces.c \
-				get_number.c ft_memdup.c assembler_mode.c disassembler_mode.c 
+SRC_ASM 	=	main.c asm_check_command.c asm_check_comment.c asm_check_labels.c asm_check_names.c \
+				asm_checking.c asm_counters.c asm_initialization_free.c asm_label_manipulations.c \
+				asm_label_manipulations2.c asm_switching_between_args.c asm_valid_check.c asm_writing_binaries.c \
+				asm_writing_by_bytes.c assembler_mode.c dasm_find_n_check.c dasm_header_n_cmds.c \
+				dasm_writing_mainpulations.c disassembler_mode.c
 OBJ_AS		=	$(SRC_ASM:%.c=%.o)
 SRCS_AS		=	$(addprefix $(SRC_L_D), $(SRC_ASM))
 OBJ_ASM		=	$(addprefix $(OBJ_DIR), $(OBJ_AS))
