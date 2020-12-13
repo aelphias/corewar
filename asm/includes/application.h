@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   application.h                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/13 14:39:28 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/13 14:39:50 by gjigglyp         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef APPLICATION_H
 # define APPLICATION_H
 # include "asm.h"
@@ -17,11 +29,11 @@ typedef enum
 typedef struct	s_op
 {
 	char		*name;
-	int		code;
-	int		args_num;
+	int			code;
+	int			args_num;
 	t_bool		args_types_code;
-	int		args_types[3];
-	int		t_dir_size;
+	int			args_types[3];
+	int			t_dir_size;
 }				t_op;
 
 /*

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/13 14:59:15 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/13 14:59:15 by gjigglyp         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "asm.h"
 
 t_crw       *get_asm_data(t_crw *asm_data)
@@ -45,6 +57,6 @@ int         main(int ac, char *av[])
 	else if (ac == 2 && is_filename(*(av + 1), ".cor"))
 		disassembler_mode(*(av + 1));
 	else
-		call_error(ERR_FILE);
+		call_error(ERR_UNF);
     return (0);
 }

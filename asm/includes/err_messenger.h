@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   err_messenger.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 21:01:39 by denis             #+#    #+#             */
-/*   Updated: 2020/11/26 22:50:14 by marvin           ###   ########.fr       */
+/*   Updated: 2020/12/13 14:48:46 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#ifndef ERR_MESS_H
+# define ERR_MESS_H
+
+# include "asm.h"
 
 # define ERR_USE "Usage:"
 # define ARG_III "Argument(-s) is/are not valid"
@@ -29,4 +32,6 @@
 # define LONG_CO "Comment is too long!!!"
 # define MARG_NV "MAX_ARGS value is not valid"
 # define ER_ARGV "One of the arguements is not valid"
-# define ERR_FILE "Unsupportable type of file"
+# define ERR_UNF "Unsupportable type of file"
+
+#endif
