@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/13 14:57:32 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/13 14:57:32 by gjigglyp         ###   ########.fr       */
+/*   Created: 2020/12/13 15:19:59 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/13 15:19:59 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int		is_label_or_not(char *line, t_crw *champ)
 		i++;
 	if (line[i] == '\0' || line[i] == COMMENT_CHAR || line[i] == ALT_COMMENT)
 		return (1);
-	else if (is_command(&line[i], champ))
+	else if (is_command_or_not(&line[i], champ))
 		return (1);
 	else
 		free_all(*champ, "Error: invalid file\n");

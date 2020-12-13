@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 21:04:42 by denis             #+#    #+#             */
-/*   Updated: 2020/12/13 14:46:05 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2020/12/13 17:29:58 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ int								switch_args(char *line, int arg_cntr,\
 													t_crw *champ);
 void							increase_array(t_crw *champ);
 char							*check_name_com(char *line, t_crw *champ);
-int								is_command(char *line, t_crw *champ);
+int								is_command_or_not(char *line, t_crw *champ);
 void							skip_spaces(int i, char *line, t_crw *champ);
 int								is_comment(char *line);
 int								is_name(char **line, int fd,\
@@ -163,7 +163,7 @@ int								char_in_label(char el);
 int								get_dir_ind_arg_val(t_crw *champ,\
 													char *line, int *i);
 void							find_label(t_crw *champ);
-void							is_file_valid(char *name, t_crw *champ);
+void							is_file_valid_or_not(char *name, t_crw *champ);
 void							check_type_arg(t_crw *champ);
 char							*change_extension(char *filename,\
 													char *old, char *new);
@@ -183,8 +183,6 @@ void							disasm_cmd(int wr_fd, int rd_fd);
 
 void							if_is_label(t_crw *champ, int count_arg, \
 													char *line, int *i);
-void							recording_label(t_crw *champ, \
-int *i, int count_arg, char *line);
 int								skip_everything(char *line);
 void							free_all(t_crw champ, char *str);
 int								switch_args(char *line, int count_arg, \
@@ -192,7 +190,7 @@ int								switch_args(char *line, int count_arg, \
 void							increase_array(t_crw *champ);
 char							*check_name_com(char *line,\
 													t_crw *champ);
-int								is_command(char *line, t_crw *champ);
+int								is_command_or_not(char *line, t_crw *champ);
 void							skip_spaces2(int i, char *line);
 int								is_comment(char *line);
 int								is_name(char **line, int fd,\
@@ -211,17 +209,12 @@ void							write_2_byte(t_crw *champ,\
 													unsigned int to_write);
 void							write_1_byte(t_crw *champ,\
 													unsigned int to_write);
-void							zero_exec(t_crw *champ, int exec_size);
 void							init_array(t_crw *champ);
-int								get_reg_arg_val(t_crw *champ,\
-													char *line, int *i);
 int								char_in_label(char el);
-int								get_dir_ind_arg_val(t_crw *champ,\
-													char *line, int *i);
 void							find_label(t_crw *champ);
-void							is_file_valid(char *name, t_crw *champ);
+void							is_file_valid_or_not(char *name, t_crw *champ);
 void							check_type_arg(t_crw *champ);
-char							*change_extension(char *filename,\
+char							*dasm_change_extension(char *filename,\
 													char *old, char *new);
 void							to_bin_code(t_crw *champ, int fd);
 void							finish_fill_label_range(t_crw *champ);
@@ -229,5 +222,11 @@ unsigned char					count_code_type_arg(t_crw *champ, int i);
 int								count_code_size(t_crw *champ);
 int								assembler_mode(char *name_of_the_file);
 int								disassembler_mode(char *name_of_the_file);
+void							writing_four_bytes(t_crw *champ, \
+													unsigned int to_write);
+void							writing_one_byte(t_crw *champ, \
+													unsigned int to_write);
+void							writing_two_bytes(t_crw *champ, \
+													unsigned int to_write);
 
 #endif

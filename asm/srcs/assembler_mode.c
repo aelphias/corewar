@@ -32,7 +32,7 @@ void	main_val(int argc, t_crw *champ, char **argv)
 	else
 	{
 		is_file_valid_or_not(argv[1], champ);
-		type_argument_check(champ);
+		check_type_arg(champ);
 	}
 	if (champ->l_size == 0)
 		exit(-1);
@@ -42,8 +42,12 @@ int		assembler_mode(char *name_of_the_file)
 {
 	t_crw	crw;
 	int		fd;
+	int 	ac;
+	char	**av;
 
-	main_validation(argc, &crw, argv);
+	ac = 0;
+	av = NULL;
+	main_val(ac, &crw, av);
 	name_of_the_file = change_extension(name_of_the_file, ".s", ".cor");
 	if (!(fd = open(name_of_the_file, O_CREAT | O_WRONLY | O_TRUNC, 0777)))
 		free_all(crw, "Error: invalid file\n");

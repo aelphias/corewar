@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-char	*change_extension(char *filename, char *old, char *new)
+char	*dasm_change_extension(char *filename, char *old, char *new)
 {
 	char	*basename;
 	int		len;

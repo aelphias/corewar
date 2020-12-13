@@ -76,7 +76,7 @@ void	is_body_valid(int fd, t_crw *champ)
 	{
 		if (is_comment(line))
 			;
-		else if (is_command(line, champ))
+		else if (is_command_or_not(line, champ))
 			;
 		else if (is_label_or_not(line, champ))
 			;
@@ -90,7 +90,7 @@ void	is_body_valid(int fd, t_crw *champ)
 	finish_fill_label_range(champ);
 }
 
-void	is_file_valid(char *name, t_crw *champ)
+void	is_file_valid_or_not(char *name, t_crw *champ)
 {
 	int		len;
 	int		fd;

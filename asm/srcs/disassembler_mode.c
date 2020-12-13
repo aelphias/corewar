@@ -53,14 +53,15 @@ int			disassembler_mode(char *name_of_the_file)
 {
 	int		wr_fd;
 	int		rd_fd;
+	
 
-	if (argc != 2)
+	/*if (argc != 2)
 	{
 		write(1, "Args more or less than 1\n", 25);
 		return (0);
-	}
-	rd_fd = open(argv[1], O_RDONLY);
-	name_of_the_file = change_extension(argv[1], ".cor", ".s");
+	}*/
+	rd_fd = open(name_of_the_file, O_RDONLY);
+	name_of_the_file = dasm_change_extension(name_of_the_file, ".cor", ".s");
 	wr_fd = open(name_of_the_file, O_CREAT | O_WRONLY | O_TRUNC, 0777);
 	disasm_header(wr_fd, rd_fd);
 	disasm_cmd(wr_fd, rd_fd);
@@ -69,3 +70,4 @@ int			disassembler_mode(char *name_of_the_file)
 	write(1, "\n", 1);
 	free(name_of_the_file);
 	return (0);
+}
