@@ -6,7 +6,7 @@
 #    By: aelphias <aelphias@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/24 20:51:23 by denis             #+#    #+#              #
-#    Updated: 2020/12/14 19:01:15 by aelphias         ###   ########.fr        #
+#    Updated: 2020/12/14 19:22:32 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,9 +60,9 @@ clean:
 	rm -rf $(OBJ_PATH)
 	make -C $(LFT_PATH) clean
 
-fclean: clean
-	rm -rf $(NAME1)
-	rm -rf $(NAME2)
-	make -C $(LFT_PATH) fclean
+#fclean: clean
+#	rm -rf $(NAME1)
+#	rm -rf $(NAME2)
+#	make -C $(LFT_PATH) fclean
 
-re: fclean all
+#re: fclean all
