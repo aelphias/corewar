@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+         #
+#    By: aelphias <aelphias@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/24 21:36:22 by denis             #+#    #+#              #
-#    Updated: 2020/12/13 17:20:24 by gjigglyp         ###   ########.fr        #
+#    Updated: 2020/12/14 19:02:50 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME		=	$(ASM)
 CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror
 
-LIB_DIR		=	./libft/
+LIB_DIR		=	../libft/
 LIB_A		=	$(LIB_DIR)libft.a
 LIB_HEAD	=	$(LIB_DIR)libft.h
 
