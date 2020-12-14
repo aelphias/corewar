@@ -3,12 +3,13 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aelphias <aelphias@student.21-school.ru    +#+  +:+       +#+         #
+#    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/09/24 21:36:22 by denis             #+#    #+#              #
-#    Updated: 2020/12/14 19:02:50 by aelphias         ###   ########.fr        #
+#    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
+#    Updated: 2020/12/14 20:15:10 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 
 ASM			=	asm
 NAME		=	$(ASM)

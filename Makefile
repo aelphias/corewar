@@ -5,17 +5,17 @@
 #                                                     +:+ +:+         +:+      #
 #    By: aelphias <aelphias@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/09/24 20:51:23 by denis             #+#    #+#              #
-#    Updated: 2020/12/14 19:22:32 by aelphias         ###   ########.fr        #
+#    Created: 2020/09/24 20:51:23 by aelphias          #+#    #+#              #
+#    Updated: 2020/12/14 19:53:31 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME1 = asm
-NAME2 = corewar
+ASM = asm
+COREWAR = corewar
 ASM_FILES =	asm\
 
 VM_FILES = 	corewar\
-			testhello\
+			
 
 # имена файлов без расширений
 
@@ -39,13 +39,13 @@ INCL = $(INC_PATH)op.h
 
 .PHONY: all clean fclean re
 
-all: $(NAME1) $(NAME2)
+all: $(ASM) $(corewar)
 
-$(NAME1): $(LIBFT) $(OBJ_PATH) $(ASM_OBJ)
-	gcc $(CFLAGS) $(IFLAGS) $(LFLAGS) $(ASM_OBJ) -o $(NAME1)
+$(ASM): $(LIBFT) $(OBJ_PATH) $(ASM_OBJ)
+	gcc $(CFLAGS) $(IFLAGS) $(LFLAGS) $(ASM_OBJ) -o $(ASM)
 
-$(NAME2): $(LIBFT) $(OBJ_PATH) $(VM_OBJ)
-	gcc $(CFLAGS) $(IFLAGS) $(LFLAGS) $(VM_OBJ) -o $(NAME2)
+$(corewar): $(LIBFT) $(OBJ_PATH) $(VM_OBJ)
+	gcc $(CFLAGS) $(IFLAGS) $(LFLAGS) $(VM_OBJ) -o $(corewar)
 
 $(LIBFT):
 	make -C $(LFT_PATH)
@@ -61,8 +61,8 @@ clean:
 	make -C $(LFT_PATH) clean
 
 #fclean: clean
-#	rm -rf $(NAME1)
-#	rm -rf $(NAME2)
+#	rm -rf $(ASM)
+#	rm -rf $(corewar)
 #	make -C $(LFT_PATH) fclean
 
 #re: fclean all

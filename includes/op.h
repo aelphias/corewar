@@ -3,12 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   op.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: denis <denis@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/25 00:01:09 by denis             #+#    #+#             */
-/*   Updated: 2020/09/25 00:01:11 by denis            ###   ########.fr       */
+/*   Created: 2020/12/14 20:09:23 by aelphias          #+#    #+#             */
+/*   Updated: 2020/12/14 20:11:16 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef OP_H
+# define OP_H
 
 #define IND_SIZE				2
 #define REG_SIZE				4
@@ -64,8 +67,9 @@ typedef char	t_arg_type;
 
 typedef struct		header_s
 {
-  unsigned int		magic;
-  char				prog_name[PROG_NAME_LENGTH + 1];
-  unsigned int		prog_size;
-  char				comment[COMMENT_LENGTH + 1];
+	unsigned int		magic;
+	char				prog_name[PROG_NAME_LENGTH + 1];
+	unsigned int		prog_size;
+	char				comment[COMMENT_LENGTH + 1];
 }					header_t;
+#endif
