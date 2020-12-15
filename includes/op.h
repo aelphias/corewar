@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 20:09:23 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/15 08:30:11 by aelphias         ###   ########.fr       */
+/*   Updated: 2020/12/15 15:29:04 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 
 #define IND_SIZE				2
-#define REG_SIZE				4
+#define REG_SIZE				4 //размер одного регистра
 #define DIR_SIZE				REG_SIZE
 
 
@@ -26,8 +26,8 @@
 
 #define MAX_ARGS_NUMBER			4
 #define MAX_PLAYERS				4
-#define MEM_SIZE				(4*1024)
-#define IDX_MOD					(MEM_SIZE / 8)
+#define MEM_SIZE				(4*1024) // размер арены
+#define IDX_MOD					(MEM_SIZE / 8) /*максимальный прыжок каретки*/
 #define CHAMP_MAX_SIZE			(MEM_SIZE / 6)
 
 #define COMMENT_CHAR			'#'
@@ -53,9 +53,9 @@
 
 typedef char	t_arg_type;
 
-#define T_REG					1
-#define T_DIR					2
-#define T_IND					4
+#define T_REG					1 //Регистр
+#define T_DIR					2 //Прямой аргумент 
+#define T_IND					4 //непрямой аргумент 
 #define T_LAB					8
 
 /*
