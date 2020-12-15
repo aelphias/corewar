@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   op.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: denis <denis@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/25 00:11:29 by denis             #+#    #+#             */
-/*   Updated: 2020/09/25 00:21:31 by denis            ###   ########.fr       */
+/*   Updated: 2020/12/15 10:26:05 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "op.h"
+
+/* Cтруктура, которая описывает каждую операцию, определенную в языке ассемблера. */
 
 t_op    op_tab[17] =
 {
@@ -25,7 +27,7 @@ t_op    op_tab[17] =
 		"ou  (or   r1, r2, r3   r1 | r2 -> r3", 1, 0},
 	{"xor", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, 8, 6,
 		"ou (xor  r1, r2, r3   r1^r2 -> r3", 1, 0},
-	{"zjmp", 1, {T_DIR}, 9, 20, "jump if zero", 0, 1},
+	{"zjmp", 1, {T_DIR}, 9, 20, "jump if zero", 0, 1}, //может перебросить нас на N-ое количество байтов вперед или назад.
 	{"ldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 10, 25,
 		"load index", 1, 1},
 	{"sti", 3, {T_REG, T_REG | T_DIR | T_IND, T_DIR | T_REG}, 11, 25,

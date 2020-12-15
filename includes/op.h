@@ -6,12 +6,13 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 20:09:23 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/14 20:11:16 by aelphias         ###   ########.fr       */
+/*   Updated: 2020/12/15 08:30:11 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OP_H
 # define OP_H
+
 
 #define IND_SIZE				2
 #define REG_SIZE				4
