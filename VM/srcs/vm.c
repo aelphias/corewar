@@ -6,12 +6,30 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/14 21:12:53 by aelphias         ###   ########.fr       */
+/*   Updated: 2020/12/17 20:43:24 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(int argc, char **argv)
+#include "corewar.h"
+
+
+/*
+** strerror
+** perror
+*/
+
+/* void	ft_parse(int argc, char **argv)
 {
-	ft_parse();
+	MAX_PLAYERS > argc ? perror() : 0;
+} */
+
+int	main()
+{
+	/*
+	*checking filename and magic header
+	*/
+	/* argc == 1 ? ft_printf("%s\n", ERR_USE) : 0; */
+	ft_printf("%s\n", ERR_USE);
+	//ft_parse(argc, argv);
 	return (0);
 }

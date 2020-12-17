@@ -15,3 +15,16 @@ binary-viewer
 * Регистры
 * Флаг carry
 * Номер цикла
+
+Allowed f()
+◦ open
+◦ read
+◦ lseek
+◦ write
+◦ close
+◦ malloc 
+◦ realloc 
+◦ free
+◦ perror
+◦ strerror 
+◦ exit
