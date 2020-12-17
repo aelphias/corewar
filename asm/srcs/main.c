@@ -37,7 +37,7 @@ int			is_filename(const char *filename, const char *ext)
 **здесь выводится тип ошибки в случае её выявления
 */
 
-int         call_error(char const *const err)
+int	call_error(char const *const err)
 {
 	ft_putstr_fd("ERROR: ", 2);
 	ft_putendl_fd(err, 2);
@@ -48,7 +48,7 @@ int         call_error(char const *const err)
 ** main function
 */
 
-int         main(int ac, char *av[])
+int	main(int ac, char *av[])
 {
     if (ac < 2)
         call_error(ERR_USE);

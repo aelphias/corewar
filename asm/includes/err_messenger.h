@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   err_messenger.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/24 21:01:39 by denis             #+#    #+#             */
-/*   Updated: 2020/12/13 14:48:46 by gjigglyp         ###   ########.fr       */
+/*   Created: 2020/09/24 21:01:39 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/17 20:06:23 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "asm.h"
 
-# define ERR_USE "Usage:"
+
 # define ARG_III "Argument(-s) is/are not valid"
 # define ER_F_RD "File could not be read"
 # define ERR_F_C "ERROR: file not created"

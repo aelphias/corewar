@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/14 17:48:49 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/14 19:01:10 by aelphias         ###   ########.fr       */
+/*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
+/*   Updated: 2020/12/17 20:12:21 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COREWAR_H
 # define COREWAR_H
 
-/* # include "libft.h"
-# include "ft_printf.h"
+# include "libft.h"
+# include "../op.h"
+# include "errors.h"
 
-*/
 #endif
