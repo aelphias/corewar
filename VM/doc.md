@@ -28,3 +28,10 @@ Allowed f()
 ◦ perror
 ◦ strerror 
 ◦ exit
+
+Какие флаги нужно обрабатывать?
+
+Порядок игроков, а точнее порядок назначения идентификационных номеров, можно изменить с помощью флага -n.
+-n number sets the number of the next player. If non-existent, the player will have the next available number in the order of the parameters.
+---------------
+-dump nbr_cyclesat the end of nbr_cycles of executions, dump the memory on the standard outputand quit the game. The memory must be dumped in the hexadecimal format with32 octets per line. Флаг получает номер цикла, после выполнения которого необходимо вывести состояние памяти на экран и прекратить работу программы corewar

@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   corewar.h                                          :+:      :+:    :+:   */
+/*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/18 18:35:05 by aelphias         ###   ########.fr       */
+/*   Created: 2020/12/18 18:56:39 by aelphias          #+#    #+#             */
+/*   Updated: 2020/12/18 18:57:39 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COREWAR_H
-# define COREWAR_H
+#include "corewar.h"
 
-# include "libft.h"
-# include "../includes/op.h"
-# include "errors.h"
-
-void	print_error(int num_error);
-
-#endif
+void	check_filename(int argc, char **argv)
+{
+	
+}

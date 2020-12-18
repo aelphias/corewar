@@ -6,7 +6,7 @@
 #    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2020/12/17 19:09:28 by aelphias         ###   ########.fr        #
+#    Updated: 2020/12/18 21:10:15 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ COREWAR		=	corewar
 NAME		=	$(COREWAR)
 
 CC			=	gcc
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra # -Werror
 
 LIB_DIR		=	../libft/
 LIB_A		=	$(LIB_DIR)libft.a
@@ -29,7 +29,7 @@ SRC_L_D		=	./srcs/
 HEAD		=	$(INC_DIR)corewar.h
 INC			=	-I$(LIB_DIR) -I$(INC_DIR)
 
-SRC_COREWAR 	=	vm.c
+SRC_COREWAR =	main.c print_error.c parsing.c
 OBJ_AS		=	$(SRC_COREWAR:%.c=%.o)
 SRCS_AS		=	$(addprefix $(SRC_L_D), $(SRC_COREWAR))
 OBJ_COREWAR		=	$(addprefix $(OBJ_DIR), $(OBJ_AS))
