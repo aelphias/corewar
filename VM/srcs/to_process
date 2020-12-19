@@ -1,0 +1,4 @@
+➜  VM git:(VM) ✗ ./corewar -n 45 player.cor -dump
+{is_num OK}
+[1]    79841 segmentation fault  ./corewar -n 45 player.cor -dump
+---------------------------------
