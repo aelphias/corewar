@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm_initialization_free.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/13 14:57:57 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/13 14:57:57 by gjigglyp         ###   ########.fr       */
+/*   Created: 2020/12/19 15:23:38 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/19 15:23:40 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,14 @@ void	zeroing_values(t_crw *champ, int i, int j)
 	j = 0;
 	while (j != 6)
 	{
-		champ->labels[i].cmd_name[j] = '\0';
+		champ->labels[i].cmd_n[j] = '\0';
 		j++;
 	}
 	champ->labels[i].is_label_or_not = 0;
-	champ->labels[i].cmd_type = 0;
-	champ->labels[i].range_1 = 0;
-	champ->labels[i].range_2 = 0;
-	champ->labels[i].range_3 = 0;
+	champ->labels[i].cmd_t = 0;
+	champ->labels[i].r1 = 0;
+	champ->labels[i].r2 = 0;
+	champ->labels[i].r3 = 0;
 	champ->labels[i].arg_now = 0;
 }
 
@@ -86,9 +86,9 @@ void	init_array(t_crw *champ)
 		champ->labels[i].arg_2 = 0;
 		champ->labels[i].arg_3 = 0;
 		champ->labels[i].arg_now = 0;
-		champ->labels[i].type_1 = 0;
-		champ->labels[i].type_2 = 0;
-		champ->labels[i].type_3 = 0;
+		champ->labels[i].t1 = 0;
+		champ->labels[i].t2 = 0;
+		champ->labels[i].t3 = 0;
 		zeroing_values(champ, i, j);
 		i++;
 	}

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   dasm_find_n_check.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/13 14:58:52 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/13 14:58:52 by gjigglyp         ###   ########.fr       */
+/*   Created: 2020/12/19 15:25:27 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/19 15:25:51 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-char	*dasm_change_extension(char *filename, char *old, char *new)
+char	*dasm_change_ex(char *filename, char *old, char *new)
 {
 	char	*basename;
 	int		len;
@@ -20,7 +20,7 @@ char	*dasm_change_extension(char *filename, char *old, char *new)
 	len = ft_strlen(filename);
 	if (len < 5 || ft_strcmp(&filename[len - 4], ".cor") != 0)
 	{
-		write(1, "Wrong extansion\n", 16);
+		write(1, "Wrong extension\n", 16);
 		exit(-1);
 	}
 	basename = ft_strsub(filename, 0, ft_strlen(filename) - ft_strlen(old));
@@ -48,7 +48,7 @@ char	*find_cmd(t_dasm *dis)
 		i++;
 	}
 	dis->arg_type = (int)g_op[i].args_types_code;
-	dis->cmd_name = g_op[i].name;
+	dis->cmd_n = g_op[i].name;
 	dis->dir_size = g_op[i].t_dir_size;
 	return (g_op[i].name);
 }

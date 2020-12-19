@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/24 21:04:42 by denis             #+#    #+#             */
-/*   Updated: 2020/12/14 19:01:33 by aelphias         ###   ########.fr       */
+/*   Created: 2020/12/19 15:15:59 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/19 15:49:35 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include "libft.h"
+# include "../includes/op.h"
 # include "err_messenger.h"
 # include "application.h"
 
@@ -29,7 +30,6 @@
 
 # define MAX_ARGS_NUMBER		4
 # define MAX_PLAYERS			4
-# define MEM_SIZE				(4 * 1024)
 # define IDX_MOD				(MEM_SIZE / 8)
 # define CHAMP_MAX_SIZE			(MEM_SIZE / 6)
 
@@ -58,8 +58,6 @@ typedef char					t_arg_type;
 # define T_IND					4
 # define T_LAB					8
 
-# define PROG_NAME_LENGTH		128
-# define COMMENT_LENGTH			2048
 # define COREWAR_EXEC_MAGIC		0xea83f3
 
 typedef struct					s_l
@@ -73,21 +71,21 @@ typedef struct					s_lbl
 	int							is_label_or_not;
 	t_l							*names;
 	t_l							*start;
-	int							range_1;
-	int							range_2;
-	int							range_3;
-	char						cmd_name[6];
-	int							cmd_code;
-	int							cmd_type;
+	int							r1;
+	int							r2;
+	int							r3;
+	char						cmd_n[6];
+	int							cmd_c;
+	int							cmd_t;
 	int							arg_1;
 	int							arg_2;
 	int							arg_3;
 	char						l_name_1[256];
 	char						l_name_2[256];
 	char						l_name_3[256];
-	int							type_1;
-	int							type_2;
-	int							type_3;
+	int							t1;
+	int							t2;
+	int							t3;
 	int							arg_now;
 }								t_lbl;
 
@@ -115,7 +113,7 @@ typedef struct					s_crw
 
 typedef struct					s_dasm
 {
-	char						*cmd_name;
+	char						*cmd_n;
 	unsigned int				arg_type;
 	unsigned char				c;
 	unsigned int				value;
@@ -165,7 +163,7 @@ int								get_dir_ind_arg_val(t_crw *champ,\
 void							find_label(t_crw *champ);
 void							is_file_valid_or_not(char *name, t_crw *champ);
 void							check_type_arg(t_crw *champ);
-char							*change_extension(char *filename,\
+char							*change_ex(char *filename,\
 													char *old, char *new);
 void							to_bin_code(t_crw *champ, int fd);
 void							finish_fill_label_range(t_crw *champ);
@@ -214,7 +212,7 @@ int								char_in_label(char el);
 void							find_label(t_crw *champ);
 void							is_file_valid_or_not(char *name, t_crw *champ);
 void							check_type_arg(t_crw *champ);
-char							*dasm_change_extension(char *filename,\
+char							*dasm_change_ex(char *filename,\
 													char *old, char *new);
 void							to_bin_code(t_crw *champ, int fd);
 void							finish_fill_label_range(t_crw *champ);

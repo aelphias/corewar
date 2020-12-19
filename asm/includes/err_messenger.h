@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   err_messenger.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 21:01:39 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/17 20:06:23 by aelphias         ###   ########.fr       */
+/*   Updated: 2020/12/19 14:56:22 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@
 # define MARG_NV "MAX_ARGS value is not valid"
 # define ER_ARGV "One of the arguements is not valid"
 # define ERR_UNF "Unsupportable type of file"
+# define ERR_USE "Usage: ./asm [name_of_file.s/name_of_file.cor] (only one arguement)"
 
 #endif

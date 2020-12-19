@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/13 14:59:10 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/13 14:59:10 by gjigglyp         ###   ########.fr       */
+/*   Created: 2020/12/19 15:48:28 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/19 15:48:42 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 #include <stdlib.h>
 #include "asm.h"
 
+/*
+** подсчет длины числа
+*/
+
 static int	ft_numlen(int n, int minus)
 {
-	int numlen;
+	int		numlen;
 
 	numlen = 1;
 	while ((n /= 10))
@@ -49,19 +53,17 @@ char		*ft_itoa_1(int n)
 	return (str);
 }
 
+/*
+** включение режима дизасемблера
+*/
+
 int			disassembler_mode(char *name_of_the_file)
 {
 	int		wr_fd;
 	int		rd_fd;
-	
 
-	/*if (argc != 2)
-	{
-		write(1, "Args more or less than 1\n", 25);
-		return (0);
-	}*/
 	rd_fd = open(name_of_the_file, O_RDONLY);
-	name_of_the_file = dasm_change_extension(name_of_the_file, ".cor", ".s");
+	name_of_the_file = dasm_change_ex(name_of_the_file, ".cor", ".s");
 	wr_fd = open(name_of_the_file, O_CREAT | O_WRONLY | O_TRUNC, 0777);
 	disasm_header(wr_fd, rd_fd);
 	disasm_cmd(wr_fd, rd_fd);

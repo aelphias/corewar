@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm_writing_binaries.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/13 14:58:26 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/13 14:58:26 by gjigglyp         ###   ########.fr       */
+/*   Created: 2020/12/19 15:24:45 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/19 15:24:48 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,25 +35,25 @@ void	write_bin_head(t_crw *champ)
 void	process_args(t_crw *champ, int i)
 {
 	if (champ->labels[i].arg_1 == 1)
-		writing_one_byte(champ, champ->labels[i].range_1);
+		writing_one_byte(champ, champ->labels[i].r1);
 	else if (champ->labels[i].arg_1 == 2)
-		writing_two_bytes(champ, champ->labels[i].range_1);
+		writing_two_bytes(champ, champ->labels[i].r1);
 	else if (champ->labels[i].arg_1 == 4)
-		writing_four_bytes(champ, champ->labels[i].range_1);
+		writing_four_bytes(champ, champ->labels[i].r1);
 	if (champ->labels[i].arg_2 == 1)
-		writing_one_byte(champ, champ->labels[i].range_2);
+		writing_one_byte(champ, champ->labels[i].r2);
 	else if (champ->labels[i].arg_2 == 2)
-		writing_two_bytes(champ, champ->labels[i].range_2);
+		writing_two_bytes(champ, champ->labels[i].r2);
 	else if (champ->labels[i].arg_2 == 4)
 	{
-		writing_four_bytes(champ, champ->labels[i].range_2);
+		writing_four_bytes(champ, champ->labels[i].r2);
 	}
 	if (champ->labels[i].arg_3 == 1)
-		writing_one_byte(champ, champ->labels[i].range_3);
+		writing_one_byte(champ, champ->labels[i].r3);
 	else if (champ->labels[i].arg_3 == 2)
-		writing_two_bytes(champ, champ->labels[i].range_3);
+		writing_two_bytes(champ, champ->labels[i].r3);
 	else if (champ->labels[i].arg_3 == 4)
-		writing_four_bytes(champ, champ->labels[i].range_3);
+		writing_four_bytes(champ, champ->labels[i].r3);
 }
 
 void	write_exec_code(t_crw *champ)
@@ -63,8 +63,8 @@ void	write_exec_code(t_crw *champ)
 	i = 0;
 	while (i < champ->l_size)
 	{
-		champ->exec_code[champ->ind_wr++] = champ->labels[i].cmd_code;
-		if (champ->labels[i].cmd_type == 1)
+		champ->exec_code[champ->ind_wr++] = champ->labels[i].cmd_c;
+		if (champ->labels[i].cmd_t == 1)
 			champ->exec_code[champ->ind_wr++] = count_code_type_arg(champ, i);
 		process_args(champ, i);
 		i++;

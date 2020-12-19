@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm_label_manipulations.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/13 14:58:02 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/13 14:58:02 by gjigglyp         ###   ########.fr       */
+/*   Created: 2020/12/19 15:23:57 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/19 15:24:00 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	while_in_find_label(t_crw *champ, char *str, int *sum, int i)
 			while (i != champ->l_size)
 			{
 				*sum -= champ->labels[i].arg_1 + champ->labels[i].arg_2 +\
-				champ->labels[i].arg_3 + 1 + champ->labels[i].cmd_type;
+				champ->labels[i].arg_3 + 1 + champ->labels[i].cmd_t;
 				i++;
 			}
 			break ;
@@ -64,11 +64,11 @@ void	find_label(t_crw *champ)
 	i = 0;
 	while_in_find_label(champ, str, &sum, i);
 	if (champ->labels[champ->l_size].arg_now == 1)
-		champ->labels[champ->l_size].range_1 = sum;
+		champ->labels[champ->l_size].r1 = sum;
 	else if (champ->labels[champ->l_size].arg_now == 2)
-		champ->labels[champ->l_size].range_2 = sum;
+		champ->labels[champ->l_size].r2 = sum;
 	else if (champ->labels[champ->l_size].arg_now == 3)
-		champ->labels[champ->l_size].range_3 = sum;
+		champ->labels[champ->l_size].r3 = sum;
 }
 
 int		find_lab_aft_cmd(t_crw *champ, char *l_name, int start, int arg)
@@ -83,16 +83,16 @@ int		find_lab_aft_cmd(t_crw *champ, char *l_name, int start, int arg)
 		if (ft_contains(l_name, champ->labels[i]))
 			break ;
 		sum += champ->labels[i].arg_1 + champ->labels[i].arg_2 +\
-		champ->labels[i].arg_3 + 1 + champ->labels[i].cmd_type;
+		champ->labels[i].arg_3 + 1 + champ->labels[i].cmd_t;
 		i++;
 		if (i == champ->l_size + 1)
 			return (0);
 	}
 	if (arg == 1)
-		champ->labels[start].range_1 = sum;
+		champ->labels[start].r1 = sum;
 	else if (arg == 2)
-		champ->labels[start].range_2 = sum;
+		champ->labels[start].r2 = sum;
 	else if (arg == 3)
-		champ->labels[start].range_3 = sum;
+		champ->labels[start].r3 = sum;
 	return (1);
 }

@@ -3,24 +3,22 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aelphias <aelphias@student.21-school.ru    +#+  +:+       +#+         #
+#    By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/24 20:51:23 by aelphias          #+#    #+#              #
-#    Updated: 2020/12/14 19:53:31 by aelphias         ###   ########.fr        #
+#    Updated: 2020/12/19 14:56:23 by gjigglyp         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ASM = asm
 COREWAR = corewar
-ASM_FILES =	asm\
-
-VM_FILES = 	corewar\
-			
+ASM_FILES =	asm
+VM_FILES = 	VM
 
 # имена файлов без расширений
 
 LFT_PATH = ./libft/
-SRC_PATH = ./sources/
+SRC_PATH = ./srcs/
 OBJ_PATH = ./objects/
 INC_PATH = ./includes/
 

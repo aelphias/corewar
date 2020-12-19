@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm_checking.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/13 14:57:44 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/13 14:57:44 by gjigglyp         ###   ########.fr       */
+/*   Created: 2020/12/19 15:23:16 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/19 15:23:19 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*check_name_com(char *line, t_crw *champ)
 	if (i != 16)
 	{
 		result = ft_strsub(line, end, end + (j - end));
-		champ->labels[champ->l_size].cmd_code = g_op[i].code;
+		champ->labels[champ->l_size].cmd_c = g_op[i].code;
 		return (result);
 	}
 	return (NULL);
@@ -61,17 +61,17 @@ void	finish_fill_label_range(t_crw *champ)
 	i = 0;
 	while (i < champ->l_size + 1)
 	{
-		if (champ->labels[i].l_name_1[0] && champ->labels[i].range_1 == 0)
+		if (champ->labels[i].l_name_1[0] && champ->labels[i].r1 == 0)
 		{
 			if (find_lab_aft_cmd(champ, champ->labels[i].l_name_1, i, 1) == 0)
 				exit(-1);
 		}
-		if (champ->labels[i].l_name_2[0] && champ->labels[i].range_2 == 0)
+		if (champ->labels[i].l_name_2[0] && champ->labels[i].r2 == 0)
 		{
 			if (find_lab_aft_cmd(champ, champ->labels[i].l_name_2, i, 2) == 0)
 				exit(-1);
 		}
-		if (champ->labels[i].l_name_3[0] && champ->labels[i].range_3 == 0)
+		if (champ->labels[i].l_name_3[0] && champ->labels[i].r3 == 0)
 		{
 			if (find_lab_aft_cmd(champ, champ->labels[i].l_name_3, i, 3) == 0)
 				exit(-1);
@@ -89,21 +89,21 @@ void	check_type_arg(t_crw *champ)
 	while (i != champ->l_size)
 	{
 		j = 0;
-		while (ft_strcmp(g_op[j].name, champ->labels[i].cmd_name) != 0)
+		while (ft_strcmp(g_op[j].name, champ->labels[i].cmd_n) != 0)
 			j++;
-		if ((g_op[j].args_types[0] & champ->labels[i].type_1) == 0)
+		if ((g_op[j].args_types[0] & champ->labels[i].t1) == 0)
 			free_all(*champ, "Error: no label!\n");
-		if ((g_op[j].args_types[1] & champ->labels[i].type_2) == 0  \
-		&& (g_op[j].args_types[1] || champ->labels[i].type_2))
+		if ((g_op[j].args_types[1] & champ->labels[i].t2) == 0  \
+		&& (g_op[j].args_types[1] || champ->labels[i].t2))
 			free_all(*champ, "Error: no label!\n");
-		if ((g_op[j].args_types[2] & champ->labels[i].type_3) == 0  \
-		&& (g_op[j].args_types[2] || champ->labels[i].type_3))
+		if ((g_op[j].args_types[2] & champ->labels[i].t3) == 0  \
+		&& (g_op[j].args_types[2] || champ->labels[i].t3))
 			free_all(*champ, "Error: no label!\n");
 		i++;
 	}
 }
 
-char	*change_extension(char *filename, char *old, char *new)
+char	*change_ex(char *filename, char *old, char *new)
 {
 	char	*basename;
 

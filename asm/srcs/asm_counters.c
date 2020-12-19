@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm_counters.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/13 14:57:50 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/13 14:57:50 by gjigglyp         ###   ########.fr       */
+/*   Created: 2020/12/19 15:23:26 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/19 15:23:29 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int				count_code_size(t_crw *champ)
 	while (i != champ->l_size)
 	{
 		sum += champ->labels[i].arg_1 + champ->labels[i].arg_2 +\
-		champ->labels[i].arg_3 + champ->labels[i].cmd_type + 1;
+		champ->labels[i].arg_3 + champ->labels[i].cmd_t + 1;
 		i++;
 	}
 	return (sum);
@@ -45,25 +45,25 @@ unsigned char	count_code_type_arg(t_crw *champ, int i)
 	unsigned char ret;
 
 	ret = 0;
-	if (champ->labels[i].type_1 == T_REG)
+	if (champ->labels[i].t1 == T_REG)
 		ret += 1;
-	else if (champ->labels[i].type_1 == T_DIR)
+	else if (champ->labels[i].t1 == T_DIR)
 		ret += 2;
-	else if (champ->labels[i].type_1 == T_IND)
+	else if (champ->labels[i].t1 == T_IND)
 		ret += 3;
 	ret = ret << 2;
-	if (champ->labels[i].type_2 == T_REG)
+	if (champ->labels[i].t2 == T_REG)
 		ret += 1;
-	else if (champ->labels[i].type_2 == T_DIR)
+	else if (champ->labels[i].t2 == T_DIR)
 		ret += 2;
-	else if (champ->labels[i].type_2 == T_IND)
+	else if (champ->labels[i].t2 == T_IND)
 		ret += 3;
 	ret = ret << 2;
-	if (champ->labels[i].type_3 == T_REG)
+	if (champ->labels[i].t3 == T_REG)
 		ret += 1;
-	else if (champ->labels[i].type_3 == T_DIR)
+	else if (champ->labels[i].t3 == T_DIR)
 		ret += 2;
-	else if (champ->labels[i].type_3 == T_IND)
+	else if (champ->labels[i].t3 == T_IND)
 		ret += 3;
 	ret = ret << 2;
 	return (ret);

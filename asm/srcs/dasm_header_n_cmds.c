@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dasm_header_n_cmds.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/13 14:58:58 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/13 14:58:58 by gjigglyp         ###   ########.fr       */
+/*   Created: 2020/12/19 15:26:00 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/19 15:26:02 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void		disasm_cmd(int wr_fd, int rd_fd)
 		dis.arg1 = 0;
 		dis.arg2 = 0;
 		dis.arg3 = 0;
-		write(wr_fd, find_cmd(&dis), ft_strlen(dis.cmd_name));
+		write(wr_fd, find_cmd(&dis), ft_strlen(dis.cmd_n));
 		write(wr_fd, " ", 1);
 		check_arg_type(&dis, rd_fd);
 		write_arg(wr_fd, &dis, rd_fd, dis.arg1);

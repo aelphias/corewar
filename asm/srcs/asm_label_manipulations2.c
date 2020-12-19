@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/13 14:58:10 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/13 14:58:10 by gjigglyp         ###   ########.fr       */
+/*   Created: 2020/12/19 15:30:51 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/19 15:30:51 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ void	if_is_label_or_not(t_crw *champ, int arg_cntr, char *line, int *i)
 	if (g_op[champ->len].args_num - arg_cntr + 1 == 1)
 	{
 		champ->labels[champ->l_size].arg_1 += 2;
-		champ->labels[champ->l_size].type_1 = T_IND;
+		champ->labels[champ->l_size].t1 = T_IND;
 	}
 	else if (g_op[champ->len].args_num - arg_cntr + 1 == 2)
 	{
 		champ->labels[champ->l_size].arg_2 += 2;
-		champ->labels[champ->l_size].type_2 = T_IND;
+		champ->labels[champ->l_size].t2 = T_IND;
 	}
 	else if (g_op[champ->len].args_num - arg_cntr + 1 == 3)
 	{
 		champ->labels[champ->l_size].arg_3 += 2;
-		champ->labels[champ->l_size].type_3 = T_IND;
+		champ->labels[champ->l_size].t3 = T_IND;
 	}
 	(*i)++;
 	recording_label(champ, i, arg_cntr, line);

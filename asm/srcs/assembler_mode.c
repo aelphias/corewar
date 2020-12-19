@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   assembler_mode.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/13 14:58:45 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/13 14:58:45 by gjigglyp         ###   ########.fr       */
+/*   Created: 2020/12/19 15:25:08 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/19 15:25:11 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "asm.h"
+#include "asm.h"
 
 void	print_usage(void)
 {
@@ -48,7 +48,7 @@ int		assembler_mode(char *name_of_the_file)
 	ac = 0;
 	av = NULL;
 	main_val(ac, &crw, av);
-	name_of_the_file = change_extension(name_of_the_file, ".s", ".cor");
+	name_of_the_file = change_ex(name_of_the_file, ".s", ".cor");
 	if (!(fd = open(name_of_the_file, O_CREAT | O_WRONLY | O_TRUNC, 0777)))
 		free_all(crw, "Error: invalid file\n");
 	to_bin_code(&crw, fd);
