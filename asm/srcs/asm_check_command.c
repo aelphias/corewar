@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm_check_command.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/19 15:22:16 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/19 15:22:28 by gjigglyp         ###   ########.fr       */
+/*   Created: 2020/12/19 16:48:04 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/19 16:49:32 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void		recording_label(t_crw *champ, int *i, int arg_cntr, char *line)
 
 void		zero_exec(t_crw *champ, int exec_size)
 {
-	int 	i;
+	int i;
 
 	i = 0;
 	while (i < exec_size)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assembler_mode.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/19 15:25:08 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/19 15:25:11 by gjigglyp         ###   ########.fr       */
+/*   Created: 2020/12/19 17:36:19 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/19 18:19:22 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ void	main_val(int argc, t_crw *champ, char **argv)
 		exit(-1);
 }
 
-int		assembler_mode(char *name_of_the_file)
+int			assembler_mode(char *name_of_the_file)
 {
 	t_crw	crw;
 	int		fd;
-	int 	ac;
+	int		ac;
 	char	**av;
 
 	ac = 0;
