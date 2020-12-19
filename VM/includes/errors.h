@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/17 18:07:58 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/18 19:01:02 by aelphias         ###   ########.fr       */
+/*   Updated: 2020/12/19 20:57:45 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define ERR_USE	1
 # define ERR_M_PLRS	2
+# define ERR_MALLOC	3
 /* 
 # define ARG_III "Argument(-s) is/are not valid"
 # define ER_F_RD "File could not be read"

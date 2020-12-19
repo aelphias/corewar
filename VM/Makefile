@@ -6,7 +6,7 @@
 #    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2020/12/19 15:12:00 by aelphias         ###   ########.fr        #
+#    Updated: 2020/12/19 20:42:36 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ COREWAR		=	corewar
 NAME		=	$(COREWAR)
 
 CC			=	gcc
-CFLAGS		=	-Wall -Wextra # -Werror
+CFLAGS		=	-Wall -Wextra -g # -Werror
 
 LIB_DIR		=	../libft/
 LIB_A		=	$(LIB_DIR)libft.a
