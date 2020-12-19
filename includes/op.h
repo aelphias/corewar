@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 20:09:23 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/15 15:29:04 by aelphias         ###   ########.fr       */
+/*   Updated: 2020/12/19 18:06:50 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ typedef char	t_arg_type;
 
 typedef struct		header_s
 {
-	unsigned int		magic;
-	char				prog_name[PROG_NAME_LENGTH + 1];
+	unsigned int		magic;   //big endian
+	char				prog_name[PROG_NAME_LENGTH + 1]; //если размер массива кратно 4м то тогда не будет  лобавляться нулей после, не тто добавиться до кратного 4м
 	unsigned int		prog_size;
 	char				comment[COMMENT_LENGTH + 1];
 }					header_t;
