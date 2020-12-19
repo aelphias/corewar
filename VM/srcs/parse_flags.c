@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 20:51:41 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/19 16:02:22 by aelphias         ###   ########.fr       */
+/*   Updated: 2020/12/19 17:51:14 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	is_num(char *str)
 	printf("{is_num}\n");
 	while (str)
 	{
-	printf("str in is_num= %s\n", str);
 		if (!(ft_isdigit(*str)))
 			return (0);
 		str++;
