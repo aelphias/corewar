@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 18:35:34 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/18 18:52:44 by aelphias         ###   ########.fr       */
+/*   Updated: 2020/12/19 14:28:43 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ void	print_error(int num_error)
 {
 	if (num_error == 1)
 	{
+		ft_printf("Usage: ./corewar...\n");
+		ft_printf("Usage: ./corewar...\n");
+		ft_printf("Usage: ./corewar...\n");
+		ft_printf("Usage: ./corewar...\n");
+		ft_printf("Usage: ./corewar...\n");
 		ft_printf("Usage: ./corewar...\n");
 	}
 	else if (num_error == 2)

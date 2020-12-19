@@ -6,15 +6,18 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:10 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/18 21:09:44 by aelphias         ###   ########.fr       */
+/*   Updated: 2020/12/19 15:12:37 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	ft_parse(int argc, char **argv)
+
+
+void	ft_parse(int argc, char **argv, t_flg *flag)
 {
-	check_filename(argc, argv);
+	check_flags(argc, argv, flag);
+	//check_filename(argc, argv);
 	/*
 	*checking filename and magic header
 	*/
