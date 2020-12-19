@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 20:51:41 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/19 17:51:14 by aelphias         ###   ########.fr       */
+/*   Updated: 2020/12/19 19:26:11 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void check_flags(int argc, char **argv, t_flg *flg)
 		}
 	}
 }
+
 /*
 				if (ft_isdigit(argv[i + 1][0]))
 */
