@@ -6,7 +6,11 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2020/12/20 20:07:06 by aelphias         ###   ########.fr       */
+=======
+/*   Updated: 2020/12/19 21:10:20 by aelphias         ###   ########.fr       */
+>>>>>>> 9c1ee0882eb7d560c543d5fda39774a9f00546f0
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +30,7 @@ void init(t_flg *flg, t_plr *plr)
 
 int	main(int argc, char **argv)
 {
+<<<<<<< HEAD
 	t_flg *flg;
 	t_plr *plr;
 	
@@ -37,5 +42,13 @@ int	main(int argc, char **argv)
 	init(flg, plr);
 	ft_parse(argc - 1, argv, flg, plr);
 	test(flg, plr);
+=======
+	t_flg *flag;
+
+	if (!(flag = (void*)malloc(sizeof(t_flg))))
+		print_error(ERR_MALLOC);
+		argc == 1 ? print_error(ERR_USE) : 0;
+	ft_parse(argc - 1, argv, flag);
+>>>>>>> 9c1ee0882eb7d560c543d5fda39774a9f00546f0
 	return (0);
 }

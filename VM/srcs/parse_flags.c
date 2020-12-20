@@ -6,7 +6,11 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 20:51:41 by aelphias          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2020/12/20 20:54:23 by aelphias         ###   ########.fr       */
+=======
+/*   Updated: 2020/12/19 21:36:56 by aelphias         ###   ########.fr       */
+>>>>>>> 9c1ee0882eb7d560c543d5fda39774a9f00546f0
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +42,7 @@ void check_flags(int argc, char **argv, t_flg *flg, t_plr *plr)
 	int i;
 
 	i = 1;
+<<<<<<< HEAD
 	while (i <= argc)
 	{
 		if (!(ft_strcmp(argv[i], "-dump")))
@@ -64,7 +69,37 @@ void check_flags(int argc, char **argv, t_flg *flg, t_plr *plr)
 		{
 			plr->name = ft_strdup(argv[i + 2]);
 			i +=2;
+=======
+	/*
+	-dump n
+	-n n
+	*/
+	while (i <= argc)
+	{
+		if (!(ft_strcmp(argv[i], "-dump")))
+		{
+			if (is_num(argv[i + 1]))
+			{
+				flg->dump = ft_atoi(argv[i + 1]);
+				printf("flg->dump = %d\n", flg->dump); 
+			}
+		}
+		if (!(ft_strcmp(argv[i], "-n")))
+		{
+			if (is_num(argv[i + 1]))
+			{
+				flg->n = ft_atoi(argv[i + 1]);
+				printf("flg->n = %d\n", flg->n);
+				
+			}
+>>>>>>> 9c1ee0882eb7d560c543d5fda39774a9f00546f0
 		}
 		i++;
 	}
 }
+<<<<<<< HEAD
+=======
+/*
+				if (ft_isdigit(argv[i + 1][0]))
+*/
+>>>>>>> 9c1ee0882eb7d560c543d5fda39774a9f00546f0
