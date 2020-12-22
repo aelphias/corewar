@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
+#    By: gjigglyp <gjigglyp@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2020/12/14 20:15:10 by aelphias         ###   ########.fr        #
+#    Updated: 2020/12/21 21:11:10 by gjigglyp         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SRC_ASM 	=	main.c asm_check_command.c asm_check_comment.c asm_check_labels.c asm
 				asm_checking.c asm_counters.c asm_initialization_free.c asm_label_manipulations.c \
 				asm_label_manipulations2.c asm_switching_between_args.c asm_valid_check.c asm_writing_binaries.c \
 				asm_writing_by_bytes.c assembler_mode.c dasm_find_n_check.c dasm_header_n_cmds.c \
-				dasm_writing_manipulations.c disassembler_mode.c
+				dasm_writing_manipulations.c disassembler_mode.c utils.c
 OBJ_AS		=	$(SRC_ASM:%.c=%.o)
 SRCS_AS		=	$(addprefix $(SRC_L_D), $(SRC_ASM))
 OBJ_ASM		=	$(addprefix $(OBJ_DIR), $(OBJ_AS))

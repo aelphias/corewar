@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm_checking.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 17:07:55 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/19 17:07:59 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2020/12/22 16:51:04 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,13 +92,22 @@ void	check_type_arg(t_crw *champ)
 		while (ft_strcmp(g_op[j].name, champ->labels[i].cmd_n) != 0)
 			j++;
 		if ((g_op[j].args_types[0] & champ->labels[i].t1) == 0)
-			free_all(*champ, "Error: no label!\n");
+		{
+			free_all(*champ);
+			call_error(NO_LABE);
+		}
 		if ((g_op[j].args_types[1] & champ->labels[i].t2) == 0  \
 		&& (g_op[j].args_types[1] || champ->labels[i].t2))
-			free_all(*champ, "Error: no label!\n");
+		{
+			free_all(*champ);
+			call_error(NO_LABE);
+		}
 		if ((g_op[j].args_types[2] & champ->labels[i].t3) == 0  \
 		&& (g_op[j].args_types[2] || champ->labels[i].t3))
-			free_all(*champ, "Error: no label!\n");
+		{
+			free_all(*champ);
+			call_error(NO_LABE);
+		}
 		i++;
 	}
 }

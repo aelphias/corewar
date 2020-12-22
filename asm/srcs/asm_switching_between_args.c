@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm_switching_between_args.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 17:32:11 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/19 17:32:21 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2020/12/22 17:17:28 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,10 @@ void	is_lab_in_dir_char(char *line, t_crw *champ, int arg_cntr, int *i)
 			get_dir_ind_arg_val(champ, line, i);
 	}
 	else
-		free_all(*champ, "Error: invalid arg\n");
+	{
+		free_all(*champ);
+		call_error(ER_I_AR);
+	}
 }
 
 void	if_is_dir(t_crw *champ, int arg_cntr, char *line, int *i)
