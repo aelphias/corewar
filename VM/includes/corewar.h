@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/22 15:14:47 by aelphias         ###   ########.fr       */
+/*   Updated: 2020/12/22 21:57:06 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct	s_plr
 	char 		*name;
 	int			plr_count;
 }				t_plr;
+
 
 void	print_error(int num_error);
 void	ft_parse(int argc, char **argv, t_flg *flag, t_plr *plr);

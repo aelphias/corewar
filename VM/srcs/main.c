@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/22 15:28:58 by aelphias         ###   ########.fr       */
+/*   Updated: 2020/12/22 21:51:48 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@
 */
 void init(t_flg *flg, t_plr *plr)
 {
-	
-	ft_bzero(flg, sizeof(t_flg));
-	ft_bzero(plr, sizeof(t_plr));
+	flg->dump = 0;
+	flg->n = 0;
+	plr->name = NULL;
+	plr->plr_count = 0;
 }
 
 
