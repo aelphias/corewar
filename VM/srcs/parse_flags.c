@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 20:51:41 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/23 18:03:43 by aelphias         ###   ########.fr       */
+/*   Updated: 2020/12/23 22:48:23 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	is_num(char *str)
 			return (0);
 		str++;
 	}
-	printf("{is_num OK}\n");
 	return (1);
 }
 
@@ -31,31 +30,35 @@ void check_flags(int argc, char **argv, t_flg *flg, t_plr *plr)
 	i = 1;
 	while (i <= argc)
 	{
-		if (!(ft_strcmp(argv[i], "-dump")))
+		if ((argv[i]) && !(ft_strcmp(argv[i], "-dump")))
 		{	
-			argv[i + 1] ? 0 : print_error(ERR_USE);
+			//argv[i + 1] ? 0 : print_error(ERR_USE);
 			if (!(argv[i + 1])) 
 				print_error(ERR_USE);
-			if (is_num(argv[i + 1]))
+			if (!(is_num(argv[i + 1])))
 				print_error(ERR_USE);
 			flg->dump = ft_atoi(argv[i + 1]);
-			printf("flg->dump = %d\n", flg->dump); 
 			i +=2;
 		}
-		if (!(ft_strcmp(argv[i], "-n")))
+		if ((argv[i]) && !(ft_strcmp(argv[i], "-n")))
 		{
-			if (!(argv[i + 1])) 
+			if (!(argv[i + 1]))
 				print_error(ERR_USE);
-			if (!(is_num(argv[i + 1])) && ft_strstr(argv[i + 2], ".cor"))
+			if (!(argv[i + 2]))
+				print_error(ERR_USE);
+			if (is_num(argv[i + 1]) && ft_strstr(argv[i + 2], ".cor"))
 			{
 				flg->n = ft_atoi(argv[i + 1]);
-				plr->name = ft_strdup(argv[i + 2]);
+				//read_from_file();
+
 				i +=2;
 			}
+			else
+				print_error(ERR_USE); 
 		}
-		if (ft_strstr(argv[i], ".cor"))
+		if ((argv[i]) && ft_strstr(argv[i], ".cor"))
 		{
-			plr->name = ft_strdup(argv[i + 2]);
+			
 			i +=2;
 		}
 		i++;

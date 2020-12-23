@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operation_sti.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 18:37:41 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/22 18:38:46 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2020/12/23 21:35:02 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,4 @@ void        operation_sti()
 	int32_t	v;
 	int32_t	a1;
 	int32_t	a2;
-
 }
