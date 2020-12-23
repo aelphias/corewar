@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/22 21:57:06 by aelphias         ###   ########.fr       */
+/*   Updated: 2020/12/22 18:47:53 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,38 @@
 # include "../includes/op.h"
 # include "errors.h"
 
-typedef struct	s_flg
+typedef struct	s_vm
 {
-	int			n;
-	int			dump;
-}				t_flg;
+	int			arena[MEM_SIZE];
+	int			nop; //number of players
+	ssize_t 	cycles;
+	ssize_t 	c2d; //cycles to die
+	ssize_t 	cac; //cycles after check
+	int			print_mode;
+}				t_vm;
 
-typedef struct	s_plr
+typedef struct s_plr
 {
-	char 		*name;
-	int			plr_count;
+	int			id;
+	char		*name;
+	char		*cmnt;
+	char		*code;
+	int			soc;
+	int			cur_ln;
+	int			prev_ln;
+	int			ll;
+	struct s_plr		*next;
 }				t_plr;
 
+typedef struct s_flg
+{
+	int	n; 
+	int dump;
+}				t_flg;
 
 void	print_error(int num_error);
-void	ft_parse(int argc, char **argv, t_flg *flag, t_plr *plr);
-void	check_flags(int argc, char **argv, t_flg *flg, t_plr *plr);
+void	ft_parse(int argc, char **argv, t_flg *flag);
+void	check_flags(int argc, char **argv, t_flg *flag);
 
-/*
-*	testing
-*/
-void	test(t_flg *flg, t_plr *plr);
 
 #endif
