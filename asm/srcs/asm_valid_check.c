@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm_valid_check.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 17:33:05 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/19 17:33:10 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2020/12/22 17:54:10 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	header_cases(char **line, t_crw *champ, int *name, int *mc)
 	else
 	{
 		free(*line);
-		free_all(*champ, "Error: wrong input\n");
+		free_all(*champ);
+		call_err(ER_I_IN);
 	}
 }
 
@@ -48,7 +49,8 @@ void	is_header_valid(int fd, t_crw *champ)
 		if (is_command_or_not(line, champ))
 		{
 			free(line);
-			free_all(*champ, "Error: no name or comment\n");
+			free_all(*champ);
+			call_error(NO_N_CO);
 		}
 		free(line);
 	}
@@ -82,7 +84,8 @@ void	is_body_valid(int fd, t_crw *champ)
 			;
 		else
 		{
-			free_all(*champ, "Error: invalid file\n");
+			free_all(*champ);
+			call_error(ER_IN_F);
 		}
 		is_end_comment(champ, line);
 		free(line);
@@ -105,13 +108,22 @@ void	is_file_valid_or_not(char *name, t_crw *champ)
 		is_body_valid(fd, champ);
 	}
 	else
-		free_all(*champ, "Error: invalid file\n");
+	{
+		free_all(*champ);
+		call_error(ER_IN_F);
+	}
 	close(fd);
 	if (!(fd = open(name, O_RDONLY)))
-		free_all(*champ, "Error: invalid file\n");
+	{
+		free_all(*champ);
+		call_error(ER_IN_F);
+	}
 	lseek(fd, -1L, 2);
 	read(fd, &buff, 1);
 	if (buff != '\n' && !champ->is_end_comment)
-		free_all(*champ, "Error: not found file or no new line at the end\n");
+	{
+		free_all(*champ);
+		call_error(ERR_FNL);
+	}
 	close(fd);
 }

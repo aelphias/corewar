@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   testing.c                                          :+:      :+:    :+:   */
+/*   operation_add.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/20 19:13:14 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/20 20:20:19 by aelphias         ###   ########.fr       */
+/*   Created: 2020/12/22 18:13:35 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/22 18:14:40 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+# include "corewar.h"
 
-void	test(t_flg *flg, t_plr *plr)
+void        operation_add()
 {
-	ft_printf("dump=%d\n", flg->dump);
-	ft_printf("n=%d\n", flg->n);
-	ft_printf("plr->name=%d\n", plr->name);
+    int r1;
+    int r2;
+    int r3;
+    int val;
+
+    
 }

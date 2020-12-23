@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm_check_comment.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 16:56:25 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/19 16:57:08 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2020/12/22 16:38:51 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	skip_spaces(int i, char *line, t_crw *champ)
 		if (line[i] != ' ' && line[i] != '\t')
 		{
 			free(line);
-			free_all(*champ, "Error: invalid file\n");
+			free_all(*champ);
+			call_error(ER_IN_F);
 			exit(-1);
 		}
 		i++;
@@ -49,7 +50,8 @@ void	while_in_m_comment(t_crw *champ, char **line, int *i, int *j)
 	if (*j >= COMMENT_LENGTH)
 	{
 		free(*line);
-		free_all(*champ, "Error: too long comment\n");
+		free_all(*champ);
+		call_error(LONG_CO);
 	}
 	else if ((*line)[*i] == '\0')
 	{
@@ -67,7 +69,11 @@ void	while_in_m_comment(t_crw *champ, char **line, int *i, int *j)
 			free(*line);
 		}
 		if (ans <= 0)
-			free_all(*champ, "Error: invalid file\n");
+		{
+			free_all(*champ);
+			call_error(ER_IN_F);
+		}
+			
 	}
 }
 
@@ -83,7 +89,8 @@ int		init_main_com(int *len_const, int *i, char **line, t_crw *champ)
 	if (champ->len == 1)
 	{
 		free(*line);
-		free_all(*champ, "Error: two or more main comments\n");
+		free_all(*champ);
+		call_error(MORE_CO);
 	}
 	while ((*line)[*i] != '"' && (*line)[*i] != '\0' &&\
 	(*line)[*i] != COMMENT_CHAR && (*line)[*i] != ALT_COMMENT &&\
@@ -105,7 +112,8 @@ int		is_main_comment(char **line, int fd, t_crw *champ, int mc)
 	if ((*line)[i++] != '"')
 	{
 		free(*line);
-		free_all(*champ, "Error: no main comment\n");
+		free_all(*champ);
+		call_error(MAIN_CO);
 	}
 	champ->fd = fd;
 	while ((*line)[i] != '"')
