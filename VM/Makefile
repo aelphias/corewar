@@ -6,7 +6,7 @@
 #    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2020/12/21 20:52:28 by aelphias         ###   ########.fr        #
+#    Updated: 2020/12/19 20:42:36 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRC_L_D		=	./srcs/
 HEAD		=	$(INC_DIR)corewar.h
 INC			=	-I$(LIB_DIR) -I$(INC_DIR)
 
-SRC_COREWAR =	main.c print_error.c parsing.c parse_flags.c testing.c 
+SRC_COREWAR =	main.c print_error.c parsing.c  parse_flags.c 
 OBJ_AS		=	$(SRC_COREWAR:%.c=%.o)
 SRCS_AS		=	$(addprefix $(SRC_L_D), $(SRC_COREWAR))
 OBJ_COREWAR		=	$(addprefix $(OBJ_DIR), $(OBJ_AS))

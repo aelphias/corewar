@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm_initialization_free.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 17:10:15 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/19 17:10:25 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2020/12/22 16:50:49 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	free_label(t_lbl label)
 	}
 }
 
-void	free_all(t_crw champ, char *str)
+void	free_all(t_crw champ)
 {
 	int i;
 
@@ -37,11 +37,6 @@ void	free_all(t_crw champ, char *str)
 		i++;
 	}
 	free(champ.labels);
-	if (str)
-	{
-		write(0, str, ft_strlen(str));
-		exit(-1);
-	}
 	exit(0);
 }
 
@@ -77,7 +72,10 @@ void	init_array(t_crw *champ)
 	i = 0;
 	champ->l_size = 0;
 	if (!(champ->labels = malloc(sizeof(t_lbl) * 250)))
-		free_all(*champ, "Error: memory didn't allocated\n");
+	{
+		free_all(*champ);
+		call_error(MEM_ALL);
+	}
 	while (i != 250)
 	{
 		champ->labels[i].names = NULL;

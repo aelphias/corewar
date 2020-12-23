@@ -9,7 +9,7 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/corewar",
-			"args": ["-n"],
+			"args": ["-dump" "30"],
 			"stopAtEntry": true,
 			"cwd": "${workspaceFolder}",
 			"environment": [],
