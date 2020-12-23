@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   testing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/14 21:13:10 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/23 17:58:57 by aelphias         ###   ########.fr       */
+/*   Created: 2020/12/20 19:13:14 by aelphias          #+#    #+#             */
+/*   Updated: 2020/12/20 20:20:19 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "corewar.h"
 
-void	ft_parse(int argc, char **argv, t_flg *flg, t_plr *plr)
+void	test(t_flg *flg, t_plr *plr)
 {
-	check_flags(argc, argv, flg, plr);
-	//check_filename(argc, argv);
-	/*
-	*checking filename and magic header
-	*/
-	//MAX_PLAYERS < argc ? print_error(ERR_M_PLRS) : 0; //check .cor implicitely 
+	ft_printf("dump=%d\n", flg->dump);
+	ft_printf("n=%d\n", flg->n);
+	ft_printf("plr->name=%d\n", plr->name);
 }
