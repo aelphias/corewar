@@ -2,7 +2,8 @@
 
 Как пушить в нужную ветку (VM):
 git clone https://github.com/aelphias/corewar.git
-git branch VM origin/VM. (Это действие создаст локальную ветку VM  и подключит ее к серверной ветке VM)
+git branch VM origin/VM. (Это действие создаст локальную ветку VM 
+и подключит ее к серверной ветке VM)
 git checkout VM (это переключит тебя с ветки master на ветку VM)
 
 
