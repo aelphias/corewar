@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 17:01:39 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/19 18:18:31 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2020/12/19 19:23:29 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int				call_error(char const *const err)
 }
 
 /*
-** main function
+** main function, 
 */
 
 int				main(int ac, char *av[])

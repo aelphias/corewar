@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   asm_check_command.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 16:48:04 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/19 16:49:32 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2020/12/22 15:57:32 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+#include "application.h"
 
 void		recording_label(t_crw *champ, int *i, int arg_cntr, char *line)
 {
@@ -38,7 +39,10 @@ void		recording_label(t_crw *champ, int *i, int arg_cntr, char *line)
 	}
 	if (line[(*i)] != ' ' && line[*i] != ',' && line[*i] != '\t' &&\
 	line[*i] != '\0' && line[*i] != COMMENT_CHAR && line[*i] != ALT_COMMENT)
-		free_all(*champ, "Error: wrong symbol\n");
+	{
+		free_all(*champ);
+		call_error(ER_I_AR);
+	}
 }
 
 void		zero_exec(t_crw *champ, int exec_size)
@@ -61,7 +65,8 @@ int			get_dir_ind_arg_val(t_crw *champ, char *line, int *i)
 		(*i)++;
 	if (line[*i - 1] == '-' && *i == 1)
 	{
-		free_all(*champ, "Error: invalid arg\n");
+		free_all(*champ);
+		call_error(ER_I_AR);
 	}
 	return (ft_atoi(&line[start]));
 }
