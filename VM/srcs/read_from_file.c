@@ -1,21 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cmp.c                                           :+:      :+:    :+:   */
+/*   read_from_file.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/22 16:41:11 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/24 18:33:13 by kcharlet         ###   ########.fr       */
+/*   Created: 2020/12/24 17:45:52 by kcharlet          #+#    #+#             */
+/*   Updated: 2020/12/24 19:37:42 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "corewar.h"
 
-int	ft_cmp(int a, int b)
+int		read_from_file(t_plr *player, char *str, int nbr)
 {
-	if ((a - b) > 0 || (a - b) < 0)
-		return (a - b);
+	t_plr	*chemp;
+	t_plr	*test;
+
+	chemp = NULL;
+	test = player;
+	if (!(chemp = read_p_from_f(str, nbr)))
+		return (1);
 	else
-		return (0);
+	{
+		if (player == NULL)
+			player = chemp;
+		else
+		{
+			while (test->next != NULL)
+				test = test->next;
+			test->next = chemp;
+		}
+	}
+	return (0);
 }
