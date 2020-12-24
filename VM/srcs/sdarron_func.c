@@ -6,16 +6,16 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 13:47:00 by sdarron           #+#    #+#             */
-/*   Updated: 2020/12/23 18:17:50 by aelphias         ###   ########.fr       */
+/*   Updated: 2020/12/23 21:45:57 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <unistd.h>
+/* # include <unistd.h>
 # include <stdlib.h>
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-# define MEM_SIZE (4*1024)
+# define MEM_SIZE (4*1024) */
 
 
 typedef struct			s_pc
@@ -136,24 +136,4 @@ t_pc *new_pc(t_player *p, t_rule *r)
 		p->next;
 	}
 	return(pc);
-}
-
-
-//int main()
-{
-	t_rule *rule;
-	t_player *p;
-	t_pc *pc;
-	unsigned char	map[MEM_SIZE];
-	int i;
-	i = 0;
-	
-	while (++i < MEM_SIZE)
-		map[i] = 0;
-	pc = new_pc(p, rule);
-
-
-
-
-	return (0);
 }

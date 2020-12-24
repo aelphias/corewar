@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm_initialize.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 15:36:54 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/22 15:39:59 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2020/12/23 21:29:16 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,8 @@
 
 t_vm    *vm_initialize(void)
 {
-    t_vm vm;
+    t_vm *vm;
     
-    if (!(vm = (t_vm*)ft_memalloc(sizeof(t_vm))))
-        call_error();
-    vm->nop = 0;
-    vm->cycles = 0;
-    vm->c2d = 0;
-    vm->cac = 0;
-    vm->print_mode = 0;
+    if (!(vm = (void*)ft_memalloc(sizeof(t_vm))))
+        print_error();
 }
