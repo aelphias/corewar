@@ -25,20 +25,20 @@ void create_list_plr(t_plr *head, int val)
     current->next->next = NULL;
 }
 
-// void print_list(t_plr *plr) 
-// {
-//     t_plr *current = plr;
-//     while (current != NULL) 
-// 	{
-//         printf("%d\n", current->id);
-//     	current = current->next;
-// 	}
-// }
+void print_list(t_plr *plr) 
+{
+    t_plr *current = plr;
+    while (current != NULL) 
+	{
+        printf("%d\n", current->id);
+    	current = current->next;
+	}
+}
 
 void	ft_parse(int argc, char **argv, t_flg *flg, t_plr *plr)
 {
 	int i = 1;
-	while (i < 4)
+	while (i < 10)
 		create_list_plr(plr, i++);
 	print_list(plr);
 	//check_flags(argc, argv, flg, plr);
