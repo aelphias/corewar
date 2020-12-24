@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   read_from_file.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/14 21:13:10 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/24 19:21:40 by kcharlet         ###   ########.fr       */
+/*   Created: 2020/12/24 17:45:52 by kcharlet          #+#    #+#             */
+/*   Updated: 2020/12/24 19:37:42 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "corewar.h"
 
-// viod read_nameint(argc, char **argv, t_plr *plr)
-// {
-// 	int i;
-
-// 	i = 0;
-// 	while (i < argc)
-// 	{
-		
-// 	}
-// }
-
-void	ft_parse(int argc, char **argv, t_flg *flg, t_plr *plr)
+int		read_from_file(t_plr *player, char *str, int nbr)
 {
-	//read_name(argc, argv, plr)
-	check_flags(argc, argv, flg, plr);
-	
-	//check_filename(argc, argv);
-	/*
-	*checking filename and magic header
-	*/
-	//MAX_PLAYERS < argc ? print_error(ERR_M_PLRS) : 0; //check .cor implicitely 
+	t_plr	*chemp;
+	t_plr	*test;
+
+	chemp = NULL;
+	test = player;
+	if (!(chemp = read_p_from_f(str, nbr)))
+		return (1);
+	else
+	{
+		if (player == NULL)
+			player = chemp;
+		else
+		{
+			while (test->next != NULL)
+				test = test->next;
+			test->next = chemp;
+		}
+	}
+	return (0);
 }

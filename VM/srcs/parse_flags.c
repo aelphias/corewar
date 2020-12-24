@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_flags.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 20:51:41 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/23 22:48:23 by aelphias         ###   ########.fr       */
+/*   Updated: 2020/12/24 19:29:36 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ void check_flags(int argc, char **argv, t_flg *flg, t_plr *plr)
 			if (is_num(argv[i + 1]) && ft_strstr(argv[i + 2], ".cor"))
 			{
 				flg->n = ft_atoi(argv[i + 1]);
-				//read_from_file();
+				read_from_file(plr, argv[1], 2); // пока без цикла, просто для одного игрока
 
 				i +=2;
 			}
-			else
-				print_error(ERR_USE); 
+			//else
+			//	print_error(ERR_USE); 
 		}
 		if ((argv[i]) && ft_strstr(argv[i], ".cor"))
 		{
