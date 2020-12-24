@@ -13,7 +13,7 @@
 NAME		=	corewar
 
 CC			=	gcc
-FLAGS		=	-Wall -Wextra -Werror -g
+FLAGS		=	-Wall -Wextra  -g #-Werror
 
 LIBRARIES_VM = -L$(LIB_DIR) -lft
 INCLUDES_VM = -I$(INC_DIR) -I$(LIB_DIR)
