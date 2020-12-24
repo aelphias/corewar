@@ -3,69 +3,93 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
+#    By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2020/12/23 21:57:47 by aelphias         ###   ########.fr        #
+#    Updated: 2020/12/24 17:37:05 by kcharlet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
-COREWAR		=	corewar
-NAME		=	$(COREWAR)
+NAME		=	corewar
 
 CC			=	gcc
-CFLAGS		=	-Wall -Wextra -g #-Werror uncomment
+FLAGS		=	-Wall -Wextra  -g #-Werror
 
+LIBRARIES_VM = -L$(LIB_DIR) -lft
+INCLUDES_VM = -I$(INC_DIR) -I$(LIB_DIR)
 LIB_DIR		=	../libft/
-LIB_A		=	$(LIB_DIR)libft.a
-LIB_HEAD	=	$(LIB_DIR)libft.h
+LIB_FILE	=	$(LIB_DIR)libft.a
+LIB_HEAD	=	$(LIB_DIR)
 
-#name all dir
+####################DIRS########################################################
+
 INC_DIR		=	./includes/
-OBJ_DIR		=	./obj/
-SRC_L_D		=	./srcs/
+VM_SRC_DIR		= ./srcs/
 
-HEAD		=	$(INC_DIR)corewar.h
+HEAD		=	$(INC_DIR)
 INC			=	-I$(LIB_DIR) -I$(INC_DIR)
 
-SRC_COREWAR =	main.c print_error.c parsing.c parse_flags.c testing.c
-OBJ_AS		=	$(SRC_COREWAR:%.c=%.o)
-SRCS_AS		=	$(addprefix $(SRC_L_D), $(SRC_COREWAR))
-OBJ_COREWAR		=	$(addprefix $(OBJ_DIR), $(OBJ_AS))
+####################VM_SOURSES##################################################
 
-all : $(OBJ_DIR) $(COREWAR)
+VM_SRC_LIST	= main.c \
+			  print_error.c \
+			  parsing.c \
+			  parse_flags.c \
+			  testing.c
 
-#create obj dir
-$(OBJ_DIR):
-	@mkdir -p $(OBJ_DIR)
+SRC_VM		= $(addprefix $(VM_SRC_DIR), $(VM_SRC_LIST))
 
-#create corewar proj
-$(COREWAR): $(LIB_A) $(OBJ_COREWAR)
-	@echo "\\033[32m Prepare vm for the COREWAR project... \033[0m"
-	@$(CC) $(CFLAGS) $(INC) $(OBJ_COREWAR) $(LIB_A) -o $(COREWAR)
+####################VM_OBJECTS##################################################
 
-#create libc
-$(LIB_A):
-	@echo "\\033[34m Prepare libft... \033[0m"
-	@$(MAKE) -sC $(LIB_DIR) CFLAGS="$(CFLAGS)"
+VM_OBJ_DIR = ./vm_objects/
+VM_OBJECTS_LIST = $(patsubst %.c, %.o, $(VM_SRC_LIST))
+VM_OBJECTS = $(addprefix $(VM_OBJ_DIR), $(VM_OBJECTS_LIST))
+#VM_DEPS = $(VM_OBJECTS:.o=.d)
 
-#make obj
-$(OBJ_DIR)%.o: $(SRC_L_D)%.c $(HEAD)
-	@$(CC) $(CFLAGS) -c $(INC) $< -o $@
+##OBJ_AS		=	$(SRC_VM:%.c=%.o)
+##SRCS_AS		=	$(addprefix $(SRC_L_D), $(SRC_VM))
+##OBJ_COREWAR		=	$(addprefix $(OBJ_DIR), $(OBJ_AS))
 
-directory: $(OBJDIR)
+# COLORS
+
+GREEN = \033[0;32m
+RED = \033[0;31m
+RESET = \033[0m
+
+.PHONY: all clean fclean re
+
+all : $(NAME)
+
+$(NAME): $(LIB_FILE) $(VM_OBJECTS)
+	@echo "$(GREEN)Preparing VM for the COREWAR project...$(RESET)"
+	@$(CC) $(FLAGS) $(LIBRARIES_VM) $(VM_OBJECTS) -o $(NAME)
+	@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
+	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
+
+$(LIB_FILE):
+	@echo "$(NAME): $(GREEN)Creating $(LIB_FILE)...$(RESET)"
+	@make -sC $(LIB_DIR)
+
+$(VM_OBJ_DIR):
+	@mkdir -p $@
+	@echo "$(NAME): $(GREEN)$@ was created$(RESET)"
+
+$(VM_OBJ_DIR)%.o : $(VM_SRC_DIR)%.c | $(VM_OBJ_DIR)
+	@$(CC) $(FLAGS) -MD -c $(INCLUDES_VM) $< -o $@
+	@echo "$(GREEN).$(RESET)\c"
+
+#include $(wildcard $(VM_DEPS))
 
 clean:
-	@rm -rf $(OBJ_DIR) $(LIB_A)
-	@make -C $(LIB_DIR) clean
-	@echo "\\033[31m Deleting object files... \033[0m"
+	@make -sC $(LIB_DIR) clean
+	@rm -rf $(VM_OBJ_DIR)
+	@echo "$(NAME): $(RED)$(VM_OBJ_DIR) was deleted$(RESET)"
+	@echo "$(NAME): $(RED)object files were deleted$(RESET)"
 
 fclean: clean
-	@rm -f $(NAME) $(LIB_A)
-	@make -C $(LIB_DIR) fclean
-	@echo "\\033[31m Deleting $(NAME)... \033[0m"
+	@rm -f $(LIB_FILE)
+	@echo "$(NAME): $(RED)$(LIB_FILE) was deleted$(RESET)"
+	@rm -f $(NAME)
+	@echo "$(NAME): $(RED)$(NAME) was deleted$(RESET)"
 
 re: fclean all
-
-.PHONY: clean all re pwdfclean directory
