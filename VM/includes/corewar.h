@@ -33,11 +33,11 @@ typedef struct s_plr
 	char		*name;
 	char		*cmnt;
 	char		*code;
-	int			soc;
-	int			cur_ln;
-	int			prev_ln;
-	int			ll;
-	int			plr_count;
+	// int			soc;
+	// int			cur_ln;
+	// int			prev_ln;
+	// int			ll;
+	// int			plr_count;
 	struct s_plr		*next;
 }				t_plr;
 
