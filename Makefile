@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+         #
+#    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/24 20:51:23 by aelphias          #+#    #+#              #
-#    Updated: 2020/12/23 20:34:15 by kcharlet         ###   ########.fr        #
+#    Updated: 2020/12/25 14:04:45 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all clean fclean re pwdfclean directory
 
 COREWAR = corewar
-VM_PATH =  ./VM
+VM_PATH = ./VM/
 
 all:  $(COREWAR)
 
