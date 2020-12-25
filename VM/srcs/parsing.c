@@ -38,7 +38,8 @@ void print_list(t_plr *plr)
 void	ft_parse(int argc, char **argv, t_flg *flg, t_plr *plr)
 {
 	int i = 1;
-	while (i < 10)
+	while (i < argc)
+		if (!)
 		create_list_plr(plr, i++);
 	print_list(plr);
 	//check_flags(argc, argv, flg, plr);

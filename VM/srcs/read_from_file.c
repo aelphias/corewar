@@ -19,7 +19,7 @@ int		read_from_file(t_plr *player, char *str, int nbr)
 
 	chemp = NULL;
 	test = player;
-	if (!(chemp = read_p_from_f(str, nbr)))
+/* 	if (!(chemp = read_p_from_f(str, nbr)))
 		return (1);
 	else
 	{
@@ -31,6 +31,6 @@ int		read_from_file(t_plr *player, char *str, int nbr)
 				test = test->next;
 			test->next = chemp;
 		}
-	}
+	} */
 	return (0);
 }

@@ -50,6 +50,7 @@ typedef struct s_flg
 void	print_error(int num_error);
 void	ft_parse(int argc, char **argv, t_flg *flag, t_plr *plr);
 void	check_flags(int argc, char **argv, t_flg *flg, t_plr *plr);
+int		read_from_file(t_plr *player, char *str, int nbr);
 
 /*
 *	testing

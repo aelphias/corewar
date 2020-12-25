@@ -35,7 +35,8 @@ VM_SRC_LIST	= main.c \
 			  print_error.c \
 			  parsing.c \
 			  parse_flags.c \
-			  testing.c
+			  testing.c \
+			  read_from_file.c
 
 SRC_VM		= $(addprefix $(VM_SRC_DIR), $(VM_SRC_LIST))
 
