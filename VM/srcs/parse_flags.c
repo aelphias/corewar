@@ -6,19 +6,27 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 20:51:41 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/25 14:58:11 by aelphias         ###   ########.fr       */
+/*   Updated: 2020/12/25 17:30:23 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void read_p(char *fname, t_plr **plr)
+
+
+void read_p(int fd, t_plr **plr)
 {
-	int fd;
 	
-	fd = fopen(fname, O_RDONLY);
+}
+
+int	check_magic(int fd)
+{
+	int i;
+	int result;
+	unsigned char buf[2];	
+	uint8_t		  magic[4];
 	
-	fclose(fd);
+	//result = read();
 }
 
 void	try_to_read(char *fname, t_plr **plr)
@@ -26,7 +34,9 @@ void	try_to_read(char *fname, t_plr **plr)
 	int fd;
 	
 	fd = fopen(fname, O_RDONLY);
-	
+	if (fd = fopen(fname, O_RDONLY))
+		print_error(ERR_FILE_OPEN);
+	//check_magic(fd);
 	fclose(fd);
 }
 
@@ -40,7 +50,7 @@ void check_flags(int argc, char **argv, t_flg *flg, t_plr **plr)
 		if (ft_strstr(argv[i], ".cor"))
 		{
 			try_to_read(argv[i], plr);
-			puts("cool!");
+			puts("has .cor\n");
 		}
 		
 		i++;
