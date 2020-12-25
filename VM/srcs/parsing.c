@@ -35,12 +35,28 @@ void print_list(t_plr *plr)
 	}
 }
 
+
+
+int checkdotcor(char *argv)
+{
+	char *ch;
+
+	ch = ft_strstr(argv, ".cor");
+	if (ch)
+	{
+		ft_printf("AAA");
+		return (1);
+	}
+	else
+		return (0);
+}
+
 void	ft_parse(int argc, char **argv, t_flg *flg, t_plr *plr)
 {
 	int i = 1;
 	while (i < argc)
-		if (!)
-		create_list_plr(plr, i++);
+		if (checkdotcor(argv[i]))
+			create_list_plr(plr, i++);
 	print_list(plr);
 	//check_flags(argc, argv, flg, plr);
 	
