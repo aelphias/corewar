@@ -6,7 +6,7 @@
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/25 18:32:42 by kcharlet         ###   ########.fr       */
+/*   Updated: 2020/12/25 19:17:07 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,7 @@
 # include "../includes/op.h"
 # include "errors.h"
 
-typedef struct	s_vm
-{
-	int			arena[MEM_SIZE];
-	int			nop; //number of players
-	ssize_t 	cycles;
-	ssize_t 	c2d; //cycles to die
-	ssize_t 	cac; //cycles after check
-	int			print_mode;
-}				t_vm;
+# define INDEX(X)		((X) - 1)
 
 typedef struct s_plr
 {
@@ -33,6 +25,7 @@ typedef struct s_plr
 	char		*name;
 	char		*cmnt;
 	char		*code;
+	int			code_size;
 	// int			soc;
 	// int			cur_ln;
 	// int			prev_ln;
@@ -40,7 +33,16 @@ typedef struct s_plr
 	// int			plr_count;
 	struct s_plr		*next;
 }				t_plr;
-
+typedef struct	s_vm
+{
+	unsigned char	arena[MEM_SIZE];
+	t_plr			*players[MAX_PLAYERS];
+	int				num_of_plrs; //number of players
+	ssize_t 		cycles;
+	ssize_t 		c2d; //cycles to die
+	ssize_t 		cac; //cycles after check
+	int				print_mode;
+}					t_vm;
 typedef struct s_flg
 {
 	int	n; 
