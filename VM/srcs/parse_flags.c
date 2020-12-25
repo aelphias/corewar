@@ -6,21 +6,38 @@
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 20:51:41 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/24 19:29:36 by kcharlet         ###   ########.fr       */
+/*   Updated: 2020/12/25 18:32:34 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-int	is_num(char *str)
+
+
+void read_p(int fd, t_plr *plr)
 {
-	while (*str)
-	{
-		if (!(ft_isdigit(*str)))
-			return (0);
-		str++;
-	}
-	return (1);
+	
+}
+
+int	check_magic(int fd)
+{
+	int i;
+	int result;
+	unsigned char buf[2];	
+	uint8_t		  magic[4];
+	
+	//result = read();
+}
+
+void	try_to_read(char *fname, t_plr *plr)
+{
+	int fd;
+	
+	fd = fopen(fname, O_RDONLY);
+	if (fd = fopen(fname, O_RDONLY))
+		print_error(ERR_FILE_OPEN);
+	//check_magic(fd);
+	fclose(fd);
 }
 
 void check_flags(int argc, char **argv, t_flg *flg, t_plr *plr)
@@ -30,37 +47,44 @@ void check_flags(int argc, char **argv, t_flg *flg, t_plr *plr)
 	i = 1;
 	while (i <= argc)
 	{
-		if ((argv[i]) && !(ft_strcmp(argv[i], "-dump")))
+		if (ft_strstr(argv[i], ".cor"))
+		{
+			try_to_read(argv[i], plr);
+			puts("has .cor\n");
+		}
+		
+		i++;
+	}
+		/* 
+	while (i <= argc)
+	{
+		if (!(ft_strcmp(argv[i], "-dump")))
 		{	
-			//argv[i + 1] ? 0 : print_error(ERR_USE);
+			argv[i + 1] ? 0 : print_error(ERR_USE);
 			if (!(argv[i + 1])) 
 				print_error(ERR_USE);
-			if (!(is_num(argv[i + 1])))
+			if (is_num(argv[i + 1]))
 				print_error(ERR_USE);
 			flg->dump = ft_atoi(argv[i + 1]);
+			printf("flg->dump = %d\n", flg->dump); 
 			i +=2;
 		}
-		if ((argv[i]) && !(ft_strcmp(argv[i], "-n")))
+		else if (!(ft_strcmp(argv[i], "-n")))
 		{
-			if (!(argv[i + 1]))
+			if (!(argv[i + 1])) 
 				print_error(ERR_USE);
-			if (!(argv[i + 2]))
-				print_error(ERR_USE);
-			if (is_num(argv[i + 1]) && ft_strstr(argv[i + 2], ".cor"))
+			if (!(is_num(argv[i + 1])) && ft_strstr(argv[i + 2], ".cor"))
 			{
 				flg->n = ft_atoi(argv[i + 1]);
-				read_from_file(plr, argv[1], 2); // пока без цикла, просто для одного игрока
-
-				i +=2;
+				plr->name = ft_strdup(argv[i + 2]);
+				i +=3;
 			}
-			//else
-			//	print_error(ERR_USE); 
 		}
-		if ((argv[i]) && ft_strstr(argv[i], ".cor"))
+		else if (ft_strstr(argv[i], ".cor"))
 		{
-			
+			plr->name = ft_strdup(argv[i + 2]);
 			i +=2;
 		}
 		i++;
-	}
+	} */
 }

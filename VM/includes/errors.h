@@ -6,16 +6,17 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/17 18:07:58 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/19 20:57:45 by aelphias         ###   ########.fr       */
+/*   Updated: 2020/12/25 16:04:10 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ERRORS_H
 # define ERRORS_H
 
-# define ERR_USE	1
-# define ERR_M_PLRS	2
-# define ERR_MALLOC	3
+# define ERR_USE		1
+# define ERR_M_PLRS		2
+# define ERR_MALLOC		3
+# define ERR_FILE_OPEN	4
 /* 
 # define ARG_III "Argument(-s) is/are not valid"
 # define ER_F_RD "File could not be read"

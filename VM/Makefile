@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+         #
+#    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2020/12/24 17:37:05 by kcharlet         ###   ########.fr        #
+#    Updated: 2020/12/25 13:32:07 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,9 +33,10 @@ INC			=	-I$(LIB_DIR) -I$(INC_DIR)
 
 VM_SRC_LIST	= main.c \
 			  print_error.c \
-			  parsing.c \
+			  parse.c \
 			  parse_flags.c \
-			  testing.c
+			  test.c \
+			  utils.c
 
 SRC_VM		= $(addprefix $(VM_SRC_DIR), $(VM_SRC_LIST))
 
