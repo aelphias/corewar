@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/25 15:01:50 by aelphias         ###   ########.fr       */
+/*   Updated: 2020/12/25 18:32:42 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,16 @@ typedef struct s_flg
 */
 
 void	print_error(int num_error);
-void	ft_parse(int argc, char **argv, t_flg *flag, t_plr **plr);
-void	check_flags(int argc, char **argv, t_flg *flg, t_plr **plr);
-void	try_to_read(char *fname, t_plr **plr);
+void	ft_parse(int argc, char **argv, t_flg *flag, t_plr *plr);
+void	check_flags(int argc, char **argv, t_flg *flg, t_plr *plr);
+void	try_to_read(char *fname, t_plr *plr);
 
 /*
 *	utils
 */
 void	create_list_plr(t_plr *head, int val);
 void	print_list(t_plr *plr);
-int	is_num(char *str);
+int		is_num(char *str);
 
 /*
 *	test

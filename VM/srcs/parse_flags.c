@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_flags.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 20:51:41 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/25 17:30:23 by aelphias         ###   ########.fr       */
+/*   Updated: 2020/12/25 18:32:34 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 
 
-void read_p(int fd, t_plr **plr)
+void read_p(int fd, t_plr *plr)
 {
 	
 }
@@ -29,7 +29,7 @@ int	check_magic(int fd)
 	//result = read();
 }
 
-void	try_to_read(char *fname, t_plr **plr)
+void	try_to_read(char *fname, t_plr *plr)
 {
 	int fd;
 	
@@ -40,7 +40,7 @@ void	try_to_read(char *fname, t_plr **plr)
 	fclose(fd);
 }
 
-void check_flags(int argc, char **argv, t_flg *flg, t_plr **plr)
+void check_flags(int argc, char **argv, t_flg *flg, t_plr *plr)
 {
 	int i;
 
