@@ -6,7 +6,7 @@
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 20:51:41 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/25 18:32:34 by kcharlet         ###   ########.fr       */
+/*   Updated: 2020/12/26 14:03:30 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	check_magic(int fd)
 {
 	int i;
 	int result;
-	unsigned char buf[2];	
+	unsigned char buf[2];
 	uint8_t		  magic[4];
 	
 	//result = read();
