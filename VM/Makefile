@@ -1,0 +1,96 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
+#    Updated: 2020/12/24 17:37:05 by kcharlet         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME		=	corewar
+
+CC			=	gcc
+FLAGS		=	-Wall -Wextra  -g #-Werror
+
+LIBRARIES_VM = -L$(LIB_DIR) -lft
+INCLUDES_VM = -I$(INC_DIR) -I$(LIB_DIR)
+LIB_DIR		=	../libft/
+LIB_FILE	=	$(LIB_DIR)libft.a
+LIB_HEAD	=	$(LIB_DIR)
+
+####################DIRS########################################################
+
+INC_DIR		=	./includes/
+VM_SRC_DIR		= ./srcs/
+
+HEAD		=	$(INC_DIR)
+INC			=	-I$(LIB_DIR) -I$(INC_DIR)
+
+####################VM_SOURSES##################################################
+
+VM_SRC_LIST	= main.c \
+			  print_error.c \
+			  parsing.c \
+			  parse_flags.c \
+			  testing.c \
+			  read_from_file.c
+
+SRC_VM		= $(addprefix $(VM_SRC_DIR), $(VM_SRC_LIST))
+
+####################VM_OBJECTS##################################################
+
+VM_OBJ_DIR = ./vm_objects/
+VM_OBJECTS_LIST = $(patsubst %.c, %.o, $(VM_SRC_LIST))
+VM_OBJECTS = $(addprefix $(VM_OBJ_DIR), $(VM_OBJECTS_LIST))
+#VM_DEPS = $(VM_OBJECTS:.o=.d)
+
+##OBJ_AS		=	$(SRC_VM:%.c=%.o)
+##SRCS_AS		=	$(addprefix $(SRC_L_D), $(SRC_VM))
+##OBJ_COREWAR		=	$(addprefix $(OBJ_DIR), $(OBJ_AS))
+
+# COLORS
+
+GREEN = \033[0;32m
+RED = \033[0;31m
+RESET = \033[0m
+
+.PHONY: all clean fclean re
+
+all : $(NAME)
+
+$(NAME): $(LIB_FILE) $(VM_OBJECTS)
+	@echo "$(GREEN)Preparing VM for the COREWAR project...$(RESET)"
+	@$(CC) $(FLAGS) $(LIBRARIES_VM) $(VM_OBJECTS) -o $(NAME)
+	@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
+	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
+
+$(LIB_FILE):
+	@echo "$(NAME): $(GREEN)Creating $(LIB_FILE)...$(RESET)"
+	@make -sC $(LIB_DIR)
+
+$(VM_OBJ_DIR):
+	@mkdir -p $@
+	@echo "$(NAME): $(GREEN)$@ was created$(RESET)"
+
+$(VM_OBJ_DIR)%.o : $(VM_SRC_DIR)%.c | $(VM_OBJ_DIR)
+	@$(CC) $(FLAGS) -MD -c $(INCLUDES_VM) $< -o $@
+	@echo "$(GREEN).$(RESET)\c"
+
+#include $(wildcard $(VM_DEPS))
+
+clean:
+	@make -sC $(LIB_DIR) clean
+	@rm -rf $(VM_OBJ_DIR)
+	@echo "$(NAME): $(RED)$(VM_OBJ_DIR) was deleted$(RESET)"
+	@echo "$(NAME): $(RED)object files were deleted$(RESET)"
+
+fclean: clean
+	@rm -f $(LIB_FILE)
+	@echo "$(NAME): $(RED)$(LIB_FILE) was deleted$(RESET)"
+	@rm -f $(NAME)
+	@echo "$(NAME): $(RED)$(NAME) was deleted$(RESET)"
+
+re: fclean all
