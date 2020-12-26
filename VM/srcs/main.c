@@ -6,7 +6,7 @@
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/26 16:02:43 by kcharlet         ###   ########.fr       */
+/*   Updated: 2020/12/26 16:09:51 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 	t_plr			*plr; //  will void *p; work the same way?
 	t_vm			*vm;
 	
-	( argc == 1 || argc > 5 ) ? print_error(ERR_USE) : 0;
+	( argc < 2 || argc > 5 ) ? print_error(ERR_USE) : 0;
 	if (!(flg = (t_flg *)ft_memalloc(sizeof(t_flg))))
 		print_error(ERR_MALLOC);
 	ft_parse(argc - 1, argv, flg, &plr);
