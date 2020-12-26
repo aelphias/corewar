@@ -6,7 +6,7 @@
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 15:27:10 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/25 19:18:44 by kcharlet         ###   ########.fr       */
+/*   Updated: 2020/12/26 15:55:48 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 	}
 }*/
 
-void		init_arena(t_vm *vm)
+/*void		init_arena(t_vm *vm)
 {
 	int			id;
 	unsigned	plays_on_mem;
@@ -41,5 +41,5 @@ void		init_arena(t_vm *vm)
 		plays_on_mem += MEM_SIZE / vm->num_of_plrs;
 		id++;
 	}
-}
+}*/
 

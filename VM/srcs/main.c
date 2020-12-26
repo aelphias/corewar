@@ -6,27 +6,33 @@
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/25 18:57:21 by kcharlet         ###   ########.fr       */
+/*   Updated: 2020/12/26 16:02:43 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
+void init_arena(char *map)
+{
+	unsigned int i;
+	
+	i = 0;
+	while (++i < MEM_SIZE)
+		map[i] = 0;
+}
+
 int	main(int argc, char **argv)
 {
-	t_flg	*flg;
-	t_plr	*plr; //  will void *p; work the same way?
-	t_vm	*vm;
+	unsigned char	map[MEM_SIZE];
+	t_flg			*flg;
+	t_plr			*plr; //  will void *p; work the same way?
+	t_vm			*vm;
 	
 	( argc == 1 || argc > 5 ) ? print_error(ERR_USE) : 0;
 	if (!(flg = (t_flg *)ft_memalloc(sizeof(t_flg))))
 		print_error(ERR_MALLOC);
-	if (!(plr = (t_plr *)ft_memalloc(sizeof(t_plr))))
-		print_error(ERR_MALLOC);
-	/* if (!(plr = (void*)ft_memalloc(sizeof(t_plr))))
-		print_error(ERR_MALLOC); */
-	ft_parse(argc - 1, argv, flg, plr);
-	init_arena(vm);
+	ft_parse(argc - 1, argv, flg, &plr);
+	init_arena(map);
 	//test(flg, &plr);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/25 19:17:07 by kcharlet         ###   ########.fr       */
+/*   Updated: 2020/12/26 16:04:09 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ typedef struct s_flg
 */
 
 void	print_error(int num_error);
-void	ft_parse(int argc, char **argv, t_flg *flag, t_plr *plr);
-void	check_flags(int argc, char **argv, t_flg *flg, t_plr *plr);
-void	try_to_read(char *fname, t_plr *plr);
+void	ft_parse(int argc, char **argv, t_flg *flag, t_plr **plr);
+void	check_flags(int argc, char **argv, t_flg *flg, t_plr **plr);
+void	try_to_read(char *fname, t_plr **plr);
 
 /*
 *	utils
