@@ -6,7 +6,7 @@
 #    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2020/12/25 13:32:07 by aelphias         ###   ########.fr        #
+#    Updated: 2020/12/26 19:39:38 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,14 +35,14 @@ VM_SRC_LIST	= main.c \
 			  print_error.c \
 			  parse.c \
 			  parse_flags.c \
-			  test.c \
-			  utils.c
+			  testing.c \
+			  read_from_file.c
 
 SRC_VM		= $(addprefix $(VM_SRC_DIR), $(VM_SRC_LIST))
 
 ####################VM_OBJECTS##################################################
 
-VM_OBJ_DIR = ./vm_objects/
+VM_OBJ_DIR = ./obj/
 VM_OBJECTS_LIST = $(patsubst %.c, %.o, $(VM_SRC_LIST))
 VM_OBJECTS = $(addprefix $(VM_OBJ_DIR), $(VM_OBJECTS_LIST))
 #VM_DEPS = $(VM_OBJECTS:.o=.d)

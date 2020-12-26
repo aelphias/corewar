@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/26 16:04:09 by kcharlet         ###   ########.fr       */
+/*   Updated: 2020/12/26 19:24:46 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,25 @@
 # include "../includes/op.h"
 # include "errors.h"
 
-# define INDEX(X)		((X) - 1)
+# define PROG_NAME_LENGTH	(128)
+# define COMMENT_LENGTH		(2048)
+
+typedef struct	s_vm
+{
+	int			arena[MEM_SIZE];
+	int			nop; //number of players
+	ssize_t 	cycles;
+	ssize_t 	c2d; //cycles to die
+	ssize_t 	cac; //cycles after check
+	int			print_mode;
+}				t_vm;
 
 typedef struct s_plr
 {
 	int			id;
-	char		*name;
-	char		*cmnt;
-	char		*code;
-	int			code_size;
+	unsigned char		*name;
+	unsigned char		*cmnt;
+	unsigned int		*code;
 	// int			soc;
 	// int			cur_ln;
 	// int			prev_ln;
@@ -54,16 +64,9 @@ typedef struct s_flg
 */
 
 void	print_error(int num_error);
-void	ft_parse(int argc, char **argv, t_flg *flag, t_plr **plr);
-void	check_flags(int argc, char **argv, t_flg *flg, t_plr **plr);
-void	try_to_read(char *fname, t_plr **plr);
-
-/*
-*	utils
-*/
-void	create_list_plr(t_plr *head, int val);
-void	print_list(t_plr *plr);
-int		is_num(char *str);
+void	ft_parse(int argc, char **argv, t_flg *flag);
+void	check_flags(int argc, char **argv, t_flg *flg, t_plr *plr);
+int		read_from_file(t_plr *player, char *str, int nbr);
 
 /*
 *	test
