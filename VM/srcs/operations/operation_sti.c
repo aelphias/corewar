@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_error.c                                      :+:      :+:    :+:   */
+/*   operation_sti.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/18 18:35:34 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/23 21:53:55 by aelphias         ###   ########.fr       */
+/*   Created: 2020/12/22 18:37:41 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/23 21:35:02 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+# include "corewar.h"
 
-void	print_error(int num_error)
+void        operation_sti()
 {
-	if (num_error == 1)
-		ft_putstr_fd("Usage: ./corewar [-dump nbr_cycles] [[-n number] champion1.cor]\n", 2);
-	else if (num_error == 2)
-	{
-		ft_putstr_fd("Too many players, %d is max ", 2);
-		ft_putnbr_fd(MAX_PLAYERS, 2);
-		ft_putstr_fd("\n", 2);
-	}
-	else if (num_error == 3)
-		ft_putstr_fd("Could not allocate memory\n", 2);
-	exit(-1);
+    int32_t	r_id;
+	int32_t	v;
+	int32_t	a1;
+	int32_t	a2;
 }

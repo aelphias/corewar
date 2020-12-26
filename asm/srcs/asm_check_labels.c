@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 16:57:32 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/19 16:59:49 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2020/12/26 12:23:39 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	if_in_is_label_or_not(t_crw *champ, t_l *new, char *line, int i)
 	if (champ->labels[champ->l_size].names == NULL)
 	{
 		if (!(new = malloc(sizeof(t_l))))
-			free_all(*champ, "Error: memory didn't allocated\n");
+			free_and_call(*champ, MEM_ALL);
 		ft_strncpy(new->name, &line[champ->len], i - champ->len);
 		new->name[i - champ->len] = '\0';
 		new->next = NULL;
@@ -28,7 +28,7 @@ void	if_in_is_label_or_not(t_crw *champ, t_l *new, char *line, int i)
 	else
 	{
 		if (!(new = malloc(sizeof(t_l))))
-			free_all(*champ, "Error: memory didn't allocated\n");
+			free_and_call(*champ, MEM_ALL);
 		ft_strncpy(new->name, &line[champ->len], i - champ->len);
 		new->name[i - champ->len] = '\0';
 		new->next = NULL;
@@ -68,6 +68,6 @@ int		is_label_or_not(char *line, t_crw *champ)
 	else if (is_command_or_not(&line[i], champ))
 		return (1);
 	else
-		free_all(*champ, "Error: invalid file\n");
+		free_and_call(*champ, ER_IN_F);
 	return (1);
 }

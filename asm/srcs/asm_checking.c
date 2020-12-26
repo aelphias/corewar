@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/19 17:07:55 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/19 17:07:59 by gjigglyp         ###   ########.fr       */
+/*   Created: 2020/12/26 11:46:10 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/26 12:17:17 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,7 @@ int		char_in_label(char el)
 	while (LABEL_CHARS[i] != '\0')
 	{
 		if (LABEL_CHARS[i] == el)
-		{
 			return (1);
-		}
 		i++;
 	}
 	return (0);
@@ -92,13 +90,13 @@ void	check_type_arg(t_crw *champ)
 		while (ft_strcmp(g_op[j].name, champ->labels[i].cmd_n) != 0)
 			j++;
 		if ((g_op[j].args_types[0] & champ->labels[i].t1) == 0)
-			free_all(*champ, "Error: no label!\n");
+			free_and_call(*champ, NO_LABE);
 		if ((g_op[j].args_types[1] & champ->labels[i].t2) == 0  \
 		&& (g_op[j].args_types[1] || champ->labels[i].t2))
-			free_all(*champ, "Error: no label!\n");
+			free_and_call(*champ, NO_LABE);
 		if ((g_op[j].args_types[2] & champ->labels[i].t3) == 0  \
 		&& (g_op[j].args_types[2] || champ->labels[i].t3))
-			free_all(*champ, "Error: no label!\n");
+			free_and_call(*champ, NO_LABE);
 		i++;
 	}
 }
@@ -109,13 +107,9 @@ char	*change_ex(char *filename, char *old, char *new)
 
 	basename = ft_strsub(filename, 0, ft_strlen(filename) - ft_strlen(old));
 	if (!basename)
-	{
 		exit(-1);
-	}
 	if (!(filename = ft_strjoin(basename, new)))
-	{
 		exit(-1);
-	}
 	ft_strdel(&basename);
 	return (filename);
 }

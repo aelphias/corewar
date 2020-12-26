@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/19 17:32:11 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/19 17:32:21 by gjigglyp         ###   ########.fr       */
+/*   Created: 2020/12/26 11:42:55 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/26 11:42:57 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,10 @@ void	is_lab_in_dir_char(char *line, t_crw *champ, int arg_cntr, int *i)
 			get_dir_ind_arg_val(champ, line, i);
 	}
 	else
-		free_all(*champ, "Error: invalid arg\n");
+	{
+		free_all(*champ);
+		call_error(ER_I_AR);
+	}
 }
 
 void	if_is_dir(t_crw *champ, int arg_cntr, char *line, int *i)

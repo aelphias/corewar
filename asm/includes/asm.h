@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 15:15:59 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/19 15:49:35 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2020/12/26 12:15:59 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ void							if_is_label_or_not(t_crw *champ, int arg_cntr,\
 void							recording_label(t_crw *champ, int *i,\
 													int arg_cntr, char *line);
 int								skip_everything(char *line);
-void							free_all(t_crw champ, char *str);
+void							free_all(t_crw champ);
 int								switch_args(char *line, int arg_cntr,\
 													t_crw *champ);
 void							increase_array(t_crw *champ);
@@ -147,12 +147,6 @@ int								find_lab_aft_cmd(t_crw *champ,\
 													int arg);
 int								is_comment(char *line);
 int								is_label_or_not(char *line, t_crw *champ);
-void							write_4_byte(t_crw *champ,\
-													unsigned int to_write);
-void							write_2_byte(t_crw *champ,\
-													unsigned int to_write);
-void							write_1_byte(t_crw *champ,\
-												unsigned int to_write);
 void							zero_exec(t_crw *champ, int exec_size);
 void							init_array(t_crw *champ);
 int								get_reg_arg_val(t_crw *champ,\
@@ -182,7 +176,6 @@ void							disasm_cmd(int wr_fd, int rd_fd);
 void							if_is_label(t_crw *champ, int count_arg, \
 													char *line, int *i);
 int								skip_everything(char *line);
-void							free_all(t_crw champ, char *str);
 int								switch_args(char *line, int count_arg, \
 													t_crw *champ);
 void							increase_array(t_crw *champ);
@@ -226,5 +219,10 @@ void							writing_one_byte(t_crw *champ, \
 													unsigned int to_write);
 void							writing_two_bytes(t_crw *champ, \
 													unsigned int to_write);
+void							are_h_and_b_valid(int fd, t_crw *champ);
+int								call_error(char const *const err);
+void							is_end_comment(t_crw *champ, char *line);
+void							free_and_call(t_crw champ, \
+													char const *const err);
 
 #endif

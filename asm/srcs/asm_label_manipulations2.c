@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/19 17:31:23 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/19 17:31:24 by gjigglyp         ###   ########.fr       */
+/*   Created: 2020/12/26 11:46:49 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/26 11:59:32 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int		get_reg_arg_val(t_crw *champ, char *line, int *i)
 		(*i)++;
 	if (ft_atoi(&line[1]) > REG_NUMBER || *i == 1 || ft_atoi(&line[1]) < 1)
 	{
-		free_all(*champ, "Error: invalid arg\n");
+		free_all(*champ);
+		call_error(ER_I_AR);
 	}
 	return (ft_atoi(&line[1]));
 }

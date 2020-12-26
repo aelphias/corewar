@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/19 17:01:39 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/19 18:18:31 by gjigglyp         ###   ########.fr       */
+/*   Created: 2020/12/26 11:43:24 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/26 11:43:57 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_crw				*get_asm_data(t_crw *asm_data)
 ** fn - название файла
 */
 
-int				is_filename(const char *fn, const char *ex)
+int					is_filename(const char *fn, const char *ex)
 {
 	if (ex && fn && ft_strlen(fn) >= ft_strlen(ex))
 		return (!ft_strcmp(ft_strchr(fn, '\0') - ft_strlen(ex), ex));
@@ -43,7 +43,7 @@ int				is_filename(const char *fn, const char *ex)
 ** здесь выводится тип ошибки в случае её выявления
 */
 
-int				call_error(char const *const err)
+int					call_error(char const *const err)
 {
 	ft_putstr_fd("ERROR: ", 2);
 	ft_putendl_fd(err, 2);
@@ -54,7 +54,7 @@ int				call_error(char const *const err)
 ** main function
 */
 
-int				main(int ac, char *av[])
+int					main(int ac, char *av[])
 {
 	if (ac != 2)
 		call_error(ERR_USE);

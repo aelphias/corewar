@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.h                                           :+:      :+:    :+:   */
+/*   operation_and.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/17 18:07:58 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/26 18:14:27 by aelphias         ###   ########.fr       */
+/*   Created: 2020/12/22 18:15:24 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/22 18:17:01 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERRORS_H
-# define ERRORS_H
+# include "corewar.h"
 
-# define ERR_USE		1
-# define ERR_M_PLRS		2
-# define ERR_MALLOC		3
-# define ERR_FILE_OPEN	4
-
-#endif
+void    operation_and()
+{
+    int v1;
+    int v2;
+    int vl;
+    int r_id;
+}

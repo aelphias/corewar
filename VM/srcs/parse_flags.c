@@ -3,59 +3,88 @@
 /*                                                        :::      ::::::::   */
 /*   parse_flags.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 20:51:41 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/19 21:36:56 by aelphias         ###   ########.fr       */
+/*   Updated: 2020/12/26 16:03:35 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-int	is_num(char *str)
+
+
+void read_p(int fd, t_plr **plr)
 {
-	while (*str)
-	{
-		if (!(ft_isdigit(*str)))
-			return (0);
-		str++;
-	}
-	printf("{is_num OK}\n");
-	return (1);
+	
 }
 
+int	check_magic(int fd)
+{
+	int i;
+	int result;
+	unsigned char buf[2];
+	uint8_t		  magic[4];
+	
+	//result = read();
+}
 
-void check_flags(int argc, char **argv, t_flg *flg)
+void	try_to_read(char *fname, t_plr **plr)
+{
+	int fd;
+	
+	fd = fopen(fname, O_RDONLY);
+	if (fd = fopen(fname, O_RDONLY))
+		print_error(ERR_FILE_OPEN);
+	//check_magic(fd);
+	fclose(fd);
+}
+
+void check_flags(int argc, char **argv, t_flg *flg, t_plr **plr)
 {
 	int i;
 
 	i = 1;
-	/*
-	-dump n
-	-n n
-	*/
+	while (i <= argc)
+	{
+		if (ft_strstr(argv[i], ".cor"))
+		{
+			try_to_read(argv[i], plr);
+			puts("has .cor\n");
+		}
+		
+		i++;
+	}
+		/* 
 	while (i <= argc)
 	{
 		if (!(ft_strcmp(argv[i], "-dump")))
-		{
+		{	
+			argv[i + 1] ? 0 : print_error(ERR_USE);
+			if (!(argv[i + 1])) 
+				print_error(ERR_USE);
 			if (is_num(argv[i + 1]))
-			{
-				flg->dump = ft_atoi(argv[i + 1]);
-				printf("flg->dump = %d\n", flg->dump); 
-			}
+				print_error(ERR_USE);
+			flg->dump = ft_atoi(argv[i + 1]);
+			printf("flg->dump = %d\n", flg->dump); 
+			i +=2;
 		}
-		if (!(ft_strcmp(argv[i], "-n")))
+		else if (!(ft_strcmp(argv[i], "-n")))
 		{
-			if (is_num(argv[i + 1]))
+			if (!(argv[i + 1])) 
+				print_error(ERR_USE);
+			if (!(is_num(argv[i + 1])) && ft_strstr(argv[i + 2], ".cor"))
 			{
 				flg->n = ft_atoi(argv[i + 1]);
-				printf("flg->n = %d\n", flg->n);
-				
+				plr->name = ft_strdup(argv[i + 2]);
+				i +=3;
 			}
 		}
+		else if (ft_strstr(argv[i], ".cor"))
+		{
+			plr->name = ft_strdup(argv[i + 2]);
+			i +=2;
+		}
 		i++;
-	}
+	} */
 }
-/*
-				if (ft_isdigit(argv[i + 1][0]))
-*/

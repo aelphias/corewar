@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checks.c                                           :+:      :+:    :+:   */
+/*   operation_add.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/18 18:56:39 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/18 18:57:39 by aelphias         ###   ########.fr       */
+/*   Created: 2020/12/22 18:13:35 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/22 18:14:40 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+# include "corewar.h"
 
-void	check_filename(int argc, char **argv)
+void        operation_add()
 {
-	
+    int r1;
+    int r2;
+    int r3;
+    int val;
+
+    
 }

@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_error.c                                      :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/18 18:35:34 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/23 21:53:55 by aelphias         ###   ########.fr       */
+/*   Created: 2020/12/20 19:13:14 by aelphias          #+#    #+#             */
+/*   Updated: 2020/12/25 13:51:24 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	print_error(int num_error)
+void	test(t_flg *flg, t_plr **plr)
 {
-	if (num_error == 1)
-		ft_putstr_fd("Usage: ./corewar [-dump nbr_cycles] [[-n number] champion1.cor]\n", 2);
-	else if (num_error == 2)
-	{
-		ft_putstr_fd("Too many players, %d is max ", 2);
-		ft_putnbr_fd(MAX_PLAYERS, 2);
-		ft_putstr_fd("\n", 2);
-	}
-	else if (num_error == 3)
-		ft_putstr_fd("Could not allocate memory\n", 2);
-	exit(-1);
+	ft_printf("****Testing!****\n");
+	ft_printf("dump=%d\n", flg->dump);
+	ft_printf("n=%d\n", flg->n);
+	ft_printf("****Testing!****\n");
 }

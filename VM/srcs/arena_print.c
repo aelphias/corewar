@@ -1,21 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cmp.c                                           :+:      :+:    :+:   */
+/*   arena_print.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/22 16:41:11 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/24 18:33:13 by kcharlet         ###   ########.fr       */
+/*   Created: 2020/12/22 15:46:58 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/26 14:05:33 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+# include "corewar.h"
 
-int	ft_cmp(int a, int b)
+void        last_alived_print(t_vm *vm)
 {
-	if ((a - b) > 0 || (a - b) < 0)
-		return (a - b);
-	else
-		return (0);
+	//ft_printf("Contestant %d, %s HAS WON!\n");
+}
+
+void        arena_print(int pm, int *arena)
+{
+	int p;
+	int q;
+	
+	p = 0;
+	while (p < MEM_SIZE)
+	{
+		ft_printf("%.4p : ", p);
+		q = 0;
+		while (q < pm)
+		{
+			ft_printf("%.2x", arena[p + q]);
+			q++;
+		}
+		write(1, "\n", 1);
+		p += pm;
+	}
 }
