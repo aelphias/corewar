@@ -35,7 +35,7 @@ typedef struct s_plr
 	int			id;
 	unsigned char		*name;
 	unsigned char		*cmnt;
-	unsigned char		*code;
+	unsigned int		*code;
 	// int			soc;
 	// int			cur_ln;
 	// int			prev_ln;

@@ -19,16 +19,20 @@ void read_file(int fd, char *name, t_plr *plr)
 	int i;
 	int j;
 	int l;
+	int k;
 
+	k = 0;
 	l = 0;
 	j = 0;
 	i = 0;
 	while (read(fd, buff, 1) > 0)
 	{
 		if (i >= 4 && i <= 132)
-			plr->name[j++] = buff[0];
+			plr->name[j++] = (unsigned char)buff[0];
 		if (i >= 140 && i <= 2186)
-			plr->cmnt[l++] = buff[0];
+			plr->cmnt[l++] = (unsigned char)buff[0];
+		if (i >= 2192 && i <= 2874)
+			plr->code[k++] = (int)(buff[0]);
 		i++;
 	}
 	plr->name[j] = '\0';
@@ -47,6 +51,8 @@ void create_list_plr(t_plr *head, char *argv, int val, int fd)
     current->next->id = val;
 	current->next->name = (unsigned char *)ft_memalloc(sizeof(unsigned char) * (PROG_NAME_LENGTH + 1));
 	current->next->cmnt = (unsigned char *)ft_memalloc(sizeof(unsigned char) * (COMMENT_LENGTH + 1));
+	current->next->code = (unsigned int *)ft_memalloc(sizeof(unsigned int) * 862);
+	ft_bzero(current->next->code, 0);
 	read_file(fd, argv, current->next);
     current->next->next = NULL;
 }
@@ -55,10 +61,16 @@ void print_list(t_plr *plr)
 {
     while (plr != NULL) 
 	{
-        printf("%d\n", plr->id);
+        int i = 0;
+		printf("%d\n", plr->id);
 		ft_putstr(plr->name);
 		ft_printf("\n");
 		ft_putstr(plr->cmnt);
+		ft_printf("\n");
+		while (i < 100)
+		{
+			ft_printf("%d ", plr->code[i++]);
+		}
 		ft_printf("\n");
     	plr = plr->next;
 	}
@@ -99,6 +111,8 @@ void	ft_parse(int argc, char **argv, t_flg *flg)
 				plr->id = 1;
 				plr->name = (unsigned char *)ft_memalloc(sizeof(unsigned char) * (PROG_NAME_LENGTH + 1));
 				plr->cmnt = (unsigned char *)ft_memalloc(sizeof(unsigned char) * (COMMENT_LENGTH + 1));
+				plr->code = (unsigned int *)ft_memalloc(sizeof(unsigned int) * 862);
+				ft_bzero(plr->code, 0);
 				read_file(fd, argv[i], plr);
 			}
 			if (j > 1)
