@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 15:15:59 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/22 17:22:20 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2020/12/26 12:15:59 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,5 +219,10 @@ void							writing_one_byte(t_crw *champ, \
 													unsigned int to_write);
 void							writing_two_bytes(t_crw *champ, \
 													unsigned int to_write);
+void							are_h_and_b_valid(int fd, t_crw *champ);
+int								call_error(char const *const err);
+void							is_end_comment(t_crw *champ, char *line);
+void							free_and_call(t_crw champ, \
+													char const *const err);
 
 #endif

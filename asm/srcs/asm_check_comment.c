@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm_check_comment.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/19 16:56:25 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/22 16:38:51 by gjigglyp         ###   ########.fr       */
+/*   Created: 2020/12/26 11:59:53 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/26 12:30:58 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ void	skip_spaces(int i, char *line, t_crw *champ)
 		if (line[i] != ' ' && line[i] != '\t')
 		{
 			free(line);
-			free_all(*champ);
-			call_error(ER_IN_F);
+			free_and_call(*champ, ER_IN_F);
 			exit(-1);
 		}
 		i++;
@@ -50,8 +49,7 @@ void	while_in_m_comment(t_crw *champ, char **line, int *i, int *j)
 	if (*j >= COMMENT_LENGTH)
 	{
 		free(*line);
-		free_all(*champ);
-		call_error(LONG_CO);
+		free_and_call(*champ, LONG_CO);
 	}
 	else if ((*line)[*i] == '\0')
 	{
@@ -63,17 +61,11 @@ void	while_in_m_comment(t_crw *champ, char **line, int *i, int *j)
 			if ((*line)[0] == '\0')
 				champ->comment[(*j)++] = '\n';
 			else
-			{
 				break ;
-			}
 			free(*line);
 		}
 		if (ans <= 0)
-		{
-			free_all(*champ);
-			call_error(ER_IN_F);
-		}
-			
+			free_and_call(*champ, ER_IN_F);
 	}
 }
 

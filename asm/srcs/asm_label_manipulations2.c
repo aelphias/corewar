@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm_label_manipulations2.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/19 17:31:23 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/22 17:17:00 by gjigglyp         ###   ########.fr       */
+/*   Created: 2020/12/26 11:46:49 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/26 11:59:32 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

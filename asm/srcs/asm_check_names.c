@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm_check_names.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/19 17:00:53 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/22 16:49:10 by gjigglyp         ###   ########.fr       */
+/*   Created: 2020/12/26 12:32:17 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/26 12:34:16 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ void	while_is_name(char **line, int *i, t_crw *champ, int *j)
 		if (*j >= PROG_NAME_LENGTH)
 		{
 			free(*line);
-			free_all(*champ);
-			call_error(LONG_NA);
+			free_and_call(*champ, LONG_NA);
 		}
 		else if ((*line)[*i] == '\0')
 		{
@@ -40,10 +39,7 @@ void	while_is_name(char **line, int *i, t_crw *champ, int *j)
 			if ((ans = get_next_line(champ->fd, line)) > 0)
 				*i = 0;
 			else
-			{
-				free_all(*champ);
-				call_error(ER_IN_F);
-			}
+				free_and_call(*champ, ER_IN_F);
 		}
 		champ->name[(*j)++] = (*line)[(*i)++];
 	}
@@ -66,8 +62,7 @@ int		is_name(char **line, int fd, t_crw *champ, int name)
 	if (name)
 	{
 		free(*line);
-		free_all(*champ);
-		call_error(MORE_CO);
+		free_and_call(*champ, MORE_CO);
 	}
 	i += len_const;
 	while ((*line)[i] != '"' && (*line)[i] != '\0' &&\

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/21 21:08:05 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/21 21:08:19 by gjigglyp         ###   ########.fr       */
+/*   Created: 2020/12/26 11:43:09 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/26 12:17:50 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,14 @@ char		*ft_itoa_1(int n)
 			str[0] = '-';
 	}
 	return (str);
+}
+
+/*
+** очистка памяти и выведение типа ошибки в терминал
+*/
+
+void		free_and_call(t_crw champ, char const *const err)
+{
+	free_all(champ);
+	call_error(err);
 }

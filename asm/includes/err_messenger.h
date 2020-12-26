@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   err_messenger.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/24 21:01:39 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/22 17:21:52 by gjigglyp         ###   ########.fr       */
+/*   Created: 2020/12/26 11:46:34 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/26 13:05:40 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define ERR_INV "Invalid registry name for operation"
 # define OP_SIZE "Ircorrect size for operation"
 # define ER_I_AR "Error: invalid arg"
-# define ER_I_IN "Error: ircorrect input"
+# define ER_ININ "Error: ircorrect input"
 # define LAB_N_F "Label is not found"
 # define LAB_ARG "Incompatible combination ARG-LABEL"
 # define ARG_INV "Invalid type of an arguement"
@@ -42,6 +42,6 @@
 # define MARG_NV "MAX_ARGS value is not valid"
 # define ER_ARGV "One of the arguements is not valid"
 # define ERR_UNF "Unsupportable type of file"
-# define ERR_USE "Usage: ./asm [name_of_file.s/name_of_file.cor] (only one arguement)"
+# define ERR_USE "Usage: ./asm [name_of_file.s/name_of_file.cor]"
 
 #endif

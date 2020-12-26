@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm_initialization_free.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/19 17:10:15 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/22 16:50:49 by gjigglyp         ###   ########.fr       */
+/*   Created: 2020/12/26 11:44:37 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/26 11:44:38 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gjigglyp <gjigglyp@student.21-school.ru    +#+  +:+       +#+         #
+#    By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2020/12/21 21:11:10 by gjigglyp         ###   ########.fr        #
+#    Updated: 2020/12/26 12:34:32 by gjigglyp         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 ASM			=	asm
 NAME		=	$(ASM)
 
-CC			=	gcc
+CC			=	clang
 CFLAGS		=	-Wall -Wextra -Werror
 
 LIB_DIR		=	../libft/
@@ -29,10 +29,10 @@ SRC_L_D		=	./srcs/
 HEAD		=	$(INC_DIR)asm.h
 INC			=	-I$(LIB_DIR) -I$(INC_DIR)
 
-SRC_ASM 	=	main.c asm_check_command.c asm_check_comment.c asm_check_labels.c asm_check_names.c \
+SRC_ASM 	=	main.c asm_are_h_and_b_valid.c asm_check_command.c asm_check_comment.c asm_check_labels.c asm_check_names.c \
 				asm_checking.c asm_counters.c asm_initialization_free.c asm_label_manipulations.c \
 				asm_label_manipulations2.c asm_switching_between_args.c asm_valid_check.c asm_writing_binaries.c \
-				asm_writing_by_bytes.c assembler_mode.c dasm_find_n_check.c dasm_header_n_cmds.c \
+				asm_writing_by_bytes.c assembler_mode.c dasm_find_n_check.c dasm_header_and_cmds.c \
 				dasm_writing_manipulations.c disassembler_mode.c utils.c
 OBJ_AS		=	$(SRC_ASM:%.c=%.o)
 SRCS_AS		=	$(addprefix $(SRC_L_D), $(SRC_ASM))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm_writing_binaries.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/19 17:35:11 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/22 16:47:04 by gjigglyp         ###   ########.fr       */
+/*   Created: 2020/12/26 11:44:20 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/26 11:44:20 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm_check_command.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 16:48:04 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/22 15:57:32 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2020/12/26 12:39:47 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,7 @@ void		recording_label(t_crw *champ, int *i, int arg_cntr, char *line)
 	}
 	if (line[(*i)] != ' ' && line[*i] != ',' && line[*i] != '\t' &&\
 	line[*i] != '\0' && line[*i] != COMMENT_CHAR && line[*i] != ALT_COMMENT)
-	{
-		free_all(*champ);
-		call_error(ER_I_AR);
-	}
+		free_and_call(*champ, ER_I_AR);
 }
 
 void		zero_exec(t_crw *champ, int exec_size)

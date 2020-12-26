@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   assembler_mode.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/19 17:36:19 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/22 16:39:52 by gjigglyp         ###   ########.fr       */
+/*   Created: 2020/12/26 11:44:53 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/26 12:08:56 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	print_usage(void)
+void		print_usage(void)
 {
 	write(1, "Usage: ./asm (champion.s|champion.cor)\n", 40);
 	write(1, "    champion.s   — from assemble to bytecode\n", 47);
 	write(1, "    champion.cor — from bytecode to assemble\n", 47);
 }
 
-void	main_val(int argc, t_crw *champ, char **argv)
+void		main_val(int argc, t_crw *champ, char **argv)
 {
 	if (argc == 1)
 	{
@@ -52,7 +52,7 @@ int			assembler_mode(char *name_of_the_file)
 	if (!(fd = open(name_of_the_file, O_CREAT | O_WRONLY | O_TRUNC, 0777)))
 	{
 		free_all(crw);
-		call_err(ER_IN_F);
+		call_error(ER_IN_F);
 	}
 	to_bin_code(&crw, fd);
 	write(1, "Writing output program to ", 26);

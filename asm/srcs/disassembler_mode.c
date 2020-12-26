@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   disassembler_mode.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/19 16:41:21 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/22 15:08:04 by gjigglyp         ###   ########.fr       */
+/*   Created: 2020/12/26 11:45:53 by gjigglyp          #+#    #+#             */
+/*   Updated: 2020/12/26 11:45:54 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
