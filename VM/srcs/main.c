@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/27 20:32:20 by aelphias         ###   ########.fr       */
+/*   Updated: 2020/12/27 20:35:48 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 		print_error(ERR_MALLOC);
 	plr = ft_parse(argc - 1, argv, flg);
 	ft_bzero(arena, MEM_SIZE);
-	ft_printf("Players count: %d\n", plr_count(plr));
+	//ft_printf("Players count: %d\n", plr_count(plr));
 	vm = make_pc(&vm, plr);
 	//test(flg, plr);
 	return (0);

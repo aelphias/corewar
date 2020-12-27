@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:10 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/27 20:32:40 by aelphias         ###   ########.fr       */
+/*   Updated: 2020/12/27 20:34:46 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,7 @@ void print_list(t_plr *plr)
 		ft_printf("\n");
 		ft_putstr(plr->cmnt);
 		ft_printf("\n");
-<<<<<<< HEAD
-		while (i < 100)
-=======
 		while (i < 50)
->>>>>>> b1423677f93275547e4348c9c9970aca06fa9fc2
 			ft_printf("%d ", plr->code[i++]);
 		ft_printf("\n");
 		ft_printf("%d\n", plr->codesize);

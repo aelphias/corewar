@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 21:49:17 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/27 18:48:42 by aelphias         ###   ########.fr       */
+/*   Updated: 2020/12/27 20:35:58 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,4 @@ t_vm	*make_pc(t_vm *vm, t_plr *plr)
 		print_error(ERR_MALLOC);
 	//plr_position(plr);
 	vm->nop = plr_count(plr);
-	ft_printf("nop%d\n", vm->nop);
 }
