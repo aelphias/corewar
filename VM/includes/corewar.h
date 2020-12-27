@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/27 17:24:55 by aelphias         ###   ########.fr       */
+/*   Updated: 2020/12/27 20:31:22 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_plr
 	unsigned char		*cmnt;
 	unsigned int		*code;
 	unsigned int		position; // место где мы его ставим при начале игры
+	int					codesize;
 	struct s_plr		*next;
 }				t_plr;
 
@@ -54,7 +55,7 @@ typedef struct s_flg
 }				t_flg;
 
 void	print_error(int num_error);
-t_plr	*ft_parse(int argc, char **argv, t_flg *flag);
+t_plr	*ft_parse(int argc, char **argv, t_flg *flg);
 void	check_flags(int argc, char **argv, t_flg *flg, t_plr *plr);
 int		read_from_file(t_plr *player, char *str, int nbr);
 
