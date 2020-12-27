@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player_initialize.c                                :+:      :+:    :+:   */
+/*   plr_count.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/22 15:40:21 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/27 15:56:07 by aelphias         ###   ########.fr       */
+/*   Created: 2020/12/27 15:57:45 by aelphias          #+#    #+#             */
+/*   Updated: 2020/12/27 16:33:17 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "corewar.h"
+#include "corewar.h"
 
-t_plr       plr_init(int id_pl)
+int	plr_count(t_plr *head)
 {
-    t_plr *plr;
+	int count;
 
-	if (!(plr = (t_plr *)ft_memalloc(sizeof(t_plr))))
-		call_error();
-	plr->id = id_pl;
-	plr->name = NULL;
-	plr->cmnt = NULL;
-	plr->code = NULL;
-	plr->next = NULL;
+	count = 0;
+	if (head == NULL)
+		return (0);
+	while (head)
+	{
+		head = head->next;
+		count++;
+	}
+	return (count);
 }

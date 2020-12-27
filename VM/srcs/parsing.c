@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:10 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/24 19:21:40 by kcharlet         ###   ########.fr       */
+/*   Updated: 2020/12/27 16:39:06 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,7 @@ void print_list(t_plr *plr)
 		ft_putstr(plr->cmnt);
 		ft_printf("\n");
 		while (i < 100)
-		{
 			ft_printf("%d ", plr->code[i++]);
-		}
 		ft_printf("\n");
     	plr = plr->next;
 	}
@@ -88,7 +86,7 @@ int checkdotcor(char *argv)
 		return (0);
 }
 
-void	ft_parse(int argc, char **argv, t_flg *flg)
+t_plr	*ft_parse(int argc, char **argv, t_flg *flg)
 {
 	int i;
 	int j;
@@ -125,11 +123,5 @@ void	ft_parse(int argc, char **argv, t_flg *flg)
 		i++;
 	}
 	print_list(plr);
-	//check_flags(argc, argv, flg, plr);
-	
-	//check_filename(argc, argv);
-	/*
-	*checking filename and magic header
-	*/
-	//MAX_PLAYERS < argc ? print_error(ERR_M_PLRS) : 0; //check .cor implicitely 
+	return (plr);
 }

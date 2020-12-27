@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+         #
+#    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2020/12/24 17:37:05 by kcharlet         ###   ########.fr        #
+#    Updated: 2020/12/27 17:04:42 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,13 +36,15 @@ VM_SRC_LIST	= main.c \
 			  parsing.c \
 			  parse_flags.c \
 			  testing.c \
-			  read_from_file.c
+			  read_from_file.c \
+			  plr_count.c \
+			  make_pc.c
 
 SRC_VM		= $(addprefix $(VM_SRC_DIR), $(VM_SRC_LIST))
 
 ####################VM_OBJECTS##################################################
 
-VM_OBJ_DIR = ./vm_objects/
+VM_OBJ_DIR = ./obj/
 VM_OBJECTS_LIST = $(patsubst %.c, %.o, $(VM_SRC_LIST))
 VM_OBJECTS = $(addprefix $(VM_OBJ_DIR), $(VM_OBJECTS_LIST))
 #VM_DEPS = $(VM_OBJECTS:.o=.d)
