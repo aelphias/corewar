@@ -13,7 +13,24 @@
 
 #include "corewar.h"
 
-void read_file(int fd, char *name, t_plr *plr)
+void readsizef(int fd2, t_plr *plr)
+{
+	unsigned char *buf;
+	int codesize;
+
+	codesize = 8;
+	
+	buf = (unsigned char *)ft_memalloc(sizeof(char) * CHAMP_MAX_SIZE + 1);
+	codesize = (int)read(fd2, buf, 999999);
+	// if (codesize == 0 || codesize > CHAMP_MAX_SIZE)
+	// {
+	// 	write(2, "ERROR", 5);
+	// 	exit(1);
+	// }
+	plr->codesize = codesize;
+}
+
+void read_file(int fd, int fd1, char *name, t_plr *plr)
 {
 	unsigned char buff[2];
 	int i;
@@ -25,7 +42,8 @@ void read_file(int fd, char *name, t_plr *plr)
 	l = 0;
 	j = 0;
 	i = 0;
-	while (read(fd, buff, 1) > 0)
+	readsizef(fd, plr);
+	while (read(fd1, buff, 1) > 0)
 	{
 		if (i >= 4 && i <= 132)
 			plr->name[j++] = (unsigned char)buff[0];
@@ -38,9 +56,10 @@ void read_file(int fd, char *name, t_plr *plr)
 	plr->name[j] = '\0';
 	plr->cmnt[l] = '\0';
 	close(fd);
+	close(fd1);
 }
 
-void create_list_plr(t_plr *head, char *argv, int val, int fd)
+void create_list_plr(t_plr *head, char *argv, int val, int fd, int fd1)
 {
     t_plr * current = head;
 
@@ -51,9 +70,9 @@ void create_list_plr(t_plr *head, char *argv, int val, int fd)
     current->next->id = val;
 	current->next->name = (unsigned char *)ft_memalloc(sizeof(unsigned char) * (PROG_NAME_LENGTH + 1));
 	current->next->cmnt = (unsigned char *)ft_memalloc(sizeof(unsigned char) * (COMMENT_LENGTH + 1));
-	current->next->code = (unsigned int *)ft_memalloc(sizeof(unsigned int) * 862);
+	current->next->code = (unsigned int *)ft_memalloc(sizeof(unsigned int) * CHAMP_MAX_SIZE);
 	ft_bzero(current->next->code, 0);
-	read_file(fd, argv, current->next);
+	read_file(fd, fd1, argv, current->next);
     current->next->next = NULL;
 }
 
@@ -67,11 +86,10 @@ void print_list(t_plr *plr)
 		ft_printf("\n");
 		ft_putstr(plr->cmnt);
 		ft_printf("\n");
-		while (i < 100)
-		{
+		while (i < 50)
 			ft_printf("%d ", plr->code[i++]);
-		}
 		ft_printf("\n");
+		ft_printf("%d\n", plr->codesize);
     	plr = plr->next;
 	}
 }
@@ -88,43 +106,47 @@ int checkdotcor(char *argv)
 		return (0);
 }
 
-void	ft_parse(int argc, char **argv, t_flg *flg)
+t_plr	 *ft_parse(int argc, char **argv, t_flg *flg)
 {
 	int i;
 	int j;
 	int fd;
+	int fd1;
 	t_plr *plr;
 
 	fd = 0;
 	i = 1;
-	j = 1;
+	j = -1;
 	while (i <= argc)
 	{
 		if (checkdotcor(argv[i]))
 		{
 			
-			if (j == 1)
+			if (j == -1)
 			{
 				fd = open(argv[i], O_RDONLY);
+				fd1 = open(argv[i], O_RDONLY);
 				if (!(plr = (void*)ft_memalloc(sizeof(t_plr))))
 					print_error(ERR_MALLOC);
-				plr->id = 1;
+				plr->id = -1;
 				plr->name = (unsigned char *)ft_memalloc(sizeof(unsigned char) * (PROG_NAME_LENGTH + 1));
 				plr->cmnt = (unsigned char *)ft_memalloc(sizeof(unsigned char) * (COMMENT_LENGTH + 1));
 				plr->code = (unsigned int *)ft_memalloc(sizeof(unsigned int) * 862);
 				ft_bzero(plr->code, 0);
-				read_file(fd, argv[i], plr);
+				read_file(fd, fd1, argv[i], plr);
 			}
-			if (j > 1)
+			if (j < -1)
 			{
 				fd = open(argv[i], O_RDONLY);
-				create_list_plr(plr, argv[i], j, fd);
+				fd1 = open(argv[i], O_RDONLY);
+				create_list_plr(plr, argv[i], j, fd, fd1);
 			}
-			j++;
+			j--;
 		}
 		i++;
 	}
 	print_list(plr);
+	return(plr);
 	//check_flags(argc, argv, flg, plr);
 	
 	//check_filename(argc, argv);

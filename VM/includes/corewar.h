@@ -32,10 +32,11 @@ typedef struct	s_vm
 
 typedef struct s_plr
 {
-	int			id;
+	int					id;
 	unsigned char		*name;
 	unsigned char		*cmnt;
 	unsigned int		*code;
+	int					codesize;
 	// int			soc;
 	// int			cur_ln;
 	// int			prev_ln;
@@ -51,7 +52,7 @@ typedef struct s_flg
 }				t_flg;
 
 void	print_error(int num_error);
-void	ft_parse(int argc, char **argv, t_flg *flag);
+t_plr	*ft_parse(int argc, char **argv, t_flg *flg);
 void	check_flags(int argc, char **argv, t_flg *flg, t_plr *plr);
 int		read_from_file(t_plr *player, char *str, int nbr);
 
