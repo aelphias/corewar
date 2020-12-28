@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_pc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 21:49:17 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/27 20:35:58 by aelphias         ###   ########.fr       */
+/*   Updated: 2020/12/28 17:22:16 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,12 @@ void	plr_position(t_plr *plr)
 
 t_vm	*make_pc(t_vm *vm, t_plr *plr)
 {
+	int i;
+	
 	if (!(vm = (t_vm *)ft_memalloc(sizeof(t_vm))))
 		print_error(ERR_MALLOC);
 	//plr_position(plr);
 	vm->nop = plr_count(plr);
+	i = vm->nop;
+	
 }
