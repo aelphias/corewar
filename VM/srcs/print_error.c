@@ -6,7 +6,7 @@
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 18:35:34 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/28 18:39:12 by kcharlet         ###   ########.fr       */
+/*   Updated: 2020/12/28 19:15:53 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ void	print_error(int num_error)
 		ft_putstr_fd("Could not parse\n", 2);
 	else if (num_error == 5)
 		ft_putstr_fd("Could create carriage\n", 2);
-	exit(-1);
+	// free structs before exit()
+	exit(1);
 }

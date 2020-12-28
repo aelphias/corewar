@@ -6,7 +6,7 @@
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:10 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/28 18:03:12 by kcharlet         ###   ########.fr       */
+/*   Updated: 2020/12/28 19:17:12 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,26 +48,26 @@ void read_file(int fd, char *name, t_plr *plr)
 
 void create_list_plr(t_plr *head, char *argv, int val, int fd)
 {
-    t_plr * current = head;
+	t_plr * current = head;
 
-    while (current->next != NULL)
-        current = current->next;
+	while (current->next != NULL)
+		current = current->next;
 	if (!(current->next = (void*)ft_memalloc(sizeof(t_plr))))
  		print_error(ERR_MALLOC);
-    current->next->id = val;
+	current->next->id = val;
 	current->next->name = (unsigned char *)ft_memalloc(sizeof(unsigned char) * (PROG_NAME_LENGTH + 1));
 	current->next->cmnt = (unsigned char *)ft_memalloc(sizeof(unsigned char) * (COMMENT_LENGTH + 1));
 	current->next->code = (unsigned int *)ft_memalloc(sizeof(unsigned int) * CHAMP_MAX_SIZE);
 	ft_bzero(current->next->code, 0);
 	read_file(fd, argv, current->next);
-    current->next->next = NULL;
+	current->next->next = NULL;
 }
 
 void print_list(t_plr *plr) 
 {
-    while (plr != NULL) 
+	while (plr != NULL) 
 	{
-        int i = 0;
+		int i = 0;
 		printf("%d\n", plr->id);
 		ft_putstr(plr->name);
 		ft_printf("\n");
@@ -77,7 +77,7 @@ void print_list(t_plr *plr)
 			ft_printf("%d ", plr->code[i++]);
 		ft_printf("\n");
 		ft_printf("%d\n", plr->codesize);
-    	plr = plr->next;
+		plr = plr->next;
 	}
 }
 

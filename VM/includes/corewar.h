@@ -6,7 +6,7 @@
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/28 18:36:43 by kcharlet         ###   ########.fr       */
+/*   Updated: 2020/12/28 19:32:24 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,10 @@
 typedef struct	s_vm
 {
 	int			arena[MEM_SIZE];
-	int			nop; //number of players
-	ssize_t 	cycles;
-	ssize_t 	cycles_to_die;
-	ssize_t 	cac; //cycles after check
-	int			print_mode;
+	int			num_plr; //number of players
+	long int	cycles;
+	long int	cycles_to_die;
+	long int	cycles_afF_check;
 	int			n;
 	int			dump;
 }				t_vm;
@@ -50,10 +49,14 @@ typedef struct s_plr
 	struct s_plr		*next;
 }				t_plr;
 
-typedef struct s_car
+typedef struct			s_car
 {
-
-}				t_car;
+	int					carry;
+	unsigned int		reg[16];
+	int					id;
+	unsigned int		arg[3];
+	struct s_car		*next;
+}						t_car;
 
 typedef struct s_op
 {
@@ -69,7 +72,7 @@ void	check_flags(int argc, char **argv, t_vm *vm, t_plr *plr);
 int		read_from_file(t_plr *player, char *str, int nbr);
 
 int		plr_count(t_plr *head);
-t_vm	*make_car(t_plr *plr, t_vm *vm);
+t_car	*make_car(t_plr *plr, t_vm *vm);
 /*
 *	testing
 */

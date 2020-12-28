@@ -30,15 +30,15 @@ void	plr_position(t_plr *plr)
 	
 }
 
-t_vm	*make_car(t_vm *vm, t_plr *plr)
+t_car	*make_car(t_plr *plr, t_vm *vm)
 {
 	// создаваться структ под каретки
 	int i;
+	t_car *car;
 	
-	if (!(vm = (t_vm *)ft_memalloc(sizeof(t_vm))))
-		print_error(ERR_MALLOC);
+	if (!(car = (t_car *)ft_memalloc(sizeof(t_car))))
+		return (NULL);
 	//plr_position(plr);
-	vm->nop = plr_count(plr);
-	i = vm->nop;
-	
+	vm->num_plr = plr_count(plr);
+	//i = vm->num_plr;
 }

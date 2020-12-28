@@ -6,13 +6,13 @@
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/28 18:39:33 by kcharlet         ###   ########.fr       */
+/*   Updated: 2020/12/28 19:08:31 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void init_vm(t_vm *vm)
+/* void init_vm(t_vm *vm)
 {
 	
 }
@@ -25,7 +25,7 @@ void ft_free_vm(t_vm *vm)
 void ft_free_plr(t_plr *plr)
 {
 	
-}
+} */
 
 
 
@@ -53,7 +53,7 @@ int	main(int argc, char **argv)
 
 	if (!(vm = (t_vm *)ft_memalloc(sizeof(t_vm))))
 		print_error(ERR_MALLOC);
-	init_vm(vm);
+	//init_vm(vm);
 
 /*
 *	3. Парсим строку стандартного ввода и файлы .cor, plr односвязный список игроков
@@ -61,7 +61,7 @@ int	main(int argc, char **argv)
 
 	if(!(plr = ft_parse(argc - 1, argv, vm)))
 	{
-		ft_free_vm(vm);
+		//ft_free_vm(vm);
 		print_error(ERR_PARSE);
 	}
 	
@@ -73,8 +73,8 @@ int	main(int argc, char **argv)
 	//ft_printf("Players count: %d\n", plr_count(plr));
 	if (!(car = make_car(plr, vm)))
 	{
-		ft_free_vm(vm);
-		ft_fre_plr(plr);
+		//ft_free_vm(vm);
+		//ft_fre_plr(plr);
 		print_error(ERR_MAKE_CAR);
 	}
 	//test(vm, plr);
