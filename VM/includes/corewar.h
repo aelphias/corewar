@@ -6,7 +6,7 @@
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/28 19:32:24 by kcharlet         ###   ########.fr       */
+/*   Updated: 2020/12/28 21:26:58 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,12 @@ typedef struct s_plr
 typedef struct			s_car
 {
 	int					carry;
+	unsigned int		position; // место где мы ее ставим при начале игры
 	unsigned int		reg[16];
 	int					id;
 	unsigned int		arg[3];
 	struct s_car		*next;
+	int					parent_car;
 }						t_car;
 
 typedef struct s_op
@@ -82,7 +84,8 @@ void	test(t_vm *vm, t_plr *plr);
 /*
 *	инициализация всего
 */
-void init_vm(t_vm *vm);
+void	init_vm(t_vm *vm);
+void	init_car(t_plr *plr, t_car **head, int pos, t_vm *vm);
 
 /*
 *	зачистка всего
