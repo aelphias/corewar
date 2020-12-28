@@ -6,7 +6,7 @@
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/28 17:33:10 by kcharlet         ###   ########.fr       */
+/*   Updated: 2020/12/28 17:44:09 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int	main(int argc, char **argv)
 {
 	unsigned char	arena[MEM_SIZE];
 	t_flg			*flg; // то же, что и t_rule у лехи, храним тут флаги
-	t_plr			*plr; //  will void *p; work the same way?
-	t_vm			*vm;
+	t_plr			*plr; // записываем все по игроку
+	t_vm			*vm; // сваливаем сюда все по игре, кроме переменных каретки, которые поместим в t_pc или t_carry 
 	
 	plr = NULL;
 	vm = NULL;
