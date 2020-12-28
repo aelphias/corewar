@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:10 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/27 20:34:46 by aelphias         ###   ########.fr       */
+/*   Updated: 2020/12/28 18:03:12 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int checkdotcor(char *argv)
 		return (0);
 }
 
-t_plr	 *ft_parse(int argc, char **argv, t_flg *flg)
+t_plr	 *ft_parse(int argc, char **argv, t_vm *vm)
 {
 	int i;
 	int j;
