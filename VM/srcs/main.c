@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/27 20:35:48 by aelphias         ###   ########.fr       */
+/*   Updated: 2020/12/28 17:03:10 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	main(int argc, char **argv)
 	t_plr			*plr; //  will void *p; work the same way?
 	t_vm			*vm;
 	
-	( argc < 2 || argc > MAX_PLAYERS ) ? print_error(ERR_USE) : 0;
+	if ( argc < 2 || argc > MAX_PLAYERS )
+		print_error(ERR_USE);
 	if (!(flg = (t_flg *)ft_memalloc(sizeof(t_flg))))
 		print_error(ERR_MALLOC);
 	if (!(vm = (t_vm *)ft_memalloc(sizeof(t_vm))))
