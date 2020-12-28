@@ -3,15 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+         #
+#    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2020/12/28 18:32:21 by kcharlet         ###   ########.fr        #
+#    Updated: 2020/12/28 22:35:52 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+#  CHECK for error if you do: make re
+# make: *** No rule to make target `obj', needed by `obj/main.o'.  Stop.
+#
 NAME		=	corewar
-
 CC			=	gcc
 FLAGS		=	-Wall -Wextra  -g #-Werror
 

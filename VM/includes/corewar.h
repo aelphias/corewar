@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/28 21:26:58 by kcharlet         ###   ########.fr       */
+/*   Updated: 2020/12/28 22:19:26 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ typedef struct	s_vm
 	int			num_plr; //number of players
 	long int	cycles;
 	long int	cycles_to_die;
-	long int	cycles_afF_check;
-	int			n;
-	int			dump;
+	long int	cycles_aff_check;
+	int			n;            // флаг n
+	int			dump;			// флаг dump
 }				t_vm;
 
 typedef struct s_plr
@@ -65,16 +65,22 @@ typedef struct s_op
 	/* data */
 }				t_op;
 
-
-
+/*
+*	parse
+*/
+void	print_list(t_plr *plr);
 
 void	print_error(int num_error);
 t_plr	*ft_parse(int argc, char **argv, t_vm *vm);
 void	check_flags(int argc, char **argv, t_vm *vm, t_plr *plr);
 int		read_from_file(t_plr *player, char *str, int nbr);
 
-int		plr_count(t_plr *head);
+/*
+*	init car
+*/
 t_car	*make_car(t_plr *plr, t_vm *vm);
+int		plr_count(t_plr *head);
+void	print_list_car(t_car *car);
 /*
 *	testing
 */

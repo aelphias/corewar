@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/28 19:08:31 by kcharlet         ###   ########.fr       */
+/*   Updated: 2020/12/28 22:24:43 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ int	main(int argc, char **argv)
 		//ft_fre_plr(plr);
 		print_error(ERR_MAKE_CAR);
 	}
+	//print_list_car(car);
+	
 	//test(vm, plr);
 	return (0);
 }
@@ -84,5 +86,6 @@ int	main(int argc, char **argv)
 
 /*
 * TODO
-* 0. Чистить структуры при ошибке
+* 0. free() структуры при ошибке
+* 1. подправить расчет позиции игроков/кареток
 */

@@ -20,12 +20,12 @@ void	init_car(t_plr *plr, t_car **head, int pos, t_vm *vm)
 	i = 0;
 	car = (t_car *)ft_memalloc(sizeof(t_car));
 	ft_bzero(car, sizeof(t_car));
+	ft_printf("stand=%d\n", pos);
 
 	i = -1;
 	while (++i < 3)
 		car->arg[i] = 0;
 	car->reg[0] = plr->id;
-	//init_pc2(pc, r);
 	car->parent_car = plr->id;
 	car->position = pos;
 	car->next = NULL;
@@ -51,14 +51,15 @@ t_car	*make_car(t_plr *plr, t_vm *vm)
 	count = 0;
 	car = NULL;
 	vm->num_plr = plr_count(plr);
-	if (vm->num_plr / 2 != 0)
+	if ((vm->num_plr % 2) != 0)
 		equalizer = -1;
-	while (count++ < vm->num_plr)
+	while (count < vm->num_plr)
 	{
 		tmp = (count * ((MEM_SIZE + equalizer) / vm->num_plr));
 		plr->position = tmp;
 		init_car(plr, &car, tmp, vm);
 		plr = plr->next;
+		count++;
 	}
 	return (car);
 	/* if (!(car = (t_car *)ft_memalloc(sizeof(t_car))))
