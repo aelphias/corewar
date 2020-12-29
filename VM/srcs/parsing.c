@@ -13,7 +13,7 @@
 
 #include "corewar.h"
 
-void read_file(int fd, char *name, t_plr *plr)
+void read_file(int fd, int fd1, char *name, t_plr *plr)
 {
 	unsigned char buff[2];
 	int i;
@@ -21,6 +21,7 @@ void read_file(int fd, char *name, t_plr *plr)
 	int l;
 	int k;
 	int c;
+	unsigned int sizecode[4] = {0};
 
 	k = 0;
 	l = 0;
@@ -34,19 +35,31 @@ void read_file(int fd, char *name, t_plr *plr)
 		if (i >= 140 && i <= 2186)
 			plr->cmnt[l++] = (unsigned char)buff[0];
 		if (i >= 2192 && i <= 2874)
-			plr->code[k++] = (int)(buff[0]);
-		if (buff[0] != 0 && i >= 4)
-			c++;
-		buff[0] = 0;
+			plr->code[k++] = (int)buff[0];
+		if (i >= 136 && i <= 139)
+			sizecode[c++] = (unsigned int)buff[0];
 		i++;
 	}
-	plr->codesize = c;
+	i = 4;
+	j = 0;
+	while (j < 4)
+	{
+		ft_printf("%d ", sizecode[j++]);
+	}
+	ft_printf("\n");
+	j = 0;
+	while (--i >= 0)
+	{
+		plr->codesize += sizecode[j];
+		plr->codesize = plr->codesize << (i * 8);
+		j++;
+	}
 	plr->name[j] = '\0';
 	plr->cmnt[l] = '\0';
 	close(fd);
 }
 
-void create_list_plr(t_plr *head, char *argv, int val, int fd)
+void create_list_plr(t_plr *head, char *argv, int val, int fd, int fd1)
 {
     t_plr * current = head;
 
@@ -59,7 +72,7 @@ void create_list_plr(t_plr *head, char *argv, int val, int fd)
 	current->next->cmnt = (unsigned char *)ft_memalloc(sizeof(unsigned char) * (COMMENT_LENGTH + 1));
 	current->next->code = (unsigned int *)ft_memalloc(sizeof(unsigned int) * CHAMP_MAX_SIZE);
 	ft_bzero(current->next->code, 0);
-	read_file(fd, argv, current->next);
+	read_file(fd, fd1, argv, current->next);
     current->next->next = NULL;
 }
 
@@ -74,7 +87,7 @@ void print_list(t_plr *plr)
 		ft_putstr(plr->cmnt);
 		ft_printf("\n");
 		while (i < 50)
-			ft_printf("%d ", plr->code[i++]);
+			ft_printf("%x ", plr->code[i++]);
 		ft_printf("\n");
 		ft_printf("%d\n", plr->codesize);
     	plr = plr->next;
@@ -120,12 +133,13 @@ t_plr	 *ft_parse(int argc, char **argv, t_flg *flg)
 				plr->cmnt = (unsigned char *)ft_memalloc(sizeof(unsigned char) * (COMMENT_LENGTH + 1));
 				plr->code = (unsigned int *)ft_memalloc(sizeof(unsigned int) * 862);
 				ft_bzero(plr->code, 0);
-				read_file(fd, argv[i], plr);
+				read_file(fd, fd1, argv[i], plr);
 			}
 			if (j < -1)
 			{
 				fd = open(argv[i], O_RDONLY);
-				create_list_plr(plr, argv[i], j, fd);
+				fd1 = open(argv[i], O_RDONLY);
+				create_list_plr(plr, argv[i], j, fd, fd1);
 			}
 			j--;
 		}
