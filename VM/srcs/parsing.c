@@ -42,12 +42,6 @@ void read_file(int fd, int fd1, char *name, t_plr *plr)
 	}
 	i = 4;
 	j = 0;
-	while (j < 4)
-	{
-		ft_printf("%d ", sizecode[j++]);
-	}
-	ft_printf("\n");
-	j = 0;
 	while (--i >= 0)
 	{
 		plr->codesize += sizecode[j];
