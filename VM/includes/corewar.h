@@ -6,7 +6,7 @@
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/29 13:59:02 by kcharlet         ###   ########.fr       */
+/*   Updated: 2020/12/29 19:12:25 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 
 # define PROG_NAME_LENGTH	(128)
 # define COMMENT_LENGTH		(2048)
+# define GREEN				"\033[0;32m"
+# define RESET				"\033[0m"
+# define PURPLE				"\033[35m"
 
 /*
 * t_vm:
@@ -29,7 +32,7 @@
 
 typedef struct	s_vm
 {
-	int			arena[MEM_SIZE];
+	//int			arena[MEM_SIZE];
 	int			num_plr; //number of players
 	long int	cycles;
 	long int	cycles_to_die;
@@ -82,6 +85,15 @@ int		read_from_file(t_plr *player, char *str, int nbr);
 t_car	*make_car(t_plr *plr, t_vm *vm);
 int		plr_count(t_plr *head);
 void	print_list_car(t_car *car);
+
+
+/*
+*	init arena 
+*/
+
+void	fill_arena(t_plr *plr, t_vm *vm, unsigned char *arena);
+void	ft_copy_code(unsigned char *dst, unsigned int *src);
+
 /*
 *	testing
 */
@@ -95,11 +107,14 @@ void	init_vm(t_vm *vm);
 void	init_car(t_plr *plr, t_car **head, int pos, t_vm *vm);
 
 /*
+*	utils
+*/
+void	dump(unsigned char *arena);
+
+/*
 *	зачистка всего
 */
 void ft_free_vm(t_vm *vm);
 void ft_free_plr(t_plr *plr);
-
-
 
 #endif

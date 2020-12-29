@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
+#    By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2020/12/28 22:41:19 by aelphias         ###   ########.fr        #
+#    Updated: 2020/12/29 19:10:39 by kcharlet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,9 @@ VM_SRC_LIST	= main.c \
 			  testing.c \
 			  read_from_file.c \
 			  plr_count.c \
-			  make_car.c
+			  make_car.c \
+			  fill_arena.c \
+			  dump.c
 
 SRC_VM		= $(addprefix $(VM_SRC_DIR), $(VM_SRC_LIST))
 

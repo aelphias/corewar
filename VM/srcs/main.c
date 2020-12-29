@@ -6,7 +6,7 @@
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/29 16:02:35 by kcharlet         ###   ########.fr       */
+/*   Updated: 2020/12/29 17:32:36 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ int	main(int argc, char **argv)
 /*
 *	5. Представление игроков
 */
+
+	fill_arena(plr, vm, arena);
 	
 	//test(vm, plr);
 	return (0);
