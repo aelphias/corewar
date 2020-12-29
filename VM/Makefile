@@ -6,12 +6,13 @@
 #    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2020/12/28 22:35:52 by aelphias         ###   ########.fr        #
+#    Updated: 2020/12/28 22:41:19 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#  CHECK for error if you do: make re
-# make: *** No rule to make target `obj', needed by `obj/main.o'.  Stop.
+#	TODO:
+#  0. CHECK for error if you do: make re >>> make: *** No rule to make target `obj', needed by `obj/main.o'.  Stop.
+#  1. поставить зависимость от op.h
 #
 NAME		=	corewar
 CC			=	gcc
