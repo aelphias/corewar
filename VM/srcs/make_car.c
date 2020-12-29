@@ -57,6 +57,7 @@ t_car	*make_car(t_plr *plr, t_vm *vm)
 		plr->position = tmp;
 		init_car(plr, &car, tmp, vm);
 		plr = plr->next;
+		count++;
 	}
 	return (car);
 	/* if (!(car = (t_car *)ft_memalloc(sizeof(t_car))))
