@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:10 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/24 19:21:40 by kcharlet         ###   ########.fr       */
+/*   Updated: 2020/12/27 20:34:46 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,12 +146,5 @@ t_plr	 *ft_parse(int argc, char **argv, t_flg *flg)
 		i++;
 	}
 	print_list(plr);
-	return(plr);
-	//check_flags(argc, argv, flg, plr);
-	
-	//check_filename(argc, argv);
-	/*
-	*checking filename and magic header
-	*/
-	//MAX_PLAYERS < argc ? print_error(ERR_M_PLRS) : 0; //check .cor implicitely 
+	return (plr);
 }

@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/23 18:03:16 by aelphias         ###   ########.fr       */
+/*   Updated: 2020/12/27 20:31:22 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@
 
 # define PROG_NAME_LENGTH	(128)
 # define COMMENT_LENGTH		(2048)
+
+/*
+* t_vm:
+* nop - number of players
+* c2d - cycles to die
+* cac - cycles after check
+*/
 
 typedef struct	s_vm
 {
@@ -36,12 +43,8 @@ typedef struct s_plr
 	unsigned char		*name;
 	unsigned char		*cmnt;
 	unsigned int		*code;
+	unsigned int		position; // место где мы его ставим при начале игры
 	int					codesize;
-	// int			soc;
-	// int			cur_ln;
-	// int			prev_ln;
-	// int			ll;
-	// int			plr_count;
 	struct s_plr		*next;
 }				t_plr;
 
@@ -56,6 +59,8 @@ t_plr	*ft_parse(int argc, char **argv, t_flg *flg);
 void	check_flags(int argc, char **argv, t_flg *flg, t_plr *plr);
 int		read_from_file(t_plr *player, char *str, int nbr);
 
+int		plr_count(t_plr *head);
+t_vm	*make_pc(t_vm *vm, t_plr *plr);
 /*
 *	testing
 */
