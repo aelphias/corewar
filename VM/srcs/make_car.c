@@ -25,8 +25,8 @@ void	init_car(t_plr *plr, t_car **head, int pos, t_vm *vm)
 	car->parent_car = plr->id;
 	car->position = pos;
 	car->next = NULL;
-	car->live = 1;
-	car->id = plr->id++; // инициализацию вызываем в цикле для каждой каретки, id растет на единицу
+	//car->live = 1;
+	//car->id = plr->id++; // инициализацию вызываем в цикле для каждой каретки, id растет на единицу
 	if (!(*head))
 		*head = car;
 	else
@@ -51,7 +51,7 @@ t_car	*make_car(t_plr *plr, t_vm *vm)
 	vm->num_plr = plr_count(plr);
 	if ((vm->num_plr % 2) != 0)
 		equalizer = -1;
-	while (count++ < vm->num_plr)
+	while (count < vm->num_plr)
 	{
 		tmp = (count * ((MEM_SIZE + equalizer) / vm->num_plr));
 		plr->position = tmp;
