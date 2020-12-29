@@ -6,13 +6,14 @@
 #    By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2020/12/29 19:10:39 by kcharlet         ###   ########.fr        #
+#    Updated: 2020/12/29 19:53:11 by kcharlet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #	TODO:
 #  0. CHECK for error if you do: make re >>> make: *** No rule to make target `obj', needed by `obj/main.o'.  Stop.
 #  1. поставить зависимость от op.h
+#  2. поставить зависимость от corewar.h
 #
 NAME		=	corewar
 CC			=	gcc

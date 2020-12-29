@@ -6,7 +6,7 @@
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/29 19:12:25 by kcharlet         ###   ########.fr       */
+/*   Updated: 2020/12/29 19:50:22 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@
 
 # define PROG_NAME_LENGTH	(128)
 # define COMMENT_LENGTH		(2048)
-# define GREEN				"\033[0;32m"
-# define RESET				"\033[0m"
-# define PURPLE				"\033[35m"
 
 /*
 * t_vm:
