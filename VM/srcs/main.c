@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/28 22:24:43 by aelphias         ###   ########.fr       */
+/*   Updated: 2020/12/29 17:32:36 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,12 @@ int	main(int argc, char **argv)
 		//ft_fre_plr(plr);
 		print_error(ERR_MAKE_CAR);
 	}
-	//print_list_car(car);
+
+/*
+*	5. Представление игроков
+*/
+
+	fill_arena(plr, vm, arena);
 	
 	//test(vm, plr);
 	return (0);
