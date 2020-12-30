@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:10 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/28 19:17:12 by kcharlet         ###   ########.fr       */
+/*   Updated: 2020/12/29 22:25:51 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void print_list(t_plr *plr)
 		while (i < 50)
 			ft_printf("%d ", plr->code[i++]);
 		ft_printf("\n");
-		ft_printf("%d\n", plr->codesize);
+		ft_printf("codesize=%d\n", plr->codesize);
 		plr = plr->next;
 	}
 }
