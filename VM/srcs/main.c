@@ -6,7 +6,7 @@
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/30 16:22:38 by kcharlet         ###   ########.fr       */
+/*   Updated: 2020/12/30 16:45:43 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int		main(int argc, char **argv)
 *	3. Парсим строку стандартного ввода и файлы .cor, plr односвязный список игроков
 */
 
+	check_flags(argc - 1, argv, vm);
 	if(!(plr = ft_parse(argc - 1, argv, vm)))
 	{
 		//ft_free_vm(vm);

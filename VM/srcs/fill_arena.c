@@ -6,7 +6,7 @@
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 16:39:28 by kcharlet          #+#    #+#             */
-/*   Updated: 2020/12/29 18:54:16 by kcharlet         ###   ########.fr       */
+/*   Updated: 2020/12/30 16:55:19 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ void	fill_arena(t_plr *plr, t_vm *vm, unsigned char *arena)
 		ft_copy_code(&(arena[plr->position]), plr->code);
 		plr = plr->next;
 	}
-	dump(arena);
+	if (vm->dump)
+		dump(arena);
+		ft_printf("dump=%d\n ",vm->dump);
 }

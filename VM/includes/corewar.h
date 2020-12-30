@@ -6,7 +6,7 @@
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/30 16:18:53 by kcharlet         ###   ########.fr       */
+/*   Updated: 2020/12/30 16:48:14 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	print_list(t_plr *plr);
 
 void	print_error(int num_error);
 t_plr	*ft_parse(int argc, char **argv, t_vm *vm);
-void	check_flags(int argc, char **argv, t_vm *vm, t_plr *plr);
+void check_flags(int argc, char **argv, t_vm *vm);
 int		read_from_file(t_plr *player, char *str, int nbr);
 
 /*
