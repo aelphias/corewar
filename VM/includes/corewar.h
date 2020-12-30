@@ -56,7 +56,7 @@ typedef struct s_flg
 
 void	print_error(int num_error);
 t_plr	*ft_parse(int argc, char **argv, t_flg *flg);
-void	check_flags(int argc, char **argv, t_flg *flg, t_plr *plr);
+void	check_flags(int argc, char **argv, t_flg *flg);
 int		read_from_file(t_plr *player, char *str, int nbr);
 
 int		plr_count(t_plr *head);

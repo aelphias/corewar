@@ -23,44 +23,54 @@ int	is_num(char *str)
 	return (1);
 }
 
-void check_flags(int argc, char **argv, t_flg *flg, t_plr *plr)
+void check_flags(int argc, char **argv, t_flg *flg)
 {
 	int i;
+	int flag;
 
-	i = 1;
+	flag = 0;
+	i = 0;
 	while (i <= argc)
 	{
-		if ((argv[i]) && !(ft_strcmp(argv[i], "-dump")))
+		if ((ft_strcmp(argv[i], "-dump")) == 0)
 		{	
-			//argv[i + 1] ? 0 : print_error(ERR_USE);
-			if (!(argv[i + 1])) 
-				print_error(ERR_USE);
-			if (!(is_num(argv[i + 1])))
-				print_error(ERR_USE);
-			flg->dump = ft_atoi(argv[i + 1]);
-			i +=2;
-		}
-		if ((argv[i]) && !(ft_strcmp(argv[i], "-n")))
-		{
-			if (!(argv[i + 1]))
-				print_error(ERR_USE);
-			if (!(argv[i + 2]))
-				print_error(ERR_USE);
-			if (is_num(argv[i + 1]) && ft_strstr(argv[i + 2], ".cor"))
+			if (flag == 1)
 			{
-				flg->n = ft_atoi(argv[i + 1]);
-				read_from_file(plr, argv[1], 2); // пока без цикла, просто для одного игрока
-
-				i +=2;
+				//free
+				write(2, "USE ONE VALUE FOR DUMP\n", 23);
+				exit(1);
 			}
-			//else
-			//	print_error(ERR_USE); 
-		}
-		if ((argv[i]) && ft_strstr(argv[i], ".cor"))
-		{
-			
-			i +=2;
+			//argv[i + 1] ? 0 : print_error(ERR_USE);
+			// if (!(argv[i + 1])) 
+			// 	print_error(ERR_USE);
+			// if (!(is_num(argv[i + 1])))
+			// 	print_error(ERR_USE);
+			flg->dump = ft_atoi(argv[i + 1]);
+			flag = 1;
+			if (flg->dump < 0)
+			{
+				//free
+				write(2, "USE POSITIVE NUMBER FOR DUMP\n", 29);
+				exit(1);
+			}
 		}
 		i++;
+		// if ((argv[i]) && !(ft_strcmp(argv[i], "-n")))
+		// {
+		// 	if (!(argv[i + 1]))
+		// 		print_error(ERR_USE);
+		// 	if (!(argv[i + 2]))
+		// 		print_error(ERR_USE);
+		// 	if (is_num(argv[i + 1]) && ft_strstr(argv[i + 2], ".cor"))
+		// 	{
+		// 		flg->n = ft_atoi(argv[i + 1]);
+		// 		read_from_file(plr, argv[1], 2); // пока без цикла, просто для одного игрока
+
+		// 		i +=2;
+		// 	}
+		// 	//else
+		// 	//	print_error(ERR_USE); 
+		// }
 	}
+	ft_printf("dump %d\n", flg->dump);
 }
