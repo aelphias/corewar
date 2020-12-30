@@ -6,7 +6,7 @@
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/29 19:50:22 by kcharlet         ###   ########.fr       */
+/*   Updated: 2020/12/30 16:48:14 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	print_list(t_plr *plr);
 
 void	print_error(int num_error);
 t_plr	*ft_parse(int argc, char **argv, t_vm *vm);
-void	check_flags(int argc, char **argv, t_vm *vm, t_plr *plr);
+void check_flags(int argc, char **argv, t_vm *vm);
 int		read_from_file(t_plr *player, char *str, int nbr);
 
 /*
@@ -84,12 +84,14 @@ int		plr_count(t_plr *head);
 void	print_list_car(t_car *car);
 
 
+
 /*
 *	init arena 
 */
 
 void	fill_arena(t_plr *plr, t_vm *vm, unsigned char *arena);
 void	ft_copy_code(unsigned char *dst, unsigned int *src);
+
 
 /*
 *	testing
@@ -107,6 +109,7 @@ void	init_car(t_plr *plr, t_car **head, int pos, t_vm *vm);
 *	utils
 */
 void	dump(unsigned char *arena);
+void	introduce_plrs(t_plr *plr, t_vm *vm);
 
 /*
 *	зачистка всего
