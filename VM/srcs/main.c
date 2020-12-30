@@ -6,7 +6,7 @@
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/30 16:45:43 by kcharlet         ###   ########.fr       */
+/*   Updated: 2020/12/30 17:37:32 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ int		main(int argc, char **argv)
 */
 	introduce_plrs(plr, vm);
 	fill_arena(plr, vm, arena);
+	//game(plr, car, arena, vm, op);
 	
 	//test(vm, plr);
 	return (0);
