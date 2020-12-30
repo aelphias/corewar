@@ -6,7 +6,7 @@
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/29 17:32:36 by kcharlet         ###   ########.fr       */
+/*   Updated: 2020/12/30 16:22:38 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,21 @@ void ft_free_plr(t_plr *plr)
 	
 } */
 
+void	introduce_plrs(t_plr *plr, t_vm *vm)
+{
+	unsigned int i;
 
+	i = 1;
+	ft_printf("Introducting contestants...\n");
+	while (plr)
+	{
+		ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n", \
+			i++, plr->codesize, plr->name, plr->cmnt);
+		plr = plr->next;
+	}
+}
 
-int	main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	unsigned char	arena[MEM_SIZE];
 	t_vm			*vm; // сваливаем сюда все по игре, кроме переменных каретки, которые поместим t_car 
@@ -79,9 +91,9 @@ int	main(int argc, char **argv)
 	}
 
 /*
-*	5. Представление игроков
+*	5. Запись кода на арену и представление игроков перед началом игры 
 */
-
+	introduce_plrs(plr, vm);
 	fill_arena(plr, vm, arena);
 	
 	//test(vm, plr);
