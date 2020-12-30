@@ -40,12 +40,8 @@ void check_flags(int argc, char **argv, t_vm *vm)
 				write(2, "USE ONE VALUE FOR DUMP\n", 23);
 				exit(1);
 			}
-			//argv[i + 1] ? 0 : print_error(ERR_USE);
-			// if (!(argv[i + 1])) 
-			// 	print_error(ERR_USE);
-			// if (!(is_num(argv[i + 1])))
-			// 	print_error(ERR_USE);
-			vm->dump = ft_atoi(argv[i + 1]);
+			if (!(vm->dump = ft_atoi(argv[i + 1])))
+				print_error(ERR_USE);
 			flag = 1;
 			if (vm->dump < 0)
 			{

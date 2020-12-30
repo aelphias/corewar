@@ -56,7 +56,7 @@ int		main(int argc, char **argv)
 /*
 *	1. пишем usages при неправильном вводе в консоли
 */
-	if ( argc < 2 || argc > MAX_PLAYERS + 1 )
+	if (argc < 2 || argc > 15)
 		print_error(ERR_USE);
 
 /*
@@ -77,7 +77,6 @@ int		main(int argc, char **argv)
 		//ft_free_vm(vm);
 		print_error(ERR_PARSE);
 	}
-	
 /*
 *	4. Инициализируем арену и создаем каретки
 */
