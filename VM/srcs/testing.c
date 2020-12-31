@@ -23,7 +23,10 @@ void	print_list_car(t_car *car)
 		printf("car->id= %d\n", car->id);
 		printf("position= %d\n", car->position);
 		printf("code= %d\n", car->code);
+<<<<<<< HEAD
 
+=======
+>>>>>>> works
 		car = car->next;
 		i++;
 	}

@@ -50,6 +50,9 @@ t_car	*make_car(t_plr *plr, t_vm *vm)
 	count = 0;
 	car = NULL;
 	vm->num_plr = plr_count(plr);
+
+	/* ПОЗИЦИЯ КАРЕТОК ПОДСЧЕТ 
+	 */
 	if ((vm->num_plr % 2) != 0)
 		equalizer = -1;
 	while (count < vm->num_plr)
