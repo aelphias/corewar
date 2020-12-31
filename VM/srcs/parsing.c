@@ -123,6 +123,19 @@ int checkdotcor(char *argv)
 		return (0);
 }
 
+t_plr *revlist(t_plr *plr)
+{
+	t_plr *prev = NULL;
+	while (plr)
+	{
+		t_plr *next = plr->next;
+		plr->next = prev;
+		prev = plr;
+		plr = next;
+	}
+	return (prev);
+}
+
 t_plr	 *ft_parse(int argc, char **argv, t_vm *vm)
 {
 	int i;
@@ -137,7 +150,13 @@ t_plr	 *ft_parse(int argc, char **argv, t_vm *vm)
 	while (i <= argc)
 	{
 		if ((ft_strcmp(argv[i], "-dump")) == 0)
-			i = i + 2;
+		{
+			
+			if (i + 1 == argc)
+				break ;
+			else
+				i = i + 2;
+		}
 		if (checkdotcor(argv[i]))
 		{
 			if (j == -1)
@@ -173,6 +192,7 @@ t_plr	 *ft_parse(int argc, char **argv, t_vm *vm)
 		}
 		i++;
 	}
+	plr = revlist(plr);
 	print_list(plr);
 	return (plr);
 }
