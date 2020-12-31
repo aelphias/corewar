@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:10 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/30 16:33:27 by kcharlet         ###   ########.fr       */
+/*   Updated: 2020/12/31 16:59:43 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void read_file(int fd, char *name, t_plr *plr)
 
 void create_list_plr(t_plr *head, char *argv, int val, int fd)
 {
-	t_plr * current = head;
+	t_plr *current = head;
 
 	while (current->next != NULL)
 		current = current->next;
@@ -151,7 +151,6 @@ t_plr	 *ft_parse(int argc, char **argv, t_vm *vm)
 	{
 		if ((ft_strcmp(argv[i], "-dump")) == 0)
 		{
-			
 			if (i + 1 == argc)
 				break ;
 			else

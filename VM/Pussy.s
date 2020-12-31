@@ -1,4 +1,4 @@
 .name "Pony"
-.comment "Another day in McDonalds"
+.comment "Another day in the field
 
-live %1
+live %-2

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/30 16:48:14 by kcharlet         ###   ########.fr       */
+/*   Updated: 2020/12/31 18:40:40 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,5 +116,12 @@ void	introduce_plrs(t_plr *plr, t_vm *vm);
 */
 void ft_free_vm(t_vm *vm);
 void ft_free_plr(t_plr *plr);
+
+/*
+*	game
+*/
+void	game(t_plr *plr, t_car *car, unsigned int *arena, t_vm *vm, t_op *op);
+void	forkk(t_car **head, unsigned int *arena);
+
 
 #endif

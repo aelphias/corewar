@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.c                                             :+:      :+:    :+:   */
+/*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2020/12/31 18:42:13 by aelphias         ###   ########.fr       */
+/*   Created: 2020/12/31 16:01:29 by aelphias          #+#    #+#             */
+/*   Updated: 2020/12/31 16:06:20 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	forkk(t_car **head, unsigned int *arena)
+int	get_map(unsigned char *arena, int coord)
 {
-	t_car *new;
+	if (coord < 0)
+	coord = coord + MEM_SIZE;
+
+	if (coord >= MEM_SIZE)
+	coord = coord - MEM_SIZE;
 	
-	if (*head)
-	{
-		if (!(new = (t_car*)ft_memalloc(sizeof(t_car))))
-			print_error(ERR_MALLOC);
-		new->next = (*head);
-		(*head) = new;
-	}
-	new->id = 2021;
-	printf("new=%d\n", new->id);
-	printf("(*head)=%d\n", (*head)->id);
-}
-
-
-void	game(t_plr *plr, t_car *car, unsigned int *arena, t_vm *vm, t_op *op)
-{
-	forkk(&car, arena);
+	return (arena[coord]);
 }
