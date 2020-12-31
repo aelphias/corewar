@@ -55,7 +55,7 @@ int		main(int argc, char **argv)
 /*
 *	1. пишем usages при неправильном вводе в консоли
 */
-	if ( argc < 2 || argc > MAX_PLAYERS + 1 )
+	if (argc < 2 || argc > 15)
 		print_error(ERR_USE);
 	ft_bzero(arena, MEM_SIZE);
 /*
