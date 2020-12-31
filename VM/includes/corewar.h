@@ -59,6 +59,7 @@ typedef struct			s_car
 	struct s_car		*next;
 	int					parent_car;
 	int					live;
+	unsigned int		*code;
 }						t_car;
 
 typedef struct s_op

@@ -31,5 +31,6 @@ void	forkk(t_car **head, unsigned int *arena)
 
 void	game(t_plr *plr, t_car *car, unsigned int *arena, t_vm *vm, t_op *op)
 {
+	print_list_car(car);
 	forkk(&car, arena);
 }

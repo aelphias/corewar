@@ -24,6 +24,7 @@ void	init_car(t_plr *plr, t_car **head, int pos, t_vm *vm)
 	car->reg[0] = plr->id;
 	car->parent_car = plr->id;
 	car->position = pos;
+	car->code = plr->code;
 	car->next = NULL;
 	//car->live = 1;
 	//car->id = plr->id++; // инициализацию вызываем в цикле для каждой каретки, id растет на единицу
@@ -49,6 +50,9 @@ t_car	*make_car(t_plr *plr, t_vm *vm)
 	count = 0;
 	car = NULL;
 	vm->num_plr = plr_count(plr);
+
+	/* ПОЗИЦИЯ КАРЕТОК ПОДСЧЕТ 
+	 */
 	if ((vm->num_plr % 2) != 0)
 		equalizer = -1;
 	while (count < vm->num_plr)
