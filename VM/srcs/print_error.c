@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 18:35:34 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/23 21:53:55 by aelphias         ###   ########.fr       */
+/*   Updated: 2020/12/28 19:15:53 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,10 @@ void	print_error(int num_error)
 	}
 	else if (num_error == 3)
 		ft_putstr_fd("Could not allocate memory\n", 2);
-	exit(-1);
+	else if (num_error == 4)
+		ft_putstr_fd("Could not parse\n", 2);
+	else if (num_error == 5)
+		ft_putstr_fd("Could create carriage\n", 2);
+	// free structs before exit()
+	exit(1);
 }

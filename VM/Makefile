@@ -3,15 +3,19 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
+#    By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2020/12/26 19:39:38 by aelphias         ###   ########.fr        #
+#    Updated: 2020/12/29 19:53:11 by kcharlet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+#	TODO:
+#  0. CHECK for error if you do: make re >>> make: *** No rule to make target `obj', needed by `obj/main.o'.  Stop.
+#  1. поставить зависимость от op.h
+#  2. поставить зависимость от corewar.h
+#
 NAME		=	corewar
-
 CC			=	gcc
 FLAGS		=	-Wall -Wextra  -g #-Werror
 
@@ -33,10 +37,14 @@ INC			=	-I$(LIB_DIR) -I$(INC_DIR)
 
 VM_SRC_LIST	= main.c \
 			  print_error.c \
-			  parse.c \
+			  parsing.c \
 			  parse_flags.c \
 			  testing.c \
-			  read_from_file.c
+			  read_from_file.c \
+			  plr_count.c \
+			  make_car.c \
+			  fill_arena.c \
+			  dump.c
 
 SRC_VM		= $(addprefix $(VM_SRC_DIR), $(VM_SRC_LIST))
 

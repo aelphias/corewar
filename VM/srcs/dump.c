@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player_initialize.c                                :+:      :+:    :+:   */
+/*   dump.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/22 15:40:21 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/27 15:56:07 by aelphias         ###   ########.fr       */
+/*   Created: 2020/12/29 18:46:26 by kcharlet          #+#    #+#             */
+/*   Updated: 2020/12/30 20:46:00 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "corewar.h"
+#include "corewar.h"
 
-t_plr       plr_init(int id_pl)
+void	dump(unsigned char *arena)
 {
-    t_plr *plr;
+	int i;
 
-	if (!(plr = (t_plr *)ft_memalloc(sizeof(t_plr))))
-		call_error();
-	plr->id = id_pl;
-	plr->name = NULL;
-	plr->cmnt = NULL;
-	plr->code = NULL;
-	plr->next = NULL;
+	i = 0;
+	while (++i <= MEM_SIZE) 
+	{
+		ft_printf("%02x ", arena[i - 1]);
+		if (i % 64 == 0 && i != 0)   // здесь можно изменить ширину вывода
+			ft_printf("\n");
+	// добавить зависимость от цикла
+	}
 }

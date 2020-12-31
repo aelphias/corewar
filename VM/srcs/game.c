@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/20 19:13:14 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/25 13:51:24 by aelphias         ###   ########.fr       */
+/*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
+/*   Updated: 2020/12/30 17:59:35 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	test(t_flg *flg, t_plr **plr)
+void	game(t_plr *plr, t_car *car, unsigned int *arena, t_vm *vm, t_op *op)
 {
-	ft_printf("****Testing!****\n");
-	ft_printf("dump=%d\n", flg->dump);
-	ft_printf("n=%d\n", flg->n);
-	ft_printf("****Testing!****\n");
+	
 }

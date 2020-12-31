@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arena_initialize.c                                 :+:      :+:    :+:   */
+/*   plr_count.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/22 15:27:10 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/28 19:13:16 by kcharlet         ###   ########.fr       */
+/*   Created: 2020/12/27 15:57:45 by aelphias          #+#    #+#             */
+/*   Updated: 2020/12/27 16:33:17 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "corewar.h"
+#include "corewar.h"
 
-void		arena_initialize(t_vm *vm)
+int	plr_count(t_plr *head)
 {
-	int		id_pl;
-	int		p;
+	int count;
 
-	id_pl = 1;
-	p = 0;
-	while (id_pl <= vm->arena[p])
+	count = 0;
+	if (head == NULL)
+		return (0);
+	while (head)
 	{
-		p += MEM_SIZE / vm->num_plr;
-		id_pl++;
+		head = head->next;
+		count++;
 	}
+	return (count);
 }
