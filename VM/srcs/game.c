@@ -25,11 +25,16 @@ void	forkk(t_car **head, unsigned int *arena)
 	}
 	new->id = 2021;
 	printf("new=%d\n", new->id);
-	printf("(*head)=%d\n", (*head)->id);
+
+
+
+	
 }
 
 
 void	game(t_plr *plr, t_car *car, unsigned int *arena, t_vm *vm, t_op *op)
 {
+	write(1, "1\n",2);
+	print_list_car(car);
 	forkk(&car, arena);
 }

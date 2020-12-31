@@ -43,9 +43,9 @@ typedef struct s_plr
 	int					id;
 	unsigned char		*name;
 	unsigned char		*cmnt;
-	unsigned int		*code;
 	unsigned int		position; // место где мы его ставим при начале игры
 	int					codesize;
+	unsigned int		*code;
 	struct s_plr		*next;
 }				t_plr;
 
@@ -59,6 +59,7 @@ typedef struct			s_car
 	struct s_car		*next;
 	int					parent_car;
 	int					live;
+	unsigned int		*code;
 }						t_car;
 
 typedef struct s_op

@@ -1,4 +1,4 @@
 .name "Pony"
-.comment "Another day in the field
+.comment "Another day in the field"
 
-live %-2
+fork %12

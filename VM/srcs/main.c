@@ -87,7 +87,9 @@ int		main(int argc, char **argv)
 */
 	introduce_plrs(plr, vm);
 	fill_arena(plr, vm, arena);
-	game(plr, car, arena, vm, op);
+	//write(1, "7\n",2);
+
+	//game(plr, car, arena, vm, op);
 	
 	//test(vm, plr);
 	return (0);
