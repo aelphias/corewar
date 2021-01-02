@@ -3,60 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2020/12/31 18:42:13 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/02 16:46:55 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
+t_car	*clone_car(t_car *src, int id)
+{
+	int i;
+	t_car *dst;
+	
+	if (src)
+	{
+		if (!(dst = (t_car*)ft_memalloc(sizeof(t_car))))
+			print_error(ERR_MALLOC);
+		while (src != NULL)
+		{
+			if (src->id == id)
+			{
+				dst->carry = src->carry;
+				while (++i < 16)
+					dst->reg[i] = src->reg[i];
+				dst->live = src->live;
+				dst->id = src->id;
+				dst->parent_car = src->parent_car;
+			}
+			src = src->next;
+		}
+		dst->next = src;
+		src = dst;
+	}
+	return (src);
+}
+
 void	forkk(t_car *head, unsigned int *arena, int id)
 {
-	t_car *new;
-	t_car *tmp;
 	int i;
-
-	tmp = head;
-	i = -1;
+	t_car *new_list;
 	
-	if (head)
-	{
-		if (!(new = (t_car*)ft_memalloc(sizeof(t_car))))
-			print_error(ERR_MALLOC);
-		while (tmp != NULL)
-		{
-			if (tmp->id == id)
-			{
-				new->carry = tmp->carry;
-				while (++i < 16)
-					new->reg[i] = tmp->reg[i];
-				i = -1;
-				while (++i < 3)
-					new->reg[i] = 0;
-				new->live = tmp->live;
-				new->id = tmp->id;
-				new->parent_car = tmp->parent_car;
-			}
-			tmp = tmp->next;
-		}
-		new->next = head;
-		head = new;
-	}
-
+	i = 0;
+	head = new_list = clone_car(head, id);
 	ft_printf("\n\n");
 	while (head != NULL) 
 	{
 		ft_printf("id = %d\n", head->id);
 		printf("code = ");
-		//i = 0;
-		// while (i < 5)
-		// {
-		// 	printf("%x ", head->code[i]);
-		// 	i++;
-		// }
-		i = 0;
 		while (i < 16)
 		{
 			printf("%x ", head->reg[i]);
