@@ -6,7 +6,7 @@
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/02 20:07:13 by kcharlet         ###   ########.fr       */
+/*   Updated: 2021/01/02 21:20:54 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ typedef struct			s_car
 
 typedef struct s_op
 {
-	/* data */
+	int op_id;
 }				t_op;
 
 /*
@@ -113,7 +113,7 @@ void ft_free_plr(t_plr *plr);
 *	game
 */
 void	game(t_plr *plr, t_car *car, unsigned int *arena, t_vm *vm, t_op *op);
-void	forkk(t_car *head, unsigned int *arena, int id);
+void	forkk(t_car **head, t_car * n_car, unsigned int *arena);
 
 /*
 *	testing

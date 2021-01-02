@@ -1,6 +1,28 @@
 Introducing contestants...
-* Player 1, weighing 3 bytes, "Pony" ("Another day in the field") !
-* Player 2, weighing 3 bytes, "Pony" ("Another day in the field") !
-P    2 | fork 4 (2052)
-P    1 | fork 4 (4)
-Contestant 2, "Pony", has won !
+* Player 1, weighing 23 bytes, "zork" ("just a basic living prog") !
+* Player 2, weighing 23 bytes, "zork" ("just a basic living prog") !
+P    2 | sti r1 15 0
+       | -> store to 15 + 0 = 15 (with pc and mod 2063)
+P    1 | sti r1 15 0
+       | -> store to 15 + 0 = 15 (with pc and mod 15)
+P    2 | and -2 0 r1
+P    1 | and -1 0 r1
+P    2 | live 167770880
+P    1 | live 167770880
+P    2 | sti r1 15 0
+       | -> store to 15 + 0 = 15 (with pc and mod 15)
+P    1 | sti r1 15 0
+       | -> store to 15 + 0 = 15 (with pc and mod 2063)
+P    2 | and 0 0 r1
+P    1 | and 0 0 r1
+P    2 | live 167770880
+P    1 | live 167770880
+P    2 | sti r1 15 0
+       | -> store to 15 + 0 = 15 (with pc and mod 2063)
+P    1 | sti r1 15 0
+       | -> store to 15 + 0 = 15 (with pc and mod 15)
+P    2 | and 0 0 r1
+P    1 | and 0 0 r1
+P    2 | live 167770880
+P    1 | live 167770880
+Contestant 2, "zork", has won !

@@ -6,13 +6,15 @@
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/02 20:27:26 by kcharlet         ###   ########.fr       */
+/*   Updated: 2021/01/02 21:49:28 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-/* void clone_car (t_car *head, int id)
+/* 
+
+void clone_car (t_car *head, int id)
 {
 	int i;
 
@@ -41,34 +43,35 @@
 	return (src);
 }
  */
-/* void	forkk(t_car *head, unsigned int *arena, int id)
+
+void	forkk(t_car **head, t_car *n_car, unsigned int *arena)
 {
-	int i;
-	t_car *new_list;
+/* 	t_car *new_car;
 	
-	i = 0;
-	head = new_list = clone_car(head, id);
-	ft_printf("\n\n");
-	while (head != NULL) 
-	{
-		ft_printf("id = %d\n", head->id);
-		printf("code = ");
-		while (i < 16)
-		{
-			printf("%x ", head->reg[i]);
-			i++;
-		}
-		head = head->next;
-	}
+	 int pos;
+	 */
+	printf("hi I'm fork! ;)\n");
+	
+	
+	
 }
- */
-/* void	forkk(t_car *head, unsigned int *arena, int id)
+
+void operations(t_plr *plr, t_car **head_car, unsigned int *arena, int op_id)
 {
-	clone_car (head, id);
+	t_car *n_car; // энный элемент промежуточный
+	 	
+	n_car = (*head_car);
+	if (op_id == 12)
+		forkk(head_car, n_car, arena);
 }
- */
+
+
+
 void	game(t_plr *plr, t_car *car, unsigned int *arena, t_vm *vm, t_op *op)
 {
-	int id = 1;
+	op = (t_op*)ft_memalloc(sizeof(t_op));
+	op->op_id = 12;
+	// 1. f() которая работает с операциями
+	operations(plr, &car, arena, op->op_id);
 	//forkk(car, arena, id);
 }
