@@ -19,7 +19,8 @@ void	print_list_car(t_car *car)
 	i = 1;
 	ft_printf("<<<< t_car *car >>>>\n", i);
 	while (car) 
-	{	ft_printf("<<<<%d>>>>\n", i);
+	{	
+		ft_printf("<<<<%d>>>>\n", i);
 		printf("car->id= %d\n", car->id);
 		printf("position= %d\n", car->position);
 		printf("code = ");
