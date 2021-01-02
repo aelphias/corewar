@@ -12,15 +12,14 @@
 
 #include "corewar.h"
 
-void	forkk(t_car *head, unsigned int *arena, int id)
+void clone_car (t_car *head, int id)
 {
 	t_car *new;
 	t_car *tmp;
 	int i;
 
-	tmp = head;
 	i = -1;
-	
+	tmp = head;
 	if (head)
 	{
 		if (!(new = (t_car*)ft_memalloc(sizeof(t_car))))
@@ -32,9 +31,6 @@ void	forkk(t_car *head, unsigned int *arena, int id)
 				new->carry = tmp->carry;
 				while (++i < 16)
 					new->reg[i] = tmp->reg[i];
-				i = -1;
-				while (++i < 3)
-					new->reg[i] = 0;
 				new->live = tmp->live;
 				new->id = tmp->id;
 				new->parent_car = tmp->parent_car;
@@ -49,13 +45,7 @@ void	forkk(t_car *head, unsigned int *arena, int id)
 	while (head != NULL) 
 	{
 		ft_printf("id = %d\n", head->id);
-		printf("code = ");
-		//i = 0;
-		// while (i < 5)
-		// {
-		// 	printf("%x ", head->code[i]);
-		// 	i++;
-		// }
+		printf("reg = ");
 		i = 0;
 		while (i < 16)
 		{
@@ -64,6 +54,11 @@ void	forkk(t_car *head, unsigned int *arena, int id)
 		}
 		head = head->next;
 	}
+}
+
+void	forkk(t_car *head, unsigned int *arena, int id)
+{
+	clone_car (head, id);
 }
 
 
