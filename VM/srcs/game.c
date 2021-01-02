@@ -6,18 +6,19 @@
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/02 16:46:55 by kcharlet         ###   ########.fr       */
+/*   Updated: 2021/01/02 18:21:45 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-t_car	*clone_car(t_car *src, int id)
+void clone_car (t_car *head, int id)
 {
 	int i;
-	t_car *dst;
-	
-	if (src)
+
+	i = -1;
+	tmp = head;
+	if (head)
 	{
 		if (!(dst = (t_car*)ft_memalloc(sizeof(t_car))))
 			print_error(ERR_MALLOC);
@@ -27,10 +28,10 @@ t_car	*clone_car(t_car *src, int id)
 			{
 				dst->carry = src->carry;
 				while (++i < 16)
-					dst->reg[i] = src->reg[i];
-				dst->live = src->live;
-				dst->id = src->id;
-				dst->parent_car = src->parent_car;
+					new->reg[i] = tmp->reg[i];
+				new->live = tmp->live;
+				new->id = tmp->id;
+				new->parent_car = tmp->parent_car;
 			}
 			src = src->next;
 		}
@@ -59,6 +60,11 @@ void	forkk(t_car *head, unsigned int *arena, int id)
 		}
 		head = head->next;
 	}
+}
+
+void	forkk(t_car *head, unsigned int *arena, int id)
+{
+	clone_car (head, id);
 }
 
 
