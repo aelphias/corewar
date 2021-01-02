@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/31 18:40:40 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/02 20:07:13 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct			s_car
 	struct s_car		*next;
 	int					parent_car;
 	int					live;
-	unsigned int		*code;
+	//unsigned int		*code;  
 }						t_car;
 
 typedef struct s_op
@@ -84,21 +84,12 @@ t_car	*make_car(t_plr *plr, t_vm *vm);
 int		plr_count(t_plr *head);
 void	print_list_car(t_car *car);
 
-
-
 /*
 *	init arena 
 */
 
 void	fill_arena(t_plr *plr, t_vm *vm, unsigned char *arena);
 void	ft_copy_code(unsigned char *dst, unsigned int *src);
-
-
-/*
-*	testing
-*/
-void	test(t_vm *vm, t_plr *plr);
-
 
 /*
 *	инициализация всего
@@ -123,6 +114,12 @@ void ft_free_plr(t_plr *plr);
 */
 void	game(t_plr *plr, t_car *car, unsigned int *arena, t_vm *vm, t_op *op);
 void	forkk(t_car *head, unsigned int *arena, int id);
+
+/*
+*	testing
+*/
+void	test(t_vm *vm, t_plr *plr);
+void	print_list(t_plr *plr);
 
 
 #endif

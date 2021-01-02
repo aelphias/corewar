@@ -6,13 +6,13 @@
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/02 18:21:45 by kcharlet         ###   ########.fr       */
+/*   Updated: 2021/01/02 20:27:26 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void clone_car (t_car *head, int id)
+/* void clone_car (t_car *head, int id)
 {
 	int i;
 
@@ -40,8 +40,8 @@ void clone_car (t_car *head, int id)
 	}
 	return (src);
 }
-
-void	forkk(t_car *head, unsigned int *arena, int id)
+ */
+/* void	forkk(t_car *head, unsigned int *arena, int id)
 {
 	int i;
 	t_car *new_list;
@@ -61,16 +61,14 @@ void	forkk(t_car *head, unsigned int *arena, int id)
 		head = head->next;
 	}
 }
-
-void	forkk(t_car *head, unsigned int *arena, int id)
+ */
+/* void	forkk(t_car *head, unsigned int *arena, int id)
 {
 	clone_car (head, id);
 }
-
-
+ */
 void	game(t_plr *plr, t_car *car, unsigned int *arena, t_vm *vm, t_op *op)
 {
 	int id = 1;
-	forkk(car, arena, id);
-	//print_list_car(car);
+	//forkk(car, arena, id);
 }

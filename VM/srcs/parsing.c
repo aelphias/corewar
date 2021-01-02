@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:10 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/31 16:59:43 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/02 20:53:08 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void create_list_plr(t_plr *head, char *argv, int val, int fd)
 		current = current->next;
 	if (!(current->next = (void*)ft_memalloc(sizeof(t_plr))))
  		print_error(ERR_MALLOC);
-	current->next->id = val;
+	current->next->id = -val;
 	current->next->name = (unsigned char *)ft_memalloc(sizeof(unsigned char) * (PROG_NAME_LENGTH + 1));
 	current->next->cmnt = (unsigned char *)ft_memalloc(sizeof(unsigned char) * (COMMENT_LENGTH + 1));
 	current->next->code = (unsigned int *)ft_memalloc(sizeof(unsigned int) * CHAMP_MAX_SIZE);
@@ -87,23 +87,6 @@ void create_list_plr(t_plr *head, char *argv, int val, int fd)
 	current->next->next = NULL;
 }
 
-void print_list(t_plr *plr) 
-{
-	while (plr != NULL) 
-	{
-		int i = 0;
-		printf("%d\n", plr->id);
-		ft_putstr(plr->name);
-		ft_printf("\n");
-		ft_putstr(plr->cmnt);
-		ft_printf("\n");
-		while (i < 50)
-			ft_printf("%x ", plr->code[i++]);
-		ft_printf("\n");
-		ft_printf("codesize=%d\n", plr->codesize);
-		plr = plr->next;
-	}
-}
 
 int checkdotcor(char *argv)
 {
@@ -169,7 +152,7 @@ t_plr	 *ft_parse(int argc, char **argv, t_vm *vm)
 				}
 				if (!(plr = (void*)ft_memalloc(sizeof(t_plr))))
 					print_error(ERR_MALLOC);
-				plr->id = -1;
+				plr->id = 1;
 				plr->name = (unsigned char *)ft_memalloc(sizeof(unsigned char) * (PROG_NAME_LENGTH + 1));
 				plr->cmnt = (unsigned char *)ft_memalloc(sizeof(unsigned char) * (COMMENT_LENGTH + 1));
 				plr->code = (unsigned int *)ft_memalloc(sizeof(unsigned int) * 862);
@@ -191,7 +174,7 @@ t_plr	 *ft_parse(int argc, char **argv, t_vm *vm)
 		}
 		i++;
 	}
-	plr = revlist(plr);
-	print_list(plr);
+	//plr = revlist(plr);   не нужно разворачивать, этого в сабже нет
+	
 	return (plr);
 }

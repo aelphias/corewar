@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/31 17:02:37 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/02 20:35:30 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int		main(int argc, char **argv)
 *	3. Парсим строку стандартного ввода и файлы .cor, plr односвязный список игроков
 */
 	check_flags(argc - 1, argv, vm);
-	if(!(plr = ft_parse(argc - 1, argv, vm)))
+	if(!(plr = ft_parse(argc - 1, argv, vm))) // указатель на начало списка (plr3->plr2->plr1) ?
 	{
 		//ft_free_vm(vm);
 		print_error(ERR_PARSE);
@@ -88,7 +88,15 @@ int		main(int argc, char **argv)
 	introduce_plrs(plr, vm);
 	fill_arena(plr, vm, arena);
 	game(plr, car, arena, vm, op);
+
+/*
+*	6. test
+*/
+	
 	//test(vm, plr);
+	print_list(plr);
+	print_list_car(car);
+
 	return (0);
 }
 

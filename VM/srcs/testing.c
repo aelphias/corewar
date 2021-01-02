@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   testing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 19:13:14 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/28 22:14:45 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/02 20:33:03 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,31 @@
 
 void	print_list_car(t_car *car)
 {
-	int i;
-
-	i = 1;
-	ft_printf("<<<< t_car *car >>>>\n", i);
+	ft_printf("<<<< КАРЕТКИ ПОШЛИ >>>>\n");
 	while (car) 
 	{	
-		ft_printf("<<<<%d>>>>\n", i);
 		printf("car->id= %d\n", car->id);
 		printf("position= %d\n", car->position);
-		printf("code = ");
-		i = 0;
-		while (i < 50)
-		{
-			printf("%x ", car->code[i]);
-			i++;
-		}
 		printf("\n");
 		car = car->next;
-		i++;
+	}
+}
+
+void print_list(t_plr *plr) 
+{
+	ft_printf("<<<< ИГРОКИ ПОШЛИ >>>>\n");
+	while (plr) 
+	{
+		int i = 0;
+		printf("plr->id %d\n", plr->id);
+		printf("plr->name %s\n", plr->name);
+		ft_printf("plr->cmnt %s\n", plr->cmnt);
+		/* ft_printf("code \n");
+		while (i < 50)
+			ft_printf("%x ", plr->code[i++]); */
+		ft_printf("\n");
+		ft_printf("codesize=%d\n", plr->codesize);
+		plr = plr->next;
 	}
 }
 
