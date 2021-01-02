@@ -22,7 +22,14 @@ void	print_list_car(t_car *car)
 	{	ft_printf("<<<<%d>>>>\n", i);
 		printf("car->id= %d\n", car->id);
 		printf("position= %d\n", car->position);
-		printf("code= %d\n", car->code);
+		printf("code = ");
+		i = 0;
+		while (i < 50)
+		{
+			printf("%x ", car->code[i]);
+			i++;
+		}
+		printf("\n");
 		car = car->next;
 		i++;
 	}

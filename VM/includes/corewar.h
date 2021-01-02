@@ -122,7 +122,7 @@ void ft_free_plr(t_plr *plr);
 *	game
 */
 void	game(t_plr *plr, t_car *car, unsigned int *arena, t_vm *vm, t_op *op);
-void	forkk(t_car **head, unsigned int *arena);
+void	forkk(t_car *head, unsigned int *arena);
 
 
 #endif
