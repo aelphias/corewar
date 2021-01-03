@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/02 21:20:54 by kcharlet         ###   ########.fr       */
+/*   Updated: 2021/01/03 14:05:05 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,6 @@
 
 # define PROG_NAME_LENGTH	(128)
 # define COMMENT_LENGTH		(2048)
-
-/*
-* t_vm:
-* nop - number of players
-* c2d - cycles to die
-* cac - cycles after check
-*/
 
 typedef struct	s_vm
 {

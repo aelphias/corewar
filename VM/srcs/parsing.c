@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:10 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/02 20:53:08 by kcharlet         ###   ########.fr       */
+/*   Updated: 2021/01/03 14:41:01 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,9 @@ int checkdotcor(char *argv)
 	else
 		return (0);
 }
+/*
+* revlist Subject: Yes, the last born (youngest) champion plays first.
+*/
 
 t_plr *revlist(t_plr *plr)
 {
@@ -118,6 +121,10 @@ t_plr *revlist(t_plr *plr)
 	}
 	return (prev);
 }
+
+/*
+* разбить  ft_parse на ф_ции
+*/
 
 t_plr	 *ft_parse(int argc, char **argv, t_vm *vm)
 {
@@ -174,7 +181,7 @@ t_plr	 *ft_parse(int argc, char **argv, t_vm *vm)
 		}
 		i++;
 	}
-	//plr = revlist(plr);   не нужно разворачивать, этого в сабже нет
+	plr = revlist(plr); // Subject, p.16:  Yes, the last born (youngest) champion plays first.
 	
 	return (plr);
 }
