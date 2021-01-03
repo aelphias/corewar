@@ -6,7 +6,11 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2021/01/03 17:23:22 by aelphias         ###   ########.fr       */
+=======
+/*   Updated: 2021/01/03 19:48:09 by aelphias         ###   ########.fr       */
+>>>>>>> hope
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +100,7 @@ int		main(int argc, char **argv)
 	//test(vm, plr);
 	print_list(plr);
 	print_list_car(car);
-	dump(arena);
-
+	//dump(arena);
 	return (0);
 }
 
