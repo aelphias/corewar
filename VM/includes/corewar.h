@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/03 14:05:05 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/03 19:41:11 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,9 @@ void	print_list_car(t_car *car);
 */
 
 void	fill_arena(t_plr *plr, t_vm *vm, unsigned char *arena);
-void	ft_copy_code(unsigned char *dst, unsigned int *src);
+//void	ft_copy_code(unsigned char *dst, unsigned int *src);
+void	ft_copy_code(unsigned char *dst, unsigned int *src, int codesize);
+
 
 /*
 *	инициализация всего
