@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:10 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/03 14:45:44 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/03 20:16:39 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,7 @@ t_plr	 *ft_parse(int argc, char **argv, t_vm *vm)
 				plr->id = 1;
 				plr->name = (unsigned char *)ft_memalloc(sizeof(unsigned char) * (PROG_NAME_LENGTH + 1));
 				plr->cmnt = (unsigned char *)ft_memalloc(sizeof(unsigned char) * (COMMENT_LENGTH + 1));
-				plr->code = (unsigned int *)ft_memalloc(sizeof(unsigned int) * 862);
+				plr->code = (unsigned int *)ft_memalloc(sizeof(unsigned int) * CHAMP_MAX_SIZE);
 				ft_bzero(plr->code, 0);
 				read_file(fd, argv[i], plr);
 			}
@@ -182,6 +182,6 @@ t_plr	 *ft_parse(int argc, char **argv, t_vm *vm)
 		}
 		i++;
 	}
-	plr = revlist(plr); // Subject, p.16:  Yes, the last born (youngest) champion plays first.
+	//plr = revlist(plr); // Subject, p.16:  Yes, the last born (youngest) champion plays first.
 	return (plr);
 }
