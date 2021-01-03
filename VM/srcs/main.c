@@ -87,7 +87,7 @@ int		main(int argc, char **argv)
 */
 	introduce_plrs(plr, vm);
 	fill_arena(plr, vm, arena);
-	game(plr, car, arena, vm, op);
+	//game(plr, car, arena, vm, op);
 
 /*
 *	6. test
@@ -95,7 +95,7 @@ int		main(int argc, char **argv)
 	
 	//test(vm, plr);
 	print_list(plr);
-	print_list_car(car);
+	//print_list_car(car);
 
 	return (0);
 }

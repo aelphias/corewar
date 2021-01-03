@@ -12,11 +12,17 @@
 
 # include "corewar.h"
 
-void        operation_add()
-{
+
 /* 
 * Opcode 4. Take three registries, add the first two, 
 * and place the result in thethird, right before modifying the carry.
 */
-    
+void    operation_add(unsigned char *arena, t_car *car)
+{
+    int arg1;
+    int arg2;
+    int arg3;
+
+    arg1 = takearg(car, )
+
 }

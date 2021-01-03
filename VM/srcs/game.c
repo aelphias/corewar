@@ -44,34 +44,36 @@ void clone_car (t_car *head, int id)
 }
  */
 
-void	forkk(t_car **head, t_car *n_car, unsigned int *arena)
-{
-/* 	t_car *new_car;
+// void	forkk(t_car **head, t_car *n_car, unsigned int *arena)
+// {
+// /* 	t_car *new_car;
 	
-	 int pos;
-	 */
-	printf("hi I'm fork! ;)\n");
+// 	 int pos;
+// 	 */
+// 	printf("hi I'm fork! ;)\n");
 	
 	
 	
-}
+// }
 
-void operations(t_plr *plr, t_car **head_car, unsigned int *arena, int op_id)
-{
-	t_car *n_car; // энный элемент промежуточный
+// void operations(t_plr *plr, t_car **head_car, unsigned int *arena, int op_id)
+// {
+// 	t_car *n_car; // энный элемент промежуточный
 	 	
-	n_car = (*head_car);
-	if (op_id == 12)
-		forkk(head_car, n_car, arena);
-}
+// 	n_car = (*head_car);
+// 	if (op_id == 12)
+// 		forkk(head_car, n_car, arena);
+// 	if (op_id == 4)
+// 		add(head_car, arena); // id car?
+// }
 
 
 
-void	game(t_plr *plr, t_car *car, unsigned int *arena, t_vm *vm, t_op *op)
-{
-	op = (t_op*)ft_memalloc(sizeof(t_op));
-	op->op_id = 12;
-	// 1. f() которая работает с операциями
-	operations(plr, &car, arena, op->op_id);
-	//forkk(car, arena, id);
-}
+// void	game(t_plr *plr, t_car *car, unsigned int *arena, t_vm *vm, t_op *op)
+// {
+// 	op = (t_op*)ft_memalloc(sizeof(t_op));
+// 	op->op_id = 12;
+// 	// 1. f() которая работает с операциями
+// 	operations(plr, &car, arena, op->op_id);
+// 	//forkk(car, arena, id);
+// }

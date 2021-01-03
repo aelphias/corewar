@@ -65,8 +65,8 @@ void read_file(int fd, char *name, t_plr *plr)
 		write(2, "ERROR CHAMP MAGIC NUMBER\n", 25);
 		exit(1);
 	}
-	plr->name[j] = '\0';
-	plr->cmnt[l] = '\0';
+	//plr->name[j] = '\0';
+	//plr->cmnt[l] = '\0';
 	close(fd);
 }
 
@@ -86,7 +86,6 @@ void create_list_plr(t_plr *head, char *argv, int val, int fd)
 	read_file(fd, argv, current->next);
 	current->next->next = NULL;
 }
-
 
 int checkdotcor(char *argv)
 {
@@ -141,6 +140,8 @@ t_plr	 *ft_parse(int argc, char **argv, t_vm *vm)
 	{
 		if ((ft_strcmp(argv[i], "-dump")) == 0)
 		{
+			if (argc <= 2)
+				print_error(ERR_USE);
 			if (i + 1 == argc)
 				break ;
 			else
