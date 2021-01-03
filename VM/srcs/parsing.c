@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:10 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/03 14:41:01 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/03 14:45:44 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,5 @@ t_plr	 *ft_parse(int argc, char **argv, t_vm *vm)
 		i++;
 	}
 	plr = revlist(plr); // Subject, p.16:  Yes, the last born (youngest) champion plays first.
-	
 	return (plr);
 }
