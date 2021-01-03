@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/02 20:35:30 by kcharlet         ###   ########.fr       */
+/*   Updated: 2021/01/03 17:23:22 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ int		main(int argc, char **argv)
 	//test(vm, plr);
 	print_list(plr);
 	print_list_car(car);
+	dump(arena);
 
 	return (0);
 }
