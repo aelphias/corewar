@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/04 19:54:48 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/04 20:47:35 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,9 @@ int		main(int argc, char **argv)
 	t_vm			*vm; // сваливаем сюда все по игре, кроме переменных каретки, которые поместим t_car 
 	t_plr			*plr; // записываем все по игроку
 	t_car			*car; // записываем все по каретке
-	t_op			*op; // записываем все по операциям
 	
 	plr = NULL;
 	car = NULL;
-	op = NULL;
 /*
 *	1. пишем usages при неправильном вводе в консоли
 */
@@ -61,7 +59,6 @@ int		main(int argc, char **argv)
 	if (!(vm = (t_vm *)ft_memalloc(sizeof(t_vm))))
 		print_error(ERR_MALLOC);
 	init_vm(vm);
-	init_op(&op);
 /*
 *	3. Парсим строку стандартного ввода и файлы .cor, plr односвязный список игроков
 */
@@ -85,7 +82,7 @@ int		main(int argc, char **argv)
 */
 	introduce_plrs(plr);
 	fill_arena(plr, vm, arena);
-	game(plr, &car, arena, vm, op);
+	game(plr, &car, arena, vm);
 
 /*
 *	6. test
