@@ -6,16 +6,13 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/04 15:14:54 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/04 19:54:48 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void init_vm(t_vm *vm)
-{
-	vm->dump = -1;
-}
+
 /*
 void ft_free_vm(t_vm *vm)
 {
@@ -27,7 +24,7 @@ void ft_free_plr(t_plr *plr)
 	
 } */
 
-void	introduce_plrs(t_plr *plr, t_vm *vm)
+void	introduce_plrs(t_plr *plr)
 {
 	unsigned int i;
 
@@ -64,6 +61,7 @@ int		main(int argc, char **argv)
 	if (!(vm = (t_vm *)ft_memalloc(sizeof(t_vm))))
 		print_error(ERR_MALLOC);
 	init_vm(vm);
+	init_op(&op);
 /*
 *	3. Парсим строку стандартного ввода и файлы .cor, plr односвязный список игроков
 */
@@ -85,18 +83,17 @@ int		main(int argc, char **argv)
 /*
 *	5. Запись кода на арену и представление игроков перед началом игры 
 */
-	introduce_plrs(plr, vm);
+	introduce_plrs(plr);
 	fill_arena(plr, vm, arena);
-	//game(plr, car, arena, vm, op);
+	game(plr, &car, arena, vm, op);
 
 /*
 *	6. test
 */
 	
-	//test(vm, plr);
+	/* test(vm, plr);
 	print_list(plr);
-	print_list_car(car);
-	//dump(arena);
+	print_list_car(car); */
 	return (0);
 }
 
