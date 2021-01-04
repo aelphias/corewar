@@ -13,6 +13,20 @@
 
 #include "corewar.h"
 
+void error_magic_numb()
+{
+	//free
+	write(2, "ERROR CHAMP MAGIC NUMBER\n", 25);
+	exit(1);
+}
+
+void error_camp_max_size()
+{
+	//free
+	write(2, "ERROR CHAMP MAX SIZE\n", 21);
+	exit(1);
+}
+
 void read_file(int fd, char *name, t_plr *plr)
 {
 	unsigned char buff[2];
@@ -54,17 +68,9 @@ void read_file(int fd, char *name, t_plr *plr)
 		j++;
 	}
 	if (plr->codesize > CHAMP_MAX_SIZE)
-	{
-		//free
-		write(2, "ERROR CHAMP MAX SIZE\n", 21);
-		exit(1);
-	}
+		error_camp_max_size();
 	if (!((magicnum[0] == 00) && (magicnum[1] == 234) && (magicnum[2] == 131) && (magicnum[3] == 243)))
-	{
-		//free
-		write(2, "ERROR CHAMP MAGIC NUMBER\n", 25);
-		exit(1);
-	}
+		error_magic_numb();
 	//plr->name[j] = '\0';
 	//plr->cmnt[l] = '\0';
 	close(fd);
@@ -121,19 +127,48 @@ t_plr *revlist(t_plr *plr)
 	return (prev);
 }
 
+void error_file()
+{
+	//free();
+	write(2, "ERROR FILE CHAMP\n", 17);
+	exit(1);
+}
+
 /*
 * разбить  ft_parse на ф_ции
 */
+
+t_plr *add_one_plr(char **argv, t_plr *plr, int i, int j)
+{
+	int fd;
+	
+	fd = 0;
+	fd = open(argv[i], O_RDONLY);
+	if (fd == -1)
+	{
+		//free();
+		write(2, "ERROR FILE CHAMP\n", 17);
+		exit(1);
+	}
+	if (!(plr = (void*)ft_memalloc(sizeof(t_plr))))
+		print_error(ERR_MALLOC);
+	plr->id = j;
+	plr->name = (unsigned char *)ft_memalloc(sizeof(unsigned char) * (PROG_NAME_LENGTH + 1));
+	plr->cmnt = (unsigned char *)ft_memalloc(sizeof(unsigned char) * (COMMENT_LENGTH + 1));
+	plr->code = (unsigned int *)ft_memalloc(sizeof(unsigned int) * CHAMP_MAX_SIZE);
+	ft_bzero(plr->code, 0);
+	read_file(fd, argv[i], plr);
+	close(fd);
+	return (plr);
+}
 
 t_plr	 *ft_parse(int argc, char **argv, t_vm *vm)
 {
 	int i;
 	int j;
 	int fd;
-	int fd1;
 	t_plr *plr;
 
-	fd = 0;
 	i = 1;
 	j = -1;
 	while (i <= argc)
@@ -150,46 +185,22 @@ t_plr	 *ft_parse(int argc, char **argv, t_vm *vm)
 		if (checkdotcor(argv[i]))
 		{
 			if (j == -1)
-			{
-				fd = open(argv[i], O_RDONLY);
-				if (fd == -1)
-				{
-					//free();
-					write(2, "ERROR FILE CHAMP\n", 17);
-					exit(1);
-				}
-				if (!(plr = (void*)ft_memalloc(sizeof(t_plr))))
-					print_error(ERR_MALLOC);
-				plr->id = 1;
-				plr->name = (unsigned char *)ft_memalloc(sizeof(unsigned char) * (PROG_NAME_LENGTH + 1));
-				plr->cmnt = (unsigned char *)ft_memalloc(sizeof(unsigned char) * (COMMENT_LENGTH + 1));
-				plr->code = (unsigned int *)ft_memalloc(sizeof(unsigned int) * CHAMP_MAX_SIZE);
-				ft_bzero(plr->code, 0);
-				read_file(fd, argv[i], plr);
-				close(fd);
-			}
+				plr = add_one_plr(argv, plr, i, j);
 			if (j < -1)
 			{
 				fd = open(argv[i], O_RDONLY);
 				if (fd == -1)
-				{
-					//free();
-					write(2, "ERROR FILE CHAMP\n", 17);
-					exit(1);
-				}
+					error_file();
 				create_list_plr(plr, argv[i], j, fd);
+				plr->id = j;
 				close(fd);
 			}
+			//ft_printf("PLR %d \n", plr->id);
 			j--;
 		}
 		else
-		{
-			//free();
-			write(2, "ERROR FILE CHAMP\n", 17);
-			exit(1);
-		}
+			error_file();
 		i++;
-		
 	}
 	//plr = revlist(plr); // Subject, p.16:  Yes, the last born (youngest) champion plays first.
 	return (plr);
