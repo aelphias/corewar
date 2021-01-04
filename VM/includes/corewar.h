@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/04 20:05:46 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/04 20:47:30 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ typedef struct			s_car
 	struct s_car		*next;
 	int					parent_car;
 	int					live;
-	//unsigned int		*code;  
+	int					op_id;
 }						t_car;
 
-typedef struct s_op
+/* typedef struct s_op
 {
 	int op_id;
 }				t_op;
-
+ */
 /*
 *	parse
 */
@@ -90,7 +90,6 @@ void	ft_copy_code(unsigned char *dst, unsigned int *src, int codesize);
 *	инициализация всего
 */
 void	init_vm(t_vm *vm);
-void	init_op(t_op **op);
 void	init_car(t_plr *plr, t_car **head, int pos, t_vm *vm);
 
 /*
@@ -108,13 +107,14 @@ void ft_free_plr(t_plr *plr);
 /*
 *	game
 */
-void	game(t_plr *plr, t_car **car, unsigned char *arena, t_vm *vm, t_op *op);
+void	game(t_plr *plr, t_car **car, unsigned char *arena, t_vm *vm);
 
 /*
 *	operations
 */
 void	op_fork(t_car *head, t_car * n_car, unsigned int *arena);
-void    op_add(t_car *car, unsigned char *arena);
+void	op_add(t_car *car, unsigned char *arena);
+void	operations(t_car *car, unsigned char *arena, void (**func)(t_car *, unsigned char *));
 
 
 
