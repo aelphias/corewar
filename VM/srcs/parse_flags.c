@@ -73,5 +73,4 @@ void check_flags(int argc, char **argv, t_vm *vm)
 		// 	//	print_error(ERR_USE); 
 		// }
 	}
-	//ft_printf("dump %d\n", vm->dump);
 }
