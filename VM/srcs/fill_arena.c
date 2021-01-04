@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 16:39:28 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/03 19:56:06 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/04 15:13:15 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	fill_arena(t_plr *plr, t_vm *vm, unsigned char *arena)
 		ft_copy_code(&(arena[plr->position]), plr->code, plr->codesize);
 		plr = plr->next;
 	}
-	if (vm->dump)
+	if ((vm->dump) != -1)
 	{
 		dump(arena);
 		ft_printf("dump=%d\n ",vm->dump);
