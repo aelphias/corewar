@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/04 17:56:08 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/04 20:05:46 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct			s_car
 {
 	int					carry;
 	unsigned int		position; // место где мы ее ставим при начале игры
-	unsigned int		reg[16];
+	unsigned int		reg[REG_NUMBER];
 	int					id;
 	unsigned int		arg[3];
 	struct s_car		*next;
@@ -108,7 +108,7 @@ void ft_free_plr(t_plr *plr);
 /*
 *	game
 */
-void	game(t_plr *plr, t_car *car, unsigned char *arena, t_vm *vm, t_op **op);
+void	game(t_plr *plr, t_car **car, unsigned char *arena, t_vm *vm, t_op *op);
 
 /*
 *	operations

@@ -1,4 +1,5 @@
 .name		"adder"
 .comment	""
 
-add r2,r3,r4
+add r1,r2,r3
+add r1,r2,r3
