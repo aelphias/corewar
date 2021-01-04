@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/04 20:46:52 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/04 20:58:26 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	init_func(void (**f)(t_car *, unsigned char*))
 {
 	f[0] = NULL;
 	f[4] = &op_add;
+	f[12] = &op_fork;
 }
 
 int get_op_code(unsigned char *arena, t_car *car)
