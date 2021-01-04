@@ -95,13 +95,8 @@ int		main(int argc, char **argv)
 	
 	//test(vm, plr);
 	print_list(plr);
-<<<<<<< HEAD
-	//print_list_car(car);
-
-=======
 	print_list_car(car);
 	//dump(arena);
->>>>>>> e24a4e0e89179f5b36780d43729c2982faf013b5
 	return (0);
 }
 

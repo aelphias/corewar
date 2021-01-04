@@ -166,11 +166,19 @@ t_plr	 *ft_parse(int argc, char **argv, t_vm *vm)
 				plr->code = (unsigned int *)ft_memalloc(sizeof(unsigned int) * CHAMP_MAX_SIZE);
 				ft_bzero(plr->code, 0);
 				read_file(fd, argv[i], plr);
+				close(fd);
 			}
 			if (j < -1)
 			{
 				fd = open(argv[i], O_RDONLY);
+				if (fd == -1)
+				{
+					//free();
+					write(2, "ERROR FILE CHAMP\n", 17);
+					exit(1);
+				}
 				create_list_plr(plr, argv[i], j, fd);
+				close(fd);
 			}
 			j--;
 		}
@@ -181,6 +189,7 @@ t_plr	 *ft_parse(int argc, char **argv, t_vm *vm)
 			exit(1);
 		}
 		i++;
+		
 	}
 	//plr = revlist(plr); // Subject, p.16:  Yes, the last born (youngest) champion plays first.
 	return (plr);
