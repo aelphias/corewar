@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/04 15:15:11 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/04 17:56:08 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,14 @@ void	ft_copy_code(unsigned char *dst, unsigned int *src, int codesize);
 *	инициализация всего
 */
 void	init_vm(t_vm *vm);
+void	init_op(t_op **op);
 void	init_car(t_plr *plr, t_car **head, int pos, t_vm *vm);
 
 /*
 *	utils
 */
 void	dump(unsigned char *arena);
-void	introduce_plrs(t_plr *plr, t_vm *vm);
+void	introduce_plrs(t_plr *plr);
 
 /*
 *	зачистка всего
@@ -107,8 +108,15 @@ void ft_free_plr(t_plr *plr);
 /*
 *	game
 */
-void	game(t_plr *plr, t_car *car, unsigned int *arena, t_vm *vm, t_op *op);
-void	forkk(t_car **head, t_car * n_car, unsigned int *arena);
+void	game(t_plr *plr, t_car *car, unsigned char *arena, t_vm *vm, t_op **op);
+
+/*
+*	operations
+*/
+void	op_fork(t_car *head, t_car * n_car, unsigned int *arena);
+void    op_add(t_car *car, unsigned char *arena);
+
+
 
 /*
 *	testing

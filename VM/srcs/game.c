@@ -3,77 +3,67 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/02 21:49:28 by kcharlet         ###   ########.fr       */
+/*   Updated: 2021/01/04 17:59:21 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-/* 
-
-void clone_car (t_car *head, int id)
+int get_op_code(unsigned char *arena, t_car *car)
 {
-	int i;
+	int res;
 
-	i = -1;
-	tmp = head;
-	if (head)
-	{
-		if (!(dst = (t_car*)ft_memalloc(sizeof(t_car))))
-			print_error(ERR_MALLOC);
-		while (src != NULL)
-		{
-			if (src->id == id)
-			{
-				dst->carry = src->carry;
-				while (++i < 16)
-					new->reg[i] = tmp->reg[i];
-				new->live = tmp->live;
-				new->id = tmp->id;
-				new->parent_car = tmp->parent_car;
-			}
-			src = src->next;
-		}
-		dst->next = src;
-		src = dst;
-	}
-	return (src);
+	res = 0;
+	res = arena[car->position];
+	return (res);
 }
- */
 
-// void	forkk(t_car **head, t_car *n_car, unsigned int *arena)
-// {
-// /* 	t_car *new_car;
+
+void    op_add(t_car *car, unsigned char *arena)
+{
+    int type_arg;
+	int arg1;
+	int arg2;
+	int arg3;
+
+	type_arg = 0;
+	arg1 = 0;
+	arg2 = 0;
+	arg3 = 0;
 	
-// 	 int pos;
-// 	 */
-// 	printf("hi I'm fork! ;)\n");
+	type_arg = arena[car->position + 1];
+	arg1 = arena[car->position + 2];
+	arg2 = arena[car->position + 3];
+    arg3 = arena[car->position + 4];
 	
+    printf("\n type_arg %d\n", type_arg);
+	printf("\n type_arg %d\n", arg1);
+	printf("\n type_arg %d\n", arg2);
+	printf("\n type_arg %d\n", arg3);
+}
+
+void operations(t_plr *plr, t_car *head_car, unsigned char *arena, t_op **op)
+{
+	//t_car *n_car; // энный элемент промежуточный
+	int op_id = 0;
+	//(*op)->op_id 
 	
+	op_id = get_op_code(arena, head_car);
 	
-// }
-
-// void operations(t_plr *plr, t_car **head_car, unsigned int *arena, int op_id)
-// {
-// 	t_car *n_car; // энный элемент промежуточный
-	 	
-// 	n_car = (*head_car);
-// 	if (op_id == 12)
-// 		forkk(head_car, n_car, arena);
-// 	if (op_id == 4)
-// 		add(head_car, arena); // id car?
-// }
+	printf("op_id = %d", op_id); //(*op)->op_id
+/* 	if (op_id == 12)
+		op_fork(head_car, n_car, arena); */
+		
+	if (op_id == 4)
+		op_add(head_car, arena); // id car?
+}
 
 
-
-// void	game(t_plr *plr, t_car *car, unsigned int *arena, t_vm *vm, t_op *op)
-// {
-// 	op = (t_op*)ft_memalloc(sizeof(t_op));
-// 	op->op_id = 12;
-// 	// 1. f() которая работает с операциями
-// 	operations(plr, &car, arena, op->op_id);
-// 	//forkk(car, arena, id);
-// }
+void	game(t_plr *plr, t_car *car, unsigned char *arena, t_vm *vm, t_op **op)
+{
+	//op->op_id = 12;
+	operations(plr, car, arena, op);
+}

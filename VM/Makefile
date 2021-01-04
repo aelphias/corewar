@@ -6,7 +6,7 @@
 #    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2020/12/31 18:37:30 by aelphias         ###   ########.fr        #
+#    Updated: 2021/01/04 16:33:08 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,9 @@ VM_SRC_LIST	= main.c \
 			  make_car.c \
 			  fill_arena.c \
 			  dump.c \
-			  game.c
+			  game.c \
+			  op_add.c \
+			  init_strcts.c
 
 SRC_VM		= $(addprefix $(VM_SRC_DIR), $(VM_SRC_LIST))
 

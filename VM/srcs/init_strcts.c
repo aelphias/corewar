@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operation_st.c                                     :+:      :+:    :+:   */
+/*   init_strcts.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/22 18:39:09 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/22 18:40:14 by gjigglyp         ###   ########.fr       */
+/*   Created: 2021/01/04 16:29:10 by aelphias          #+#    #+#             */
+/*   Updated: 2021/01/04 17:13:50 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "corewar.h"
+#include "corewar.h"
 
-void        operation_st()
+
+void	init_op(t_op **op)
 {
-    int	r_id;
-	int	r_v;
-	int	a;
+	if (!(op = (t_op**)ft_memalloc(sizeof(t_op*))))
+		print_error(ERR_MALLOC);
+}
+
+void init_vm(t_vm *vm)
+{
+	vm->dump = -1;
 }

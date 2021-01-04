@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operation_xor.c                                    :+:      :+:    :+:   */
+/*   op_add.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/22 18:36:20 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/22 18:37:35 by gjigglyp         ###   ########.fr       */
+/*   Created: 2020/12/22 18:13:35 by gjigglyp          #+#    #+#             */
+/*   Updated: 2021/01/04 17:45:10 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "corewar.h"
 
-void    operation_xor()
-{
-    int	v1;
-	int	v2;
-	int	v;
-	int	r_id;
-
-    
-}
+/* 
+* Opcode 4. Take three registries, add the first two, 
+* and place the result in thethird, right before modifying the carry.
+*/
