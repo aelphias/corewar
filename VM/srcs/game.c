@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/04 21:10:34 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/05 12:23:14 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ void	game(t_plr *plr, t_car **car, unsigned char *arena, t_vm *vm)
 	tmp = (*car);
 	while (tmp)
 	{
-		printf("\n <<<<<<<I'm car= %d >>>>>>>\n", tmp->id);
+		// printf("\n <<<<<<<I'm car= %d >>>>>>>\n", tmp->id);
 		operations(tmp, arena, func);
-		printf("\n END=%d\n", arena[tmp->position]);
+		// printf("\n END=%d\n", arena[tmp->position]);
 		tmp = tmp->next;
 	}
 }

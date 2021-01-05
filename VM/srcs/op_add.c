@@ -29,10 +29,10 @@ void	op_add(t_car *car, unsigned char *arena)
 	arg1 = car->reg[arena[car->position + 2]];
 	arg2 = car->reg[arena[car->position + 3]];
 	car->reg[arena[car->position + 4]] = arg1 + arg2;
-	printf("\n type_arg %d\n", type_arg);
+/* 	printf("\n type_arg %d\n", type_arg);
 	printf("\n type_arg %d\n", arg1);
-	printf("\n type_arg %d\n", arg2);
-	printf("\n car->reg[arena[car->position + 4]] %d\n", car->reg[arena[car->position + 4]]);
+	printf("\n type_arg %d\n", arg2); */
+	// printf("\n car->reg[arena[car->position + 4]] %d\n", car->reg[arena[car->position + 4]]);
 	car->position += 5;
 //	printf("\n +=5 =%d\n", arena[car->position]);
 	

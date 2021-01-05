@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:10 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/03 20:16:39 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/05 16:42:32 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void create_list_plr(t_plr *head, char *argv, int val, int fd)
 		current = current->next;
 	if (!(current->next = (void*)ft_memalloc(sizeof(t_plr))))
  		print_error(ERR_MALLOC);
-	current->next->id = -val;
+	current->next->id = val;
 	current->next->name = (unsigned char *)ft_memalloc(sizeof(unsigned char) * (PROG_NAME_LENGTH + 1));
 	current->next->cmnt = (unsigned char *)ft_memalloc(sizeof(unsigned char) * (COMMENT_LENGTH + 1));
 	current->next->code = (unsigned int *)ft_memalloc(sizeof(unsigned int) * CHAMP_MAX_SIZE);
@@ -165,12 +165,12 @@ t_plr *add_one_plr(char **argv, t_plr *plr, int i, int j)
 t_plr	 *ft_parse(int argc, char **argv, t_vm *vm)
 {
 	int i;
-	int j;
+	int id;
 	int fd;
 	t_plr *plr;
 
 	i = 1;
-	j = -1;
+	id = -1;
 	while (i <= argc)
 	{
 		if ((ft_strcmp(argv[i], "-dump")) == 0)
@@ -184,24 +184,30 @@ t_plr	 *ft_parse(int argc, char **argv, t_vm *vm)
 		}
 		if (checkdotcor(argv[i]))
 		{
-			if (j == -1)
-				plr = add_one_plr(argv, plr, i, j);
-			if (j < -1)
+			if (id == -1)
+				plr = add_one_plr(argv, plr, i, id);
+			if (id < -1)
 			{
 				fd = open(argv[i], O_RDONLY);
 				if (fd == -1)
 					error_file();
-				create_list_plr(plr, argv[i], j, fd);
-				plr->id = j;
+				create_list_plr(plr, argv[i], id, fd);
+				//plr->id = id;
 				close(fd);
 			}
-			//ft_printf("PLR %d \n", plr->id);
-			j--;
+			id--;
 		}
 		else
 			error_file();
 		i++;
 	}
+
+
+/* 	while(plr)
+	{
+		ft_printf("PLR %d \n", plr->id);
+		plr = plr->next;	
+	} */
 	//plr = revlist(plr); // Subject, p.16:  Yes, the last born (youngest) champion plays first.
 	return (plr);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   testing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 19:13:14 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/02 20:33:03 by kcharlet         ###   ########.fr       */
+/*   Updated: 2021/01/05 15:24:23 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ void print_list(t_plr *plr)
 	{
 		int i = 0;
 		printf("plr->id %d\n", plr->id);
-		printf("plr->name %s\n", plr->name);
-		ft_printf("plr->cmnt %s\n", plr->cmnt);
+		/* printf("plr->name %s\n", plr->name);
+		ft_printf("plr->cmnt %s\n", plr->cmnt); */
 		/* ft_printf("code \n");
 		while (i < 50)
 			ft_printf("%x ", plr->code[i++]); */
 		ft_printf("\n");
-		ft_printf("codesize=%d\n", plr->codesize);
+		/* ft_printf("codesize=%d\n", plr->codesize); */
 		plr = plr->next;
 	}
 }
