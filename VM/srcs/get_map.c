@@ -6,13 +6,13 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 16:01:29 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/31 16:06:20 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/05 21:10:01 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-int	get_map(unsigned char *arena, int coord)
+int	get_map(uint8_t *arena, int coord)
 {
 	if (coord < 0)
 	coord = coord + MEM_SIZE;

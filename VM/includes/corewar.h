@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/05 21:08:33 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/05 21:11:41 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,21 @@ typedef struct	s_vm
 typedef struct s_plr
 {
 	int					id;
-	unsigned char		*name;
-	unsigned char		*cmnt;
-	unsigned int		position; // место где мы его ставим при начале игры
+	uint8_t		*name;
+	uint8_t		*cmnt;
+	uint8_t		position; // место где мы его ставим при начале игры
 	int					codesize;
-	unsigned int		*code;
+	uint8_t		*code;
 	struct s_plr		*next;
 }				t_plr;
 
 typedef struct			s_car
 {
 	int					carry;
-	unsigned int		position; // место где мы ее ставим при начале игры
-	unsigned int		reg[REG_NUMBER];
+	uint8_t		position; // место где мы ее ставим при начале игры
+	uint8_t		reg[REG_NUMBER];
 	int					id;
-	unsigned int		arg[3];
+	uint8_t		arg[3];
 	struct s_car		*next;
 	int					parent_car;
 	int					live;
@@ -81,9 +81,9 @@ void	print_list_car(t_car *car);
 *	init arena 
 */
 
-void	fill_arena(t_plr *plr, t_vm *vm, unsigned char *arena);
-//void	ft_copy_code(unsigned char *dst, unsigned int *src);
-void	ft_copy_code(unsigned char *dst, unsigned int *src, int codesize);
+void	fill_arena(t_plr *plr, t_vm *vm, uint8_t *arena);
+//void	ft_copy_code(uint8_t *dst, uint8_t *src);
+void	ft_copy_code(uint8_t *dst, uint8_t *src, int codesize);
 
 /*make
 *	инициализация всего
@@ -94,7 +94,7 @@ void	init_car(t_plr *plr, t_car **head, int pos);
 /*
 *	utils
 */
-void	dump(unsigned char *arena);
+void	dump(uint8_t *arena);
 void	introduce_plrs(t_plr *plr);
 
 /*
@@ -106,14 +106,14 @@ void	ft_free_plr(t_plr *plr);
 /*
 *	game
 */
-void	game(t_plr *plr, t_car **car, unsigned char *arena, t_vm *vm);
+void	game(t_plr *plr, t_car **car, uint8_t *arena, t_vm *vm);
 
 /*
 *	operations
 */
-void	op_fork(t_car *head, t_car * n_car, unsigned int *arena);
-void	op_add(t_car *car, unsigned char *arena);
-void	operations(t_car *car, unsigned char *arena, void (**func)(t_car *, unsigned char *));
+void	op_fork(t_car *head, t_car * n_car, uint8_t *arena);
+void	op_add(t_car *car, uint8_t *arena);
+void	operations(t_car *car, uint8_t *arena, void (**func)(t_car *, uint8_t *));
 
 
 

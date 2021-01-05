@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:10 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/05 20:45:19 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/05 21:11:41 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,15 @@ void error_camp_max_size()
 void read_file(int fd, char *name, t_plr *plr) >> aelphias удалил  char *name,  5.1.2021<<*/
 void read_file(int fd, t_plr *plr) // 
 {
-	unsigned char buff[2];
+	uint8_t buff[2];
 	int i;
 	int j;
 	int l;
 	int k;
 	int c;
 	int m;
-	unsigned char sizecode[4] = {0};
-	unsigned char magicnum[4] = {0};
+	uint8_t sizecode[4] = {0};
+	uint8_t magicnum[4] = {0};
 
 	k = 0;
 	l = 0;
@@ -49,15 +49,15 @@ void read_file(int fd, t_plr *plr) //
 	while (read(fd, buff, 1) > 0)
 	{
 		if (i >= 0 && i <=3)
-			magicnum[m++] = (unsigned int)buff[0];
+			magicnum[m++] = (uint8_t)buff[0];
 		if (i >= 4 && i <= 132)
-			plr->name[j++] = (unsigned char)buff[0];
+			plr->name[j++] = (uint8_t)buff[0];
 		if (i >= 140 && i <= 2186)
-			plr->cmnt[l++] = (unsigned char)buff[0];
+			plr->cmnt[l++] = (uint8_t)buff[0];
 		if (i >= 2192 && i <= 2874)
-			plr->code[k++] = (unsigned int)buff[0];
+			plr->code[k++] = (uint8_t)buff[0];
 		if (i >= 136 && i <= 139)
-			sizecode[c++] = (unsigned int)buff[0];
+			sizecode[c++] = (uint8_t)buff[0];
 		i++;
 	}
 	i = 4;
@@ -89,9 +89,9 @@ void create_list_plr(t_plr *head, int val, int fd)
 	if (!(current->next = (void*)ft_memalloc(sizeof(t_plr))))
  		print_error(ERR_MALLOC);
 	current->next->id = val;
-	current->next->name = (unsigned char *)ft_memalloc(sizeof(unsigned char) * (PROG_NAME_LENGTH + 1));
-	current->next->cmnt = (unsigned char *)ft_memalloc(sizeof(unsigned char) * (COMMENT_LENGTH + 1));
-	current->next->code = (unsigned int *)ft_memalloc(sizeof(unsigned int) * CHAMP_MAX_SIZE);
+	current->next->name = (uint8_t *)ft_memalloc(sizeof(uint8_t) * (PROG_NAME_LENGTH + 1));
+	current->next->cmnt = (uint8_t *)ft_memalloc(sizeof(uint8_t) * (COMMENT_LENGTH + 1));
+	current->next->code = (uint8_t *)ft_memalloc(sizeof(uint8_t) * CHAMP_MAX_SIZE);
 	ft_bzero(current->next->code, 0);
 	/* read_file(fd, argv, current->next); >>aelphias removed  argv, 5.1.2021 << */
 	read_file(fd, current->next);
@@ -158,9 +158,9 @@ t_plr *add_one_plr(char **argv, t_plr *plr, int i, int j)
 	if (!(plr = (void*)ft_memalloc(sizeof(t_plr))))
 		print_error(ERR_MALLOC);
 	plr->id = j;
-	plr->name = (unsigned char *)ft_memalloc(sizeof(unsigned char) * (PROG_NAME_LENGTH + 1));
-	plr->cmnt = (unsigned char *)ft_memalloc(sizeof(unsigned char) * (COMMENT_LENGTH + 1));
-	plr->code = (unsigned int *)ft_memalloc(sizeof(unsigned int) * CHAMP_MAX_SIZE);
+	plr->name = (uint8_t *)ft_memalloc(sizeof(uint8_t) * (PROG_NAME_LENGTH + 1));
+	plr->cmnt = (uint8_t *)ft_memalloc(sizeof(uint8_t) * (COMMENT_LENGTH + 1));
+	plr->code = (uint8_t *)ft_memalloc(sizeof(uint8_t) * CHAMP_MAX_SIZE);
 	ft_bzero(plr->code, 0);
 	/* 
 	read_file(fd, argv[i], plr); >> aelphias removed argv[i]  5.1.21<<
