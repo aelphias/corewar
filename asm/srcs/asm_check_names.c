@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 12:32:17 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/26 12:34:16 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/05 13:46:54 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 void	free_no_name(char **line, t_crw *champ)
 {
 	free(*line);
-	free_all(*champ);
-	call_error(NO_NAME);
+	free_and_call(*champ, NO_NAME);
 }
 
 void	while_is_name(char **line, int *i, t_crw *champ, int *j)
@@ -86,9 +85,7 @@ int		is_command_or_not(char *line, t_crw *champ)
 	name_com = NULL;
 	name_com = check_name_com(&line[i], champ);
 	if (name_com == NULL)
-	{
 		return (0);
-	}
 	free(name_com);
 	return (1);
 }

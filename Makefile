@@ -3,20 +3,24 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
+#    By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/24 20:51:23 by aelphias          #+#    #+#              #
-#    Updated: 2020/12/25 14:04:45 by aelphias         ###   ########.fr        #
+#    Updated: 2021/01/05 16:42:25 by gjigglyp         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all clean fclean re pwdfclean directory
 
+COREWAR = asm
 COREWAR = corewar
 VM_PATH = ./VM/
+ASM_PATH = ./asm/
 
 all:  $(COREWAR)
 
+$(ASM):
+	make -C $(ASM_PATH)
 $(COREWAR):
 	make -C $(VM_PATH)
 	
@@ -26,4 +30,4 @@ clean:
 fclean:
 	make -C $(VM_PATH) fclean
 	
-re: fclean all
+re: clean fclean all
