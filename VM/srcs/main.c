@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/05 16:43:18 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/05 17:12:51 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,6 @@ void ft_free_plr(t_plr *plr)
 {
 	
 } */
-
-void	introduce_plrs(t_plr *plr)
-{
-	unsigned int i;
-
-	i = 1;
-	ft_printf("Introducting contestants...\n");
-	while (plr)
-	{
-		ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n", \
-			i++, plr->codesize, plr->name, plr->cmnt);
-		plr = plr->next;
-	}
-}
 
 int		main(int argc, char **argv)
 {
@@ -68,7 +54,6 @@ int		main(int argc, char **argv)
 		//ft_free_vm(vm);
 		print_error(ERR_PARSE);
 	}
-
 /*
 *	4. Инициализируем арену и создаем каретки
 */
@@ -83,7 +68,7 @@ int		main(int argc, char **argv)
 */
 	introduce_plrs(plr);
 	fill_arena(plr, vm, arena);
-	//game(plr, &car, arena, vm);
+	game(plr, &car, arena, vm);
 
 /*
 *	6. test

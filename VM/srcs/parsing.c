@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:10 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/05 16:42:32 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/05 18:26:24 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ void error_camp_max_size()
 	write(2, "ERROR CHAMP MAX SIZE\n", 21);
 	exit(1);
 }
-
-void read_file(int fd, char *name, t_plr *plr)
+/* ..srcs/parsing.c:30:30: warning: unused parameter 'name' [-Wunused-parameter]
+void read_file(int fd, char *name, t_plr *plr) >> aelphias удалил  char *name,  5.1.2021<<*/
+void read_file(int fd, t_plr *plr) // 
 {
 	unsigned char buff[2];
 	int i;
@@ -75,8 +76,11 @@ void read_file(int fd, char *name, t_plr *plr)
 	//plr->cmnt[l] = '\0';
 	close(fd);
 }
-
-void create_list_plr(t_plr *head, char *argv, int val, int fd)
+/* 
+*void create_list_plr(t_plr *head, char *argv, int val, int fd)
+*  >>aelphias removed , char *argv 5.1.2021<<
+ */
+void create_list_plr(t_plr *head, int val, int fd)
 {
 	t_plr *current = head;
 
@@ -89,7 +93,8 @@ void create_list_plr(t_plr *head, char *argv, int val, int fd)
 	current->next->cmnt = (unsigned char *)ft_memalloc(sizeof(unsigned char) * (COMMENT_LENGTH + 1));
 	current->next->code = (unsigned int *)ft_memalloc(sizeof(unsigned int) * CHAMP_MAX_SIZE);
 	ft_bzero(current->next->code, 0);
-	read_file(fd, argv, current->next);
+	/* read_file(fd, argv, current->next); >>aelphias removed  argv, 5.1.2021 << */
+	read_file(fd, current->next);
 	current->next->next = NULL;
 }
 
@@ -157,11 +162,15 @@ t_plr *add_one_plr(char **argv, t_plr *plr, int i, int j)
 	plr->cmnt = (unsigned char *)ft_memalloc(sizeof(unsigned char) * (COMMENT_LENGTH + 1));
 	plr->code = (unsigned int *)ft_memalloc(sizeof(unsigned int) * CHAMP_MAX_SIZE);
 	ft_bzero(plr->code, 0);
-	read_file(fd, argv[i], plr);
+	/* 
+	read_file(fd, argv[i], plr); >> aelphias removed argv[i]  5.1.21<<
+	 */
+	read_file(fd, plr);
 	close(fd);
 	return (plr);
 }
-
+/* 
+t_plr	 *ft_parse(int argc, char **argv, t_vm *vm) */
 t_plr	 *ft_parse(int argc, char **argv, t_vm *vm)
 {
 	int i;
@@ -190,8 +199,9 @@ t_plr	 *ft_parse(int argc, char **argv, t_vm *vm)
 			{
 				fd = open(argv[i], O_RDONLY);
 				if (fd == -1)
-					error_file();
-				create_list_plr(plr, argv[i], id, fd);
+					error_file();/* 
+				create_list_plr(plr, argv[i], id, fd); >> aelphias removed , argv[i] 5.1.2021 <<*/
+				create_list_plr(plr, id, fd);
 				//plr->id = id;
 				close(fd);
 			}
@@ -203,11 +213,7 @@ t_plr	 *ft_parse(int argc, char **argv, t_vm *vm)
 	}
 
 
-/* 	while(plr)
-	{
-		ft_printf("PLR %d \n", plr->id);
-		plr = plr->next;	
-	} */
+
 	//plr = revlist(plr); // Subject, p.16:  Yes, the last born (youngest) champion plays first.
 	return (plr);
 }
