@@ -23,7 +23,6 @@ void	op_add(t_car *car, unsigned char *arena)
     int type_arg;
 	int arg1;
 	int arg2;
-	int arg3;
 
 	type_arg = arena[car->position + 1];
 	arg1 = car->reg[arena[car->position + 2]];
