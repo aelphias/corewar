@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/05 20:45:45 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/05 21:08:33 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,11 @@ void	fill_arena(t_plr *plr, t_vm *vm, unsigned char *arena);
 //void	ft_copy_code(unsigned char *dst, unsigned int *src);
 void	ft_copy_code(unsigned char *dst, unsigned int *src, int codesize);
 
-
-/*
+/*make
 *	инициализация всего
 */
 void	init_vm(t_vm *vm);
-void	init_car(t_plr *plr, t_car **head, int pos, t_vm *vm);
+void	init_car(t_plr *plr, t_car **head, int pos);
 
 /*
 *	utils
@@ -101,8 +100,8 @@ void	introduce_plrs(t_plr *plr);
 /*
 *	зачистка всего
 */
-void ft_free_vm(t_vm *vm);
-void ft_free_plr(t_plr *plr);
+void	ft_free_vm(t_vm *vm);
+void	ft_free_plr(t_plr *plr);
 
 /*
 *	game

@@ -6,7 +6,7 @@
 #    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2021/01/05 20:51:15 by aelphias         ###   ########.fr        #
+#    Updated: 2021/01/05 21:08:59 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@
 #
 NAME		=	corewar
 CC			=	gcc
-FLAGS		=	-Wall -Wextra -g -Werror
+FLAGS		=	-Wall -Wextra -g #-Werror
 
 LIBRARIES_VM = -L$(LIB_DIR) -lft
 INCLUDES_VM = -I$(INC_DIR) -I$(LIB_DIR)
@@ -35,12 +35,10 @@ INC			=	-I$(LIB_DIR) -I$(INC_DIR)
 
 ####################VM_SOURSES##################################################
 
-VM_SRC_LIST	= main.c \
-			  print_error.c \
+VM_SRC_LIST	= print_error.c \
 			  parsing.c \
 			  parse_flags.c \
 			  testing.c \
-			  read_from_file.c \
 			  plr_count.c \
 			  make_car.c \
 			  fill_arena.c \
@@ -48,13 +46,14 @@ VM_SRC_LIST	= main.c \
 			  game.c \
 			  op_add.c \
 			  init_strcts.c \
-			  introduce_plrs.c
+			  introduce_plrs.c \
+			  main.c 
 
 SRC_VM		= $(addprefix $(VM_SRC_DIR), $(VM_SRC_LIST))
 
 ####################VM_OBJECTS##################################################
 
-VM_OBJ_DIR = ./obj
+VM_OBJ_DIR = ./obj/
 VM_OBJECTS_LIST = $(patsubst %.c, %.o, $(VM_SRC_LIST))
 VM_OBJECTS = $(addprefix $(VM_OBJ_DIR), $(VM_OBJECTS_LIST))
 #VM_DEPS = $(VM_OBJECTS:.o=.d)

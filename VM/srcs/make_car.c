@@ -12,7 +12,8 @@
 
 #include "corewar.h"
 
-void	init_car(t_plr *plr, t_car **head, int pos, t_vm *vm)
+// void	init_car(t_plr *plr, t_car **head, int pos, t_vm *)
+void	init_car(t_plr *plr, t_car **head, int pos)
 {
 	t_car		*car;
 
@@ -54,7 +55,7 @@ t_car	*make_car(t_plr *plr, t_vm *vm)
 	{
 		tmp = (count * ((MEM_SIZE + equalizer) / vm->num_plr));
 		plr->position = tmp;
-		init_car(plr, &car, tmp, vm);
+		init_car(plr, &car, tmp);
 		plr = plr->next;
 		count++;
 	}

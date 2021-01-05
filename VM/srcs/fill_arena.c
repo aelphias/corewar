@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 16:39:28 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/04 15:13:15 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/05 21:08:42 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_copy_code(unsigned char *dst, unsigned int *src, int codesize)
 {
-	size_t i;
+	int i;
 
 	i = 0;
 	while (i < codesize) // почему 48? обрааааати на это вниманеи возможно изза длины кода леъхи
