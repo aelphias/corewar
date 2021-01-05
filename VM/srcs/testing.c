@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 19:13:14 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/05 15:24:23 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/05 20:48:12 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void print_list(t_plr *plr)
 	ft_printf("<<<< ИГРОКИ ПОШЛИ >>>>\n");
 	while (plr) 
 	{
-		int i = 0;
 		printf("plr->id %d\n", plr->id);
 		/* printf("plr->name %s\n", plr->name);
 		ft_printf("plr->cmnt %s\n", plr->cmnt); */

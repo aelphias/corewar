@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/04 21:07:34 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/05 20:45:45 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ typedef struct			s_car
 void	print_list(t_plr *plr);
 
 void	print_error(int num_error);
-t_plr	*ft_parse(int argc, char **argv, t_vm *vm);
+t_plr	 *ft_parse(int argc, char **argv);
 void check_flags(int argc, char **argv, t_vm *vm);
 int		read_from_file(t_plr *player, char *str, int nbr);
 

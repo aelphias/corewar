@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:10 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/05 18:26:24 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/05 20:45:19 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,7 +171,7 @@ t_plr *add_one_plr(char **argv, t_plr *plr, int i, int j)
 }
 /* 
 t_plr	 *ft_parse(int argc, char **argv, t_vm *vm) */
-t_plr	 *ft_parse(int argc, char **argv, t_vm *vm)
+t_plr	 *ft_parse(int argc, char **argv)
 {
 	int i;
 	int id;

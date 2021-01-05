@@ -6,7 +6,7 @@
 #    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2021/01/05 17:11:50 by aelphias         ###   ########.fr        #
+#    Updated: 2021/01/05 20:51:15 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@
 #
 NAME		=	corewar
 CC			=	gcc
-FLAGS		=	-Wall -Wextra  -g #-Werror
+FLAGS		=	-Wall -Wextra -g -Werror
 
 LIBRARIES_VM = -L$(LIB_DIR) -lft
 INCLUDES_VM = -I$(INC_DIR) -I$(LIB_DIR)
@@ -54,7 +54,7 @@ SRC_VM		= $(addprefix $(VM_SRC_DIR), $(VM_SRC_LIST))
 
 ####################VM_OBJECTS##################################################
 
-VM_OBJ_DIR = ./obj/
+VM_OBJ_DIR = ./obj
 VM_OBJECTS_LIST = $(patsubst %.c, %.o, $(VM_SRC_LIST))
 VM_OBJECTS = $(addprefix $(VM_OBJ_DIR), $(VM_OBJECTS_LIST))
 #VM_DEPS = $(VM_OBJECTS:.o=.d)
