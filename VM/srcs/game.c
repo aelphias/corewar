@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/05 21:10:01 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/06 15:25:31 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	init_func(void (**f)(t_car *, uint8_t*))
 	//f[12] = &op_fork;
 }
 
-int get_op_code(uint8_t *arena, t_car *car)
+int	get_op_code(uint8_t *arena, t_car *car)
 {
 	int res;
 
@@ -27,7 +27,7 @@ int get_op_code(uint8_t *arena, t_car *car)
 	return (res);
 }
 
-void operations(t_car *car, uint8_t *arena, void (**func)(t_car *, uint8_t *))
+void	operations(t_car *car, uint8_t *arena, void (**func)(t_car *, uint8_t *))
 {
 	//int op_id;
 	car->op_id = get_op_code(arena, car);
@@ -40,19 +40,24 @@ void operations(t_car *car, uint8_t *arena, void (**func)(t_car *, uint8_t *))
 		op_add(car, arena); // id car? */
 }
 
-
-void	game(t_plr *plr, t_car **car, uint8_t *arena, t_vm *vm)
+/* 
+* 0. Будем играть пока живы каретки
+*/
+void	game(t_plr *plr, t_car **head_car, uint8_t *arena, t_vm *vm)
 {
-	void		(*func[17])(t_car *, uint8_t *);
-	t_car *tmp;
+	void	(*func[17])(t_car *, uint8_t *);
+	t_car	*tmp;
 	
 	init_func(func);
-	tmp = (*car);
-	while (tmp)
+	tmp = (*head_car);
+	
+	while (*head_car)
 	{
-		// printf("\n <<<<<<<I'm car= %d >>>>>>>\n", tmp->id);
-		operations(tmp, arena, func);
-		// printf("\n END=%d\n", arena[tmp->position]);
-		tmp = tmp->next;
+		while (tmp)  // играть пока живы каретки и ??
+		{
+			operations(tmp, arena, func);
+			tmp = tmp->next;
+		}
+		tmp = (*head_car);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/05 21:11:41 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/06 15:32:40 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,65 +17,56 @@
 # include "../includes/op.h"
 # include "errors.h"
 
-# define PROG_NAME_LENGTH	(128)
-# define COMMENT_LENGTH		(2048)
-
-typedef struct	s_vm
+typedef struct		s_vm
 {
-	//int			arena[MEM_SIZE];
-	int			num_plr; //number of players
-	long int	cycles;
-	long int	cycles_to_die;
-	long int	cycles_aff_check;
-	int			n;            // флаг n
-	int			dump;			// флаг dump
-}				t_vm;
+	int				num_plr; //number of players
+	long int		cycles;
+	long int		cycles_to_die;
+	long int		cycles_aff_check;
+	int				n; // флаг n
+	int				dump;			// флаг dump
+}					t_vm;
 
-typedef struct s_plr
+typedef struct		s_plr
 {
-	int					id;
-	uint8_t		*name;
-	uint8_t		*cmnt;
-	uint8_t		position; // место где мы его ставим при начале игры
-	int					codesize;
-	uint8_t		*code;
-	struct s_plr		*next;
-}				t_plr;
+	int				id;
+	uint8_t			*name;
+	uint8_t			*cmnt;
+	uint8_t			position; // место где мы его ставим при начале игры
+	int				codesize;
+	uint8_t			*code;
+	struct s_plr	*next;
+}					t_plr;
 
 typedef struct			s_car
 {
-	int					carry;
-	uint8_t		position; // место где мы ее ставим при начале игры
-	uint8_t		reg[REG_NUMBER];
-	int					id;
-	uint8_t		arg[3];
-	struct s_car		*next;
-	int					parent_car;
-	int					live;
-	int					op_id;
-}						t_car;
+	int				carry;
+	uint8_t			position; // место где мы ее ставим при начале игры
+	uint8_t			reg[REG_NUMBER];
+	int				id;
+	uint8_t			arg[3];
+	int				parent_car;
+	int				live;
+	int				op_id;
+	struct s_car	*next;
+}					t_car;
 
-/* typedef struct s_op
-{
-	int op_id;
-}				t_op;
- */
 /*
 *	parse
 */
-void	print_list(t_plr *plr);
 
+t_plr	*ft_parse(int argc, char **argv);
+void	check_flags(int argc, char **argv, t_vm *vm);
+int	read_from_file(t_plr *player, char *str, int nbr);
 void	print_error(int num_error);
-t_plr	 *ft_parse(int argc, char **argv);
-void check_flags(int argc, char **argv, t_vm *vm);
-int		read_from_file(t_plr *player, char *str, int nbr);
 
 /*
 *	init car
 */
+
+void	init_car(t_plr *plr, t_car **head, int pos);
 t_car	*make_car(t_plr *plr, t_vm *vm);
-int		plr_count(t_plr *head);
-void	print_list_car(t_car *car);
+int	plr_count(t_plr *head);
 
 /*
 *	init arena 
@@ -85,15 +76,16 @@ void	fill_arena(t_plr *plr, t_vm *vm, uint8_t *arena);
 //void	ft_copy_code(uint8_t *dst, uint8_t *src);
 void	ft_copy_code(uint8_t *dst, uint8_t *src, int codesize);
 
-/*make
-*	инициализация всего
+/*
+*	инициализация t_vm
 */
+
 void	init_vm(t_vm *vm);
-void	init_car(t_plr *plr, t_car **head, int pos);
 
 /*
 *	utils
 */
+
 void	dump(uint8_t *arena);
 void	introduce_plrs(t_plr *plr);
 
@@ -122,6 +114,7 @@ void	operations(t_car *car, uint8_t *arena, void (**func)(t_car *, uint8_t *));
 */
 void	test(t_vm *vm, t_plr *plr);
 void	print_list(t_plr *plr);
+void	print_list_car(t_car *car);
 
 /*
 *	alfa version op_tab
