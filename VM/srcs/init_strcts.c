@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 16:29:10 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/06 19:52:19 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/06 23:13:55 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void init_vm(t_vm *vm)
 	vm->dump = -1;
 }
 
-/* void init_op(t_vm *op)
+void init_op(t_vm op[17])
 {	
 	op[1] = (t_vm){"live", 1, {T_DIR}, 1, 10, "alive", 0, 0, op_live};
 	op[2] = (t_vm){"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 0, op_ld}; // загрузка значения в регистр. 
@@ -41,5 +41,5 @@ void init_vm(t_vm *vm)
 		"long load index", 1, 1, op_lldi};
 	op[15] = (t_vm){"lfork", 1, {T_DIR}, 15, 1000, "long fork", 0, 1, op_lfork};
 	op[16] = (t_vm){"aff", 1, {T_REG}, 16, 2, "aff", 1, 0, op_aff};
-} */
+}
 

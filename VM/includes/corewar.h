@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/06 19:49:15 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/06 23:39:28 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,12 @@ typedef enum { false, true } bool;
 typedef struct		s_vm
 {
 	//uint8_t			arena[MEM_SIZE]; ?
-	int				num_plr; //number of players
-	int				num_car;
+	int				num_count; //number of players
+	int				car_count;
 	long int		cycles;
 	long int		cycles_to_die;
 	long int		cycles_aff_check;
+	long int		check_count;
 	int				n; // флаг n
 	int				dump;			// флаг dump
 }					t_vm;
@@ -60,7 +61,7 @@ typedef struct		s_op
 	bool			modify_carry;					//	6
 	uint8_t			t_dir_size;						//	7
 	bool			args_types_code;				//	8  check it is true
-	void			(*func)(t_car *, uint8_t *);	//	9 //? может передовать t_vm а не карту?
+	void			(*func)(t_car *, uint8_t *);	//	9 //? uint8_t* (arena) может передовать t_vm а не карту?
 }					t_op;
 
 typedef struct		s_plr
@@ -73,8 +74,6 @@ typedef struct		s_plr
 	uint8_t			*code;
 	struct s_plr	*next;
 }					t_plr;
-
-
 
 /*
 *	parse
@@ -108,7 +107,6 @@ void	ft_copy_code(uint8_t *dst, uint8_t *src, int codesize);
 void	init_vm(t_vm *vm);
 void	init_op(t_vm op[17]);
 
-
 /*
 *	utils
 */
@@ -126,16 +124,29 @@ void	ft_free_plr(t_plr *plr);
 /*
 *	game
 */
-void	game(t_plr *plr, t_car **car, uint8_t *arena, t_vm *vm);
-
+void	game(t_plr *plr, t_car **car, uint8_t *arena, t_vm **vm);
+void	check(t_vm **vm);
+void	kill_car(t_vm **vm, t_car **head_car);
 /*
 *	operations
 */
-void	op_fork(t_car *head, t_car * n_car, uint8_t *arena);
-void	op_add(t_car *car, uint8_t *arena);
 void	operations(t_car *car, uint8_t *arena, void (**func)(t_car *, uint8_t *));
-
-
+void	op_live(t_car *car, uint8_t *arena);
+void	op_ld(t_car *car, uint8_t *arena);
+void	op_st(t_car *car, uint8_t *arena);
+void	op_add(t_car *car, uint8_t *arena);
+void	op_sub(t_car *car, uint8_t *arena);
+void	op_and(t_car *car, uint8_t *arena);
+void	op_or(t_car *car, uint8_t *arena);
+void	op_xor(t_car *car, uint8_t *arena);
+void	op_zjmp(t_car *car, uint8_t *arena);
+void	op_ldi(t_car *car, uint8_t *arena);
+void	op_sti(t_car *car, uint8_t *arena);
+void	op_fork(t_car *head, t_car * n_car, uint8_t *arena);
+void	op_lld(t_car *car, uint8_t *arena);
+void	op_lldi(t_car *car, uint8_t *arena);
+void	op_lfork(t_car *car, uint8_t *arena);
+void	op_aff(t_car *car, uint8_t *arena);
 
 /*
 *	testing
@@ -144,11 +155,9 @@ void	test(t_vm *vm, t_plr *plr);
 void	print_list(t_plr *plr);
 void	print_list_car(t_car *car);
 
+
 /*
 *	alfa version op_tab
 */
-
-
-
 
 #endif

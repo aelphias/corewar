@@ -6,7 +6,7 @@
 #    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2021/01/05 21:08:59 by aelphias         ###   ########.fr        #
+#    Updated: 2021/01/06 22:23:27 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ NAME		=	corewar
 CC			=	gcc
 FLAGS		=	-Wall -Wextra -g #-Werror
 
-LIBRARIES_VM = -L$(LIB_DIR) -lft
+LIBRARIES_VM= -L$(LIB_DIR) -lft
 INCLUDES_VM = -I$(INC_DIR) -I$(LIB_DIR)
 LIB_DIR		=	../libft/
 LIB_FILE	=	$(LIB_DIR)libft.a
@@ -44,10 +44,25 @@ VM_SRC_LIST	= print_error.c \
 			  fill_arena.c \
 			  dump.c \
 			  game.c \
-			  op_add.c \
 			  init_strcts.c \
 			  introduce_plrs.c \
-			  main.c 
+			  main.c \
+			  op_live.c \
+			  op_ld.c \
+			  op_st.c \
+			  op_add.c \
+			  op_sub.c\
+			  op_and.c\
+			  op_or.c\
+			  op_xor.c\
+			  op_zjmp.c\
+			  op_ldi.c\
+			  op_sti.c\
+			  op_fork.c\
+			  op_lld.c\
+			  op_lldi.c\
+			  op_lfork.c\
+			  op_aff.c
 
 SRC_VM		= $(addprefix $(VM_SRC_DIR), $(VM_SRC_LIST))
 

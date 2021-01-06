@@ -6,13 +6,19 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/06 19:53:44 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/06 23:45:30 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-/* void	init_func(void (**f)(t_car *, uint8_t*))
+/* void	check(t_vm **vm)
+{
+	(*vm)->check_count++;
+	
+}
+
+void	init_func(void (**f)(t_car *, uint8_t*))
 {
 	f[0] = NULL;
 	f[4] = &op_add;
@@ -35,6 +41,7 @@ void	cycle(t_car **head_car, uint8_t *arena)
 	t_car	*car;
 	void	(*func[17])(t_car *, uint8_t *);
 	
+	car = (*head_car);
 	init_func(func);
 	while (*head_car)
 	{
@@ -44,27 +51,27 @@ void	cycle(t_car **head_car, uint8_t *arena)
 				get_op_code(arena, car);
 			if (car->op_code >= 1 && car->op_code <= 16 )
 			{
+				
 			}
-						
 			operations(car, arena, func);
 			car = car->next;
 		}
 		car = (*head_car);
 	}
 }
-
-
-
-void	game(t_plr *plr, t_car **head_car, uint8_t *arena, t_vm *vm)
+	
+void	game(t_plr *plr, t_car **head_car, uint8_t *arena, t_vm **vm)
 {
 	t_car	*car;
 	
 	car = (*head_car);
-	while (vm->num_car)
+	while ((*vm)->car_count)
 	{
-		//cycle(head_car, )
-		if (!vm->cycles_to_die || (vm->cycles % vm->cycles_to_die) == 0)
-			check(vm);		
+		cycle(head_car, arena);
+		if (!((*vm)->cycles_to_die) ||
+		 ((*vm)->cycles % (*vm)->cycles_to_die) == 0)
+			check(vm);
+		kill_car(vm, head_car);
 	}
 }
  */
