@@ -1,5 +1,29 @@
 .name           "adder"
 .comment        ""
 
-	add	r2,r3,r4
-	live %-1
+add	r25,r35,r4
+live %-1
+live %-1
+live %-1
+live %-1
+live %-1
+live %-1
+live %-1
+live %-1
+live %-1
+live %-1
+live %-1
+live %-1
+live %-1
+live %-1
+live %-1
+live %-1
+live %-1
+live %-1
+live %-1
+live %-2
+live %-2
+live %-2
+live %-1
+live %-1
+live %-1

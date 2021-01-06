@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 20:09:23 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/28 22:33:24 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/06 15:35:51 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 #define REG_SIZE				4 //размер одного регистра
 #define DIR_SIZE				REG_SIZE
 
+/* 
+* 1  0000 0001
+# 2  0000 0010
+# 3  0000 0011
+*/
 
 # define REG_CODE				1
 # define DIR_CODE				2
@@ -27,7 +32,7 @@
 #define MAX_ARGS_NUMBER			4
 #define MAX_PLAYERS				4
 #define MEM_SIZE				(4*1024) // размер арены
-#define IDX_MOD					(MEM_SIZE / 8) /*максимальный прыжок каретки*/
+#define IDX_MOD					(MEM_SIZE / 8) /*максимальный прыжок каретки?   = 512*/
 #define CHAMP_MAX_SIZE			(MEM_SIZE / 6)
 
 #define COMMENT_CHAR			'#'
