@@ -6,7 +6,7 @@
 #    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2021/01/06 22:23:27 by aelphias         ###   ########.fr        #
+#    Updated: 2021/01/07 22:08:03 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,9 @@ VM_SRC_LIST	= print_error.c \
 			  op_lld.c\
 			  op_lldi.c\
 			  op_lfork.c\
-			  op_aff.c
+			  op_aff.c\
+			  get_op_code.c\
+			  update_pos.c
 
 SRC_VM		= $(addprefix $(VM_SRC_DIR), $(VM_SRC_LIST))
 

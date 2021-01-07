@@ -5,11 +5,11 @@ We have:
 	- PC - a register that has address of next set of instructions to execute
 	- a flag carry
 champions positioned evenly on arena
-Precesses executed sequantially.
-VM must check processes every after CYCLE_TO_DIE periods 
+Processes executed sequantially.
+VM must check processes after every CYCLE_TO_DIE periods 
 ---> to answer the question if process executed "live" at least 1 time.
-  if at least 1 NBR_LIVE execution of live has been since last check
-	  ---> decrease CYCLE_TO_DIE of CYCLE_DELTA units
+if at least 1 NBR_LIVE execution of live has been since last check
+	---> decrease CYCLE_TO_DIE of CYCLE_DELTA units
 GAME OVER when all processes are dead
 WINNER -->  who last reported alive
 

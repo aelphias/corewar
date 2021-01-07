@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   kill_car.c                                         :+:      :+:    :+:   */
+/*   bury_car.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 23:38:09 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/06 23:44:30 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/07 13:53:42 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	kill_car(t_vm **vm, t_car **head_car)
+void	bury_car(t_vm **vm, t_car **head_car)
 {
-	t_car *tmp;	
-	t_car *current;
+	t_car *cur;
 	t_car *del;
 	
-	tmp = NULL;
 	del = NULL;
-	current = (*head_car);
-	while (current)
+	cur = (*head_car);
+	while (cur)
 	{
-		if ((!(*vm)->cycles_to_die))) || )
+		if ((!(*vm)->cycles_to_die)
+		|| ((*vm)->cycles - cur->last_live) >= (*vm)->cycles_to_die)
 		{
-			/* code */
+			(*vm)->car_count--;
+			del = cur;
+			cur = cur->next;
+			ft_memdel(&del);
 		}
-		
-		current = current->next;
+		cur = cur->next;
 	}
-		
 }

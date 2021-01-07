@@ -20,9 +20,11 @@
 
 void	op_add(t_car *car, uint8_t *arena)
 {
-    int type_arg;
+	int type_arg;
 	int arg1;
 	int arg2;
+
+	car->position = update_pos(car->position);
 
 	type_arg = arena[car->position + 1];
 	arg1 = car->reg[arena[car->position + 2]];
