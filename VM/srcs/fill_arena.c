@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 16:39:28 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/07 22:48:10 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/08 13:12:24 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	ft_copy_code(uint8_t *dst, uint8_t *src, int codesize)
 	}
 }
 
-
 void	fill_arena(t_plr *plr, t_vm *vm, uint8_t *arena)
 {
 	int i;
@@ -33,7 +32,6 @@ void	fill_arena(t_plr *plr, t_vm *vm, uint8_t *arena)
 	while (plr)
 	{
 		ft_copy_code(&(arena[plr->position]), plr->code, plr->codesize);
-		ft_printf("plr->position = %d\n", plr->position);
 		plr = plr->next;
 	}
 	if ((vm->dump) != -1)  // add dependency from a cycle

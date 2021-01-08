@@ -42,6 +42,7 @@ t_car	*make_car(t_plr *plr, t_vm *vm)
 	t_car	*car;
 	
 	count = 0;
+	equalizer = 0;
 	car = NULL;
 	vm->plr_count = plr_count(plr);
 	vm->car_count = vm->plr_count;
@@ -57,6 +58,5 @@ t_car	*make_car(t_plr *plr, t_vm *vm)
 		plr = plr->next;
 		count++;
 	}
-
 	return (car);
 }

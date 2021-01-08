@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/07 22:30:46 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/08 13:11:53 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,14 @@ int		main(int argc, char **argv)
 */
 	introduce_plrs(plr);
 	fill_arena(plr, vm, arena);
-	game(plr, &car, arena, &vm, op);
+	//game(plr, &car, arena, &vm, op);
 
 /*
 *	6. test
 */
 	
 	//test(vm, plr);
-	// print_list(plr);
+	//print_list(plr);
 	//print_list_car(car);
 	return (0);
 }
@@ -86,3 +86,4 @@ int		main(int argc, char **argv)
 * 0. free() структуры при ошибке
 * 1. развернуть список игроков/
 */
+ 

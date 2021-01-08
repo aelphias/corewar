@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/07 22:00:46 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/08 12:54:34 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef enum { false, true } bool;
 typedef struct		s_vm
 {
 	//uint8_t			arena[MEM_SIZE];  может запихнуть сюда
-	int				plr_count; //number of players
+	uint8_t			plr_count; //number of players
 	int				car_count;
 	long int		check_count;
 	long int		cycles;
@@ -41,7 +41,7 @@ typedef struct		s_vm
 typedef struct		s_car
 {
 	bool			carry;
-	uint32_t		position; // место где мы ее ставим при начале игры
+	int				position; // место где мы ее ставим при начале игры
 	uint8_t			reg[REG_NUMBER];
 	int				id;
 	uint8_t			arg[3];
@@ -72,7 +72,7 @@ typedef struct		s_plr
 	int				id;
 	uint8_t			*name;
 	uint8_t			*cmnt;
-	uint8_t			position; // место где мы его ставим при начале игры
+	int				position; // место где мы его ставим при начале игры
 	int				codesize;
 	uint8_t			*code;
 	struct s_plr	*next;

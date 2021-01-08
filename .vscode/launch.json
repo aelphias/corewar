@@ -9,7 +9,7 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/VM/corewar",
-			"args": ["${workspaceFolder}/VM/adder.cor"],
+			"args": ["${workspaceFolder}/VM/adder.cor", "${workspaceFolder}/VM/adder.cor"],
 			"stopAtEntry": true,
 			"cwd": "${workspaceFolder}",
 			"environment": [],
