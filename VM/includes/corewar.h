@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/08 12:54:34 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/08 19:18:33 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,28 +41,28 @@ typedef struct		s_vm
 typedef struct		s_car
 {
 	bool			carry;
-	int				position; // место где мы ее ставим при начале игры
+	unsigned int	position; // место где мы ее ставим при начале игры
 	uint8_t			reg[REG_NUMBER];
 	int				id;
 	uint8_t			arg[3];
 	int				parent_car;
-	int				last_live; // цикл в котором в прошлый раз была выполнена op_live
-	uint8_t			op_code;
-	uint32_t		wait;
-	uint32_t		pc; //сколько байт перешагнуть чтобы оказаться на след интсрукции
+	unsigned int	last_live; // цикл в котором в прошлый раз была выполнена op_live
+	unsigned int	op_code;
+	unsigned int	wait;
+	unsigned int	pc; //сколько байт перешагнуть чтобы оказаться на след интсрукции
 	struct s_car	*next;
 }					t_car;
 
 typedef struct		s_op
 {
 	char			*name;							//	0
-	uint8_t			args_amount;					//	1
+	unsigned int	args_amount;					//	1
 	uint8_t			args_types[3];					//	2
 	uint8_t			code;							//	3
-	uint32_t		cycle_wait;						//	4
+	unsigned int	cycle_wait;						//	4
 	char			*comment;						//	5
 	bool			modify_carry;					//	6
-	uint8_t			t_dir_size;						//	7
+	unsigned int	t_dir_size;						//	7
 	bool			args_types_code;				//	8  check it is true
 	void			(*func)(t_car *, uint8_t *);	//	9 //? uint8_t* (arena) может передовать t_vm а не карту?
 }					t_op;
@@ -72,8 +72,8 @@ typedef struct		s_plr
 	int				id;
 	uint8_t			*name;
 	uint8_t			*cmnt;
-	int				position; // место где мы его ставим при начале игры
-	int				codesize;
+	unsigned int	position; // место где мы его ставим при начале игры
+	unsigned int	codesize;
 	uint8_t			*code;
 	struct s_plr	*next;
 }					t_plr;

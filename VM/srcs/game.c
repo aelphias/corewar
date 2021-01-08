@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/07 22:21:02 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/08 19:14:52 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	exec(t_car *car, uint8_t *arena, t_op *op)
 /* 
 Чтобы запустить цикл нужно:
 init_car
-
  */
 
 bool	valid_op(t_car *car)
@@ -54,37 +53,37 @@ void	cycle(t_car **head_car, uint8_t *arena, t_op *op)
 	void	(*func[17])(t_car *, uint8_t *);
 	
 	car = (*head_car);
-			car->op_code = get_op_code(arena, car->position);
-			ft_printf("op_code= %x\n",car->op_code);
-			ft_printf("car id=%d\n",car->id);
-			//car->position++;
-	/* init_func(func);
+	//car->op_code = get_op_code(arena, car->position);
+	ft_printf("car id=%d\n",car->id);
+/* 	if (valid_op(car))
+		exec(car, arena, op); */
+	//car->position++;
+	//init_func(func);
 	while (car)
 	{
 		if (car->wait == 0)
 		{
-			get_op_code(arena, car->position);
+			car->op_code =get_op_code(arena, car->position);
+			ft_printf("op_code= %x\n",car->op_code);
 			if (valid_op(car))
 				exec(car, arena, op);
 		}
-		car = car->next;
-	} */
+		else
+		car->wait--;
+	car = car->next;
+	}
 }
 
 void	game(t_plr *plr, t_car **head_car, uint8_t *arena, t_vm **vm, t_op *op)
 {
-	//while ((*vm)->car_count)
-	//{
-		//(*vm)->cycles++;
-		//ft_printf("(*vm)->cycles = %d\n", (*vm)->cycles);
-		
-			ft_printf("head_car->position = %d\n", (*head_car)->position);
+	while ((*vm)->car_count)
+	{
+		(*vm)->cycles++;
 		cycle(head_car, arena, op);
-		/* if (!((*vm)->cycles_to_die) ||
-		 ((*vm)->cycles % (*vm)->cycles_to_die) == 0)
-			check(vm, head_car); */
-		//(*vm)->car_count--;
-	//}
+		if (!((*vm)->cycles_to_die) || ((*vm)->cycles % (*vm)->cycles_to_die) == 0)
+			printf("\nCheck() was called\n");//check(vm, head_car);
+		(*vm)->car_count--;
+	}
+	ft_printf("(*vm)->cycles = %d\n", (*vm)->cycles);
 	//ft_printf("Contestant 1, %s has won !\n", (*vm)->winner);
-	//			func[car->op_code](car, arena);
 }
