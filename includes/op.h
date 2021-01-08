@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 20:09:23 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/28 22:33:24 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/07 20:35:35 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,21 @@
 #define REG_SIZE				4 //размер одного регистра
 #define DIR_SIZE				REG_SIZE
 
+/* 
+* 1  0000 0001
+# 2  0000 0010
+# 3  0000 0011
+*/
 
 # define REG_CODE				1
 # define DIR_CODE				2
 # define IND_CODE				3
 
 
-#define MAX_ARGS_NUMBER			4
+#define MAX_ARGS_NUMBER			4  //
 #define MAX_PLAYERS				4
 #define MEM_SIZE				(4*1024) // размер арены
-#define IDX_MOD					(MEM_SIZE / 8) /*максимальный прыжок каретки*/
+#define IDX_MOD					(MEM_SIZE / 8) /*максимальный прыжок каретки?   = 512*/
 #define CHAMP_MAX_SIZE			(MEM_SIZE / 6)
 
 #define COMMENT_CHAR			'#'
@@ -47,11 +52,13 @@
 #define NBR_LIVE				21
 #define MAX_CHECKS				10
 
-/*
-**
-*/
 
 typedef char	t_arg_type;
+
+/*
+** Why we need this \/ ?
+*/
+
 
 #define T_REG					1 //Регистр
 #define T_DIR					2 //Прямой аргумент 
@@ -69,7 +76,7 @@ typedef char	t_arg_type;
 typedef struct		header_s
 {
 	unsigned int		magic;   //big endian //где он находиться в файле?
-	char				prog_name[PROG_NAME_LENGTH + 1]; //если размер массива кратно 4м то тогда не будет  лобавляться нулей после, не тто добавиться до кратного 4м
+	char				prog_name[PROG_NAME_LENGTH + 1]; //если размер массива кратно 4м то тогда не будет  лобавляться нулей после, не то добавиться до кратного 4м
 	unsigned int		prog_size;
 	char				comment[COMMENT_LENGTH + 1];
 }					header_t;

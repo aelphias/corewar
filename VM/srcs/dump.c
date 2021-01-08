@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   dump.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 18:46:26 by kcharlet          #+#    #+#             */
-/*   Updated: 2020/12/30 16:50:55 by kcharlet         ###   ########.fr       */
+/*   Updated: 2021/01/05 21:10:01 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	dump(unsigned char *arena)
+void	dump(uint8_t *arena)
 {
 	int i;
 
@@ -20,7 +20,7 @@ void	dump(unsigned char *arena)
 	while (++i <= MEM_SIZE) 
 	{
 		ft_printf("%02x ", arena[i - 1]);
-		if (i % 64 == 0 && i != 0)
+		if (i % 32 == 0 && i != 0)   // здесь можно изменить ширину вывода
 			ft_printf("\n");
 	// добавить зависимость от цикла
 	}

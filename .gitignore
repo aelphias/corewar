@@ -1,1 +1,7 @@
 .DS_Store
+.o
+.a
+corewar
+VM/obj/
+libft/libft.a
+libft/objects/ft_atoi.o

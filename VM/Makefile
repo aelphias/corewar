@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+         #
+#    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2020/12/29 19:53:11 by kcharlet         ###   ########.fr        #
+#    Updated: 2021/01/07 22:08:03 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,9 @@
 #
 NAME		=	corewar
 CC			=	gcc
-FLAGS		=	-Wall -Wextra  -g #-Werror
+FLAGS		=	-Wall -Wextra -g #-Werror
 
-LIBRARIES_VM = -L$(LIB_DIR) -lft
+LIBRARIES_VM= -L$(LIB_DIR) -lft
 INCLUDES_VM = -I$(INC_DIR) -I$(LIB_DIR)
 LIB_DIR		=	../libft/
 LIB_FILE	=	$(LIB_DIR)libft.a
@@ -35,16 +35,36 @@ INC			=	-I$(LIB_DIR) -I$(INC_DIR)
 
 ####################VM_SOURSES##################################################
 
-VM_SRC_LIST	= main.c \
-			  print_error.c \
+VM_SRC_LIST	= print_error.c \
 			  parsing.c \
 			  parse_flags.c \
 			  testing.c \
-			  read_from_file.c \
 			  plr_count.c \
 			  make_car.c \
 			  fill_arena.c \
-			  dump.c
+			  dump.c \
+			  game.c \
+			  init_strcts.c \
+			  introduce_plrs.c \
+			  main.c \
+			  op_live.c \
+			  op_ld.c \
+			  op_st.c \
+			  op_add.c \
+			  op_sub.c\
+			  op_and.c\
+			  op_or.c\
+			  op_xor.c\
+			  op_zjmp.c\
+			  op_ldi.c\
+			  op_sti.c\
+			  op_fork.c\
+			  op_lld.c\
+			  op_lldi.c\
+			  op_lfork.c\
+			  op_aff.c\
+			  get_op_code.c\
+			  update_pos.c
 
 SRC_VM		= $(addprefix $(VM_SRC_DIR), $(VM_SRC_LIST))
 
