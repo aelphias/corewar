@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/08 19:14:52 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/08 21:36:39 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,11 @@
 	bury_car(vm, head_car);
 }
 */
-void	init_func(void (**f)(t_car *, uint8_t*))
+/* void	init_func(void (**f)(t_car *, uint8_t*))
 {
 	f[0] = NULL;
 	f[4] = &op_add;
-	//f[12] = &op_fork;
-}
+	//f[12] = &op_fork; */
  
 void	exec(t_car *car, uint8_t *arena, t_op *op)
 {
@@ -43,27 +42,27 @@ init_car
 bool	valid_op(t_car *car)
 {
 	if (car->op_code >= 1 && car->op_code <= 16)
-		return(true);
+		return (true);
 	return (false);
 }
 
 void	cycle(t_car **head_car, uint8_t *arena, t_op *op)
 {
 	t_car	*car;
-	void	(*func[17])(t_car *, uint8_t *);
+	//void	(*func[17])(t_car *, uint8_t *);
 	
 	car = (*head_car);
 	//car->op_code = get_op_code(arena, car->position);
 	ft_printf("car id=%d\n",car->id);
 /* 	if (valid_op(car))
 		exec(car, arena, op); */
-	//car->position++;
 	//init_func(func);
 	while (car)
 	{
 		if (car->wait == 0)
 		{
-			car->op_code =get_op_code(arena, car->position);
+			car->op_code = get_op_code(arena, car->position);
+			car->position++;
 			ft_printf("op_code= %x\n",car->op_code);
 			if (valid_op(car))
 				exec(car, arena, op);

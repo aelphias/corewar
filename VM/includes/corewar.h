@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/08 19:18:33 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/08 21:32:57 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef enum { false, true } bool;
 typedef struct		s_vm
 {
 	//uint8_t			arena[MEM_SIZE];  может запихнуть сюда
-	uint8_t			plr_count; //number of players
+	unsigned int	plr_count; //number of players
 	int				car_count;
 	long int		check_count;
 	long int		cycles;
@@ -57,8 +57,8 @@ typedef struct		s_op
 {
 	char			*name;							//	0
 	unsigned int	args_amount;					//	1
-	uint8_t			args_types[3];					//	2
-	uint8_t			code;							//	3
+	char			*args_types[3];					//	2
+	unsigned int	code;							//	3
 	unsigned int	cycle_wait;						//	4
 	char			*comment;						//	5
 	bool			modify_carry;					//	6
@@ -108,17 +108,17 @@ void	ft_copy_code(uint8_t *dst, uint8_t *src, int codesize);
 */
 
 void	init_vm(t_vm *vm);
-void	init_op(t_vm op[17]);
+void	init_op(t_op op[17]);
 
 /*
 *	utils
 */
 
+unsigned int	update_pos(unsigned int pos);
+uint8_t	get_op_code(uint8_t *arena, unsigned int position);
 void	dump(uint8_t *arena);
 void	introduce_plrs(t_plr *plr);
 int	arena_loop(uint8_t *arena, uint32_t coord);
-uint8_t	update_pos(uint32_t pos);
-uint8_t	get_op_code(uint8_t *arena, uint32_t position);
 
 /*
 *	зачистка всего
@@ -136,6 +136,7 @@ void	bury_car(t_vm **vm, t_car **head_car);
 *	operations
 */
 //void	operations(t_car *car, uint8_t *arena, void (**func)(t_car *, uint8_t *));
+void	no();
 void	op_live(t_car *car, uint8_t *arena);
 void	op_ld(t_car *car, uint8_t *arena);
 void	op_st(t_car *car, uint8_t *arena);

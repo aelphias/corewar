@@ -6,13 +6,13 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 16:01:29 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/08 19:06:59 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/08 21:32:02 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-uint8_t	get_op_code(uint8_t *arena, uint32_t position)
+uint8_t	get_op_code(uint8_t *arena, unsigned int position)
 {
 	if (position >= MEM_SIZE)
 	position = position % MEM_SIZE;
