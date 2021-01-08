@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:10 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/08 12:44:49 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/08 19:11:45 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ t_plr *revlist(t_plr *plr)
 	{
 		t_plr *next = plr->next;
 		plr->next = prev;
-		prev = plr;
+		prev = plr; 
 		plr = next;
 	}
 	return (prev);
@@ -184,8 +184,6 @@ t_plr	 *ft_parse(int argc, char **argv)
 	{
 		if ((ft_strcmp(argv[i], "-dump")) == 0)
 		{
-			if (argc <= 2)
-				print_error(ERR_USE);
 			if (i + 1 == argc)
 				break ;
 			else

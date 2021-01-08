@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_flags.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 20:51:41 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/30 16:50:28 by kcharlet         ###   ########.fr       */
+/*   Updated: 2021/01/08 19:17:13 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,15 @@ void check_flags(int argc, char **argv, t_vm *vm)
 	{
 		if ((ft_strcmp(argv[i], "-dump")) == 0)
 		{	
-			if (argc == 1)
+			if (argc <= 2)
+				print_error(ERR_USE);
+			if (argc == i)
 				print_error(ERR_USE);
 			if (flag == 1)
 			{
 				//free
 				write(2, "USE ONE VALUE FOR DUMP\n", 23);
+				exit(1);
 			}
 			if (!(is_num(argv[i + 1])))
 			{
