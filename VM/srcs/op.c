@@ -3,14 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   op.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/25 00:11:29 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/08 21:23:38 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/09 16:58:04 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+
+void print_op(t_op op[17])
+{
+	int i = 1;
+	
+	while (i < 17)
+	{
+			printf("%s %u %u %s\n", op[i].name, op[i].args_amount, op[i].cycle_wait, op[i].comment);
+		i++;
+	}
+}
 
 void	no()
 {
@@ -43,6 +54,7 @@ void init_op(t_op op[17])
 	op[15] = (t_op){"lfork", 1, {T_DIR}, 15, 1000, "long fork", 0, 1, op_lfork};
 	op[16] = (t_op){"aff", 1, {T_REG}, 16, 2, "aff", 1, 0, op_aff};
 }
+
 
 /*
 

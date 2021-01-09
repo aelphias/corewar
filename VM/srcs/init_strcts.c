@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_strcts.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 16:29:10 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/08 21:15:03 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/09 17:19:35 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,4 +15,6 @@
 void init_vm(t_vm *vm)
 {
 	vm->dump = -1;
+	vm->dump = -1;
+	vm->cycles_to_die = CYCLE_TO_DIE;
 }

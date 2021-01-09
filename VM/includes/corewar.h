@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/08 21:32:57 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/09 16:57:57 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,7 @@ void	op_aff(t_car *car, uint8_t *arena);
 void	test(t_vm *vm, t_plr *plr);
 void	print_list(t_plr *plr);
 void	print_list_car(t_car *car);
+void	print_op(t_op op[17]);
 
 
 /*
