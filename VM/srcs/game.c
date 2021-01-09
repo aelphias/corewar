@@ -6,7 +6,7 @@
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/09 17:17:12 by kcharlet         ###   ########.fr       */
+/*   Updated: 2021/01/09 18:10:32 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,22 @@
 void	init_func(void (**f)(t_car *, uint8_t*))
 {
 	f[0] = NULL;
+	f[1] = &op_add;
+	f[2] = &op_add;
+	f[3] = &op_add;
 	f[4] = &op_add;
-	//f[12] = &op_fork;
+	f[5] = &op_add;
+	f[6] = &op_add;
+	f[7] = &op_add;
+	f[8] = &op_add;
+	f[9] = &op_add;
+	f[10] = &op_add;
+	f[11] = &op_add;
+	f[12] = &op_fork;
+	f[13] = &op_fork;
+	f[14] = &op_fork;
+	f[15] = &op_fork;
+	f[16] = &op_fork;
 }
  
 void	exec(t_car *car, uint8_t *arena, t_op *op, void (*func[17])(t_car *, uint8_t *))
@@ -38,7 +52,7 @@ void	exec(t_car *car, uint8_t *arena, t_op *op, void (*func[17])(t_car *, uint8_
 	if (car->wait)
 		car->wait--;
 	else
-		func[4](car, arena);
+		func[car->op_code](car, arena);
 		//op[car->op_code].func(car, arena);
 }
 /* 
@@ -68,6 +82,7 @@ void	cycle(t_car **head_car, uint8_t *arena, t_op *op, void (*func[17])(t_car *,
 		if (car->wait == 0)
 		{
 			car->op_code = get_op_code(arena, car->position);
+			//get_args(arena, car);
 			//if (type_of_args)
 			//take args
 			//move  car
