@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:10 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/09 16:44:59 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/09 18:51:03 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,12 +104,6 @@ int checkdotcor(char *argv)
 
 	len = 0;
 	len = ft_strlen(argv);
-	if (len < 5)
-	{
-		//free();
-		write(2, "ERROR FILE CHAMP\n", 17);
-		exit(1);
-	}
 	if (argv[len - 1] == 'r' && argv[len - 2] == 'o' && argv[len - 3] ==  'c' && argv[len - 4] == '.')
 		return (1);
 	else
@@ -179,7 +173,7 @@ t_plr	 *ft_parse(int argc, char **argv)
 	t_plr *plr;
 
 	i = 1;
-	id = -1;
+	id = 1;
 	while (i <= argc)
 	{
 		if ((ft_strcmp(argv[i], "-dump")) == 0)
@@ -192,33 +186,26 @@ t_plr	 *ft_parse(int argc, char **argv)
 		if ((ft_strcmp(argv[i], "-n")) == 0)
 		{
 			if (i >= argc - 1)
-			{
 				print_error(ERR_USE);
-				exit(1);
-			}
 			else if (!(is_num(argv[i + 1])))
-			{
 				print_error(ERR_USE);
-				exit(1);
-			}
 			else
 				i = i + 2;
 		}
 		if (checkdotcor(argv[i]))
 		{
-			if (id == -1)
+			if (id == 1)
 				plr = add_one_plr(argv, plr, i, id);
-			if (id < -1)
+			if (id > 1)
 			{
 				fd = open(argv[i], O_RDONLY);
 				if (fd == -1)
 					error_file();/* 
 				create_list_plr(plr, argv[i], id, fd); >> aelphias removed , argv[i] 5.1.2021 <<*/
 				create_list_plr(plr, id, fd);
-				//plr->id = id;
 				close(fd);
 			}
-			id--;
+			id++;
 		}
 		else
 			error_file();

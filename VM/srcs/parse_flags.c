@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 20:51:41 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/09 16:25:09 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/09 19:14:29 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,7 @@ void check_flags(int argc, char **argv, t_vm *vm)
 				exit(1);
 			}
 			if (!(is_num(argv[i + 1])))
-			{
 				print_error(ERR_USE);
-				exit(1);
-			}
 			vm->dump = ft_atoi(argv[i + 1]);
 			flag = 1;
 			if (vm->dump < 0)
@@ -60,4 +57,42 @@ void check_flags(int argc, char **argv, t_vm *vm)
 		}
 		i++;
 	}
+}
+
+
+
+void check_n_flags(int argc, char **argv, t_plr *plr)
+{
+	int i;
+	int j;
+	int num[4];
+	int plrs;
+	
+	plrs = plr_count(plr);
+	i = 1;
+	j = 0;
+	ft_bzero(num, 0);
+	while (i < argc)
+	{
+		if (checkdotcor(argv[i]))
+		{
+			if ((ft_strcmp(argv[i - 2], "-n")) == 0)
+				num[j] = ft_atoi(argv[i - 1]);
+			else
+				num[j] = 0;
+			if (j > plrs)
+				print_error(ERR_USE);
+			if (num[j] > plrs)
+				print_error(ERR_USE);
+			j++;
+		}
+		i++;
+	}
+	i = 0;
+	while (i < 4)
+	{
+		ft_printf(" %d ", num[i]);
+		i++;
+	}
+	ft_printf("\n");
 }

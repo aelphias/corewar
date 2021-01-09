@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/09 15:20:01 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/09 18:43:58 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,9 @@ typedef struct		s_plr
 
 t_plr	*ft_parse(int argc, char **argv);
 void	check_flags(int argc, char **argv, t_vm *vm);
-int	read_from_file(t_plr *player, char *str, int nbr);
+int		read_from_file(t_plr *player, char *str, int nbr);
 void	print_error(int num_error);
+void 	check_n_flags(int argc, char **argv, t_plr *plr);
 
 /*
 *	init car
@@ -94,7 +95,7 @@ void	print_error(int num_error);
 
 void	init_car(t_plr *plr, t_car **head, int pos);
 t_car	*make_car(t_plr *plr, t_vm *vm);
-int	plr_count(t_plr *head);
+int		plr_count(t_plr *head);
 
 /*
 *	init arena 

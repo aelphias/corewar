@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/08 13:11:53 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/09 18:53:30 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int		main(int argc, char **argv)
 		//ft_free_vm(vm);
 		print_error(ERR_PARSE);
 	}
+	check_n_flags(argc, argv, plr);
 /*
 *	4. Инициализируем арену и создаем каретки
 */
