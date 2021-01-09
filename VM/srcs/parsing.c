@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:10 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/08 19:11:45 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/09 16:44:59 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,6 +186,21 @@ t_plr	 *ft_parse(int argc, char **argv)
 		{
 			if (i + 1 == argc)
 				break ;
+			else
+				i = i + 2;
+		}
+		if ((ft_strcmp(argv[i], "-n")) == 0)
+		{
+			if (i >= argc - 1)
+			{
+				print_error(ERR_USE);
+				exit(1);
+			}
+			else if (!(is_num(argv[i + 1])))
+			{
+				print_error(ERR_USE);
+				exit(1);
+			}
 			else
 				i = i + 2;
 		}
