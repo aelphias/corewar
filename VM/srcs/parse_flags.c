@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 20:51:41 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/09 19:14:29 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/09 20:14:27 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,21 @@ void check_n_flags(int argc, char **argv, t_plr *plr)
 		}
 		i++;
 	}
+	i = 0;
+	j = 1;
+	while (i < plrs)
+	{
+		while (j < plrs)
+		{
+			if (num[i] != 0)
+				if (num[i] == num[j])
+					print_error(ERR_USE);
+			j++;
+		}
+		i++;
+		j = i + 1;
+	}
+	
 	i = 0;
 	while (i < 4)
 	{
