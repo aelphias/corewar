@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:59:25 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/26 12:32:06 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/09 20:52:48 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ void	is_file_valid_or_not(char *name, t_crw *champ)
 
 	len = ft_strlen(name);
 	fd = 0;
-	if (len > 2 && name[len - 2] == '.' && name[len - 1] == 's' &&
-	(fd = open(name, O_RDONLY)))
+	if (len > 2 && name[len - 2] == '.' && name[len - 1] == 's' && (fd = open(name, O_RDONLY)))
 		are_h_and_b_valid(fd, champ);
 	else
 		free_and_call(*champ, ER_IN_F);

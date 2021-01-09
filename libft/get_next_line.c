@@ -3,89 +3,74 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:04:47 by jigglyp           #+#    #+#             */
-/*   Updated: 2020/12/15 16:06:48 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/09 21:03:02 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		freedom(char *buf, int n)
+int	ft_check(char **line, int fd, char **left)
 {
-	free(buf);
-	return (n);
-}
+	char *pos;
+	char *tmp;
 
-static t_list	*fill_list(t_list **doc, int fd)
-{
-	t_list *tmp;
-
-	tmp = *doc;
-	while (tmp)
-	{
-		if (tmp->content_size == (size_t)fd)
-			return (tmp);
-		tmp = tmp->next;
-	}
-	tmp = (t_list *)malloc(sizeof(t_list));
-	tmp->content_size = fd;
-	tmp->content = ft_strnew(0);
-	ft_lstadd(doc, tmp);
-	return (tmp);
-}
-
-static int		dont_forget_line(char **line, t_list *tmp, char *buf, int ret)
-{
-	char *tmp_l;
-
-	ret == 0 ? free(buf) : 0;
-	if (tmp->content == NULL)
+	if (!(pos = ft_strchr(left[fd], '\n')))
 		return (0);
-	tmp_l = ft_strchr(tmp->content, '\n');
-	if (tmp_l)
+	tmp = left[fd];
+	*pos = '\0';
+	*line = ft_strdup(tmp);
+	pos++;
+	if (*pos == '\0')
 	{
-		*tmp_l = '\0';
-		(*line) = ft_strdup(tmp->content);
-		tmp_l++;
-		ft_strcpy(tmp->content, tmp_l);
+		ft_strdel(&left[fd]);
 		return (1);
 	}
-	else if (ft_strlen(tmp->content) > 0)
+	left[fd] = ft_strdup(pos);
+	ft_strdel(&tmp);
+	return (1);
+}
+
+int	ft_read_line(char **line, int fd, char **left)
+{
+	int			ret;
+	char		b[BUFF_SIZE + 1];
+	char		*tmp;
+
+	while ((ret = read(fd, b, BUFF_SIZE)))
 	{
-		*line = ft_strdup(tmp->content);
-		return (1);
+		b[ret] = '\0';
+		if (!left[fd])
+			left[fd] = ft_strdup(b);
+		else
+		{
+			tmp = left[fd];
+			left[fd] = ft_strjoin(tmp, b);
+			ft_strdel(&tmp);
+		}
+		if (ft_check(line, fd, left))
+			return (1);
 	}
-	free(tmp->content);
-	free(tmp);
 	return (0);
 }
 
-int				get_next_line(const int fd, char **line)
+int	get_next_line(const int fd, char **line)
 {
-	static t_list	*doc;
-	t_list			*tmp;
-	char			*buf;
-	int				ret;
+	static char *left[11000];
 
-	if (fd < 0 || !line || BUFF_SIZE <= 0)
+	if (!line || fd < 0 || fd > 11000 || read(fd, NULL, 0) < 0)
 		return (-1);
-	if (!doc)
-		fill_list(&doc, fd);
-	tmp = fill_list(&doc, fd);
-	buf = ft_strnew(BUFF_SIZE);
-	while (!(ft_strchr(buf, '\n')))
+	if (left[fd] && ft_strchr(left[fd], '\n'))
+		return (ft_check(line, fd, left));
+	if (ft_read_line(line, fd, left))
+		return (1);
+	if (left[fd])
 	{
-		if ((ret = read(fd, buf, BUFF_SIZE)) == -1)
-			return (freedom(buf, -1));
-		else if (ret == 0)
-			return (dont_forget_line(line, tmp, buf, ret));
-		buf[ret] = '\0';
-		*line = ft_strjoin(tmp->content, buf);
-		free(tmp->content);
-		tmp->content = *line;
+		*line = ft_strdup(left[fd]);
+		ft_strdel(&(left[fd]));
+		return (1);
 	}
-	free(buf);
-	return (dont_forget_line(line, tmp, buf, ret));
+	return (0);
 }

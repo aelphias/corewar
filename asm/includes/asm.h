@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 15:15:59 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/05 15:05:30 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/09 20:22:50 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,7 +198,7 @@ void							writing_two_bytes(t_crw *champ,\
 void							writing_one_byte(t_crw *champ,\
 									unsigned int to_write);
 void							print_usage(void);
-void							main_val(int argc, t_crw *champ, char **argv);
+void							main_val(t_crw *champ, char *nof);
 int								assembler_mode(char *nof);
 char							*dasm_change_ex(char *filename, char *old,\
 									char *new);

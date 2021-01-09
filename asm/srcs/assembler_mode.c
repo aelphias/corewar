@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:44:53 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/05 13:30:42 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/09 21:11:27 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,35 +19,26 @@ void		print_usage(void)
 				\tchampion.cor — assemble<-bytecode\n");
 }
 
-void		main_val(int argc, t_crw *champ, char **argv)
+void		main_val(t_crw *champ, char *nof)
 {
-	if (argc == 1)
+	if (!nof)
 	{
 		print_usage();
 		exit(0);
 	}
 	init_crw(champ);
-	if (argc != 2)
-		exit(0);
-	else
-	{
-		is_file_valid_or_not(argv[1], champ);
-		check_type_arg(champ);
-	}
-	if (champ->l_size == 0)
-		exit(-1);
+	is_file_valid_or_not(nof, champ);
+	//check_type_arg(champ);
+	//if (champ->l_size == 0)
+	//	exit(-1);
 }
 
 int			assembler_mode(char *nof)
 {
 	t_crw	crw;
 	int		fd;
-	int		ac;
-	char	**av;
 
-	ac = 0;
-	av = NULL;
-	main_val(ac, &crw, av);
+	main_val(&crw, nof);
 	nof = change_ex(nof, ".s", ".cor");
 	if (!(fd = open(nof, O_CREAT | O_WRONLY | O_TRUNC, 0777)))
 		free_and_call(crw, ER_IN_F);
