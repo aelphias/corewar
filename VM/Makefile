@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
+#    By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2021/01/08 21:20:45 by aelphias         ###   ########.fr        #
+#    Updated: 2021/01/09 21:31:11 by kcharlet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,9 +63,10 @@ VM_SRC_LIST	= print_error.c \
 			  op_lldi.c\
 			  op_lfork.c\
 			  op_aff.c\
-			  get_op_code.c\
+			  get_byte.c\
 			  update_pos.c \
-			  op.c
+			  op.c\
+			  get_args.c
 
 SRC_VM		= $(addprefix $(VM_SRC_DIR), $(VM_SRC_LIST))
 

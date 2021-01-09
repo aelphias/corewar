@@ -6,7 +6,7 @@
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/09 16:57:57 by kcharlet         ###   ########.fr       */
+/*   Updated: 2021/01/09 21:54:10 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct		s_car
 	uint8_t			reg[REG_NUMBER];
 	int				id;
 	uint8_t			arg[3];
+	uint8_t			arg_type[3];
 	int				parent_car;
 	unsigned int	last_live; // цикл в котором в прошлый раз была выполнена op_live
 	unsigned int	op_code;
@@ -115,7 +116,7 @@ void	init_op(t_op op[17]);
 */
 
 unsigned int	update_pos(unsigned int pos);
-uint8_t	get_op_code(uint8_t *arena, unsigned int position);
+uint8_t	get_byte(uint8_t *arena, unsigned int position);
 void	dump(uint8_t *arena);
 void	introduce_plrs(t_plr *plr);
 int	arena_loop(uint8_t *arena, uint32_t coord);
@@ -132,6 +133,7 @@ void	ft_free_plr(t_plr *plr);
 void	game(t_plr *plr, t_car **car, uint8_t *arena, t_vm **vm, t_op *op);
 void	check(t_vm **vm, t_car **head_car);
 void	bury_car(t_vm **vm, t_car **head_car);
+void	get_args(t_car *car, unsigned char *arena, t_op *op);
 /*
 *	operations
 */

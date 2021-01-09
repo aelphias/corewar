@@ -6,7 +6,7 @@
 /*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/09 18:10:32 by kcharlet         ###   ########.fr       */
+/*   Updated: 2021/01/09 22:13:30 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	cycle(t_car **head_car, uint8_t *arena, t_op *op, void (*func[17])(t_car *,
 	t_car	*car;
 	
 	car = (*head_car);
-	//car->op_code = get_op_code(arena, car->position);
+	//car->op_code = get_byte(arena, car->position);
 	ft_printf("car id=%d\n",car->id);
 /* 	if (valid_op(car))
 		exec(car, arena, op); */
@@ -81,8 +81,8 @@ void	cycle(t_car **head_car, uint8_t *arena, t_op *op, void (*func[17])(t_car *,
 	{
 		if (car->wait == 0)
 		{
-			car->op_code = get_op_code(arena, car->position);
-			//get_args(arena, car);
+			car->op_code = get_byte(arena, car->position);
+			//get_args(arena, car, op);
 			//if (type_of_args)
 			//take args
 			//move  car
