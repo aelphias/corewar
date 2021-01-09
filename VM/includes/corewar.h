@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/08 12:54:34 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/09 15:20:01 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct		s_op
 typedef struct		s_plr
 {
 	int				id;
+	int				n_id;
 	uint8_t			*name;
 	uint8_t			*cmnt;
 	int				position; // место где мы его ставим при начале игры
