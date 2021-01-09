@@ -6,7 +6,7 @@
 #    By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2021/01/05 13:26:40 by gjigglyp         ###   ########.fr        #
+#    Updated: 2021/01/09 20:00:46 by gjigglyp         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,7 @@ ASM			=	asm
 NAME		=	$(ASM)
 
 CC			=	clang
-CFLAGS		=	-Wall -Wextra -Werror
-
+CFLAGS		=	-Wall -Wextra -Werror -g
 LIB_DIR		=	../libft/
 LIB_A		=	$(LIB_DIR)libft.a
 LIB_HEAD	=	$(LIB_DIR)libft.h
