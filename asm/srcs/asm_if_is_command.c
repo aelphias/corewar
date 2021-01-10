@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 16:53:30 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/10 16:59:03 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/10 17:49:07 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		if_in_conv_com(char **line, t_crw *champ, int *i, t_tw *arg)
 	|| (*line)[*i] == LABEL_CHAR || ((*line)[*i] >= '0' && (*line)[*i] <= '9'))
 	{
 		if (arg->comma == 1)
-			free_and_call(*champ, "Error: no comma\n");
+			free_and_call(*champ, ERR_COM);
 		arg->comma = 1;
 		*i += switching_between_args(&((*line)[*i]), arg->arg_cntr, champ);
 		arg->arg_cntr--;
@@ -26,7 +26,7 @@ int		if_in_conv_com(char **line, t_crw *champ, int *i, t_tw *arg)
 	else if ((*line)[(*i)++] == SEPARATOR_CHAR)
 	{
 		if (arg->comma == 0)
-			free_and_call(*champ, "Error: extra comma\n");
+			free_and_call(*champ, ERR_COE);
 		arg->comma = 0;
 	}
 	else if ((*line)[--(*i)] == COMMENT_CHAR || (*line)[*i] == ALT_COMMENT)
@@ -37,7 +37,7 @@ int		if_in_conv_com(char **line, t_crw *champ, int *i, t_tw *arg)
 		return (1);
 	}
 	else if ((*line)[*i] != ' ' && (*line)[*i] != '\t' && (*line)[*i] != '\0')
-		free_and_call(*champ, "Error: invalid symbol\n");
+		free_and_call(*champ, ER_I_SY);
 	return (0);
 }
 
@@ -65,6 +65,6 @@ void	convert_command(char *line, t_crw *champ)
 			return ;
 	}
 	if (arg.comma == 0 || arg.arg_cntr != 0)
-		free_and_call(*champ, "Error: Extra comma or not all args were found\n");
+		free_and_call(*champ, ER_I_SY);
 	increase_crw(champ);
 }

@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:44:20 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/10 16:32:02 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/10 17:26:06 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	to_bin_code(t_crw *champ, int fd)
 	zero_exec(champ, exec_size);
 	champ->ind_wr = 0;
 	write_bin_head(champ);
-	write_exec_code(champ);// может проблема здесь?
+	write_exec_code(champ);
 	write(fd, champ->exec_code, exec_size);
 	i = 0;
 }

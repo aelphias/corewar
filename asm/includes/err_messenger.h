@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:46:34 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/05 14:14:58 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/10 17:32:49 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@
 # define ERR_INV "Invalid registry name for operation"
 # define OP_SIZE "Ircorrect size for operation"
 # define ER_I_AR "Error: invalid arg"
+# define ER_I_SY "Error: invalid symbol"
 # define ER_ININ "Error: ircorrect input"
+# define ERR_COM "Error: the file does not contain any commas"
+# define ERR_COE "Error: extra comma was found"
 # define LAB_N_F "Label is not found"
 # define LAB_ARG "Incompatible combination ARG-LABEL"
 # define ARG_INV "Invalid type of an arguement"
