@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_flags.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 20:51:41 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/09 20:14:27 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/10 13:39:49 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,19 @@ void check_flags(int argc, char **argv, t_vm *vm)
 	}
 }
 
+int chek_num(int *num, int minnum, int plrs)
+{
+	int i;
 
+	i = 0;
+	while (i < plrs)
+	{
+		if (num[i] == minnum)
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 void check_n_flags(int argc, char **argv, t_plr *plr)
 {
@@ -101,6 +113,28 @@ void check_n_flags(int argc, char **argv, t_plr *plr)
 		}
 		i++;
 		j = i + 1;
+	}
+	
+	i = 0;
+	int nextnum;
+	nextnum = 0;
+	while (i < plrs)
+	{
+		if (chek_num(num, i, plrs))
+		{
+			nextnum = i;
+			j = 0;
+			while (j < plrs)
+			{
+				if (num[j] == 0)
+				{
+					num[j] = nextnum;
+					break ;
+				}
+				j++;
+			}
+		}
+		i++;
 	}
 	
 	i = 0;
