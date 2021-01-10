@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 15:15:59 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/09 20:22:50 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/10 15:08:26 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,10 @@ typedef struct					s_l
 	struct s_l					*next;
 }								t_l;
 
+/*
+** label structure
+*/
+
 typedef struct					s_lbl
 {
 	int							is_label_or_not;
@@ -95,6 +99,10 @@ typedef struct					s_tw
 	int							arg_cntr;
 }								t_tw;
 
+/*
+** basic structure
+*/
+
 typedef struct					s_crw
 {
 	char						name[PROG_NAME_LENGTH + 1];
@@ -106,7 +114,6 @@ typedef struct					s_crw
 	int							new_com;
 	int							l_size;
 	t_lbl						*labels;
-
 	int							len;
 	int							fd;
 }								t_crw;
@@ -189,7 +196,7 @@ void							is_end_comment(t_crw *champ, char *line);
 void							is_file_valid_or_not(char *name, t_crw *champ);
 void							write_bin_head(t_crw *champ);
 void							process_args(t_crw *champ, int i);
-void							write_exec_code(t_crw *champ);
+void							excode_write(t_crw *champ);
 void							to_bin_code(t_crw *champ, int fd);
 void							writing_four_bytes(t_crw *champ,\
 									unsigned int to_write);

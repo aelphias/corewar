@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:44:20 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/05 14:12:19 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/10 15:04:59 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	process_args(t_crw *champ, int i)
 		writing_four_bytes(champ, champ->labels[i].r3);
 }
 
-void	write_exec_code(t_crw *champ)
+void	excode_write(t_crw *champ)
 {
 	int i;
 
@@ -84,7 +84,7 @@ void	to_bin_code(t_crw *champ, int fd)
 	zero_exec(champ, exec_size);
 	champ->ind_wr = 0;
 	write_bin_head(champ);
-	write_exec_code(champ);
+	excode_write(champ);
 	write(fd, champ->exec_code, exec_size);
 	i = 0;
 }

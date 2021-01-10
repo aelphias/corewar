@@ -1,4 +1,4 @@
 .name		"Sonya"
 .comment	"Jour J"
 
-ld   %0,r3	
+add r1,r2,r3

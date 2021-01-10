@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:44:53 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/09 21:11:27 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/10 14:57:31 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void		main_val(t_crw *champ, char *nof)
 	}
 	init_crw(champ);
 	is_file_valid_or_not(nof, champ);
-	//check_type_arg(champ);
-	//if (champ->l_size == 0)
-	//	exit(-1);
+	check_type_arg(champ);
+	if (champ->l_size == 0)
+		exit(-1);
 }
 
 int			assembler_mode(char *nof)

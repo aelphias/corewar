@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:43:24 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/05 15:05:25 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/10 14:34:50 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int					main(int ac, char *av[])
 		ft_printf("ERROR: %s\n", ERR_USE);
 	else if (ac == 2 && is_filename(*(av + 1), ".s"))
 		assembler_mode(*(av + 1));
-	else if (ac == 2 && is_filename(*(av + 1), ".cor"))
-		disassembler_mode(*(av + 1));
+	/* else if (ac == 2 && is_filename(*(av + 1), ".cor"))
+		disassembler_mode(*(av + 1)); */
 	else
 		ft_printf("ERROR: %s\n", ERR_UNF);
 	return (0);
