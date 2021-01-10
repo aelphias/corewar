@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/09 14:31:59 by kcharlet         ###   ########.fr       */
+/*   Updated: 2021/01/10 13:28:09 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		main(int argc, char **argv)
 	t_vm			*vm; // сваливаем сюда все по игре, кроме переменных каретки, которые поместим t_car 
 	t_plr			*plr; // записываем все по игроку
 	t_car			*car; // записываем все по каретке
-	t_op			op[17]; // записываем все по операциям. КАК правильно передать этот массив?
+	//t_op			op[17]; // записываем все по операциям. КАК правильно передать этот массив?
 	
 	plr = NULL;
 	car = NULL;
@@ -43,7 +43,7 @@ int		main(int argc, char **argv)
 		print_error(ERR_MALLOC);
 	//if (!(op[17] = (t_op *)ft_memalloc(sizeof(t_op[17]))))
 	//	print_error(ERR_MALLOC);
-	init_op(op);
+	//init_op(op);
 	init_vm(vm);
 	//ft_printf("op[1].1 =%s\n",op[1].name);
 /*
@@ -69,7 +69,7 @@ int		main(int argc, char **argv)
 */
 	introduce_plrs(plr);
 	fill_arena(plr, vm, arena);
-	game(plr, &car, arena, &vm, op);
+	game(&car, arena, &vm);
 
 /*
 *	6. test

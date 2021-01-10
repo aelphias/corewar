@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/09 21:54:10 by kcharlet         ###   ########.fr       */
+/*   Updated: 2021/01/10 13:16:15 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include "errors.h"
 
 typedef enum { false, true } bool;
+
+# define MINUS_ONE(X)		((X) - 1)
+
 
 /* 
 *	uint8_t  1 байт - 8 бит, тип фиксированного размера, unsigned, от 0 до 255
@@ -54,7 +57,18 @@ typedef struct		s_car
 	struct s_car	*next;
 }					t_car;
 
-typedef struct		s_op
+typedef struct		s_plr
+{
+	int				id;
+	uint8_t			*name;
+	uint8_t			*cmnt;
+	unsigned int	position; // место где мы его ставим при начале игры
+	unsigned int	codesize;
+	uint8_t			*code;
+	struct s_plr	*next;
+}					t_plr;
+
+/* typedef struct		s_op
 {
 	char			*name;							//	0
 	unsigned int	args_amount;					//	1
@@ -67,17 +81,9 @@ typedef struct		s_op
 	bool			args_types_code;				//	8  check it is true
 	void			(*func)(t_car *, uint8_t *);	//	9 //? uint8_t* (arena) может передовать t_vm а не карту?
 }					t_op;
+ */
 
-typedef struct		s_plr
-{
-	int				id;
-	uint8_t			*name;
-	uint8_t			*cmnt;
-	unsigned int	position; // место где мы его ставим при начале игры
-	unsigned int	codesize;
-	uint8_t			*code;
-	struct s_plr	*next;
-}					t_plr;
+
 
 /*
 *	parse
@@ -109,7 +115,7 @@ void	ft_copy_code(uint8_t *dst, uint8_t *src, int codesize);
 */
 
 void	init_vm(t_vm *vm);
-void	init_op(t_op op[17]);
+//void	init_op(t_op op[17]);
 
 /*
 *	utils
@@ -130,15 +136,15 @@ void	ft_free_plr(t_plr *plr);
 /*
 *	game
 */
-void	game(t_plr *plr, t_car **car, uint8_t *arena, t_vm **vm, t_op *op);
+void	game(t_car **car, uint8_t *arena, t_vm **vm);
 void	check(t_vm **vm, t_car **head_car);
 void	bury_car(t_vm **vm, t_car **head_car);
-void	get_args(t_car *car, unsigned char *arena, t_op *op);
+void	get_args(t_car *car, unsigned char *arena);
 /*
 *	operations
 */
 //void	operations(t_car *car, uint8_t *arena, void (**func)(t_car *, uint8_t *));
-void	no();
+//void	no();
 void	op_live(t_car *car, uint8_t *arena);
 void	op_ld(t_car *car, uint8_t *arena);
 void	op_st(t_car *car, uint8_t *arena);
@@ -150,7 +156,7 @@ void	op_xor(t_car *car, uint8_t *arena);
 void	op_zjmp(t_car *car, uint8_t *arena);
 void	op_ldi(t_car *car, uint8_t *arena);
 void	op_sti(t_car *car, uint8_t *arena);
-void	op_fork(t_car *head, t_car * n_car, uint8_t *arena);
+void	op_fork(t_car *car, uint8_t *arena);
 void	op_lld(t_car *car, uint8_t *arena);
 void	op_lldi(t_car *car, uint8_t *arena);
 void	op_lfork(t_car *car, uint8_t *arena);
@@ -162,11 +168,204 @@ void	op_aff(t_car *car, uint8_t *arena);
 void	test(t_vm *vm, t_plr *plr);
 void	print_list(t_plr *plr);
 void	print_list_car(t_car *car);
-void	print_op(t_op op[17]);
+//void	print_op(t_op op[17]);
 
 
 /*
 *	alfa version op_tab
 */
+
+typedef struct		s_op
+{
+	char			*name;
+	unsigned int	code;
+	uint8_t			args_amount;
+	bool			args_types_code;   // ??
+	uint8_t			args_types[3];  //  ???
+	bool			modify_carry;
+	uint8_t			t_dir_size;
+	uint32_t		cycles_wait;
+	void			(*func)(t_car *, uint8_t *);;
+
+}					t_op;
+
+static t_op		g_op[16] = {
+	{
+		.name = "live",
+		.code = 1,
+		.args_amount = 1,
+		.args_types_code = false,
+		.args_types = {T_DIR, 0, 0},
+		.modify_carry = false,
+		.t_dir_size = 4,
+		.cycles_wait = 10,
+		.func = &op_live
+	},
+	{
+		.name = "ld",
+		.code = 2,
+		.args_amount = 2,
+		.args_types_code = true,
+		.args_types = {T_DIR | T_IND, T_REG, 0},
+		.modify_carry = true,
+		.t_dir_size = 4,
+		.cycles_wait = 5,
+		.func = &op_ld
+	},
+	{
+		.name = "st",
+		.code = 3,
+		.args_amount = 2,
+		.args_types_code = true,
+		.args_types = {T_REG, T_REG | T_IND, 0},
+		.modify_carry = false,
+		.t_dir_size = 4,
+		.cycles_wait = 5,
+		.func = &op_st
+	},
+	{
+		.name = "add",
+		.code = 4,
+		.args_amount = 3,
+		.args_types_code = true,
+		.args_types = {T_REG, T_REG, T_REG},
+		.modify_carry = true,
+		.t_dir_size = 4,
+		.cycles_wait = 10,
+		.func = &op_add
+	},
+	{
+		.name = "sub",
+		.code = 5,
+		.args_amount = 3,
+		.args_types_code = true,
+		.args_types = {T_REG, T_REG, T_REG},
+		.modify_carry = true,
+		.t_dir_size = 4,
+		.cycles_wait = 10,
+		.func = &op_sub
+	},
+	{
+		.name = "and",
+		.code = 6,
+		.args_amount = 3,
+		.args_types_code = true,
+		.args_types = {T_REG | T_DIR | T_IND, T_REG | T_DIR | T_IND, T_REG},
+		.modify_carry = true,
+		.t_dir_size = 4,
+		.cycles_wait = 6,
+		.func = &op_and
+	},
+	{
+		.name = "or",
+		.code = 7,
+		.args_amount = 3,
+		.args_types_code = true,
+		.args_types = {T_REG | T_DIR | T_IND, T_REG | T_DIR | T_IND, T_REG},
+		.modify_carry = true,
+		.t_dir_size = 4,
+		.cycles_wait = 6,
+		.func = &op_or
+	},
+	{
+		.name = "xor",
+		.code = 8,
+		.args_amount = 3,
+		.args_types_code = true,
+		.args_types = {T_REG | T_DIR | T_IND, T_REG | T_DIR | T_IND, T_REG},
+		.modify_carry = true,
+		.t_dir_size = 4,
+		.cycles_wait = 6,
+		.func = &op_xor
+	},
+	{
+		.name = "zjmp",
+		.code = 9,
+		.args_amount = 1,
+		.args_types_code = false,
+		.args_types = {T_DIR, 0, 0},
+		.modify_carry = false,
+		.t_dir_size = 2,
+		.cycles_wait = 20,
+		.func = &op_zjmp
+	},
+	{
+		.name = "ldi",
+		.code = 10,
+		.args_amount = 3,
+		.args_types_code = true,
+		.args_types = {T_REG | T_DIR | T_IND, T_REG | T_DIR, T_REG},
+		.modify_carry = false,
+		.t_dir_size = 2,
+		.cycles_wait = 25,
+		.func = &op_ldi
+	},
+	{
+		.name = "sti",
+		.code = 11,
+		.args_amount = 3,
+		.args_types_code = true,
+		.args_types = {T_REG, T_REG | T_DIR | T_IND, T_REG | T_DIR},
+		.modify_carry = false,
+		.t_dir_size = 2,
+		.cycles_wait = 25,
+		.func = &op_sti
+	},
+	{
+		.name = "fork",
+		.code = 12,
+		.args_amount = 1,
+		.args_types_code = false,
+		.args_types = {T_DIR, 0, 0},
+		.modify_carry = false,
+		.t_dir_size = 2,
+		.cycles_wait = 800,
+		.func = &op_fork
+	},
+	{
+		.name = "lld",
+		.code = 13,
+		.args_amount = 2,
+		.args_types_code = true,
+		.args_types = {T_DIR | T_IND, T_REG, 0},
+		.modify_carry = true,
+		.t_dir_size = 4,
+		.cycles_wait = 10,
+		.func = &op_lld
+	},
+	{
+		.name = "lldi",
+		.code = 14,
+		.args_amount = 3,
+		.args_types_code = true,
+		.args_types = {T_REG | T_DIR | T_IND, T_REG | T_DIR, T_REG},
+		.modify_carry = true,
+		.t_dir_size = 2,
+		.cycles_wait = 50,
+		.func = &op_lldi
+	},
+	{
+		.name = "lfork",
+		.code = 15,
+		.args_amount = 1,
+		.args_types_code = false,
+		.args_types = {T_DIR, 0, 0},
+		.modify_carry = false,
+		.t_dir_size = 2,
+		.cycles_wait = 1000,
+		.func = &op_lfork
+	},
+	{
+		.name = "aff",
+		.code = 16,
+		.args_amount = 1,
+		.args_types_code = true,
+		.args_types = {T_REG, 0, 0},
+		.modify_carry = false,
+		.t_dir_size = 4,
+		.cycles_wait = 2,
+		.func = &op_aff
+	}
+};
 
 #endif

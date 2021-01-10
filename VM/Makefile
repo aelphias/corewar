@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+         #
+#    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2021/01/09 21:31:11 by kcharlet         ###   ########.fr        #
+#    Updated: 2021/01/10 13:28:44 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@
 #
 NAME		=	corewar
 CC			=	gcc
-FLAGS		=	-Wall -Wextra -g #-Werror
+FLAGS		=	-Wall -Wextra -Werror -g
 
 LIBRARIES_VM= -L$(LIB_DIR) -lft
 INCLUDES_VM = -I$(INC_DIR) -I$(LIB_DIR)
@@ -47,26 +47,26 @@ VM_SRC_LIST	= print_error.c \
 			  init_strcts.c \
 			  introduce_plrs.c \
 			  main.c \
+			  op_add.c \
+			  get_args.c\
+			  op.c\
+			  get_byte.c\
+			  update_pos.c\
 			  op_live.c \
 			  op_ld.c \
 			  op_st.c \
-			  op_add.c \
 			  op_sub.c\
 			  op_and.c\
 			  op_or.c\
 			  op_xor.c\
-			  op_zjmp.c\
 			  op_ldi.c\
+			  op_zjmp.c\
 			  op_sti.c\
 			  op_fork.c\
 			  op_lld.c\
 			  op_lldi.c\
 			  op_lfork.c\
-			  op_aff.c\
-			  get_byte.c\
-			  update_pos.c \
-			  op.c\
-			  get_args.c
+			  op_aff.c
 
 SRC_VM		= $(addprefix $(VM_SRC_DIR), $(VM_SRC_LIST))
 

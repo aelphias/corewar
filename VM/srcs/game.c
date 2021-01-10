@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/09 22:13:30 by kcharlet         ###   ########.fr       */
+/*   Updated: 2021/01/10 13:44:09 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 	bury_car(vm, head_car);
 }
 */
-void	init_func(void (**f)(t_car *, uint8_t*))
+/* void	init_func(void (**f)(t_car *, uint8_t*))
 {
 	f[0] = NULL;
 	f[1] = &op_add;
@@ -32,27 +32,26 @@ void	init_func(void (**f)(t_car *, uint8_t*))
 	f[9] = &op_add;
 	f[10] = &op_add;
 	f[11] = &op_add;
-	f[12] = &op_fork;
+ 	f[12] = &op_fork;
 	f[13] = &op_fork;
 	f[14] = &op_fork;
 	f[15] = &op_fork;
 	f[16] = &op_fork;
-}
+*/
+
  
-void	exec(t_car *car, uint8_t *arena, t_op *op, void (*func[17])(t_car *, uint8_t *))
+void	exec(t_car *car, uint8_t *arena)
 {
+	t_op *op;
 	
-	printf("operation id is %d\n", car->op_code);
-	int i = 4;
-	printf("-------->%s %u %u %s\n", op[i].name, op[i].args_amount, op[i].cycle_wait, op[i].comment);
-	
-	car->wait = op[car->op_code].cycle_wait;
+	op = &g_op[MINUS_ONE(car->op_code)];
+	car->wait = op->cycles_wait;
 	car->wait = 0;
-	printf("######car->wait%d", car->wait);
 	if (car->wait)
 		car->wait--;
-	else
-		func[car->op_code](car, arena);
+	else  
+		op->func(car, arena);
+		//func[car->op_code](car, arena);
 		//op[car->op_code].func(car, arena);
 }
 /* 
@@ -67,13 +66,12 @@ bool	valid_op(t_car *car)
 	return (false);
 }
 
-void	cycle(t_car **head_car, uint8_t *arena, t_op *op, void (*func[17])(t_car *, uint8_t *))
+void	cycle(t_car **head_car, uint8_t *arena)
 {
 	t_car	*car;
 	
 	car = (*head_car);
 	//car->op_code = get_byte(arena, car->position);
-	ft_printf("car id=%d\n",car->id);
 /* 	if (valid_op(car))
 		exec(car, arena, op); */
 	//init_func(func);
@@ -87,9 +85,8 @@ void	cycle(t_car **head_car, uint8_t *arena, t_op *op, void (*func[17])(t_car *,
 			//take args
 			//move  car
 			//car->position++;
-			ft_printf("op_code= %x\n",car->op_code);
 			if (valid_op(car))
-				exec(car, arena, op, func);
+				exec(car, arena);
 		}
 		else
 		car->wait--;
@@ -97,18 +94,17 @@ void	cycle(t_car **head_car, uint8_t *arena, t_op *op, void (*func[17])(t_car *,
 	}
 }
 
-void	game(t_plr *plr, t_car **head_car, uint8_t *arena, t_vm **vm, t_op *op)
+void	game(t_car **head_car, uint8_t *arena, t_vm **vm)
 {
 	// while ((*vm)->car_count)
-	void	(*func[17])(t_car *, uint8_t *);
-	init_func(func);
+	//void	(*func[17])(t_car *, uint8_t *);
+	//init_func(func);
 	while ((*vm)->cycles < 11)
 	{
 		(*vm)->cycles++;
-		cycle(head_car, arena, op, func);
+		cycle(head_car, arena);
 		if (!((*vm)->cycles_to_die) || ((*vm)->cycles % (*vm)->cycles_to_die) == 0)
-			printf("\nCheck() was called\n");//check(vm, head_car);
-		(*vm)->car_count--;
+			printf("----{inside game()}--Check() was called\n");//check(vm, head_car);
 	}
 	ft_printf("(*vm)->cycles = %d\n", (*vm)->cycles);
 	//ft_printf("Contestant 1, %s has won !\n", (*vm)->winner);
