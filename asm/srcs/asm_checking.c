@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:46:10 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/26 12:17:17 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/10 16:08:24 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,15 @@ char	*change_ex(char *filename, char *old, char *new)
 
 	basename = ft_strsub(filename, 0, ft_strlen(filename) - ft_strlen(old));
 	if (!basename)
+	{
+		ft_strdel(&basename);
 		exit(-1);
+	}
 	if (!(filename = ft_strjoin(basename, new)))
+	{
+		ft_strdel(&basename);
 		exit(-1);
+	}
 	ft_strdel(&basename);
 	return (filename);
 }

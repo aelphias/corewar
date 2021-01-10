@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 15:15:59 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/09 20:22:50 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/10 16:57:32 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,5 +219,8 @@ t_crw							*get_asm_data(t_crw *asm_data);
 int								is_filename(const char *fn, const char *ex);
 void							free_and_call(t_crw champ, char *err);
 char							*ft_itoa_1(int n);
+int								if_in_conv_com(char **line, t_crw *champ,\
+									int *i, t_tw *arg);
+void							convert_command(char *line, t_crw *champ);
 
 #endif
