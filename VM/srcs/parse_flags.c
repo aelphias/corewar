@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_flags.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 20:51:41 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/10 14:40:54 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/10 18:26:43 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,10 @@ void check_n_flags(int argc, char **argv, t_plr *plr)
 	while (i < argc)
 	{
 		if ((ft_strcmp(argv[i], "-n")) == 0)
+		{
 			nflag = 1;
+			break ;
+		}
 		i++;
 	}
 	i = 1;
@@ -98,9 +101,9 @@ void check_n_flags(int argc, char **argv, t_plr *plr)
 	{
 		while (i < argc)
 		{
-			if (i > 1 && checkdotcor(argv[i]))
+			if (checkdotcor(argv[i]))
 			{
-				if ((ft_strcmp(argv[i - 2], "-n")) == 0)
+				if (i > 2 && (ft_strcmp(argv[i - 2], "-n")) == 0)
 				{
 					number = ft_atoi(argv[i - 1]);
 					if (number == 0)
