@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 20:51:41 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/10 18:26:43 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/10 19:47:32 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,46 @@ int chek_num(int *num, int minnum, int plrs)
 		i++;
 	}
 	return (1);
+}
+
+void copy_num_in_plrslist(int *num, t_plr *plr, int plrs)
+{
+	int i;
+
+	i = 0;
+	while (plr && i < plrs)
+	{
+		plr->n_id = num[i];
+		plr = plr->next;
+		i++;
+	}
+}
+
+int comparison_of_two_numbers(int a, int b)
+{
+	return (a <= b);
+}
+
+t_plr		*sort_list_plr(t_plr *plr)
+{
+	int		overflow;
+	t_plr	*tmp;
+
+	tmp = plr;
+	while (plr->next != NULL)
+	{
+		if ((comparison_of_two_numbers(plr->n_id, plr->next->n_id)) == 0)
+		{
+			overflow = plr->n_id;
+			plr->n_id = plr->next->n_id;
+			plr->next->n_id = overflow;
+			plr = tmp;
+		}
+		else
+			plr = plr->next;
+	}
+	plr = tmp;
+	return (plr);
 }
 
 void check_n_flags(int argc, char **argv, t_plr *plr)
@@ -156,14 +196,22 @@ void check_n_flags(int argc, char **argv, t_plr *plr)
 			}
 			i++;
 		}
-	
-		i = 0;
-		while (i < plrs)
-		{
-			ft_printf(" %d ", num[i]);
-			i++;
-		}
-		ft_printf("\n");
+
+		copy_num_in_plrslist(num, plr, plrs);
+		plr = sort_list_plr(plr);
+			
+		// i = 0;
+		// while (i < plrs)
+		// {
+		// 	ft_printf(" %d ", num[i]);
+		// 	i++;
+		// }
+		// ft_printf("\n");
+		// while (plr)
+		// {
+		// 	printf(" list %d ", plr->n_id);
+		// 	plr = plr->next;
+		// }
+		// ft_printf("\n");
 	}
-	nflag = 0;
 }
