@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 20:51:41 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/10 13:39:49 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/10 14:40:54 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,70 +78,89 @@ void check_n_flags(int argc, char **argv, t_plr *plr)
 	int i;
 	int j;
 	int num[4];
+	int number;
 	int plrs;
+	int nflag;
 	
 	plrs = plr_count(plr);
-	i = 1;
+	nflag = 0;
+	i = 0;
 	j = 0;
 	ft_bzero(num, 0);
 	while (i < argc)
 	{
-		if (checkdotcor(argv[i]))
-		{
-			if ((ft_strcmp(argv[i - 2], "-n")) == 0)
-				num[j] = ft_atoi(argv[i - 1]);
-			else
-				num[j] = 0;
-			if (j > plrs)
-				print_error(ERR_USE);
-			if (num[j] > plrs)
-				print_error(ERR_USE);
-			j++;
-		}
+		if ((ft_strcmp(argv[i], "-n")) == 0)
+			nflag = 1;
 		i++;
 	}
-	i = 0;
-	j = 1;
-	while (i < plrs)
+	i = 1;
+	if (nflag)
 	{
-		while (j < plrs)
+		while (i < argc)
 		{
-			if (num[i] != 0)
-				if (num[i] == num[j])
-					print_error(ERR_USE);
-			j++;
-		}
-		i++;
-		j = i + 1;
-	}
-	
-	i = 0;
-	int nextnum;
-	nextnum = 0;
-	while (i < plrs)
-	{
-		if (chek_num(num, i, plrs))
-		{
-			nextnum = i;
-			j = 0;
-			while (j < plrs)
+			if (i > 1 && checkdotcor(argv[i]))
 			{
-				if (num[j] == 0)
+				if ((ft_strcmp(argv[i - 2], "-n")) == 0)
 				{
-					num[j] = nextnum;
-					break ;
+					number = ft_atoi(argv[i - 1]);
+					if (number == 0)
+						print_error(ERR_USE);
+					num[j] = number;
 				}
+				else
+					num[j] = 0;
+				if (j > plrs)
+					print_error(ERR_USE);
+				if (num[j] > plrs )
+					print_error(ERR_USE);
 				j++;
 			}
+			i++;
 		}
-		i++;
-	}
+		i = 0;
+		j = 1;
+		while (i <= plrs)
+		{
+			while (j < plrs)
+			{
+				if (num[i] != 0)
+					if (num[i] == num[j])
+						print_error(ERR_USE);
+				j++;
+			}
+			i++;
+			j = i + 1;
+		}
 	
-	i = 0;
-	while (i < 4)
-	{
-		ft_printf(" %d ", num[i]);
-		i++;
+		i = 0;
+		int nextnum;
+		nextnum = 0;
+		while (i <= plrs)
+		{
+			if (chek_num(num, i, plrs))
+			{
+				nextnum = i;
+				j = 0;
+				while (j < plrs)
+				{
+					if (num[j] == 0)
+					{
+						num[j] = nextnum;
+						break ;
+					}
+					j++;
+				}
+			}
+			i++;
+		}
+	
+		i = 0;
+		while (i < plrs)
+		{
+			ft_printf(" %d ", num[i]);
+			i++;
+		}
+		ft_printf("\n");
 	}
-	ft_printf("\n");
+	nflag = 0;
 }
