@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/10 17:35:10 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/10 20:29:58 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct		s_vm
 {
 	//uint8_t			arena[MEM_SIZE];  может запихнуть сюда
 	unsigned int	plr_count; //number of players
+	unsigned int	lived; //number of players
 	int				car_count;
 	long int		check_count;
 	long int		cycles;
@@ -137,9 +138,9 @@ void	ft_free_plr(t_plr *plr);
 /*
 *	game
 */
-void	game(t_car **car, uint8_t *arena, t_vm **vm);
-void	check(t_vm **vm, t_car **head_car);
-void	bury_car(t_vm **vm, t_car **head_car);
+void	game(t_car **car, uint8_t *arena, t_vm *vm);
+void	check(t_vm *vm, t_car **head_car);
+void	bury_car(t_vm *vm, t_car **head_car);
 void	get_args(t_car *car, unsigned char *arena);
 /*
 *	operations
