@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/10 13:16:15 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/10 17:35:10 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct		s_car
 	unsigned int	op_code;
 	unsigned int	wait;
 	unsigned int	pc; //сколько байт перешагнуть чтобы оказаться на след интсрукции
+	unsigned int	dir_size_status;
 	struct s_car	*next;
 }					t_car;
 
@@ -77,7 +78,7 @@ typedef struct		s_plr
 	unsigned int	cycle_wait;						//	4
 	char			*comment;						//	5
 	bool			modify_carry;					//	6
-	unsigned int	t_dir_size;						//	7
+	unsigned int	dir_size_status;						//	7
 	bool			args_types_code;				//	8  check it is true
 	void			(*func)(t_car *, uint8_t *);	//	9 //? uint8_t* (arena) может передовать t_vm а не карту?
 }					t_op;
@@ -179,12 +180,12 @@ typedef struct		s_op
 {
 	char			*name;
 	unsigned int	code;
-	uint8_t			args_amount;
+	unsigned int	args_amount;
 	bool			args_types_code;   // ??
-	uint8_t			args_types[3];  //  ???
+	unsigned int	args_types[3];  //  ???
 	bool			modify_carry;
-	uint8_t			t_dir_size;
-	uint32_t		cycles_wait;
+	unsigned int	dir_size_status;
+	unsigned int	cycles_wait;
 	void			(*func)(t_car *, uint8_t *);;
 
 }					t_op;
@@ -197,7 +198,7 @@ static t_op		g_op[16] = {
 		.args_types_code = false,
 		.args_types = {T_DIR, 0, 0},
 		.modify_carry = false,
-		.t_dir_size = 4,
+		.dir_size_status = 4,
 		.cycles_wait = 10,
 		.func = &op_live
 	},
@@ -208,7 +209,7 @@ static t_op		g_op[16] = {
 		.args_types_code = true,
 		.args_types = {T_DIR | T_IND, T_REG, 0},
 		.modify_carry = true,
-		.t_dir_size = 4,
+		.dir_size_status = 4,
 		.cycles_wait = 5,
 		.func = &op_ld
 	},
@@ -219,7 +220,7 @@ static t_op		g_op[16] = {
 		.args_types_code = true,
 		.args_types = {T_REG, T_REG | T_IND, 0},
 		.modify_carry = false,
-		.t_dir_size = 4,
+		.dir_size_status = 4,
 		.cycles_wait = 5,
 		.func = &op_st
 	},
@@ -230,7 +231,7 @@ static t_op		g_op[16] = {
 		.args_types_code = true,
 		.args_types = {T_REG, T_REG, T_REG},
 		.modify_carry = true,
-		.t_dir_size = 4,
+		.dir_size_status = 4,
 		.cycles_wait = 10,
 		.func = &op_add
 	},
@@ -241,7 +242,7 @@ static t_op		g_op[16] = {
 		.args_types_code = true,
 		.args_types = {T_REG, T_REG, T_REG},
 		.modify_carry = true,
-		.t_dir_size = 4,
+		.dir_size_status = 4,
 		.cycles_wait = 10,
 		.func = &op_sub
 	},
@@ -252,7 +253,7 @@ static t_op		g_op[16] = {
 		.args_types_code = true,
 		.args_types = {T_REG | T_DIR | T_IND, T_REG | T_DIR | T_IND, T_REG},
 		.modify_carry = true,
-		.t_dir_size = 4,
+		.dir_size_status = 4,
 		.cycles_wait = 6,
 		.func = &op_and
 	},
@@ -263,7 +264,7 @@ static t_op		g_op[16] = {
 		.args_types_code = true,
 		.args_types = {T_REG | T_DIR | T_IND, T_REG | T_DIR | T_IND, T_REG},
 		.modify_carry = true,
-		.t_dir_size = 4,
+		.dir_size_status = 4,
 		.cycles_wait = 6,
 		.func = &op_or
 	},
@@ -274,7 +275,7 @@ static t_op		g_op[16] = {
 		.args_types_code = true,
 		.args_types = {T_REG | T_DIR | T_IND, T_REG | T_DIR | T_IND, T_REG},
 		.modify_carry = true,
-		.t_dir_size = 4,
+		.dir_size_status = 4,
 		.cycles_wait = 6,
 		.func = &op_xor
 	},
@@ -285,7 +286,7 @@ static t_op		g_op[16] = {
 		.args_types_code = false,
 		.args_types = {T_DIR, 0, 0},
 		.modify_carry = false,
-		.t_dir_size = 2,
+		.dir_size_status = 2,
 		.cycles_wait = 20,
 		.func = &op_zjmp
 	},
@@ -296,7 +297,7 @@ static t_op		g_op[16] = {
 		.args_types_code = true,
 		.args_types = {T_REG | T_DIR | T_IND, T_REG | T_DIR, T_REG},
 		.modify_carry = false,
-		.t_dir_size = 2,
+		.dir_size_status = 2,
 		.cycles_wait = 25,
 		.func = &op_ldi
 	},
@@ -307,7 +308,7 @@ static t_op		g_op[16] = {
 		.args_types_code = true,
 		.args_types = {T_REG, T_REG | T_DIR | T_IND, T_REG | T_DIR},
 		.modify_carry = false,
-		.t_dir_size = 2,
+		.dir_size_status = 2,
 		.cycles_wait = 25,
 		.func = &op_sti
 	},
@@ -318,7 +319,7 @@ static t_op		g_op[16] = {
 		.args_types_code = false,
 		.args_types = {T_DIR, 0, 0},
 		.modify_carry = false,
-		.t_dir_size = 2,
+		.dir_size_status = 2,
 		.cycles_wait = 800,
 		.func = &op_fork
 	},
@@ -329,7 +330,7 @@ static t_op		g_op[16] = {
 		.args_types_code = true,
 		.args_types = {T_DIR | T_IND, T_REG, 0},
 		.modify_carry = true,
-		.t_dir_size = 4,
+		.dir_size_status = 4,
 		.cycles_wait = 10,
 		.func = &op_lld
 	},
@@ -340,7 +341,7 @@ static t_op		g_op[16] = {
 		.args_types_code = true,
 		.args_types = {T_REG | T_DIR | T_IND, T_REG | T_DIR, T_REG},
 		.modify_carry = true,
-		.t_dir_size = 2,
+		.dir_size_status = 2,
 		.cycles_wait = 50,
 		.func = &op_lldi
 	},
@@ -351,7 +352,7 @@ static t_op		g_op[16] = {
 		.args_types_code = false,
 		.args_types = {T_DIR, 0, 0},
 		.modify_carry = false,
-		.t_dir_size = 2,
+		.dir_size_status = 2,
 		.cycles_wait = 1000,
 		.func = &op_lfork
 	},
@@ -362,7 +363,7 @@ static t_op		g_op[16] = {
 		.args_types_code = true,
 		.args_types = {T_REG, 0, 0},
 		.modify_carry = false,
-		.t_dir_size = 4,
+		.dir_size_status = 4,
 		.cycles_wait = 2,
 		.func = &op_aff
 	}

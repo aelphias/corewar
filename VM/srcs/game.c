@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/10 13:44:09 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/10 18:11:35 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,10 @@
 */
 
  
-void	exec(t_car *car, uint8_t *arena)
+void	exec(t_car *car, uint8_t *arena, t_op *op)
 {
-	t_op *op;
-	
-	op = &g_op[MINUS_ONE(car->op_code)];
-	car->wait = op->cycles_wait;
-	car->wait = 0;
+	//op = &g_op[MINUS_ONE(car->op_code)];
+	//car->wait = 0;  // костыль
 	if (car->wait)
 		car->wait--;
 	else  
@@ -69,6 +66,8 @@ bool	valid_op(t_car *car)
 void	cycle(t_car **head_car, uint8_t *arena)
 {
 	t_car	*car;
+	t_op *op;
+	
 	
 	car = (*head_car);
 	//car->op_code = get_byte(arena, car->position);
@@ -80,17 +79,29 @@ void	cycle(t_car **head_car, uint8_t *arena)
 		if (car->wait == 0)
 		{
 			car->op_code = get_byte(arena, car->position);
-			//get_args(arena, car, op);
 			//if (type_of_args)
 			//take args
 			//move  car
 			//car->position++;
 			if (valid_op(car))
-				exec(car, arena);
+			{
+				//get_args(arena, car);
+				op = &g_op[MINUS_ONE(car->op_code)];
+				car->wait = op->cycles_wait;
+				car->dir_size_status = op->dir_size_status;
+				exec(car, arena, op);
+			}
 		}
 		else
 		car->wait--;
-	car = car->next;
+		if (car->next)
+			car = car->next;
+		else
+		{
+			printf("-----break------\n");
+			break;		
+		}
+		
 	}
 }
 
@@ -102,9 +113,9 @@ void	game(t_car **head_car, uint8_t *arena, t_vm **vm)
 	while ((*vm)->cycles < 11)
 	{
 		(*vm)->cycles++;
-		cycle(head_car, arena);
-		if (!((*vm)->cycles_to_die) || ((*vm)->cycles % (*vm)->cycles_to_die) == 0)
-			printf("----{inside game()}--Check() was called\n");//check(vm, head_car);
+		cycle(head_car, arena); 
+		if (!((*vm)->cycles_to_die) || ((*vm)->cycles % (*vm)->cycles_to_die) == 0) // условие для проверки
+			printf("----{inside game()}--Check() was called\n");//check(vm, head_car); 
 	}
 	ft_printf("(*vm)->cycles = %d\n", (*vm)->cycles);
 	//ft_printf("Contestant 1, %s has won !\n", (*vm)->winner);
