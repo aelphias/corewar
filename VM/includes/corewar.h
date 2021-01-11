@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/11 19:13:29 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/11 20:23:44 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,6 @@ typedef enum { false, true } bool;
 
 # define MINUS_ONE(X)		((X) - 1)
 
-
-/* 
-*	uint8_t  1 байт - 8 бит, тип фиксированного размера, unsigned, от 0 до 255
-*/
-
 typedef struct		s_vm
 {
 	//uint8_t			arena[MEM_SIZE];  может запихнуть сюда
@@ -39,7 +34,6 @@ typedef struct		s_vm
 	int				n; // флаг n
 	int				dump;			// флаг dump
 	char			*winner;
-//	t_car			**head_car;  может добавить и носить с собой? и тогда передаем просто vm 
 }					t_vm;
 
 typedef struct		s_car
@@ -49,16 +43,14 @@ typedef struct		s_car
 	uint8_t			reg[REG_NUMBER];
 	int				id;
 	bool			args_types_code;
-	uint8_t			arg[3];
-	uint8_t			arg_type[3];
-	bool			args_types_code;
+	int				arg[3];
+	int				arg_type[3];
 	int				parent_car;
 	unsigned int	last_live; // цикл в котором в прошлый раз была выполнена op_live
 	unsigned int	op_code;
 	unsigned int	wait;
 	unsigned int	pc; //сколько байт перешагнуть чтобы оказаться на след интсрукции
 	unsigned int	dir_size_status;
-	bool			demolish;
 	struct s_car	*next;
 }					t_car;
 
@@ -73,23 +65,6 @@ typedef struct		s_plr
 	uint8_t			*code;
 	struct s_plr	*next;
 }					t_plr;
-
-/* typedef struct		s_op
-{
-	char			*name;							//	0
-	unsigned int	args_amount;					//	1
-	char			*args_types[3];					//	2
-	unsigned int	code;							//	3
-	unsigned int	cycle_wait;						//	4
-	char			*comment;						//	5
-	bool			modify_carry;					//	6
-	unsigned int	dir_size_status;						//	7
-	bool			args_types_code;				//	8  check it is true
-	void			(*func)(t_car *, uint8_t *);	//	9 //? uint8_t* (arena) может передовать t_vm а не карту?
-}					t_op;
- */
-
-
 
 /*
 *	parse
@@ -152,11 +127,12 @@ void	check(t_vm *vm, t_car **head_car);
 void	bury_car(t_vm *vm, t_car **head_car);
 void	get_args(t_car *car, unsigned char *arena);
 void	check_winner(t_vm *vm);
+void	get_args(t_car *car, unsigned char *arena, t_op *op);
+
 /*
 *	operations
 */
-//void	operations(t_car *car, uint8_t *arena, void (**func)(t_car *, uint8_t *));
-//void	no();
+
 void	op_live(t_car *car, uint8_t *arena);
 void	op_ld(t_car *car, uint8_t *arena);
 void	op_st(t_car *car, uint8_t *arena);
