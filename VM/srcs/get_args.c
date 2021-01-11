@@ -6,7 +6,11 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 18:19:27 by kcharlet          #+#    #+#             */
+<<<<<<< HEAD
+/*   Updated: 2021/01/11 20:21:31 by aelphias         ###   ########.fr       */
+=======
 /*   Updated: 2021/01/11 19:16:57 by gjigglyp         ###   ########.fr       */
+>>>>>>> 235c732c07924deab7bd693eceb792d81ff2e855
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,36 +56,55 @@ void	get_dir(t_car *car, unsigned char *arena, t_op *op)
 	
  */
 
-void	get_args_size(t_car *car, t_op *op)
+void	set_args_types(unit, t_car *car, int ind)
 {
-	int		sizearg;
 
-	sizearg = op->args_types
-}
-
-void	get_args_types(uint8_t arg_type, t_car *car)
-{
-	int			bit_mask;
-	bit_mask = 192;
-	if (arg_type & bit_mask)
-		car->arg_type[0] = REG_CODE;
-	else if (arg_type & bit_mask)
-		car->arg_type[0] = REG_CODE;
-	
-	car->arg_type[1];
-	car->arg_type[2];
 }
 
 
 void	get_args(t_car *car, unsigned char *arena, t_op *op)
 {
-	if (op[car->op_code].args_types_code)
+	uint8_t index;
+	
+	if (car->args_types_code)
 	{
 		car->position++;
-		get_args_types(get_byte(arena, car->position));
+		index = get_byte(arena, car->position);
+		if (op->args_amount >= 1)
+			set_arg_type((int8_t)((index & 192) >> 6), 1, car);
+		if (op->args_amount >= 2)
+			set_arg_type((int8_t)((index & 48) >> 4), 2, car);
+		if (op->args_amount >= 3)
+			set_arg_type((int8_t)((index & 12) >> 2), 3, car);
+		//get_args_types(get_byte(arena, car->position));
+		
 		printf("---->get_args is here, darling!\n");
 	}
 	 else
 		get_dir(arena, car); 
 }
 
+////////////////////////////////////////
+
+static void	set_arg_type(int8_t arg_type, int8_t index, t_cursor *cursor)
+{
+	cursor->args_types[INDEX(index)] = g_arg_code[INDEX(arg_type)];
+}
+
+void		parse_types_code(t_vm *vm, t_cursor *cursor, t_op *op)
+{
+	int8_t args_types_code;
+
+	if (op->args_types_code)
+	{
+		args_types_code = get_byte(vm, cursor->pc, 1);
+		if (op->args_num >= 1)
+			set_arg_type((int8_t)((args_types_code & 0xC0) >> 6), 1, cursor);
+		if (op->args_num >= 2)
+			set_arg_type((int8_t)((args_types_code & 0x30) >> 4), 2, cursor);
+		if (op->args_num >= 3)
+			set_arg_type((int8_t)((args_types_code & 0xC) >> 2), 3, cursor);
+	}
+	else
+		cursor->args_types[0] = op->args_types[0];
+}

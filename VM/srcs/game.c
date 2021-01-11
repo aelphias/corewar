@@ -6,11 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2021/01/11 19:12:22 by aelphias         ###   ########.fr       */
-=======
-/*   Updated: 2021/01/11 18:48:33 by gjigglyp         ###   ########.fr       */
->>>>>>> a1708f8594a6b6ad7290c44bf29659a1370a66c1
+/*   Updated: 2021/01/11 19:41:44 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,35 +23,13 @@ void	check(t_vm *vm, t_car **head_car)
 	}
 	vm->lived = 0;
 }
-<<<<<<< HEAD
  
-=======
-
->>>>>>> a1708f8594a6b6ad7290c44bf29659a1370a66c1
 void	exec(t_car *car, uint8_t *arena, t_op *op)
 {
-
-/* 	if (car)
-	{
-		if (car->wait)
-		car->wait--;
-<<<<<<< HEAD
-	else */
-		op->func(car, arena);
-	//}
-=======
-	else 
-	{
-		car->dir_size_status = op->dir_size_status;
-		car->args_types_code = op->args_types_code;
-		op->func(car, arena);
-	}
-	}
-	
-	
-		//func[car->op_code](car, arena);
-		//op[car->op_code].func(car, arena);
->>>>>>> a1708f8594a6b6ad7290c44bf29659a1370a66c1
+	car->dir_size_status = op->dir_size_status;
+	car->args_types_code = op->args_types_code;
+	get_args(car,arena);
+	op->func(car, arena);
 }
 /* 
 Чтобы запустить цикл нужно:
