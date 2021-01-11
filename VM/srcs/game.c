@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/11 14:37:19 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/11 18:06:32 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,33 +23,10 @@ void	check(t_vm *vm, t_car **head_car)
 	}
 	vm->lived = 0;
 }
-
-/* void	init_func(void (**f)(t_car *, uint8_t*))
-{
-	f[0] = NULL;
-	f[1] = &op_add;
-	f[2] = &op_add;
-	f[3] = &op_add;
-	f[4] = &op_add;
-	f[5] = &op_add;
-	f[6] = &op_add;
-	f[7] = &op_add;
-	f[8] = &op_add;
-	f[9] = &op_add;
-	f[10] = &op_add;
-	f[11] = &op_add;
- 	f[12] = &op_fork;
-	f[13] = &op_fork;
-	f[14] = &op_fork;
-	f[15] = &op_fork;
-	f[16] = &op_fork;
-*/
-
  
 void	exec(t_car *car, uint8_t *arena, t_op *op)
 {
-	//op = &g_op[MINUS_ONE(car->op_code)];
-	//car->wait = 0;  // костыль
+
 	if (car)
 	{
 		if (car->wait)
@@ -57,10 +34,6 @@ void	exec(t_car *car, uint8_t *arena, t_op *op)
 	else  
 		op->func(car, arena);
 	}
-	
-	
-		//func[car->op_code](car, arena);
-		//op[car->op_code].func(car, arena);
 }
 /* 
 Чтобы запустить цикл нужно:
@@ -81,10 +54,6 @@ void	cycle(t_car **head_car, uint8_t *arena)
 	
 	
 	car = (*head_car);
-	//car->op_code = get_byte(arena, car->position);
-/* 	if (valid_op(car))
-		exec(car, arena, op); */
-	//init_func(func);
 	while (car)
 	{
 		if (car->wait == 0)
@@ -119,9 +88,6 @@ void	cycle(t_car **head_car, uint8_t *arena)
 
 void	game(t_car **head_car, uint8_t *arena, t_vm *vm)
 {
-	//void	(*func[17])(t_car *, uint8_t *);
-	//init_func(func);
-	//while ((*vm)->cycles < 11)
 	while (vm->car_count)
 	{
 		vm->cycles++;
