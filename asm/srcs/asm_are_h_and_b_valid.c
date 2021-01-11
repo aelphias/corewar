@@ -6,29 +6,28 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 12:01:49 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/26 13:03:26 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/05 13:36:33 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	header_cases(char **line, t_crw *champ, int *name, int *mc)
+void	header_cases(char **line, t_crw *ch, int *name, int *mc)
 {
 	if (is_comment(*line))
 		;
-	else if (is_name(line, champ->fd, champ, *name))
+	else if (is_name(line, ch->fd, ch, *name))
 		*name = 1;
-	else if (is_main_comment(line, champ->fd, champ, *mc))
+	else if (is_main_comment(line, ch->fd, ch, *mc))
 		*mc = 1;
 	else
 	{
 		free(*line);
-		free_all(*champ);
-		call_error(ER_ININ);
+		free_and_call(*ch, ER_ININ);
 	}
 }
 
-void	is_header_valid(int fd, t_crw *champ)
+void	is_header_valid(int fd, t_crw *ch)
 {
 	int		name;
 	int		mc;
@@ -37,26 +36,25 @@ void	is_header_valid(int fd, t_crw *champ)
 
 	name = 0;
 	mc = 0;
-	champ->fd = fd;
+	ch->fd = fd;
 	while ((ans = get_next_line(fd, &line)) > 0)
 	{
-		header_cases(&line, champ, &name, &mc);
+		header_cases(&line, ch, &name, &mc);
 		if (name == 1 && mc == 1)
 		{
 			free(line);
 			break ;
 		}
-		if (is_command_or_not(line, champ))
+		if (is_command_or_not(line, ch))
 		{
 			free(line);
-			free_all(*champ);
-			call_error(NO_N_CO);
+			free_and_call(*ch, NO_N_CO);
 		}
 		free(line);
 	}
 }
 
-void	is_body_valid(int fd, t_crw *champ)
+void	is_body_valid(int fd, t_crw *ch)
 {
 	int		ans;
 	char	*line;
@@ -65,23 +63,22 @@ void	is_body_valid(int fd, t_crw *champ)
 	{
 		if (is_comment(line))
 			;
-		else if (is_command_or_not(line, champ))
+		else if (is_command_or_not(line, ch))
 			;
-		else if (is_label_or_not(line, champ))
+		else if (is_label_or_not(line, ch))
 			;
 		else
 		{
-			free_all(*champ);
-			call_error(ER_IN_F);
+			free_and_call(*ch, ER_IN_F);
 		}
-		is_end_comment(champ, line);
+		is_end_comment(ch, line);
 		free(line);
 	}
-	finish_fill_label_range(champ);
+	finish_fill_label_range(ch);
 }
 
-void	are_h_and_b_valid(int fd, t_crw *champ)
+void	are_h_and_b_valid(int fd, t_crw *ch)
 {
-	is_header_valid(fd, champ);
-	is_body_valid(fd, champ);
+	is_header_valid(fd, ch);
+	is_body_valid(fd, ch);
 }

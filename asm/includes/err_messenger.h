@@ -6,12 +6,12 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:46:34 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/26 13:05:40 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/05 14:14:58 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERR_MESS_H
-# define ERR_MESS_H
+#ifndef ERR_MESSENGER_H
+# define ERR_MESSENGER_H
 
 # include "asm.h"
 

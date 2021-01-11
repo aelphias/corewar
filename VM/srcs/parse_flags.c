@@ -1,7 +1,6 @@
-
 #include "corewar.h"
 
-int		is_num(char *str)
+int	is_num(char *str)
 {
 	while (*str)
 	{

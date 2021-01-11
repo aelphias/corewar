@@ -13,19 +13,6 @@
 
 #include "corewar.h"
 
-void error_magic_numb()
-{
-	//free
-	write(2, "ERROR CHAMP MAGIC NUMBER\n", 25);
-	exit(1);
-}
-
-void error_camp_max_size()
-{
-	//free
-	write(2, "ERROR CHAMP MAX SIZE\n", 21);
-	exit(1);
-}
 /* ..srcs/parsing.c:30:30: warning: unused parameter 'name' [-Wunused-parameter]
 void read_file(int fd, char *name, t_plr *plr) >> aelphias удалил  char *name,  5.1.2021<<*/
 void read_file(int fd, t_plr *plr) // 

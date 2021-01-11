@@ -66,7 +66,7 @@ VM_SRC_LIST	= print_error.c \
 			  get_op_code.c\
 			  update_pos.c \
 			  parse_n_flag.c \
-			  parse_n_flag_cont.c \
+			  parse_n_flag_cont.c 
 
 SRC_VM		= $(addprefix $(VM_SRC_DIR), $(VM_SRC_LIST))
 

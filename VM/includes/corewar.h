@@ -1,14 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   corewar.h                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/11 20:06:11 by gjigglyp         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+
 
 #ifndef COREWAR_H
 # define COREWAR_H
@@ -97,11 +87,6 @@ void	copy_num_in_plrslist(int *num, t_plr *plr, int plrs);
 int		comparison_of_two_numbers(int a, int b);
 t_plr	*sort_list_plr(t_plr *plr);
 int		right_n_flag(int argc, char **argv);
-int		number_after_n(int i, char **argv);
-void	put_number_in_arr(int *num, t_plr *plr, int plrs);
-void	check_same_numb(int *num, t_plr *plr, int plrs);
-void	checkdotcor_and_chech_n(int ac, char **av, int *n, t_plr *pr);
-
 
 /*
 *	init car
