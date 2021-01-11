@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/11 14:07:48 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/11 14:37:19 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,15 @@ void	exec(t_car *car, uint8_t *arena, t_op *op)
 {
 	//op = &g_op[MINUS_ONE(car->op_code)];
 	//car->wait = 0;  // костыль
-	if (car->wait)
+	if (car)
+	{
+		if (car->wait)
 		car->wait--;
 	else  
 		op->func(car, arena);
+	}
+	
+	
 		//func[car->op_code](car, arena);
 		//op[car->op_code].func(car, arena);
 }
@@ -104,6 +109,7 @@ void	cycle(t_car **head_car, uint8_t *arena)
 		{
 			exec(car, arena, op);
 			car->wait = 0;
+			car->op_code = 0;
 		}
 		if (!(car->next) && (car->wait != 0))
 			break;
