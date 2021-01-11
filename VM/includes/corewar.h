@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/11 20:42:00 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/11 20:45:59 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,39 +17,38 @@
 # include "../includes/op.h"
 # include "errors.h"
 
-typedef enum { false, true } bool;
+typedef enum { false, true }	bool;
 
-# define MINUS_ONE(X)		((X) - 1)
+# define MINUS_ONE(X)			((X) - 1)
 
 typedef struct		s_vm
 {
-	//uint8_t			arena[MEM_SIZE];  может запихнуть сюда
-	unsigned int	plr_count; //number of players
-	unsigned int	lived; //number of players
+	unsigned int	plr_count;
+	unsigned int	lived;
 	int				car_count;
 	long int		check_count;
 	long int		cycles;
 	long int		cycles_to_die;
 	long int		cycles_aff_check;
-	int				n; // флаг n
-	int				dump;			// флаг dump
+	int				n;
+	int				dump;
 	char			*winner;
 }					t_vm;
 
 typedef struct		s_car
 {
 	bool			carry;
-	unsigned int	position; // место где мы ее ставим при начале игры
+	unsigned int	position;
 	uint8_t			reg[REG_NUMBER];
 	int				id;
 	bool			args_types_code;
 	int				arg[3];
 	int				arg_type[3];
 	int				parent_car;
-	unsigned int	last_live; // цикл в котором в прошлый раз была выполнена op_live
+	unsigned int	last_live;
 	unsigned int	op_code;
 	unsigned int	wait;
-	unsigned int	pc; //сколько байт перешагнуть чтобы оказаться на след интсрукции
+	unsigned int	pc;
 	unsigned int	dir_size_status;
 	struct s_car	*next;
 }					t_car;
@@ -60,106 +59,94 @@ typedef struct		s_plr
 	int				n_id;
 	uint8_t			*name;
 	uint8_t			*cmnt;
-	unsigned int	position; // место где мы его ставим при начале игры
+	unsigned int	position; 
 	unsigned int	codesize;
 	uint8_t			*code;
 	struct s_plr	*next;
 }					t_plr;
 
 /*
-*	parse
+**	init car
 */
 
-int 	is_num(char *str);
-int 	checkdotcor(char *argv);
-t_plr	*ft_parse(int argc, char **argv);
-void	check_flags(int argc, char **argv, t_vm *vm);
-int		read_from_file(t_plr *player, char *str, int nbr);
-void	print_error(int num_error);
-void 	check_n_flags(int argc, char **argv, t_plr *plr);
+void				init_car(t_plr *plr, t_car **head, int pos);
+t_car				*make_car(t_plr *plr, t_vm *vm);
+int					plr_count(t_plr *head);
 
 /*
-*	init car
+**	init arena 
 */
 
-void	init_car(t_plr *plr, t_car **head, int pos);
-t_car	*make_car(t_plr *plr, t_vm *vm);
-int		plr_count(t_plr *head);
+void				fill_arena(t_plr *plr, t_vm *vm, uint8_t *arena);
+void				ft_copy_code(uint8_t *dst, uint8_t *src, int codesize);
 
 /*
-*	init arena 
+**	инициализация t_vm, t_op
 */
 
-void	fill_arena(t_plr *plr, t_vm *vm, uint8_t *arena);
-//void	ft_copy_code(uint8_t *dst, uint8_t *src);
-void	ft_copy_code(uint8_t *dst, uint8_t *src, int codesize);
+void				init_vm(t_vm *vm);
 
 /*
-*	инициализация t_vm, t_op
+**	utils
 */
 
-void	init_vm(t_vm *vm);
-//void	init_op(t_op op[17]);
+unsigned int		update_pos(unsigned int pos);
+uint8_t				get_byte(uint8_t *arena, unsigned int position);
+void				dump(uint8_t *arena);
+void				introduce_plrs(t_plr *plr);
+int					arena_loop(uint8_t *arena, uint32_t coord);
+int					is_num(char *str);
+int					checkdotcor(char *argv);
 
 /*
-*	utils
+**	зачистка всего
 */
 
-unsigned int	update_pos(unsigned int pos);
-uint8_t	get_byte(uint8_t *arena, unsigned int position);
-void	dump(uint8_t *arena);
-void	introduce_plrs(t_plr *plr);
-int	arena_loop(uint8_t *arena, uint32_t coord);
-int	is_num(char *str);
-int	checkdotcor(char *argv);
+void				ft_free_vm(t_vm *vm);
+void				ft_free_plr(t_plr *plr);
 
 /*
-*	зачистка всего
-*/
-void	ft_free_vm(t_vm *vm);
-void	ft_free_plr(t_plr *plr);
-
-/*
-*	game
-*/
-void	game(t_car **car, uint8_t *arena, t_vm *vm);
-void	check(t_vm *vm, t_car **head_car);
-void	bury_car(t_vm *vm, t_car **head_car);
-void	check_winner(t_vm *vm);
-void	get_args(t_car *car, unsigned char *arena, t_op *op);
-
-/*
-*	operations
+**	game
 */
 
-void	op_live(t_car *car, uint8_t *arena);
-void	op_ld(t_car *car, uint8_t *arena);
-void	op_st(t_car *car, uint8_t *arena);
-void	op_add(t_car *car, uint8_t *arena);
-void	op_sub(t_car *car, uint8_t *arena);
-void	op_and(t_car *car, uint8_t *arena);
-void	op_or(t_car *car, uint8_t *arena);
-void	op_xor(t_car *car, uint8_t *arena);
-void	op_zjmp(t_car *car, uint8_t *arena);
-void	op_ldi(t_car *car, uint8_t *arena);
-void	op_sti(t_car *car, uint8_t *arena);
-void	op_fork(t_car *car, uint8_t *arena);
-void	op_lld(t_car *car, uint8_t *arena);
-void	op_lldi(t_car *car, uint8_t *arena);
-void	op_lfork(t_car *car, uint8_t *arena);
-void	op_aff(t_car *car, uint8_t *arena);
+void				game(t_car **car, uint8_t *arena, t_vm *vm);
+void				check(t_vm *vm, t_car **head_car);
+void				bury_car(t_vm *vm, t_car **head_car);
+void				check_winner(t_vm *vm);
+void				get_args(t_car *car, unsigned char *arena, t_op *op);
 
 /*
-*	testing
+**	void	operations(t_car *car, uint8_t *arena, void (**func)(t_car *, uint8_t *));
+**	void	no();
 */
-void	test(t_vm *vm, t_plr *plr);
-void	print_list(t_plr *plr);
-void	print_list_car(t_car *car);
-//void	print_op(t_op op[17]);
 
+void				op_live(t_car *car, uint8_t *arena);
+void				op_ld(t_car *car, uint8_t *arena);
+void				op_st(t_car *car, uint8_t *arena);
+void				op_add(t_car *car, uint8_t *arena);
+void				op_sub(t_car *car, uint8_t *arena);
+void				op_and(t_car *car, uint8_t *arena);
+void				op_or(t_car *car, uint8_t *arena);
+void				op_xor(t_car *car, uint8_t *arena);
+void				op_zjmp(t_car *car, uint8_t *arena);
+void				op_ldi(t_car *car, uint8_t *arena);
+void				op_sti(t_car *car, uint8_t *arena);
+void				op_fork(t_car *car, uint8_t *arena);
+void				op_lld(t_car *car, uint8_t *arena);
+void				op_lldi(t_car *car, uint8_t *arena);
+void				op_lfork(t_car *car, uint8_t *arena);
+void				op_aff(t_car *car, uint8_t *arena);
 
 /*
-*	alfa version op_tab
+**	testing
+*/
+
+void				test(t_vm *vm, t_plr *plr);
+void				print_list(t_plr *plr);
+void				print_list_car(t_car *car);
+
+/*
+**	alfa version op_tab
 */
 
 typedef struct		s_op
@@ -167,16 +154,15 @@ typedef struct		s_op
 	char			*name;
 	unsigned int	code;
 	unsigned int	args_amount;
-	bool			args_types_code;   // ??
-	unsigned int	args_types[3];  //  ???
+	bool			args_types_code; 
+	unsigned int	args_types[3];
 	bool			modify_carry;
 	unsigned int	dir_size_status;
 	unsigned int	cycles_wait;
-	void			(*func)(t_car *, uint8_t *);;
-
+	void			(*func)(t_car *, uint8_t *);
 }					t_op;
 
-static t_op		g_op[16] = {
+static t_op					g_op[16] = {
 	{
 		.name = "live",
 		.code = 1,
