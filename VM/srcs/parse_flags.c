@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 20:51:41 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/11 14:53:49 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/11 14:57:59 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,23 +188,7 @@ void check_n_flags(int argc, char **argv, t_plr *plr)
 			}
 			i++;
 		}
-
 		copy_num_in_plrslist(num, plr, plrs);
 		plr = sort_list_plr(plr);
-			
-		// i = 0;
-		// while (i < plrs)
-		// {
-		// 	ft_printf(" %d ", num[i]);
-		// 	i++;
-		// }
-		// ft_printf("\n");
-		// while (plr)
-		// {
-		// 	printf(" list %d ", plr->n_id);
-		// 	plr = plr->next;
-		// }
-		// ft_printf("\n");
 	}
 }
-
