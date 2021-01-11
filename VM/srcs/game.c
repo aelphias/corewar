@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/11 11:42:08 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/11 14:07:48 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	cycle(t_car **head_car, uint8_t *arena)
 	{
 		if (car->wait == 0)
 		{
-			car->op_code = get_byte(arena, car->position);
+			car->op_code = get_byte(arena, car->position); //считываем с карты
 			if (valid_op(car))
 			{
 				op = &g_op[MINUS_ONE(car->op_code)];
@@ -97,13 +97,15 @@ void	cycle(t_car **head_car, uint8_t *arena)
 					break;
 				car = car->next;
 			}
-	
 		}
 		if (car->wait != 0)
 			car->wait--;
 		if (car->wait == 0)
+		{
 			exec(car, arena, op);
-		if (!(car->next))
+			car->wait = 0;
+		}
+		if (!(car->next) && (car->wait != 0))
 			break;
 		car = car->next;
 	}
