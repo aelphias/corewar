@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+         #
+#    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2021/01/11 17:47:16 by gjigglyp         ###   ########.fr        #
+#    Updated: 2021/01/11 22:32:03 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -108,4 +108,4 @@ fclean: clean
 re: fclean all
 
 .PHONY: clean all re pwdfclean directory
-#.SILENT: clean all re  fclean 
+.SILENT: clean all re  fclean  $(NAME)
