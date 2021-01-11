@@ -3,19 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   op_fork.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 16:42:16 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/10 13:33:42 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/11 19:02:24 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
 
-/* 
-
-void clone_car (t_car *head, int id)
+/*void clone_car (t_car *head, int id)
 {
 	int i;
 
@@ -42,16 +40,15 @@ void clone_car (t_car *head, int id)
 		src = dst;
 	}
 	return (src);
-}
- */
+}*/
+ 
 
 void	op_fork(t_car *car, uint8_t *arena)
 {
-	bool silence_make;
-	if (arena && car)
-	{
-		silence_make = car->carry;
-		
-	}
-	printf("hi I'm fork! ;)\n");
+	int arg1;
+	t_car *car_new;
+	
+	//car_copy = arg1 % IDX_MOD;
+	//car_new = clone_car(car, );
+	
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_live.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:24:48 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/10 13:32:18 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/11 18:19:53 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 void	op_live(t_car *car, uint8_t *arena)
 {
-	bool silence_make;
-	if (arena && car)
-	{
-		silence_make = car->carry;
+	int arg1;
+	car->dir_size_status;
 		
-	}
 }

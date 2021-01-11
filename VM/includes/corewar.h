@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/11 18:54:20 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/11 19:13:29 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct		s_car
 	unsigned int	position; // место где мы ее ставим при начале игры
 	uint8_t			reg[REG_NUMBER];
 	int				id;
+	bool			args_types_code;
 	uint8_t			arg[3];
 	uint8_t			arg_type[3];
 	bool			args_types_code;
