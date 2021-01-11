@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/11 20:45:59 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/11 21:22:49 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,19 @@ typedef struct		s_plr
 	struct s_plr	*next;
 }					t_plr;
 
+typedef struct		s_op
+{
+	char			*name;
+	unsigned int	code;
+	unsigned int	args_amount;
+	bool			args_types_code; 
+	unsigned int	args_types[3];
+	bool			modify_carry;
+	unsigned int	dir_size_status;
+	unsigned int	cycles_wait;
+	void			(*func)(t_car *, uint8_t *);
+}					t_op;
+
 /*
 **	init car
 */
@@ -86,6 +99,19 @@ void				ft_copy_code(uint8_t *dst, uint8_t *src, int codesize);
 
 void				init_vm(t_vm *vm);
 
+
+/*
+**	parse 
+*/
+
+
+void 				check_flags(int argc, char **argv, t_vm *vm);
+void 				check_n_flags(int argc, char **argv, t_plr *plr);
+t_plr	 			*ft_parse(int argc, char **argv);
+
+
+
+
 /*
 **	utils
 */
@@ -97,6 +123,7 @@ void				introduce_plrs(t_plr *plr);
 int					arena_loop(uint8_t *arena, uint32_t coord);
 int					is_num(char *str);
 int					checkdotcor(char *argv);
+void				print_error(int num_error);
 
 /*
 **	зачистка всего
@@ -114,6 +141,7 @@ void				check(t_vm *vm, t_car **head_car);
 void				bury_car(t_vm *vm, t_car **head_car);
 void				check_winner(t_vm *vm);
 void				get_args(t_car *car, unsigned char *arena, t_op *op);
+void				write_arg_type(uint8_t arg_type, uint8_t ind, t_car *car);
 
 /*
 **	void	operations(t_car *car, uint8_t *arena, void (**func)(t_car *, uint8_t *));
@@ -148,19 +176,6 @@ void				print_list_car(t_car *car);
 /*
 **	alfa version op_tab
 */
-
-typedef struct		s_op
-{
-	char			*name;
-	unsigned int	code;
-	unsigned int	args_amount;
-	bool			args_types_code; 
-	unsigned int	args_types[3];
-	bool			modify_carry;
-	unsigned int	dir_size_status;
-	unsigned int	cycles_wait;
-	void			(*func)(t_car *, uint8_t *);
-}					t_op;
 
 static t_op					g_op[16] = {
 	{

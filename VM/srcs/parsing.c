@@ -163,8 +163,7 @@ t_plr *add_one_plr(char **argv, t_plr *plr, int i, int j)
 	close(fd);
 	return (plr);
 }
-/* 
-t_plr	 *ft_parse(int argc, char **argv, t_vm *vm) */
+
 t_plr	 *ft_parse(int argc, char **argv)
 {
 	int i;

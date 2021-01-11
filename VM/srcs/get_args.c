@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 18:19:27 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/11 20:42:13 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/11 21:49:32 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 # define DIR_CODE				2
 # define IND_CODE				3 */
 
-
-/* 	int			bit_mask;
+/* 
+	int			bit_mask;
 	if (stand == 1)
 		bit_mask = 192;
 	else
@@ -40,20 +40,24 @@
 	if ((size & bit_mask) == (bit_mask / 3))
 		return (1);
 	return (0);
-	
- */
+	 */
 
-void	write_args_types(uint8_t arg_type, uint8_t ind, t_car *car)
+
+void	write_arg_type(uint8_t arg_type, uint8_t ind, t_car *car)
 {
 	int i = 0;
 	if (ind == 1)
-		car->arg_type[ind] = REG_CODE;
+		car->arg_type[MINUS_ONE(ind)] = REG_CODE;
 	if (ind == 2)
-		car->arg_type[ind] = DIR_CODE;
+		car->arg_type[MINUS_ONE(ind)] = DIR_CODE;
 	if (ind == 3)
-		car->arg_type[ind] = IND_CODE;
+		car->arg_type[MINUS_ONE(ind)] = IND_CODE;
 	while (i < 3)
-		printf("arr[i]%d ", car->arg_type[i++]);
+	{
+		printf("arr[i]%d \n", car->arg_type[i]);
+		i++;
+	}
+		printf("<-->\n");
 }
 
 
@@ -66,10 +70,10 @@ void	get_args(t_car *car, unsigned char *arena, t_op *op)
 		car->position++;
 		index = get_byte(arena, car->position);
 		if (op->args_amount >= 1)
-			write_arg_type((int8_t)((index & 192) >> 6), 1, car);
-		if (op->args_amount >= 2)
+			write_arg_type((int8_t)((index & 192) >> 6), 1, car); 
+		else if (op->args_amount >= 2)
 			write_arg_type((int8_t)((index & 48) >> 4), 2, car);
-		if (op->args_amount >= 3)
+		else if (op->args_amount >= 3)
 			write_arg_type((int8_t)((index & 12) >> 2), 3, car);
 		printf("---->get_args is here, darling!\n");
 	}
