@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/11 17:05:58 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/11 17:59:09 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct		s_car
 	unsigned int	wait;
 	unsigned int	pc; //сколько байт перешагнуть чтобы оказаться на след интсрукции
 	unsigned int	dir_size_status;
+	bool			demolish;
 	struct s_car	*next;
 }					t_car;
 
@@ -132,6 +133,8 @@ uint8_t	get_byte(uint8_t *arena, unsigned int position);
 void	dump(uint8_t *arena);
 void	introduce_plrs(t_plr *plr);
 int	arena_loop(uint8_t *arena, uint32_t coord);
+int	is_num(char *str);
+int	checkdotcor(char *argv);
 
 /*
 *	зачистка всего
