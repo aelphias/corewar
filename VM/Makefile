@@ -6,7 +6,7 @@
 #    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2021/01/07 22:08:03 by aelphias         ###   ########.fr        #
+#    Updated: 2021/01/11 13:16:19 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@
 #  2. поставить зависимость от corewar.h
 #
 NAME		=	corewar
-CC			=	gcc
-FLAGS		=	-Wall -Wextra -g #-Werror
+CC			=	gcc  
+FLAGS		=	-Wall -Wextra -g #-Werror 
 
 LIBRARIES_VM= -L$(LIB_DIR) -lft
 INCLUDES_VM = -I$(INC_DIR) -I$(LIB_DIR)

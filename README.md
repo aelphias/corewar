@@ -18,7 +18,8 @@ git checkout похожа на  cd в bash - переходит на другу�
 Нужно сделать:
 
 По парсеру:
-1. назначать порядковые номера игрокам
+1. назначать порядковые номера игрокам с помощью:
+-n number sets the number of the next player. If non-existent, the player will have the nextavailable number in the order of the parameters. The last player will have the firstprocess in the order of execution.
 2. проверитть на сигфолты
 
  В целом:

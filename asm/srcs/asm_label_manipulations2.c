@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:46:49 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/26 11:59:32 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/05 14:10:26 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	if_is_label_or_not(t_crw *champ, int arg_cntr, char *line, int *i)
 		champ->labels[champ->l_size].t3 = T_IND;
 	}
 	(*i)++;
-	recording_label(champ, i, arg_cntr, line);
+	writelbl(champ, i, arg_cntr, line);
 	find_label(champ);
 }
 
@@ -40,9 +40,6 @@ int		get_reg_arg_val(t_crw *champ, char *line, int *i)
 	while (line[*i] >= '0' && line[*i] <= '9')
 		(*i)++;
 	if (ft_atoi(&line[1]) > REG_NUMBER || *i == 1 || ft_atoi(&line[1]) < 1)
-	{
-		free_all(*champ);
-		call_error(ER_I_AR);
-	}
+		free_and_call(*champ, ER_I_AR);
 	return (ft_atoi(&line[1]));
 }

@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:43:24 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/26 11:43:57 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/05 15:05:25 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,35 +40,18 @@ int					is_filename(const char *fn, const char *ex)
 }
 
 /*
-** здесь выводится тип ошибки в случае её выявления
-*/
-
-int					call_error(char const *const err)
-{
-	ft_putstr_fd("ERROR: ", 2);
-	ft_putendl_fd(err, 2);
-	exit(-1);
-}
-
-/*
 ** main function
 */
 
 int					main(int ac, char *av[])
 {
 	if (ac != 2)
-		call_error(ERR_USE);
+		ft_printf("ERROR: %s\n", ERR_USE);
 	else if (ac == 2 && is_filename(*(av + 1), ".s"))
-	{
-		ft_printf("Translating assembly to bytecode...\n");
 		assembler_mode(*(av + 1));
-	}
 	else if (ac == 2 && is_filename(*(av + 1), ".cor"))
-	{
-		ft_printf("Translating bytecode to assembly...\n");
 		disassembler_mode(*(av + 1));
-	}
 	else
-		call_error(ERR_UNF);
+		ft_printf("ERROR: %s\n", ERR_UNF);
 	return (0);
 }

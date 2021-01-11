@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:59:53 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/26 12:30:58 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/05 14:09:14 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,7 @@ int		init_main_com(int *len_const, int *i, char **line, t_crw *champ)
 	if (champ->len == 1)
 	{
 		free(*line);
-		free_all(*champ);
-		call_error(MORE_CO);
+		free_and_call(*champ, MORE_CO);
 	}
 	while ((*line)[*i] != '"' && (*line)[*i] != '\0' &&\
 	(*line)[*i] != COMMENT_CHAR && (*line)[*i] != ALT_COMMENT &&\
@@ -104,8 +103,7 @@ int		is_main_comment(char **line, int fd, t_crw *champ, int mc)
 	if ((*line)[i++] != '"')
 	{
 		free(*line);
-		free_all(*champ);
-		call_error(MAIN_CO);
+		free_and_call(*champ, MAIN_CO);
 	}
 	champ->fd = fd;
 	while ((*line)[i] != '"')

@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:44:20 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/26 11:44:20 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/05 14:12:19 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,7 @@ void	to_bin_code(t_crw *champ, int fd)
 	champ->code_size = count_code_size(champ);
 	exec_size = 16 + PROG_NAME_LENGTH + COMMENT_LENGTH + champ->code_size;
 	if (!(champ->exec_code = malloc(sizeof(char) * (exec_size))))
-	{
-		free_all(*champ);
-		call_error(MEM_ALL);
-	}
+		free_and_call(*champ, MEM_ALL);
 	zero_exec(champ, exec_size);
 	champ->ind_wr = 0;
 	write_bin_head(champ);

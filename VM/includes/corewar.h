@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/09 18:43:58 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/11 14:04:46 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,10 @@ void	check_flags(int argc, char **argv, t_vm *vm);
 int		read_from_file(t_plr *player, char *str, int nbr);
 void	print_error(int num_error);
 void 	check_n_flags(int argc, char **argv, t_plr *plr);
+void	error_one_dump();
+void	error_pos_dump();
+void	error_magic_numb();
+void	error_camp_max_size();
 
 /*
 *	init car
