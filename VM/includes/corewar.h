@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/11 20:23:44 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/11 20:42:00 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,6 @@ void	ft_free_plr(t_plr *plr);
 void	game(t_car **car, uint8_t *arena, t_vm *vm);
 void	check(t_vm *vm, t_car **head_car);
 void	bury_car(t_vm *vm, t_car **head_car);
-void	get_args(t_car *car, unsigned char *arena);
 void	check_winner(t_vm *vm);
 void	get_args(t_car *car, unsigned char *arena, t_op *op);
 

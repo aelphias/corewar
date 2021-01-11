@@ -3,29 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_args.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 18:19:27 by kcharlet          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2021/01/11 20:21:31 by aelphias         ###   ########.fr       */
-=======
-/*   Updated: 2021/01/11 19:16:57 by gjigglyp         ###   ########.fr       */
->>>>>>> 235c732c07924deab7bd693eceb792d81ff2e855
+/*   Updated: 2021/01/11 20:42:13 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	get_dir(t_car *car, unsigned char *arena, t_op *op)
-{
-	bool silence_make;
-	if (arena && car)
-	{
-		silence_make = car->carry;
-		op->cycles_wait =	op->cycles_wait;
-		
-	}
-}
+
 
 
 /* 
@@ -56,9 +43,17 @@ void	get_dir(t_car *car, unsigned char *arena, t_op *op)
 	
  */
 
-void	set_args_types(unit, t_car *car, int ind)
+void	write_args_types(uint8_t arg_type, uint8_t ind, t_car *car)
 {
-
+	int i = 0;
+	if (ind == 1)
+		car->arg_type[ind] = REG_CODE;
+	if (ind == 2)
+		car->arg_type[ind] = DIR_CODE;
+	if (ind == 3)
+		car->arg_type[ind] = IND_CODE;
+	while (i < 3)
+		printf("arr[i]%d ", car->arg_type[i++]);
 }
 
 
@@ -71,40 +66,13 @@ void	get_args(t_car *car, unsigned char *arena, t_op *op)
 		car->position++;
 		index = get_byte(arena, car->position);
 		if (op->args_amount >= 1)
-			set_arg_type((int8_t)((index & 192) >> 6), 1, car);
+			write_arg_type((int8_t)((index & 192) >> 6), 1, car);
 		if (op->args_amount >= 2)
-			set_arg_type((int8_t)((index & 48) >> 4), 2, car);
+			write_arg_type((int8_t)((index & 48) >> 4), 2, car);
 		if (op->args_amount >= 3)
-			set_arg_type((int8_t)((index & 12) >> 2), 3, car);
-		//get_args_types(get_byte(arena, car->position));
-		
+			write_arg_type((int8_t)((index & 12) >> 2), 3, car);
 		printf("---->get_args is here, darling!\n");
 	}
 	 else
-		get_dir(arena, car); 
-}
-
-////////////////////////////////////////
-
-static void	set_arg_type(int8_t arg_type, int8_t index, t_cursor *cursor)
-{
-	cursor->args_types[INDEX(index)] = g_arg_code[INDEX(arg_type)];
-}
-
-void		parse_types_code(t_vm *vm, t_cursor *cursor, t_op *op)
-{
-	int8_t args_types_code;
-
-	if (op->args_types_code)
-	{
-		args_types_code = get_byte(vm, cursor->pc, 1);
-		if (op->args_num >= 1)
-			set_arg_type((int8_t)((args_types_code & 0xC0) >> 6), 1, cursor);
-		if (op->args_num >= 2)
-			set_arg_type((int8_t)((args_types_code & 0x30) >> 4), 2, cursor);
-		if (op->args_num >= 3)
-			set_arg_type((int8_t)((args_types_code & 0xC) >> 2), 3, cursor);
-	}
-	else
-		cursor->args_types[0] = op->args_types[0];
+		car->arg_type[0] = op->args_types[0];
 }
