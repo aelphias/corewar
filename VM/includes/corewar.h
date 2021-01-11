@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/11 11:44:26 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/11 12:52:43 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct		s_car
 typedef struct		s_plr
 {
 	int				id;
+	int				n_id;
 	uint8_t			*name;
 	uint8_t			*cmnt;
 	unsigned int	position; // место где мы его ставим при начале игры
@@ -93,8 +94,9 @@ typedef struct		s_plr
 
 t_plr	*ft_parse(int argc, char **argv);
 void	check_flags(int argc, char **argv, t_vm *vm);
-int	read_from_file(t_plr *player, char *str, int nbr);
+int		read_from_file(t_plr *player, char *str, int nbr);
 void	print_error(int num_error);
+void 	check_n_flags(int argc, char **argv, t_plr *plr);
 
 /*
 *	init car
@@ -102,7 +104,7 @@ void	print_error(int num_error);
 
 void	init_car(t_plr *plr, t_car **head, int pos);
 t_car	*make_car(t_plr *plr, t_vm *vm);
-int	plr_count(t_plr *head);
+int		plr_count(t_plr *head);
 
 /*
 *	init arena 
