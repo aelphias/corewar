@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm_check_names.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 12:32:17 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/10 15:34:09 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/11 12:40:57 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,13 @@ int		is_command_or_not(char *line, t_crw *champ)
 		i++;
 	name_com = NULL;
 	name_com = check_name_com(&line[i], champ);
-	if (name_com == NULL)
+	if (name_com == NULL || line[i + ft_strlen(name_com)] == LABEL_CHAR)
+	{
+		free(name_com);
 		return (0);
+	}
+	ft_strcpy(champ->labels[champ->l_size].cmd_n, name_com);
 	free(name_com);
+	convert_command(&line[i + ft_strlen(name_com)], champ);
 	return (1);
 }
