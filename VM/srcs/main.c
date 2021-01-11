@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/11 12:52:16 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/11 15:49:38 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void ft_free_plr(t_plr *plr)
 } */
 int		main(int argc, char **argv)
 {
-	uint8_t	arena[MEM_SIZE];
+	uint8_t			arena[MEM_SIZE];
 	t_vm			*vm; // сваливаем сюда все по игре, кроме переменных каретки, которые поместим t_car 
 	t_plr			*plr; // записываем все по игроку
 	t_car			*car; // записываем все по каретке
