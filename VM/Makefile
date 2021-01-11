@@ -6,7 +6,7 @@
 #    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2021/01/10 20:55:31 by aelphias         ###   ########.fr        #
+#    Updated: 2021/01/11 11:44:53 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,7 @@ VM_SRC_LIST	= print_error.c \
 			  op_lfork.c\
 			  op_aff.c\
 			  bury_car.c
+			  #check_winner.c
 
 SRC_VM		= $(addprefix $(VM_SRC_DIR), $(VM_SRC_LIST))
 

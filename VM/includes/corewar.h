@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/10 20:29:58 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/11 11:44:26 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,7 @@ void	game(t_car **car, uint8_t *arena, t_vm *vm);
 void	check(t_vm *vm, t_car **head_car);
 void	bury_car(t_vm *vm, t_car **head_car);
 void	get_args(t_car *car, unsigned char *arena);
+void	check_winner(t_vm *vm);
 /*
 *	operations
 */

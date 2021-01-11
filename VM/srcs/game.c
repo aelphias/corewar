@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/10 20:33:17 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/11 11:42:08 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,5 +123,5 @@ void	game(t_car **head_car, uint8_t *arena, t_vm *vm)
 			//printf("----{inside game()}--Check() was called\n");
 	}
 	ft_printf("vm->cycles = %d\n", vm->cycles);
-	//ft_printf("Contestant 1, %s has won !\n", (*vm)->winner);
+	// check_winner() ft_printf("Contestant 1, %s has won !\n", (*vm)->winner);
 }

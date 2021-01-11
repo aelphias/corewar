@@ -32,7 +32,7 @@ void	op_add(t_car *car, uint8_t *arena)
 	printf("\n ### I'm op_add! ### \n");
 	printf("\n type_arg %d\n", type_arg);
 	printf("\n type_arg %d\n", arg2);
-	printf("\n car->reg[arena[car->position + 4]] %d\n", car->reg[arena[car->position + 4]]);
-	printf(" +=5 =%d\n", arena[car->position]);
+	printf("\n car->reg[arena[car->position + 4]] %d\n", car->reg[arena[update_pos(car->position + 4)]]);
+	printf(" +=5 =%d\n", arena[update_pos(car->position)]);
 	car->position += 5;
 }
