@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/11 18:06:32 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/11 19:12:22 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ void	check(t_vm *vm, t_car **head_car)
 void	exec(t_car *car, uint8_t *arena, t_op *op)
 {
 
-	if (car)
+/* 	if (car)
 	{
 		if (car->wait)
 		car->wait--;
-	else  
+	else */
 		op->func(car, arena);
-	}
+	//}
 }
 /* 
 Чтобы запустить цикл нужно:

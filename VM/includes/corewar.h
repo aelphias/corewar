@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/11 17:59:09 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/11 18:54:20 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct		s_car
 	int				id;
 	uint8_t			arg[3];
 	uint8_t			arg_type[3];
+	bool			args_types_code;
 	int				parent_car;
 	unsigned int	last_live; // цикл в котором в прошлый раз была выполнена op_live
 	unsigned int	op_code;
