@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+         #
+#    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/24 20:51:23 by aelphias          #+#    #+#              #
-#    Updated: 2021/01/05 16:42:25 by gjigglyp         ###   ########.fr        #
+#    Updated: 2021/01/11 12:46:55 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,20 +14,26 @@
 
 COREWAR = asm
 COREWAR = corewar
+ASSEMBLER = asm
 VM_PATH = ./VM/
-ASM_PATH = ./asm/
+ASM_PATH = ./assembler/
 
-all:  $(COREWAR)
+all:  $(COREWAR) $(ASSEMBLER)
 
 $(ASM):
 	make -C $(ASM_PATH)
 $(COREWAR):
 	make -C $(VM_PATH)
+
+$(ASSEMBLER):
+	make -C $(ASM_PATH)
 	
 clean:
 	make -C $(VM_PATH) clean
+	make -C $(ASM_PATH) clean
 	
 fclean:
 	make -C $(VM_PATH) fclean
+	make -C $(ASM_PATH) fclean
 	
-re: clean fclean all
+re: fclean all

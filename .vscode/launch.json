@@ -18,3 +18,5 @@
 		}
 	]
 }
+
+	//		"args": ["${workspaceFolder}/VM/adder.cor", "${workspaceFolder}/VM/adder.cor"],

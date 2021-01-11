@@ -6,13 +6,13 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 18:46:26 by kcharlet          #+#    #+#             */
-/*   Updated: 2020/12/31 14:04:47 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/05 21:10:01 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	dump(unsigned char *arena)
+void	dump(uint8_t *arena)
 {
 	int i;
 

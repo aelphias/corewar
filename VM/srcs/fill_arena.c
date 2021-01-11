@@ -6,36 +6,34 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 16:39:28 by kcharlet          #+#    #+#             */
-/*   Updated: 2020/12/30 20:45:55 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/08 13:12:24 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	ft_copy_code(unsigned char *dst, unsigned int *src)
+void	ft_copy_code(uint8_t *dst, uint8_t *src, int codesize)
 {
-	size_t i;
+	int i;
 
 	i = 0;
-	while (i < 48) // почему 48?
+	while (i < codesize)
 	{
 		dst[i] = src[i];
 		i++;
 	}
 }
 
-
-void	fill_arena(t_plr *plr, t_vm *vm, unsigned char *arena)
+void	fill_arena(t_plr *plr, t_vm *vm, uint8_t *arena)
 {
 	int i;
 	
 	i = 0;
 	while (plr)
 	{
-		ft_copy_code(&(arena[plr->position]), plr->code);
+		ft_copy_code(&(arena[plr->position]), plr->code, plr->codesize);
 		plr = plr->next;
 	}
-	if (vm->dump)
+	if ((vm->dump) != -1)  // add dependency from a cycle
 		dump(arena);
-		ft_printf("dump=%d\n ",vm->dump);
 }

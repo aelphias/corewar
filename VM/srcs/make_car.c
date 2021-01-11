@@ -12,21 +12,18 @@
 
 #include "corewar.h"
 
-void	init_car(t_plr *plr, t_car **head, int pos, t_vm *vm)
+// void	init_car(t_plr *plr, t_car **head, int pos, t_vm *)
+void	init_car(t_plr *plr, t_car **head, int pos)
 {
-	int			i;
 	t_car		*car;
 
-	i = 0;
 	car = (t_car *)ft_memalloc(sizeof(t_car));
-	ft_bzero(car, sizeof(t_car));
-	ft_printf("stand=%d\n", pos); // check
 	car->reg[0] = plr->id;
 	car->parent_car = plr->id;
 	car->position = pos;
 	car->next = NULL;
 	//car->live = 1;
-	//car->id = plr->id++; // инициализацию вызываем в цикле для каждой каретки, id растет на единицу
+	car->id = plr->id; // инициализацию вызываем в цикле для каждой каретки, id растет на единицу
 	if (!(*head))
 		*head = car;
 	else
@@ -34,33 +31,32 @@ void	init_car(t_plr *plr, t_car **head, int pos, t_vm *vm)
 		car->next = (*head);
 		*head = car;
 	}
-	ft_printf("car%d\n", car->parent_car); // check
 }
 
 t_car	*make_car(t_plr *plr, t_vm *vm)
 {
 	// создание структуры под каретки
-	int		equalizer;
-	int		count;
-	int		tmp;
-	t_car	*car;
+	int				equalizer;
+	unsigned int	count;
+	int				tmp;
+	t_car			*car;
 	
-	equalizer = 0;
 	count = 0;
+	equalizer = 0;
 	car = NULL;
-	vm->num_plr = plr_count(plr);
-	if ((vm->num_plr % 2) != 0)
+	vm->plr_count = plr_count(plr);
+	vm->car_count = vm->plr_count;
+	/* ПОЗИЦИЯ КАРЕТОК ПОДСЧЕТ 
+	 */
+	if ((vm->plr_count % 2) != 0)
 		equalizer = -1;
-	while (count < vm->num_plr)
+	while (count < vm->plr_count)
 	{
-		tmp = (count * ((MEM_SIZE + equalizer) / vm->num_plr));
+		tmp = (count * ((MEM_SIZE + equalizer) / vm->plr_count));
 		plr->position = tmp;
-		init_car(plr, &car, tmp, vm);
+		init_car(plr, &car, tmp);
 		plr = plr->next;
 		count++;
 	}
 	return (car);
-	/* if (!(car = (t_car *)ft_memalloc(sizeof(t_car))))
-		return (NULL); */
-	//i = vm->num_plr;
 }

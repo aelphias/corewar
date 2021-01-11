@@ -34,14 +34,19 @@ void check_flags(int argc, char **argv, t_vm *vm)
 	{
 		if ((ft_strcmp(argv[i], "-dump")) == 0)
 		{	
+			if (argc == 1)
+				print_error(ERR_USE);
 			if (flag == 1)
 			{
 				//free
 				write(2, "USE ONE VALUE FOR DUMP\n", 23);
+			}
+			if (!(is_num(argv[i + 1])))
+			{
+				print_error(ERR_USE);
 				exit(1);
 			}
-			if (!(vm->dump = ft_atoi(argv[i + 1])))
-				print_error(ERR_USE);
+			vm->dump = ft_atoi(argv[i + 1]);
 			flag = 1;
 			if (vm->dump < 0)
 			{
@@ -68,5 +73,4 @@ void check_flags(int argc, char **argv, t_vm *vm)
 		// 	//	print_error(ERR_USE); 
 		// }
 	}
-	//ft_printf("dump %d\n", vm->dump);
 }
