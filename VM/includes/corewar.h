@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/11 14:04:46 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/11 16:27:49 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,13 @@ void	error_one_dump();
 void	error_pos_dump();
 void	error_magic_numb();
 void	error_camp_max_size();
+int		comparison_of_two_numbers(int a, int b);
+int		is_num(char *str);
+int		chek_num(int *num, int minnum, int plrs);
+void	copy_num_in_plrslist(int *num, t_plr *plr, int plrs);
+t_plr	*sort_list_plr(t_plr *plr);
+
+
 
 /*
 *	init car
@@ -125,6 +132,8 @@ void	introduce_plrs(t_plr *plr);
 int	arena_loop(uint8_t *arena, uint32_t coord);
 uint8_t	update_pos(uint32_t pos);
 uint8_t	get_op_code(uint8_t *arena, uint32_t position);
+int	is_num(char *str);
+int	checkdotcor(char *argv);
 
 /*
 *	зачистка всего
