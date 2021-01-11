@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 15:37:07 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/19 14:15:46 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/11 19:28:25 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ typedef struct		s_func
 }					t_func;
 
 int					get_next_line(const int fd, char **line);
-
+float				ft_fclamp(float n, float min, float max);
 long long			ft_atol(const char *str);
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t n);
