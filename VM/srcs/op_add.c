@@ -1,21 +1,20 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   op_add.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/22 18:13:35 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/04 20:35:43 by aelphias         ###   ########.fr       */
+/*   Created: 2021/01/11 19:03:32 by gjigglyp          #+#    #+#             */
+/*   Updated: 2021/01/11 19:05:35 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "corewar.h"
+#include "corewar.h"
 
-/* 
-* Opcode 4. Take three registries, add the first two, 
-* and place the result in thethird, right before modifying the carry.
+/*
+** Opcode 4. Take three registries, add the first two, \
+** and place the result in thethird, right before modifying the carry.
 */
 
 void	op_add(t_car *car, uint8_t *arena)
@@ -29,10 +28,11 @@ void	op_add(t_car *car, uint8_t *arena)
 	arg1 = car->reg[update_pos(arena[car->position + 2])];
 	arg2 = car->reg[update_pos(arena[car->position + 3])];
 	car->reg[update_pos(arena[car->position + 4])] = arg1 + arg2;
-	printf("\n ### I'm op_add! ### \n");
-	printf("\n type_arg %d\n", type_arg);
-	printf("\n type_arg %d\n", arg2);
-	printf("\n car->reg[arena[car->position + 4]] %d\n", car->reg[arena[update_pos(car->position + 4)]]);
-	printf(" +=5 =%d\n", arena[update_pos(car->position)]);
+	ft_printf("\n ### I'm op_add! ### \n");
+	ft_printf("\n type_arg %d\n", type_arg);
+	ft_printf("\n type_arg %d\n", arg2);
+	ft_printf("\n car->reg[arena[car->position + 4]] %d\n", \
+		car->reg[arena[update_pos(car->position + 4)]]);
+	ft_printf(" +=5 =%d\n", arena[update_pos(car->position)]);
 	car->position += 5;
 }

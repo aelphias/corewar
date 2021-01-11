@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/11 16:19:18 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/11 18:24:27 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct		s_car
 	unsigned int	position; // место где мы ее ставим при начале игры
 	uint8_t			reg[REG_NUMBER];
 	int				id;
+	bool			args_types_code;
 	uint8_t			arg[3];
 	uint8_t			arg_type[3];
 	int				parent_car;

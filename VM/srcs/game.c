@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/11 14:37:19 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/11 18:48:33 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,28 +24,6 @@ void	check(t_vm *vm, t_car **head_car)
 	vm->lived = 0;
 }
 
-/* void	init_func(void (**f)(t_car *, uint8_t*))
-{
-	f[0] = NULL;
-	f[1] = &op_add;
-	f[2] = &op_add;
-	f[3] = &op_add;
-	f[4] = &op_add;
-	f[5] = &op_add;
-	f[6] = &op_add;
-	f[7] = &op_add;
-	f[8] = &op_add;
-	f[9] = &op_add;
-	f[10] = &op_add;
-	f[11] = &op_add;
- 	f[12] = &op_fork;
-	f[13] = &op_fork;
-	f[14] = &op_fork;
-	f[15] = &op_fork;
-	f[16] = &op_fork;
-*/
-
- 
 void	exec(t_car *car, uint8_t *arena, t_op *op)
 {
 	//op = &g_op[MINUS_ONE(car->op_code)];
@@ -54,8 +32,12 @@ void	exec(t_car *car, uint8_t *arena, t_op *op)
 	{
 		if (car->wait)
 		car->wait--;
-	else  
+	else 
+	{
+		car->dir_size_status = op->dir_size_status;
+		car->args_types_code = op->args_types_code;
 		op->func(car, arena);
+	}
 	}
 	
 	
@@ -79,12 +61,7 @@ void	cycle(t_car **head_car, uint8_t *arena)
 	t_car	*car;
 	t_op *op;
 	
-	
 	car = (*head_car);
-	//car->op_code = get_byte(arena, car->position);
-/* 	if (valid_op(car))
-		exec(car, arena, op); */
-	//init_func(func);
 	while (car)
 	{
 		if (car->wait == 0)
