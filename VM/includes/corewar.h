@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/11 18:24:27 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/11 19:13:29 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct		s_car
 	bool			args_types_code;
 	uint8_t			arg[3];
 	uint8_t			arg_type[3];
+	bool			args_types_code;
 	int				parent_car;
 	unsigned int	last_live; // цикл в котором в прошлый раз была выполнена op_live
 	unsigned int	op_code;
@@ -94,6 +95,8 @@ typedef struct		s_plr
 *	parse
 */
 
+int 	is_num(char *str);
+int 	checkdotcor(char *argv);
 t_plr	*ft_parse(int argc, char **argv);
 void	check_flags(int argc, char **argv, t_vm *vm);
 int		read_from_file(t_plr *player, char *str, int nbr);

@@ -8,8 +8,8 @@
 			"name": "(lldb) Launch",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/asm/asm",
-			"args": ["${workspaceFolder}/asm/Sonya.s"],
+			"program": "${workspaceFolder}/VM/corewar",
+			"args": ["${workspaceFolder}/VM/adder.cor", "${workspaceFolder}/VM/adder.cor"],
 			"stopAtEntry": true,
 			"cwd": "${workspaceFolder}",
 			"environment": [],
@@ -20,3 +20,9 @@
 }
 
 	//		"args": ["${workspaceFolder}/VM/adder.cor", "${workspaceFolder}/VM/adder.cor"],
+
+	/* 
+	*****  for asm:
+			"program": "${workspaceFolder}/asm/asm",
+			"args": ["${workspaceFolder}/asm/Sonya.s"],
+	*/

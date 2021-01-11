@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
+<<<<<<< HEAD
+/*   Updated: 2021/01/11 19:12:22 by aelphias         ###   ########.fr       */
+=======
 /*   Updated: 2021/01/11 18:48:33 by gjigglyp         ###   ########.fr       */
+>>>>>>> a1708f8594a6b6ad7290c44bf29659a1370a66c1
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +27,23 @@ void	check(t_vm *vm, t_car **head_car)
 	}
 	vm->lived = 0;
 }
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> a1708f8594a6b6ad7290c44bf29659a1370a66c1
 void	exec(t_car *car, uint8_t *arena, t_op *op)
 {
-	//op = &g_op[MINUS_ONE(car->op_code)];
-	//car->wait = 0;  // костыль
-	if (car)
+
+/* 	if (car)
 	{
 		if (car->wait)
 		car->wait--;
+<<<<<<< HEAD
+	else */
+		op->func(car, arena);
+	//}
+=======
 	else 
 	{
 		car->dir_size_status = op->dir_size_status;
@@ -43,6 +55,7 @@ void	exec(t_car *car, uint8_t *arena, t_op *op)
 	
 		//func[car->op_code](car, arena);
 		//op[car->op_code].func(car, arena);
+>>>>>>> a1708f8594a6b6ad7290c44bf29659a1370a66c1
 }
 /* 
 Чтобы запустить цикл нужно:
@@ -96,9 +109,6 @@ void	cycle(t_car **head_car, uint8_t *arena)
 
 void	game(t_car **head_car, uint8_t *arena, t_vm *vm)
 {
-	//void	(*func[17])(t_car *, uint8_t *);
-	//init_func(func);
-	//while ((*vm)->cycles < 11)
 	while (vm->car_count)
 	{
 		vm->cycles++;

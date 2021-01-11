@@ -12,3 +12,5 @@ libft/libft.a
 .gitignore
 *.cor
 assembler/asm
+*.dSYM
+VM/corewar.dSYM
