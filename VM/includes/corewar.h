@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/11 11:44:26 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/11 16:04:36 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct		s_car
 	unsigned int	wait;
 	unsigned int	pc; //сколько байт перешагнуть чтобы оказаться на след интсрукции
 	unsigned int	dir_size_status;
+	bool			demolish;
 	struct s_car	*next;
 }					t_car;
 

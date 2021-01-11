@@ -3,14 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   bury_car.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 23:38:09 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/11 15:32:58 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/11 16:08:48 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+
+t_car	*item_deletion(t_car *current)
+{
+	t_car *next;
+	
+    if (current->demolish) { // Found one to delete
+        next = current->next;
+        free(current);
+        return (next);
+    } else { // Just keep going
+        current->next = item_deletion(current->next);
+        return (current);
+    }
+}
 
 void	bury_car(t_vm *vm, t_car **head_car)
 {
@@ -23,26 +37,7 @@ void	bury_car(t_vm *vm, t_car **head_car)
 	{
 		if ((vm->cycles_to_die <= 0)
 		|| (vm->cycles - current->last_live) >= vm->cycles_to_die)
-		{
-			vm->car_count--;
-			del = current;
-			if (current == (*head_car)) // deleting from head
-			{
-				current = current->next;
-				free(del);
-			}
-			else if (!(current->next))
-			{
-				free(del);
-				break;
-			}
-			else
-			{
-				current = current->next->next;
-				free(del);
-			}
-			current = current->next;
-		}
+			item_deletion(current);
 		else
 			current = current->next;
 	}
