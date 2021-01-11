@@ -11,3 +11,4 @@ corewar
 libft/libft.a
 .gitignore
 *.cor
+assembler/asm

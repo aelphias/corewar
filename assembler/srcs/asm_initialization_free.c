@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:44:37 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/26 11:44:38 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/05 14:09:54 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	zeroing_values(t_crw *champ, int i, int j)
 	champ->labels[i].arg_now = 0;
 }
 
-void	init_array(t_crw *champ)
+void	init_crw(t_crw *champ)
 {
 	int i;
 	int j;
@@ -72,10 +72,7 @@ void	init_array(t_crw *champ)
 	i = 0;
 	champ->l_size = 0;
 	if (!(champ->labels = malloc(sizeof(t_lbl) * 250)))
-	{
-		free_all(*champ);
-		call_error(MEM_ALL);
-	}
+		free_and_call(*champ, MEM_ALL);
 	while (i != 250)
 	{
 		champ->labels[i].names = NULL;
@@ -92,7 +89,7 @@ void	init_array(t_crw *champ)
 	}
 }
 
-void	increase_array(t_crw *champ)
+void	increase_crw(t_crw *champ)
 {
 	int i;
 	int j;

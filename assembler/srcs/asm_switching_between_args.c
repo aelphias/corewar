@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:42:55 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/26 11:42:57 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/05 14:11:27 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	is_lab_in_dir_char(char *line, t_crw *champ, int arg_cntr, int *i)
 	if (line[*i] == LABEL_CHAR)
 	{
 		(*i)++;
-		recording_label(champ, i, arg_cntr, line);
+		writelbl(champ, i, arg_cntr, line);
 		find_label(champ);
 	}
 	else if ((line[*i] >= '0' && line[*i] <= '9') || line[*i] == '-')
@@ -84,10 +84,7 @@ void	is_lab_in_dir_char(char *line, t_crw *champ, int arg_cntr, int *i)
 			get_dir_ind_arg_val(champ, line, i);
 	}
 	else
-	{
-		free_all(*champ);
-		call_error(ER_I_AR);
-	}
+		free_and_call(*champ, ER_I_AR);
 }
 
 void	if_is_dir(t_crw *champ, int arg_cntr, char *line, int *i)
