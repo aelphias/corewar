@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/09 18:43:58 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/11 20:06:11 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,20 @@ void	check_flags(int argc, char **argv, t_vm *vm);
 int		read_from_file(t_plr *player, char *str, int nbr);
 void	print_error(int num_error);
 void 	check_n_flags(int argc, char **argv, t_plr *plr);
+void	error_one_dump();
+void	error_pos_number();
+int		is_num(char *str);
+void	check_flags(int argc, char **argv, t_vm *vm);
+int		chek_num(int *num, int minnum, int plrs);
+void	copy_num_in_plrslist(int *num, t_plr *plr, int plrs);
+int		comparison_of_two_numbers(int a, int b);
+t_plr	*sort_list_plr(t_plr *plr);
+int		right_n_flag(int argc, char **argv);
+int		number_after_n(int i, char **argv);
+void	put_number_in_arr(int *num, t_plr *plr, int plrs);
+void	check_same_numb(int *num, t_plr *plr, int plrs);
+void	checkdotcor_and_chech_n(int ac, char **av, int *n, t_plr *pr);
+
 
 /*
 *	init car
