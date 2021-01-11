@@ -1,4 +1,4 @@
-.n2ame "Sonya"
+.name "Sonya"
 .comment "Jour J"
 
-add r1,r2,r3
+add r1, r2, r3

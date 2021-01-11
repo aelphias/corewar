@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_args.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 18:19:27 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/10 17:55:32 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/11 19:16:57 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,14 @@ void	get_dir(t_car *car, unsigned char *arena, t_op *op)
 	
  */
 
-/* void	get_args_types(uint8_t arg_type, t_car *car)
+void	get_args_size(t_car *car, t_op *op)
+{
+	int		sizearg;
+
+	sizearg = op->args_types
+}
+
+void	get_args_types(uint8_t arg_type, t_car *car)
 {
 	int			bit_mask;
 	bit_mask = 192;
@@ -78,4 +85,3 @@ void	get_args(t_car *car, unsigned char *arena, t_op *op)
 		get_dir(arena, car); 
 }
 
- */
