@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
+#    By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2021/01/11 12:41:39 by aelphias         ###   ########.fr        #
+#    Updated: 2021/01/11 17:53:50 by gjigglyp         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ASM			=	asm
 NAME		=	$(ASM)
 
-CC			=	clang
+CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror -g
 LIB_DIR		=	../libft/
 LIB_A		=	$(LIB_DIR)libft.a
@@ -40,33 +40,33 @@ all : $(OBJ_DIR) $(ASM)
 
 #create obj dir
 $(OBJ_DIR):
-	@mkdir -p $(OBJ_DIR)
+	mkdir -p $(OBJ_DIR)
 
 #create asm proj
 $(ASM): $(LIB_A) $(OBJ_ASM)
-	@echo "\\033[32m Prepare assembler for the COREWAR project... \033[0m"
-	@$(CC) $(CFLAGS) $(INC) $(OBJ_ASM) $(LIB_A) -o $(ASM)
+	echo "\\033[32m Prepare assembler for the COREWAR project... \033[0m"
+	$(CC) $(CFLAGS) $(INC) $(OBJ_ASM) $(LIB_A) -o $(ASM)
 
 #create libc
 $(LIB_A):
-	@echo "\\033[34m Prepare libft... \033[0m"
-	@$(MAKE) -sC $(LIB_DIR) CFLAGS="$(CFLAGS)"
+	echo "\\033[34m Prepare libft... \033[0m"
+	$(MAKE) -sC $(LIB_DIR) CFLAGS="$(CFLAGS)"
 
 #make obj
 $(OBJ_DIR)%.o: $(SRC_L_D)%.c $(HEAD)
-	@$(CC) $(CFLAGS) -c $(INC) $< -o $@
+	$(CC) $(CFLAGS) -c $(INC) $< -o $@
 
 directory: $(OBJDIR)
 
 clean:
-	@rm -rf $(OBJ_DIR) $(LIB_A)
-	@make -C $(LIB_DIR) clean
-	@echo "\\033[31m Deleting object files... \033[0m"
+	rm -rf $(OBJ_DIR) $(LIB_A)
+	make -C $(LIB_DIR) clean
+	echo "\\033[31m Deleting object files... \033[0m"
 
 fclean: clean
-	@rm -f $(NAME) $(LIB_A)
-	@make -C $(LIB_DIR) fclean
-	@echo "\\033[31m Deleting $(NAME)... \033[0m"
+	rm -f $(NAME) $(LIB_A)
+	make -C $(LIB_DIR) fclean
+	echo "\\033[31m Deleting $(NAME)... \033[0m"
 
 re: fclean all
 
