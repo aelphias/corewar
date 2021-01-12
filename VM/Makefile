@@ -67,6 +67,7 @@ VM_SRC_LIST	= print_error.c \
 			  op_aff.c\
 			  bury_car.c
 			  #check_winner.c
+			  
 
 
 OBJ_VM		=	$(VM_SRC_LIST:%.c=%.o)
