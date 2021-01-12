@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 18:35:34 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/11 17:00:30 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/12 14:31:45 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,12 @@ void	error_pos_number()
 {
 	//free
 	write(2, "USE POSITIVE NUMBER FOR DUMP\n", 29);
+	exit(1);
+}
+
+void	error_file()
+{
+	//free();
+	write(2, "ERROR FILE CHAMP\n", 17);
 	exit(1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/11 20:06:11 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/12 14:31:19 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ int		number_after_n(int i, char **argv);
 void	put_number_in_arr(int *num, t_plr *plr, int plrs);
 void	check_same_numb(int *num, t_plr *plr, int plrs);
 void	checkdotcor_and_chech_n(int ac, char **av, int *n, t_plr *pr);
+void	error_file();
 
 
 /*
