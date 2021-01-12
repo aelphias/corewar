@@ -141,7 +141,7 @@ void				cycle(t_car **head_car, uint8_t *arena, t_vm *vm);
 void				check(t_vm *vm, t_car **head_car);
 void				bury_car(t_vm *vm, t_car **head_car);
 void				check_winner(t_vm *vm);
-void				get_args(t_car *car, unsigned char *arena, t_op *op);
+void				get_args_type(t_car *car, unsigned char *arena, t_op *op);
 void				write_arg_type(int arg_type, t_car *car, t_op *op, int ind);
 
 

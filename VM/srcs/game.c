@@ -28,7 +28,7 @@ void	exec(t_car *car, uint8_t *arena, t_op *op)
 {
 	car->dir_size_status = op->dir_size_status;
 	car->is_type_code = op->is_type_code;
-	get_args(car,arena, op);
+	get_args_type(car, arena, op);
 	op->func(car, arena);   // и здесь мы страртуем операции
 }
 
@@ -42,7 +42,7 @@ bool	valid_op(t_car *car)
 void	cycle(t_car **head_car, uint8_t *arena, t_vm *vm)
 {
 	t_car	*car;
-	t_op *op;
+	t_op	*op;
 	
 	car = (*head_car);
 	while (car)
@@ -82,8 +82,8 @@ void	game(t_car **head_car, uint8_t *arena, t_vm *vm)
 	while (vm->car_count)
 	{
 		vm->cycles++;
-		cycle(head_car, arena, vm); 
-		if (!(vm->cycles_to_die) || (vm->cycles % vm->cycles_to_die) == 0) // условие для проверки
+		cycle(head_car, arena, vm);
+		if (vm->cycles_to_die <= 0 || (vm->cycles % CYCLE_TO_DIE) == 0) // условие для проверки
 			check(vm, head_car); 
 			//printf("----{inside game()}--Check() was called\n");
 	}

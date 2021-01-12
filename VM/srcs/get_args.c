@@ -41,7 +41,7 @@
 		printf("<-->\n");
 }
 
-void	get_args(t_car *car, unsigned char *arena, t_op *op)
+void	get_args_type(t_car *car, unsigned char *arena, t_op *op)
 {
 	int		i;
 	int		arg_type;
