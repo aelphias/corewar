@@ -13,6 +13,8 @@
 
 #include "corewar.h"
 
+
+
 /* ..srcs/parsing.c:30:30: warning: unused parameter 'name' [-Wunused-parameter]
 void read_file(int fd, char *name, t_plr *plr) >> aelphias удалил  char *name,  5.1.2021<<*/
 void read_file(int fd, t_plr *plr) // 
