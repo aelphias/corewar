@@ -12,7 +12,12 @@
 
 #include "corewar.h"
 
-void					op_st(t_car *car, uint8_t *arena)
+void					op_st(t_car *car, uint8_t *arena, t_vm *vm)
+{
+
+}
+/* 
+void					op_st(t_car *car, uint8_t *arena, t_vm *vm)
 {
 	int p;
 	int val1;
@@ -67,4 +72,4 @@ int				read32int(unsigned char *a, int posit)
 		i++;
 	}
 	return ((bytes[0] << 24) | (bytes[1] << 16) | (bytes[2] << 8) | bytes[3]);
-}
+} */

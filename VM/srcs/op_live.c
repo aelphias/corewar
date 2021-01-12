@@ -12,7 +12,21 @@
 
 #include "corewar.h"
 
-void	op_live(t_car *car, uint8_t *arena)
+void	op_live(t_car *car, uint8_t *arena, t_vm *vm)
+{
+
+	int arg;
+
+	arg = 0;
+	if (vm && car && arena) 
+	{
+		car->last_live_cycle = vm->cycles;
+		car->position++;
+		arg = get_byte(arena, car->position);
+		printf("------>op_live() arg=%d\n",arg);
+	}
+}
+/* void	op_live(t_car *car, uint8_t *arena, t_vm *vm)
 {
 	t_vm **vm;
 	t_plr *plr;
@@ -23,7 +37,7 @@ void	op_live(t_car *car, uint8_t *arena)
 
 	 if (car && arena)
 	{
-		car->last_live = (*vm)->cycles;
+		car->last_live_cycle = (*vm)->cycles;
 		(*vm)->lived++;
 		if (plr == get_playersid((*vm)->plr_count, get_byte(arena, -1)))
 			{
@@ -49,5 +63,4 @@ t_plr		*get_playersid(t_plr **plrs, uint8_t plid)
 			p = p->next;
 		}
 	}
-	return (NULL);
-}
+	return (NULL); */

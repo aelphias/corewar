@@ -43,7 +43,7 @@
 }*/
  
 
-void	op_fork(t_car *car, uint8_t *arena)
+void	op_fork(t_car *car, uint8_t *arena, t_vm *vm)
 {
 	int arg1;
 	t_car *car_new;
