@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_zjmp.c                                          :+:      :+:    :+:   */
+/*   bit_mask_oper.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/06 21:32:30 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/11 21:33:48 by gjigglyp         ###   ########.fr       */
+/*   Created: 2021/01/11 21:40:38 by gjigglyp          #+#    #+#             */
+/*   Updated: 2021/01/11 21:43:55 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	op_zjmp(t_car *car, uint8_t *arena)
+int     bitmask_corr(int a, int size)
 {
-	int type_arg;
-	int arg1;
-	
-	car->position = update_pos(car->position);
-	type_arg = arena[update_pos(car->position + 1)];
-	arg1 = car->dir_size_status;
-	car->reg[update_pos(arena[car->position + 2])];
+    int bm;
+
+    if (a == 1)
+        bm = 192;
+    else
+    {
+        if (a == 2)
+            bm = 48;
+        else
+            bm = 12;    
+    }
+    if ((size & bm) == (bm * 2 / 3))
+        return (3);
+    if ((size & bm) == bm)
+        return (2);
+    if ((size & bm) == (bm / 3))
+        return (1);
+    return (0);
 }
+

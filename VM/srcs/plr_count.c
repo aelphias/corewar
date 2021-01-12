@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   plr_count.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 15:57:45 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/27 16:33:17 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/11 20:23:12 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-int	plr_count(t_plr *head)
+int				plr_count(t_plr *head)
 {
 	int count;
 
