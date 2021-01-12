@@ -6,7 +6,7 @@
 #    By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/24 20:51:23 by aelphias          #+#    #+#              #
-#    Updated: 2021/01/11 17:21:59 by gjigglyp         ###   ########.fr        #
+#    Updated: 2021/01/12 14:09:37 by gjigglyp         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,6 @@ ASM_PATH = ./assembler/
 
 all:  $(COREWAR) $(ASSEMBLER)
 
-$(ASM):
-	make -C $(ASM_PATH)
 $(COREWAR):
 	make -C $(VM_PATH)
 
@@ -37,3 +35,4 @@ fclean:
 	make -C $(ASM_PATH) fclean
 	
 re: fclean all
+.SILENT: clean all re  fclean  $(COREWAR) $(ASSEMBLER)

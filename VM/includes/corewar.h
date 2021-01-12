@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/12 14:02:36 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/12 15:43:12 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct					s_car
 	int							id;
 	bool						args_types_code;
 	int							arg[3];
-	int							arg_type[3];
+	int							arg_type[3];   
 	int							parent_car;
 	unsigned int				last_live;
 	unsigned int				op_code;

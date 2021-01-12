@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_args.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 18:19:27 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/11 23:05:54 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/12 15:44:26 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 # define DIR_CODE				2
 # define IND_CODE				3 */
 
-/* 
-	int			bit_mask;
+
+/* 	int			bit_mask;
 	if (stand == 1)
 		bit_mask = 192;
 	else
