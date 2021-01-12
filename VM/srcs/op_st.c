@@ -38,3 +38,4 @@ void					op_st(t_car *car, uint8_t *arena, t_vm *vm)
 		//car->reg[] = val1;
 	}
 }
+*/
