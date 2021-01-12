@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/11 22:33:58 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/12 14:42:52 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	check(t_vm *vm, t_car **head_car)
 void	exec(t_car *car, uint8_t *arena, t_op *op)
 {
 	car->dir_size_status = op->dir_size_status;
-	car->args_types_code = op->args_types_code;
+	car->is_type_code = op->is_type_code;
 	get_args(car,arena, op);
 	op->func(car, arena);   // и здесь мы страртуем операции
 }
@@ -39,7 +39,7 @@ bool	valid_op(t_car *car)
 	return (false);
 }
 
-void	cycle(t_car **head_car, uint8_t *arena)
+void	cycle(t_car **head_car, uint8_t *arena, t_vm *vm)
 {
 	t_car	*car;
 	t_op *op;
@@ -82,7 +82,7 @@ void	game(t_car **head_car, uint8_t *arena, t_vm *vm)
 	while (vm->car_count)
 	{
 		vm->cycles++;
-		cycle(head_car, arena); 
+		cycle(head_car, arena, vm); 
 		if (!(vm->cycles_to_die) || (vm->cycles % vm->cycles_to_die) == 0) // условие для проверки
 			check(vm, head_car); 
 			//printf("----{inside game()}--Check() was called\n");

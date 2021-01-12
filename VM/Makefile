@@ -6,7 +6,7 @@
 #    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2021/01/11 22:32:03 by aelphias         ###   ########.fr        #
+#    Updated: 2021/01/12 13:55:17 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -108,4 +108,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: clean all re pwdfclean directory
-.SILENT: clean all re  fclean  $(NAME)
