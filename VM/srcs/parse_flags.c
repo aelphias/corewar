@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 20:51:41 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/12 12:15:20 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/12 12:46:54 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,7 +193,7 @@ int comparison_of_two_numbers(int a, int b)
 	return (a <= b);
 }
 
-t_plr		*sort_list_plr(t_plr *plr)
+/* t_plr		*sort_list_plr(t_plr *plr)
 {
 	int		overflow;
 	t_plr	*tmp;
@@ -213,7 +213,7 @@ t_plr		*sort_list_plr(t_plr *plr)
 	}
 	plr = tmp;
 	return (plr);
-}
+} */
 
 void check_n_flags(int argc, char **argv, t_plr *plr)
 {
