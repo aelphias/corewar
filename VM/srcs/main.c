@@ -74,6 +74,7 @@ int		main(int argc, char **argv)
 	fill_arena(plr, vm, arena);
 	game(&car, arena, vm);
 
+
 /*
 *	6. test
 */
