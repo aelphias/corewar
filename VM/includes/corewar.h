@@ -1,14 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   corewar.h                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/11 16:27:49 by aelphias         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+
 
 #ifndef COREWAR_H
 # define COREWAR_H
@@ -89,16 +79,14 @@ int		read_from_file(t_plr *player, char *str, int nbr);
 void	print_error(int num_error);
 void 	check_n_flags(int argc, char **argv, t_plr *plr);
 void	error_one_dump();
-void	error_pos_dump();
-void	error_magic_numb();
-void	error_camp_max_size();
-int		comparison_of_two_numbers(int a, int b);
+void	error_pos_number();
 int		is_num(char *str);
+void	check_flags(int argc, char **argv, t_vm *vm);
 int		chek_num(int *num, int minnum, int plrs);
 void	copy_num_in_plrslist(int *num, t_plr *plr, int plrs);
+int		comparison_of_two_numbers(int a, int b);
 t_plr	*sort_list_plr(t_plr *plr);
-
-
+int		right_n_flag(int argc, char **argv);
 
 /*
 *	init car
@@ -132,8 +120,6 @@ void	introduce_plrs(t_plr *plr);
 int	arena_loop(uint8_t *arena, uint32_t coord);
 uint8_t	update_pos(uint32_t pos);
 uint8_t	get_op_code(uint8_t *arena, uint32_t position);
-int	is_num(char *str);
-int	checkdotcor(char *argv);
 
 /*
 *	зачистка всего
