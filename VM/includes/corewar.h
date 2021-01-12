@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/12 14:44:36 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/12 17:50:40 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct					s_car
 	int							id;
 	bool						is_type_code;
 	int							arg[3];
-	int							arg_type[3];
+	int							arg_type[3];   
 	int							parent_car;
 	unsigned int				last_live;
 	unsigned int				op_code;

@@ -61,3 +61,4 @@ fclean: clean
 	@rm -rf $(NAME)
 
 re: fclean all
+.SILENT: clean all re  fclean  $(NAME)

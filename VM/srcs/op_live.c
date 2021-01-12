@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_live.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:24:48 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/12 14:45:23 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/12 17:49:48 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,3 +24,10 @@ void	op_live(t_car *car, uint8_t *arena)
 	}
 	 */
 }
+/*
+t_plr		get_playersid(t_plr *plr, int plid)
+{
+	t_plr *p;
+
+	if (plrs)
+}*/
