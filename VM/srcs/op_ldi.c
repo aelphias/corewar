@@ -12,7 +12,7 @@
 
 #include "corewar.h"
 
-void	op_ldi(t_car *car, uint8_t *arena)
+void	op_ldi(t_car *car, uint8_t *arena, t_vm *vm)
 {
 	bool silence_make;
 	if (arena && car)

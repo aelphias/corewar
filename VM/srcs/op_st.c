@@ -12,7 +12,12 @@
 
 #include "corewar.h"
 
-void					op_st(t_car *car, uint8_t *arena)
+void					op_st(t_car *car, uint8_t *arena, t_vm *vm)
+{
+
+}
+/* 
+void					op_st(t_car *car, uint8_t *arena, t_vm *vm)
 {
 	int p;
 	int val1;

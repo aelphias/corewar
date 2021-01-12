@@ -12,7 +12,7 @@
 
 #include "corewar.h"
 
-void	op_or(t_car *car, uint8_t *arena)
+void	op_or(t_car *car, uint8_t *arena, t_vm *vm)
 {
 	int type_arg;
 	int arg1;

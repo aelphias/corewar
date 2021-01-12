@@ -17,7 +17,7 @@
 ** and place the result in thethird, right before modifying the carry.
 */
 
-void	op_add(t_car *car, uint8_t *arena)
+void	op_add(t_car *car, uint8_t *arena, t_vm *vm)
 {
 	int type_arg;
 	int arg1;

@@ -24,7 +24,7 @@ typedef enum { false, true }	bool;
 typedef struct					s_vm
 {
 	unsigned int				plr_count;
-	unsigned int				lived;
+	unsigned int				lived;  // количество выполненных операий live за c_t_d
 	int							car_count;
 	long int					check_count;
 	long int					cycles;
@@ -43,9 +43,9 @@ typedef struct					s_car
 	int							id;
 	bool						is_type_code;
 	int							arg[3];
-	int							arg_type[3];   
+	int							arg_type[3];
 	int							parent_car;
-	unsigned int				last_live;
+	unsigned int				last_live_cycle;  // цикл, на котором последний раз вполнилась операция live
 	unsigned int				op_code;
 	unsigned int				wait;
 	unsigned int				pc;
@@ -75,7 +75,7 @@ typedef struct		s_op
 	bool			modify_carry;
 	unsigned int	dir_size_status;
 	unsigned int	cycles_wait;
-	void			(*func)(t_car *, uint8_t *);
+	void			(*func)(t_car *, uint8_t *, t_vm *);
 }					t_op;
 
 /*
@@ -141,8 +141,10 @@ void				cycle(t_car **head_car, uint8_t *arena, t_vm *vm);
 void				check(t_vm *vm, t_car **head_car);
 void				bury_car(t_vm *vm, t_car **head_car);
 void				check_winner(t_vm *vm);
-void				get_args(t_car *car, unsigned char *arena, t_op *op);
-void				write_arg_type(int arg_type, int ind, t_car *car, t_op *op);
+void				get_args_type(t_car *car, unsigned char *arena, t_op *op);
+void				write_arg_type(int arg_type, t_car *car, t_op *op, int ind);
+void				exec(t_car *car, uint8_t *arena, t_op *op, t_vm *vm);
+
 
 
 /*
@@ -150,22 +152,22 @@ void				write_arg_type(int arg_type, int ind, t_car *car, t_op *op);
 **	void	no();
 */
 
-void							op_live(t_car *car, uint8_t *arena);
-void							op_ld(t_car *car, uint8_t *arena);
-void							op_st(t_car *car, uint8_t *arena);
-void							op_add(t_car *car, uint8_t *arena);
-void							op_sub(t_car *car, uint8_t *arena);
-void							op_and(t_car *car, uint8_t *arena);
-void							op_or(t_car *car, uint8_t *arena);
-void							op_xor(t_car *car, uint8_t *arena);
-void							op_zjmp(t_car *car, uint8_t *arena);
-void							op_ldi(t_car *car, uint8_t *arena);
-void							op_sti(t_car *car, uint8_t *arena);
-void							op_fork(t_car *car, uint8_t *arena);
-void							op_lld(t_car *car, uint8_t *arena);
-void							op_lldi(t_car *car, uint8_t *arena);
-void							op_lfork(t_car *car, uint8_t *arena);
-void							op_aff(t_car *car, uint8_t *arena);
+void							op_live(t_car *car, uint8_t *arena, t_vm *vm);
+void							op_ld(t_car *car, uint8_t *arena, t_vm *vm);
+void							op_st(t_car *car, uint8_t *arena, t_vm *vm);
+void							op_add(t_car *car, uint8_t *arena, t_vm *vm);
+void							op_sub(t_car *car, uint8_t *arena, t_vm *vm);
+void							op_and(t_car *car, uint8_t *arena, t_vm *vm);
+void							op_or(t_car *car, uint8_t *arena, t_vm *vm);
+void							op_xor(t_car *car, uint8_t *arena, t_vm *vm);
+void							op_zjmp(t_car *car, uint8_t *arena, t_vm *vm);
+void							op_ldi(t_car *car, uint8_t *arena, t_vm *vm);
+void							op_sti(t_car *car, uint8_t *arena, t_vm *vm);
+void							op_fork(t_car *car, uint8_t *arena, t_vm *vm);
+void							op_lld(t_car *car, uint8_t *arena, t_vm *vm);
+void							op_lldi(t_car *car, uint8_t *arena, t_vm *vm);
+void							op_lfork(t_car *car, uint8_t *arena, t_vm *vm);
+void							op_aff(t_car *car, uint8_t *arena, t_vm *vm);
 
 /*
 **	testing
@@ -178,6 +180,12 @@ void							print_list_car(t_car *car);
 /*
 **	alfa version op_tab
 */
+
+static uint8_t			g_arg_code[3] = {
+	T_REG,
+	T_DIR,
+	T_IND
+};
 
 static t_op					g_op[16] = {
 	{

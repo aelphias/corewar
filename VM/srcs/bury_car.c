@@ -23,7 +23,7 @@ void	bury_car(t_vm *vm, t_car **head_car)
 	while (current)
 	{
 		if ((vm->cycles_to_die <= 0)
-		|| (vm->cycles - current->last_live) >= vm->cycles_to_die)
+		|| (vm->cycles - current->last_live_cycle) >= vm->cycles_to_die)
 		{	
 			vm->car_count--;
 			del = current;
