@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "corewar.h"
+
 /*
 void ft_free_vm(t_vm *vm)
 {
@@ -20,6 +21,7 @@ void ft_free_plr(t_plr *plr)
 {
 	
 } */
+
 int		main(int argc, char **argv)
 {
 	uint8_t			arena[MEM_SIZE];
@@ -87,4 +89,3 @@ int		main(int argc, char **argv)
 * 0. free() структуры при ошибке
 * 1. развернуть список игроков/
 */
- 
