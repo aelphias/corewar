@@ -56,9 +56,9 @@ void read_file(int fd, t_plr *plr) //
 		j++;
 	}
 	if (plr->codesize > CHAMP_MAX_SIZE)
-		error_camp_max_size();
+		error_file();
 	if (!((magicnum[0] == 00) && (magicnum[1] == 234) && (magicnum[2] == 131) && (magicnum[3] == 243)))
-		error_magic_numb();
+		error_file();
 	//plr->name[j] = '\0';
 	//plr->cmnt[l] = '\0';
 	close(fd);
@@ -83,6 +83,13 @@ void create_list_plr(t_plr *head, int val, int fd)
 	/* read_file(fd, argv, current->next); >>aelphias removed  argv, 5.1.2021 << */
 	read_file(fd, current->next);
 	current->next->next = NULL;
+}
+
+void error_file()
+{
+	//free();
+	write(2, "ERROR FILE CHAMP\n", 17);
+	exit(1);
 }
 
 int checkdotcor(char *argv)
@@ -113,12 +120,7 @@ t_plr *revlist(t_plr *plr)
 	return (prev);
 }
 
-void error_file()
-{
-	//free();
-	write(2, "ERROR FILE CHAMP\n", 17);
-	exit(1);
-}
+
 
 /*
 * разбить  ft_parse на ф_ции

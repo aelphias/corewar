@@ -10,7 +10,6 @@ typedef enum { false, true } bool;
 
 # define MINUS_ONE(X)		((X) - 1)
 
-
 /* 
 *	uint8_t  1 байт - 8 бит, тип фиксированного размера, unsigned, от 0 до 255
 */
@@ -59,23 +58,6 @@ typedef struct		s_plr
 	uint8_t			*code;
 	struct s_plr	*next;
 }					t_plr;
-
-/* typedef struct		s_op
-{
-	char			*name;							//	0
-	unsigned int	args_amount;					//	1
-	char			*args_types[3];					//	2
-	unsigned int	code;							//	3
-	unsigned int	cycle_wait;						//	4
-	char			*comment;						//	5
-	bool			modify_carry;					//	6
-	unsigned int	dir_size_status;						//	7
-	bool			args_types_code;				//	8  check it is true
-	void			(*func)(t_car *, uint8_t *);	//	9 //? uint8_t* (arena) может передовать t_vm а не карту?
-}					t_op;
- */
-
-
 
 /*
 *	parse
@@ -173,6 +155,13 @@ void	print_list(t_plr *plr);
 void	print_list_car(t_car *car);
 //void	print_op(t_op op[17]);
 
+/* 
+* parsing;
+*/
+
+
+void error_file();
+void		checkdotcor_and_chech_n(int ac, char **av, int *n, t_plr *pr);
 
 /*
 *	alfa version op_tab
