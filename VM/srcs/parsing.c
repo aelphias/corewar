@@ -1,31 +1,24 @@
- /* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/14 21:13:10 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/09 18:51:03 by gjigglyp         ###   ########.fr       */
+/*   Created: 2021/01/12 13:11:46 by marvin            #+#    #+#             */
+/*   Updated: 2021/01/12 13:14:44 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "corewar.h"
 
-void error_magic_numb()
+void error_file()
 {
-	//free
-	write(2, "ERROR CHAMP MAGIC NUMBER\n", 25);
+	//free();
+	write(2, "ERROR FILE CHAMP\n", 17);
 	exit(1);
 }
 
-void error_camp_max_size()
-{
-	//free
-	write(2, "ERROR CHAMP MAX SIZE\n", 21);
-	exit(1);
-}
 /* ..srcs/parsing.c:30:30: warning: unused parameter 'name' [-Wunused-parameter]
 void read_file(int fd, char *name, t_plr *plr) >> aelphias удалил  char *name,  5.1.2021<<*/
 void read_file(int fd, t_plr *plr) // 
@@ -69,9 +62,11 @@ void read_file(int fd, t_plr *plr) //
 		j++;
 	}
 	if (plr->codesize > CHAMP_MAX_SIZE)
-		error_camp_max_size();
+		error_file();
 	if (!((magicnum[0] == 00) && (magicnum[1] == 234) && (magicnum[2] == 131) && (magicnum[3] == 243)))
-		error_magic_numb();
+		error_file();
+		//error_magic_numb();
+		//error_camp_max_size();
 	//plr->name[j] = '\0';
 	//plr->cmnt[l] = '\0';
 	close(fd);
@@ -126,12 +121,7 @@ t_plr *revlist(t_plr *plr)
 	return (prev);
 }
 
-void error_file()
-{
-	//free();
-	write(2, "ERROR FILE CHAMP\n", 17);
-	exit(1);
-}
+
 
 /*
 * разбить  ft_parse на ф_ции
@@ -214,3 +204,4 @@ t_plr	 *ft_parse(int argc, char **argv)
 	//plr = revlist(plr); // Subject, p.16:  Yes, the last born (youngest) champion plays first.
 	return (plr);
 }
+
