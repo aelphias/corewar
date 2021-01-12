@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/12 17:50:40 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/12 21:23:58 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,27 @@ typedef struct		s_op
 void							init_car(t_plr *plr, t_car **head, int pos);
 t_car							*make_car(t_plr *plr, t_vm *vm);
 int								plr_count(t_plr *head);
+t_plr	*ft_parse(int argc, char **argv);
+void	check_flags(int argc, char **argv, t_vm *vm);
+int		read_from_file(t_plr *player, char *str, int nbr);
+void	print_error(int num_error);
+void 	check_n_flags(int argc, char **argv, t_plr *plr);
+void	error_one_dump();
+void	error_pos_number();
+int		is_num(char *str);
+void	check_flags(int argc, char **argv, t_vm *vm);
+int		chek_num(int *num, int minnum, int plrs);
+void	copy_num_in_plrslist(int *num, t_plr *plr, int plrs);
+int		comparison_of_two_numbers(int a, int b);
+t_plr	*sort_list_plr(t_plr *plr);
+int		right_n_flag(int argc, char **argv);
+int		number_after_n(int i, char **argv);
+void	put_number_in_arr(int *num, t_plr *plr, int plrs);
+void	check_same_numb(int *num, t_plr *plr, int plrs);
+void	checkdotcor_and_chech_n(int ac, char **av, int *n, t_plr *pr);
+void	error_file();
+void	error_champ_max_size();
+void	error_magic_numb();
 
 /*
 **	init arena 

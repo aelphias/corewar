@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 18:35:34 by aelphias          #+#    #+#             */
-/*   Updated: 2020/12/28 19:15:53 by kcharlet         ###   ########.fr       */
+/*   Updated: 2021/01/12 16:50:06 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,40 @@ void	print_error(int num_error)
 	else if (num_error == 5)
 		ft_putstr_fd("Could create carriage\n", 2);
 	// free structs before exit()
+	exit(1);
+}
+
+void	error_one_dump()
+{
+	//free
+	write(2, "USE ONE VALUE FOR DUMP\n", 23);
+	exit(1);
+}
+
+void	error_pos_number()
+{
+	//free
+	write(2, "USE POSITIVE NUMBER FOR DUMP\n", 29);
+	exit(1);
+}
+
+void	error_file()
+{
+	//free();
+	write(2, "ERROR FILE CHAMP\n", 17);
+	exit(1);
+}
+
+void	error_champ_max_size()
+{
+	//free();
+	write(2, "ERROR CHAMP MAX SIZE\n", 21);
+	exit(1);
+}
+
+void	error_magic_numb()
+{
+	//free();
+	write(2, "ERROR MAGIC NUMBER\n", 20);
 	exit(1);
 }
