@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/11 19:41:44 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/11 22:33:58 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,9 @@ void	exec(t_car *car, uint8_t *arena, t_op *op)
 {
 	car->dir_size_status = op->dir_size_status;
 	car->args_types_code = op->args_types_code;
-	get_args(car,arena);
-	op->func(car, arena);
+	get_args(car,arena, op);
+	op->func(car, arena);   // и здесь мы страртуем операции
 }
-/* 
-Чтобы запустить цикл нужно:
-init_car
- */
 
 bool	valid_op(t_car *car)
 {
