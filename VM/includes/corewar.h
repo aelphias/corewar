@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/12 15:13:14 by marvin           ###   ########.fr       */
+/*   Updated: 2021/01/12 16:49:59 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	put_number_in_arr(int *num, t_plr *plr, int plrs);
 void	check_same_numb(int *num, t_plr *plr, int plrs);
 void	checkdotcor_and_chech_n(int ac, char **av, int *n, t_plr *pr);
 void	error_file();
-void	error_camp_max_size();
+void	error_champ_max_size();
 void	error_magic_numb();
 
 /*

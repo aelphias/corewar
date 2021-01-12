@@ -6,44 +6,27 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 13:11:46 by marvin            #+#    #+#             */
-/*   Updated: 2021/01/12 14:38:58 by marvin           ###   ########.fr       */
+/*   Updated: 2021/01/12 17:29:26 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void		read_file(int fd, t_plr *plr)
+void		check_max_size_and_magicnum(t_plr *plr, uint8_t *magicnum, int fd)
 {
-	uint8_t	buff[2];
+	if (plr->codesize > CHAMP_MAX_SIZE)
+		error_champ_max_size();
+	if (!((magicnum[0] == 00) && (magicnum[1] == 234) && (magicnum[2] == 131)
+		&& (magicnum[3] == 243)))
+		error_magic_numb();
+	close(fd);
+}
+
+void		get_sizecode(t_plr *plr, uint8_t *sizecode)
+{
 	int		i;
 	int		j;
-	int		l;
-	int		k;
-	int		c;
-	int		m;
-	uint8_t	sizecode[4];
-	uint8_t	magicnum[4];
 
-	k = 0;
-	l = 0;
-	j = 0;
-	i = 0;
-	c = 0;
-	m = 0;
-	while (read(fd, buff, 1) > 0)
-	{
-		if (i >= 0 && i <= 3)
-			magicnum[m++] = (uint8_t)buff[0];
-		if (i >= 4 && i <= 132)
-			plr->name[j++] = (uint8_t)buff[0];
-		if (i >= 140 && i <= 2186)
-			plr->cmnt[l++] = (uint8_t)buff[0];
-		if (i >= 2192 && i <= 2874)
-			plr->code[k++] = (uint8_t)buff[0];
-		if (i >= 136 && i <= 139)
-			sizecode[c++] = (uint8_t)buff[0];
-		i++;
-	}
 	i = 4;
 	j = 0;
 	while (--i >= 0)
@@ -52,14 +35,47 @@ void		read_file(int fd, t_plr *plr)
 		plr->codesize = plr->codesize << (i * 8);
 		j++;
 	}
-	if (plr->codesize > CHAMP_MAX_SIZE)
-		error_file();
-	if (!((magicnum[0] == 00) && (magicnum[1] == 234) && (magicnum[2] == 131)
-		&& (magicnum[3] == 243)))
-		error_file();
-		//error_magic_numb();
-		//error_camp_max_size();
-	close(fd);
+}
+
+void		write_name_cmnt_code_in_plr(int i, t_plr *plr, uint8_t *buff)
+{
+	int		j;
+	int		l;
+	int		k;
+
+	j = 0;
+	l = 0;
+	k = 0;
+	if (i >= 4 && i <= 132)
+		plr->name[j++] = (uint8_t)buff[0];
+	if (i >= 140 && i <= 2186)
+		plr->cmnt[l++] = (uint8_t)buff[0];
+	if (i >= 2192 && i <= 2874)
+		plr->code[k++] = (uint8_t)buff[0];
+}
+
+void		read_file(int fd, t_plr *plr, int i)
+{
+	uint8_t	buff[2];
+	int		c;
+	int		m;
+	uint8_t	sizecode[4];
+	uint8_t	magicnum[4];
+
+	i = 0;
+	c = 0;
+	m = 0;
+	while (read(fd, buff, 1) > 0)
+	{
+		if (i >= 0 && i <= 3)
+			magicnum[m++] = (uint8_t)buff[0];
+		if (i >= 136 && i <= 139)
+			sizecode[c++] = (uint8_t)buff[0];
+		write_name_cmnt_code_in_plr(i, plr, buff);
+		i++;
+	}
+	get_sizecode(plr, sizecode);
+	check_max_size_and_magicnum(plr, magicnum, fd);
 }
 
 void		create_list_plr(t_plr *head, int val, int fd)
@@ -79,7 +95,7 @@ void		create_list_plr(t_plr *head, int val, int fd)
 	current->next->code = (uint8_t *)ft_memalloc(sizeof(uint8_t)
 		* CHAMP_MAX_SIZE);
 	ft_bzero(current->next->code, 0);
-	read_file(fd, current->next);
+	read_file(fd, current->next, 0);
 	current->next->next = NULL;
 }
 
@@ -128,7 +144,7 @@ t_plr		*add_one_plr(char **argv, t_plr *plr, int i, int j)
 	plr->cmnt = (uint8_t *)ft_memalloc(sizeof(uint8_t) * (COMMENT_LENGTH + 1));
 	plr->code = (uint8_t *)ft_memalloc(sizeof(uint8_t) * CHAMP_MAX_SIZE);
 	ft_bzero(plr->code, 0);
-	read_file(fd, plr);
+	read_file(fd, plr, 0);
 	close(fd);
 	return (plr);
 }

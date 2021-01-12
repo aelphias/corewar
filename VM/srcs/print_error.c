@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 18:35:34 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/12 14:31:45 by marvin           ###   ########.fr       */
+/*   Updated: 2021/01/12 16:50:06 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,19 @@ void	error_file()
 {
 	//free();
 	write(2, "ERROR FILE CHAMP\n", 17);
+	exit(1);
+}
+
+void	error_champ_max_size()
+{
+	//free();
+	write(2, "ERROR CHAMP MAX SIZE\n", 21);
+	exit(1);
+}
+
+void	error_magic_numb()
+{
+	//free();
+	write(2, "ERROR MAGIC NUMBER\n", 20);
 	exit(1);
 }
