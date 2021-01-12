@@ -142,7 +142,7 @@ void				check(t_vm *vm, t_car **head_car);
 void				bury_car(t_vm *vm, t_car **head_car);
 void				check_winner(t_vm *vm);
 void				get_args(t_car *car, unsigned char *arena, t_op *op);
-void				write_arg_type(int arg_type, int ind, t_car *car, t_op *op);
+void				write_arg_type(int arg_type, t_car *car, t_op *op, int ind);
 
 
 /*
@@ -178,6 +178,12 @@ void							print_list_car(t_car *car);
 /*
 **	alfa version op_tab
 */
+
+static uint8_t			g_arg_code[3] = {
+	T_REG,
+	T_DIR,
+	T_IND
+};
 
 static t_op					g_op[16] = {
 	{
