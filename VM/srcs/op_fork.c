@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 16:42:16 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/06 22:18:51 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/10 13:33:42 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,13 @@ void clone_car (t_car *head, int id)
 }
  */
 
-void	op_fork(t_car *head, t_car *n_car, uint8_t *arena)
+void	op_fork(t_car *car, uint8_t *arena)
 {
-/* 	t_car *new_car;
-	
-	 int pos;
-	 */
+	bool silence_make;
+	if (arena && car)
+	{
+		silence_make = car->carry;
+		
+	}
 	printf("hi I'm fork! ;)\n");
 }

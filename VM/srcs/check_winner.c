@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_op_code.c                                      :+:      :+:    :+:   */
+/*   check_winner.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/31 16:01:29 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/07 22:20:03 by aelphias         ###   ########.fr       */
+/*   Created: 2021/01/11 11:42:37 by aelphias          #+#    #+#             */
+/*   Updated: 2021/01/11 11:44:13 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-uint8_t	get_op_code(uint8_t *arena, uint32_t position)
+/* void	check_winner(t_vm *vm)
 {
-	ft_printf("{inside get_op_code = %d}", position);
-	if (position >= MEM_SIZE)
-	position = position % MEM_SIZE;
-	return (arena[position]);  // May be position - 1? 
-}
+	ft_printf("Contestant 1, %s has won !\n", (*vm)->winner);
+} */

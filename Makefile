@@ -6,7 +6,7 @@
 #    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/24 20:51:23 by aelphias          #+#    #+#              #
-#    Updated: 2021/01/11 13:14:31 by aelphias         ###   ########.fr        #
+#    Updated: 2021/01/12 12:25:15 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,20 +14,26 @@
 
 COREWAR = asm
 COREWAR = corewar
+ASSEMBLER = asm
 VM_PATH = ./VM/
-ASM_PATH = ./asm/
+ASM_PATH = ./assembler/
 
-all:  $(COREWAR)
+all:  $(COREWAR) $(ASSEMBLER)
 
 $(ASM):
 	make -C $(ASM_PATH)
 $(COREWAR):
 	make -C $(VM_PATH)
+
+$(ASSEMBLER):
+	make -C $(ASM_PATH)
 	
 clean:
 	make -C $(VM_PATH) clean
+	make -C $(ASM_PATH) clean
 	
 fclean:
 	make -C $(VM_PATH) fclean
+	make -C $(ASM_PATH) fclean
 	
 re: fclean all

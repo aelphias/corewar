@@ -36,10 +36,10 @@ void	init_car(t_plr *plr, t_car **head, int pos)
 t_car	*make_car(t_plr *plr, t_vm *vm)
 {
 	// создание структуры под каретки
-	int		equalizer;
-	int		count;
-	int		tmp;
-	t_car	*car;
+	int				equalizer;
+	unsigned int	count;
+	int				tmp;
+	t_car			*car;
 	
 	count = 0;
 	equalizer = 0;

@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   update_pos.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 18:43:04 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/07 22:06:18 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/09 18:00:14 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-uint8_t	update_pos(uint32_t pos)
+unsigned int	update_pos(unsigned int pos)
 {
 	if (pos >= MEM_SIZE)
-	pos = pos % MEM_SIZE;
-	return (pos - 1);
+		pos = pos % MEM_SIZE;
+	return (pos); // было так
 }
