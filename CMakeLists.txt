@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.15)
+project(Virtual_Machine C)
+set(CMAKE_C_STANDARD 11)
+include_directories(libft/includes)
+include_directories(includes)
+include_directories(VM/includes)
+add_executable(VM/srcs/*.c)

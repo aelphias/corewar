@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/13 16:59:44 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/13 19:50:40 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,10 +135,11 @@ void							fill_arena(t_plr *plr, t_vm *vm, uint8_t *arena);
 void							ft_copy_code(uint8_t *dst, uint8_t *src, int codesize);
 
 /*
-**	инициализация t_vm, t_op
+**	инициализация t_vm, t_op, t_plr
 */
 
-void							init_vm(t_vm *vm, t_plr *plr);
+void							init_vm(t_vm *vm);
+void							init_plr(t_vm *vm, t_plr *plr);
 
 
 /*
@@ -166,6 +167,7 @@ int								is_num(char *str);
 int								checkdotcor(char *argv);
 void							print_error(int num_error);
 bool							valid_op(t_car *car);
+int     						bitmask_corr(int a, int size);
 
 /*
 **	зачистка всего
@@ -187,10 +189,7 @@ void							get_args_type(t_car *car, unsigned char *arena, t_op *op);
 void							write_arg_type(int arg_type, t_car *car, t_op *op, int ind);
 void							exec(t_car *car, uint8_t *arena, t_op *op, t_vm *vm);
 int								get_arg(t_vm *vm, t_car *car, int arg_number, uint8_t *arena);
-
-
-
-
+int								weight(int a, int c);
 /*
 **	void	operations(t_car *car, uint8_t *arena, void (**func)(t_car *, uint8_t *));
 **	void	no();
