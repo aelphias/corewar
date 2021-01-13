@@ -18,7 +18,7 @@ void	init_car(t_plr *plr, t_car **head, int pos)
 	t_car		*car;
 
 	car = (t_car *)ft_memalloc(sizeof(t_car));
-	car->reg[0] = plr->id;
+	car->reg[0] = -(plr->id);
 	car->parent_car = plr->id;
 	car->pos = pos;
 	car->next = NULL;

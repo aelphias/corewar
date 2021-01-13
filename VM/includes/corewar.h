@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/13 12:57:55 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/13 13:40:17 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,19 @@ typedef enum { false, true }	bool;
 
 # define MINUS_ONE(X)			((X) - 1)
 
+typedef struct					s_plr
+{
+	int							id;
+	int							n_id;
+	uint8_t						*name;
+	uint8_t						*cmnt;
+	unsigned int				pos; 
+	unsigned int				codesize;
+	uint8_t						*code;
+	struct s_plr				*head;
+	struct s_plr				*next;
+}								t_plr;
+
 typedef struct					s_vm
 {
 	unsigned int				plr_count;
@@ -32,7 +45,8 @@ typedef struct					s_vm
 	long int					cycles_aff_check;
 	int							n;
 	int							dump;
-	char						*winner;
+	t_plr						*hd_plrs;
+	uint8_t						*winner;
 }								t_vm;
 
 typedef struct					s_car
@@ -53,18 +67,6 @@ typedef struct					s_car
 	unsigned int				step;
 	struct s_car				*next;
 }								t_car;
-
-typedef struct					s_plr
-{
-	int							id;
-	int							n_id;
-	uint8_t						*name;
-	uint8_t						*cmnt;
-	unsigned int				pos; 
-	unsigned int				codesize;
-	uint8_t						*code;
-	struct s_plr				*next;
-}								t_plr;
 
 typedef struct		s_op
 {
