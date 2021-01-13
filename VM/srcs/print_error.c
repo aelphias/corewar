@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 18:35:34 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/12 16:50:06 by marvin           ###   ########.fr       */
+/*   Updated: 2021/01/13 13:54:46 by sdarron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,6 @@ void	error_champ_max_size()
 void	error_magic_numb()
 {
 	//free();
-	write(2, "ERROR MAGIC NUMBER\n", 20);
+	write(2, "ERROR MAGIC NUMBER\n", 19);
 	exit(1);
 }

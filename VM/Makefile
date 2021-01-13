@@ -67,7 +67,8 @@ VM_SRC_LIST	= print_error.c \
 			  op_aff.c\
 			  bury_car.c\
 			  parse_n_flag.c \
-			  parse_n_flag_cont.c 
+			  parse_n_flag_cont.c \
+			  func_for_parsing.c 
 			  #check_winner.c
 
 #SRC_VM		= $(addprefix $(VM_SRC_DIR), $(VM_SRC_LIST))

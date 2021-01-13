@@ -3,39 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 13:11:46 by marvin            #+#    #+#             */
-/*   Updated: 2021/01/12 21:22:30 by marvin           ###   ########.fr       */
+/*   Updated: 2021/01/13 13:41:11 by sdarron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
-
-void		check_max_size_and_magicnum(t_plr *plr, uint8_t *magicnum, int fd)
-{
-	if (plr->codesize > CHAMP_MAX_SIZE)
-		error_champ_max_size();
-	if (!((magicnum[0] == 00) && (magicnum[1] == 234) && (magicnum[2] == 131)
-		&& (magicnum[3] == 243)))
-		error_magic_numb();
-	close(fd);
-}
-
-void		get_sizecode(t_plr *plr, uint8_t *sizecode)
-{
-	int		i;
-	int		j;
-
-	i = 4;
-	j = 0;
-	while (--i >= 0)
-	{
-		plr->codesize += sizecode[j];
-		plr->codesize = plr->codesize << (i * 8);
-		j++;
-	}
-}
 
 void		read_file(int fd, t_plr *plr, int i)
 {
@@ -87,35 +62,6 @@ void		create_list_plr(t_plr *head, int val, int fd)
 	current->next->next = NULL;
 }
 
-int			checkdotcor(char *argv)
-{
-	int		len;
-
-	len = 0;
-	len = ft_strlen(argv);
-	if (argv[len - 1] == 'r' && argv[len - 2] == 'o' && argv[len - 3] == 'c' &&
-		argv[len - 4] == '.')
-		return (1);
-	else
-		return (0);
-}
-
-t_plr		*revlist(t_plr *plr)
-{
-	t_plr	*prev;
-	t_plr	*next;
-
-	prev = NULL;
-	while (plr)
-	{
-		next = plr->next;
-		plr->next = prev;
-		prev = plr;
-		plr = next;
-	}
-	return (prev);
-}
-
 t_plr		*add_one_plr(char **argv, t_plr *plr, int i, int j)
 {
 	int		fd;
@@ -137,22 +83,22 @@ t_plr		*add_one_plr(char **argv, t_plr *plr, int i, int j)
 	return (plr);
 }
 
-gat_list_plrs(char **argv, int id, t_plr *plr, int i)
+int			get_error_for_n(int i, int argc, char **argv)
 {
-	int fd;
-
-	fd = open(argv[i], O_RDONLY);
-	if (fd == -1)
-		error_file();
-	create_list_plr(plr, id, fd);
-	close(fd);
+	if (i >= argc - 1)
+		print_error(ERR_USE);
+	else if (!(is_num(argv[i + 1])))
+		print_error(ERR_USE);
+	else
+		i = i + 2;
+	return (i);
 }
 
 t_plr		*ft_parse(int argc, char **argv, int i, int id)
 {
 	t_plr	*plr;
 
-	while (i <= argc)
+	while (++i <= argc)
 	{
 		if ((ft_strcmp(argv[i], "-dump")) == 0)
 		{
@@ -162,14 +108,7 @@ t_plr		*ft_parse(int argc, char **argv, int i, int id)
 				i = i + 2;
 		}
 		if ((ft_strcmp(argv[i], "-n")) == 0)
-		{
-			if (i >= argc - 1)
-				print_error(ERR_USE);
-			else if (!(is_num(argv[i + 1])))
-				print_error(ERR_USE);
-			else
-				i = i + 2;
-		}
+			i = get_error_for_n(i, argc, argv);
 		if (checkdotcor(argv[i]))
 		{
 			if (id == 1)
@@ -180,7 +119,6 @@ t_plr		*ft_parse(int argc, char **argv, int i, int id)
 		}
 		else
 			error_file();
-		i++;
 	}
 	return (plr);
 }
