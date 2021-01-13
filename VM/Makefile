@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
+#    By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2021/01/13 16:30:10 by aelphias         ###   ########.fr        #
+#    Updated: 2021/01/13 18:06:54 by gjigglyp         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,6 +64,7 @@ VM_SRC_LIST	= print_error.c \
 			  op_lld.c\
 			  op_lldi.c\
 			  op_lfork.c\
+			  bit_mask_oper.c\
 			  op_aff.c\
 			  bury_car.c\
 			  parse_n_flag.c \

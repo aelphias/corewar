@@ -6,15 +6,15 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 21:40:38 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/11 21:43:55 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/13 18:11:08 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-int     bitmask_corr(int a, int size)
+int		bitmask_corr(int a, int size)
 {
-    int bm;
+    int	bm;
 
     if (a == 1)
         bm = 192;
