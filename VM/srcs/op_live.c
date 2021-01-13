@@ -6,15 +6,14 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:24:48 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/13 16:22:02 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/13 18:03:36 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-t_plr		*get_playersid(t_plr *plrs, int plid)
+/* t_plr		*get_playersid(t_plr *plrs, int plid)
 {
-	printf("{   8   }\n");
 	t_plr *p;
 
 	if (plrs)
@@ -32,34 +31,41 @@ t_plr		*get_playersid(t_plr *plrs, int plid)
 
 void	op_live(t_car *car, uint8_t *arena, t_vm *vm)
 {
-	uint32_t n_plr;
-	t_plr *plr;
+	uint32_t	cur_plr_n;
+	t_plr		*plr;
 
-	n_plr = 0;
-
+	cur_plr_n = 0;
+	plr = NULL;
 	if (vm && car && arena) 
 	{
-			printf("------>op_live()=== car->dir_size_status=%d\n",car->dir_size_status);
-	printf("------>op_live()=== car->arg_type[0]=%d\n", car->arg_type[0]);
 		car->last_live_cycle = vm->cycles;
-		car->pos++;
-		n_plr = get_arg(vm, car, 1, arena);
 		vm->lived++;
-		car->last_live_cycle = vm->cycles;
-	//vm->hd_plrs->head;
-	ft_printf("CAR->REG %d \t\t N_PLR %d \n", car->reg[0], n_plr);
-	/* if (car->reg[0] == n_plr) 
-			{
-				printf("{   7   }\n");
-				vm->winner_id = plr->id;
-				ft_printf("A process shows that player %d ( %s ) is alive\n",
-					plr->id, plr->name);
-			} */
-		printf("------>op_live() arg=%d\n", n_plr);
+		cur_plr_n = get_arg(vm, car, 1, arena);
+		if (cur_plr_n <= -1 && cur_plr_n >= -(MAX_PLAYERS)) 
+		{
+			plr = find_plr(vm->hd_plrs, cur_plr_n);
+			printf("{   7   }\n");
+			vm->winner_id = plr->id;
+			printf("{   8   }\n");
+			printf("{   9   }\n");
+		}
 	}
-}
-/* void	op_live(t_car *car, uint8_t *arena, t_vm *vm)
+} */
+
+
+/* 
+
+printf("------>op_live()=== car->dir_size_status=%d\n",car->dir_size_status);
+			printf("------>op_live()=== car->arg_type[0]=%d\n", car->arg_type[0]);
+
+	ft_printf("CAR->REG %d \t\t N_PLR %d \n", car->reg[0], n_plr);
+
+				ft_printf("A process shows that player %d ( %s ) is alive\n",plr->id, );
+
+void	op_live(t_car *car, uint8_t *arena, t_vm *vm)
+		printf("------>op_live() arg=%d\n", n_plr);
 {
+	
 	t_vm **vm;
 	t_plr *plr;
 	

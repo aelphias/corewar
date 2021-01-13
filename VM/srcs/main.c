@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/13 16:34:11 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/13 16:59:27 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,8 @@ int		main(int argc, char **argv)
 		//ft_free_vm(vm);
 		print_error(ERR_PARSE);
 	}
-	init_vm(vm);
+	init_vm(vm, plr);
 	check_n_flags(argc, argv, plr);
-	print_list(plr);
 /*
 *	4. Инициализируем арену и создаем каретки
 */

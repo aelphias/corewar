@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/13 16:29:32 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/13 16:59:44 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ void							ft_copy_code(uint8_t *dst, uint8_t *src, int codesize);
 **	инициализация t_vm, t_op
 */
 
-void							init_vm(t_vm *vm);
+void							init_vm(t_vm *vm, t_plr *plr);
 
 
 /*
@@ -165,6 +165,7 @@ int								arena_loop(uint8_t *arena, uint32_t coord);
 int								is_num(char *str);
 int								checkdotcor(char *argv);
 void							print_error(int num_error);
+bool							valid_op(t_car *car);
 
 /*
 **	зачистка всего
