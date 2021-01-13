@@ -59,9 +59,15 @@ void		read_file(int fd, t_plr *plr, int i)
 	uint8_t	buff[2];
 	int		c;
 	int		m;
+	int		j;
+	int		k;
+	int		l;
 	uint8_t	sizecode[4];
 	uint8_t	magicnum[4];
 
+	j = 0;
+	k = 0;
+	l = 0;
 	i = 0;
 	c = 0;
 	m = 0;
@@ -71,7 +77,13 @@ void		read_file(int fd, t_plr *plr, int i)
 			magicnum[m++] = (uint8_t)buff[0];
 		if (i >= 136 && i <= 139)
 			sizecode[c++] = (uint8_t)buff[0];
-		write_name_cmnt_code_in_plr(i, plr, buff);
+		if (i >= 4 && i <= 132)
+			plr->name[j++] = (uint8_t)buff[0];
+		if (i >= 140 && i <= 2186)
+			plr->cmnt[l++] = (uint8_t)buff[0];
+		if (i >= 2192 && i <= 2874)
+			plr->code[k++] = (uint8_t)buff[0];
+		//write_name_cmnt_code_in_plr(i, plr, buff);
 		i++;
 	}
 	get_sizecode(plr, sizecode);
