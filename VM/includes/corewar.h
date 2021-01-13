@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/13 19:50:40 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/13 22:37:07 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct					s_car
 	unsigned int				pc;
 	unsigned int				dir_size_status;
 	unsigned int				step;
+	int							move;
 	struct s_car				*next;
 }								t_car;
 
@@ -89,6 +90,8 @@ typedef struct					s_op
 	unsigned int				cycles_wait;
 	void						(*func)(t_car *, uint8_t *, t_vm *);
 }								t_op;
+
+// pc это pos; move это step
 
 /*
 **	init car
@@ -159,7 +162,7 @@ t_plr	 						*ft_parse(int argc, char **argv, int i, int id);
 */
 
 unsigned int					update_pos(unsigned int pos);
-uint8_t							get_byte(uint8_t *arena, unsigned int pos);
+uint8_t							get_byte(uint8_t *arena, unsigned int pos, t_car *car);
 void							dump(uint8_t *arena);
 void							introduce_plrs(t_plr *plr);
 int								arena_loop(uint8_t *arena, uint32_t coord);

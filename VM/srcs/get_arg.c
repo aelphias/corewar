@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 12:14:08 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/13 12:55:52 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/13 22:27:32 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		get_arg(t_vm *vm, t_car *car, int arg_number, uint8_t *arena)
 	op = &g_op[MINUS_ONE(car->op_code)];
 	value = 0;
 	if (car->arg_type[MINUS_ONE(arg_number)] & T_REG)
-		value = car->reg[MINUS_ONE(get_byte(arena, car->pos))];
+		value = car->reg[MINUS_ONE(get_byte(arena, car->pos, car))];
 	else if (car->arg_type[MINUS_ONE(arg_number)] & T_DIR)
 		value = read_int(arena, car->pos + car->step, op->dir_size_status);
 	/* else if (car->arg_type[MINUS_ONE(arg_number)] & T_IND)

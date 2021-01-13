@@ -6,15 +6,15 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 21:31:49 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/13 12:42:50 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/13 22:39:05 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-uint8_t	get_byte(uint8_t *arena, unsigned int pos)
+uint8_t	get_byte(uint8_t *arena, unsigned int pos, t_car *car)
 {
-	if (pos >= MEM_SIZE)
-		pos = pos % MEM_SIZE;
-	return (arena[pos]);  // May be pos - 1? 
+	if ((pos + car->step) >= MEM_SIZE)
+		pos = (pos + car->step) % MEM_SIZE;
+	return (arena[pos]); 
 }

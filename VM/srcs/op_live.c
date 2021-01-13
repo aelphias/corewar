@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:24:48 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/13 19:04:23 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/13 21:23:35 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_plr		*get_playersid(t_plr *plrs, int plid)
 
 void	op_live(t_car *car, uint8_t *arena, t_vm *vm)
 {
-	uint32_t	cur_plr_n;
+	int			cur_plr_n;
 	t_plr		*plr;
 
 	cur_plr_n = 0;

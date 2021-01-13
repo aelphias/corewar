@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/13 18:54:03 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/13 22:44:36 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,11 @@ int		main(int argc, char **argv)
 	{
 		print_error(ERR_MAKE_CAR);
 	}
-	print_list_car(car);
+	//print_list_car(car);
 /*
 *	5. Запись кода на арену и представление игроков перед началом игры 
 */
+	//test(vm, plr);
 	introduce_plrs(plr);
 	fill_arena(plr, vm, arena);
 	game(&car, arena, vm);
@@ -79,7 +80,6 @@ int		main(int argc, char **argv)
 *	6. test
 */
 	
-	// test(vm, plr);
 	// print_list(plr);
 	// print_list_car(car);
 	return (0);
