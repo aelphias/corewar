@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   op_live.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:24:48 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/13 18:03:36 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/13 18:14:11 by sdarron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-/* t_plr		*get_playersid(t_plr *plrs, int plid)
+t_plr		*get_playersid(t_plr *plrs, int plid)
 {
 	t_plr *p;
 
@@ -41,16 +41,16 @@ void	op_live(t_car *car, uint8_t *arena, t_vm *vm)
 		car->last_live_cycle = vm->cycles;
 		vm->lived++;
 		cur_plr_n = get_arg(vm, car, 1, arena);
-		if (cur_plr_n <= -1 && cur_plr_n >= -(MAX_PLAYERS)) 
+		/* if (cur_plr_n <= -1 && cur_plr_n >= -(MAX_PLAYERS)) 
 		{
 			plr = find_plr(vm->hd_plrs, cur_plr_n);
-			printf("{   7   }\n");
+			printf("{   7   }\n");`
 			vm->winner_id = plr->id;
 			printf("{   8   }\n");
 			printf("{   9   }\n");
-		}
+		} */
 	}
-} */
+}
 
 
 /* 
