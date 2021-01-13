@@ -52,12 +52,13 @@ int		main(int argc, char **argv)
 *	3. Парсим строку стандартного ввода и файлы .cor, plr односвязный список игроков
 */
 	check_flags(argc - 1, argv, vm);
-	if(!(plr = ft_parse(argc - 1, argv))) // указатель на начало списка (plr3->plr2->plr1) ?
+	if(!(plr = ft_parse(argc - 1, argv, 1, 1))) // указатель на начало списка (plr3->plr2->plr1) ?
 	{
 		//ft_free_vm(vm);
 		print_error(ERR_PARSE);
 	}
 	check_n_flags(argc, argv, plr);
+	print_list(plr);
 /*
 *	4. Инициализируем арену и создаем каретки
 */
@@ -67,12 +68,13 @@ int		main(int argc, char **argv)
 		//ft_fre_plr(plr);
 		print_error(ERR_MAKE_CAR);
 	}
+	print_list_car(car);
 /*
 *	5. Запись кода на арену и представление игроков перед началом игры 
 */
 	introduce_plrs(plr);
 	fill_arena(plr, vm, arena);
-	game(&car, arena, vm);
+	//game(&car, arena, vm);
 
 /*
 *	6. test

@@ -44,7 +44,6 @@ void		read_file(int fd, t_plr *plr, int i)
 	uint8_t	magicnum[4];
 	t_count *count;
 
-	i = 0;
 	if (!(count = (t_count *)ft_memalloc(sizeof(t_count))))
 		print_error(ERR_MALLOC);
 	ft_bzero(count, 0);
@@ -64,6 +63,7 @@ void		read_file(int fd, t_plr *plr, int i)
 	}
 	get_sizecode(plr, sizecode);
 	check_max_size_and_magicnum(plr, magicnum, fd);
+	free(count);
 }
 
 void		create_list_plr(t_plr *head, int val, int fd)
@@ -137,15 +137,21 @@ t_plr		*add_one_plr(char **argv, t_plr *plr, int i, int j)
 	return (plr);
 }
 
-t_plr		*ft_parse(int argc, char **argv)
+gat_list_plrs(char **argv, int id, t_plr *plr, int i)
 {
-	int		i;
-	int		id;
-	int		fd;
+	int fd;
+
+	fd = open(argv[i], O_RDONLY);
+	if (fd == -1)
+		error_file();
+	create_list_plr(plr, id, fd);
+	close(fd);
+}
+
+t_plr		*ft_parse(int argc, char **argv, int i, int id)
+{
 	t_plr	*plr;
 
-	i = 1;
-	id = 1;
 	while (i <= argc)
 	{
 		if ((ft_strcmp(argv[i], "-dump")) == 0)
@@ -169,13 +175,7 @@ t_plr		*ft_parse(int argc, char **argv)
 			if (id == 1)
 				plr = add_one_plr(argv, plr, i, id);
 			if (id > 1)
-			{
-				fd = open(argv[i], O_RDONLY);
-				if (fd == -1)
-					error_file();
-				create_list_plr(plr, id, fd);
-				close(fd);
-			}
+				gat_list_plrs(argv, id, plr, i);
 			id++;
 		}
 		else

@@ -94,7 +94,7 @@ typedef struct		s_op
 void							init_car(t_plr *plr, t_car **head, int pos);
 t_car							*make_car(t_plr *plr, t_vm *vm);
 int								plr_count(t_plr *head);
-t_plr	*ft_parse(int argc, char **argv);
+t_plr	*ft_parse(int argc, char **argv, int i, int id);
 void	check_flags(int argc, char **argv, t_vm *vm);
 int		read_from_file(t_plr *player, char *str, int nbr);
 void	print_error(int num_error);
@@ -137,7 +137,7 @@ void							init_vm(t_vm *vm);
 
 void 				check_flags(int argc, char **argv, t_vm *vm);
 void 				check_n_flags(int argc, char **argv, t_plr *plr);
-t_plr	 			*ft_parse(int argc, char **argv);
+t_plr	 			*ft_parse(int argc, char **argv, int i, int id);
 
 
 

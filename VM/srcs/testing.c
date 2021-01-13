@@ -26,18 +26,22 @@ void	print_list_car(t_car *car)
 
 void print_list(t_plr *plr) 
 {
+	int i;
+
+	i = 0;
 	ft_printf("<<<< ИГРОКИ ПОШЛИ >>>>\n");
 	while (plr) 
 	{
 		printf("plr->id %d\n", plr->id);
-		/* printf("plr->name %s\n", plr->name);
-		ft_printf("plr->cmnt %s\n", plr->cmnt); */
-		/* ft_printf("code \n");
+		printf("plr->name %s\n", plr->name);
+		ft_printf("plr->cmnt %s\n", plr->cmnt);
+		ft_printf("code \n");
 		while (i < 50)
-			ft_printf("%x ", plr->code[i++]); */
+			ft_printf("%x ", plr->code[i++]);
 		ft_printf("\n");
-		/* ft_printf("codesize=%d\n", plr->codesize); */
+		ft_printf("codesize=%d\n", plr->codesize);
 		plr = plr->next;
+		i = 0;
 	}
 }
 
