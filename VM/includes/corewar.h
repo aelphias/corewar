@@ -35,6 +35,15 @@ typedef struct					s_vm
 	char						*winner;
 }								t_vm;
 
+typedef struct					s_count
+{
+	int							c;
+	int							m;
+	int							j;
+	int							k;
+	int							l;
+}								t_count;
+
 typedef struct					s_car
 {
 	bool						carry;
