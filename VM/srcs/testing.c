@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 19:13:14 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/05 20:48:12 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/13 12:42:50 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	print_list_car(t_car *car)
 	while (car) 
 	{	
 		printf("car->id= %d\n", car->id);
-		printf("position= %d\n", car->position);
+		printf("pos= %d\n", car->pos);
 		printf("\n");
 		car = car->next;
 	}

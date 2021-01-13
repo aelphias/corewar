@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/12 17:50:40 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/13 12:57:55 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct					s_vm
 typedef struct					s_car
 {
 	bool						carry;
-	unsigned int				position;
+	unsigned int				pos;
 	uint8_t						reg[REG_NUMBER];
 	int							id;
 	bool						is_type_code;
@@ -50,6 +50,7 @@ typedef struct					s_car
 	unsigned int				wait;
 	unsigned int				pc;
 	unsigned int				dir_size_status;
+	unsigned int				step;
 	struct s_car				*next;
 }								t_car;
 
@@ -59,7 +60,7 @@ typedef struct					s_plr
 	int							n_id;
 	uint8_t						*name;
 	uint8_t						*cmnt;
-	unsigned int				position; 
+	unsigned int				pos; 
 	unsigned int				codesize;
 	uint8_t						*code;
 	struct s_plr				*next;
@@ -117,7 +118,7 @@ t_plr	 			*ft_parse(int argc, char **argv);
 */
 
 unsigned int		update_pos(unsigned int pos);
-uint8_t				get_byte(uint8_t *arena, unsigned int position);
+uint8_t				get_byte(uint8_t *arena, unsigned int pos);
 void				dump(uint8_t *arena);
 void				introduce_plrs(t_plr *plr);
 int					arena_loop(uint8_t *arena, uint32_t coord);
@@ -144,6 +145,8 @@ void				check_winner(t_vm *vm);
 void				get_args_type(t_car *car, unsigned char *arena, t_op *op);
 void				write_arg_type(int arg_type, t_car *car, t_op *op, int ind);
 void				exec(t_car *car, uint8_t *arena, t_op *op, t_vm *vm);
+int					get_arg(t_vm *vm, t_car *car, int arg_number, uint8_t *arena);
+
 
 
 

@@ -6,7 +6,7 @@
 #    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2021/01/12 13:55:17 by aelphias         ###   ########.fr        #
+#    Updated: 2021/01/13 12:49:52 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ VM_SRC_LIST	= print_error.c \
 			  introduce_plrs.c \
 			  main.c \
 			  op_add.c \
-			  get_args.c\
+			  get_args_type.c\
 			  get_byte.c\
 			  update_pos.c\
 			  op_live.c \
@@ -65,7 +65,8 @@ VM_SRC_LIST	= print_error.c \
 			  op_lldi.c\
 			  op_lfork.c\
 			  op_aff.c\
-			  bury_car.c
+			  bury_car.c\
+			  get_arg.c
 			  #check_winner.c
 			  
 

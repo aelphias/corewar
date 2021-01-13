@@ -20,7 +20,7 @@ void	init_car(t_plr *plr, t_car **head, int pos)
 	car = (t_car *)ft_memalloc(sizeof(t_car));
 	car->reg[0] = plr->id;
 	car->parent_car = plr->id;
-	car->position = pos;
+	car->pos = pos;
 	car->next = NULL;
 	//car->live = 1;
 	car->id = plr->id; // инициализацию вызываем в цикле для каждой каретки, id растет на единицу
@@ -53,7 +53,7 @@ t_car	*make_car(t_plr *plr, t_vm *vm)
 	while (count < vm->plr_count)
 	{
 		tmp = (count * ((MEM_SIZE + equalizer) / vm->plr_count));
-		plr->position = tmp;
+		plr->pos = tmp;
 		init_car(plr, &car, tmp);
 		plr = plr->next;
 		count++;

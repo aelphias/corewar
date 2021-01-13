@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_live.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:24:48 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/12 19:45:27 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/13 13:09:07 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@ void	op_live(t_car *car, uint8_t *arena, t_vm *vm)
 	int arg;
 
 	arg = 0;
+	printf("------>op_live()=== car->dir_size_status=%d\n",car->dir_size_status);
+	printf("------>op_live()=== car->arg_type[0]=%d\n", car->arg_type[0]);
 	if (vm && car && arena) 
 	{
 		car->last_live_cycle = vm->cycles;
-		car->position++;
-		arg = get_byte(arena, car->position);
+		car->pos++;
+		arg = get_arg(vm, car, 1, arena);
 		printf("------>op_live() arg=%d\n",arg);
 	}
 }

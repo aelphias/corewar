@@ -63,8 +63,6 @@ int		main(int argc, char **argv)
 */
 	if (!(car = make_car(plr, vm)))
 	{
-		//ft_free_vm(vm);
-		//ft_fre_plr(plr);
 		print_error(ERR_MAKE_CAR);
 	}
 /*
@@ -73,15 +71,16 @@ int		main(int argc, char **argv)
 	introduce_plrs(plr);
 	fill_arena(plr, vm, arena);
 	game(&car, arena, vm);
-
+		//ft_free_vm(vm);
+		//ft_fre_plr(plr);
 
 /*
 *	6. test
 */
 	
-	//test(vm, plr);
-	//print_list(plr);
-	//print_list_car(car);
+	// test(vm, plr);
+	// print_list(plr);
+	// print_list_car(car);
 	return (0);
 }
 

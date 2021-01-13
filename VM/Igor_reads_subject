@@ -4,7 +4,7 @@ We have:
 	- REG_NUMBER registers
 	- PC - a register that has address of next set of instructions to execute
 	- a flag carry
-champions positioned evenly on arena
+champions posed evenly on arena
 Processes executed sequantially.
 VM must check processes after every CYCLE_TO_DIE periods 
 ---> to answer the question if process executed "live" at least 1 time.
