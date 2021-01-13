@@ -6,7 +6,7 @@
 /*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 13:19:23 by sdarron           #+#    #+#             */
-/*   Updated: 2021/01/13 13:37:22 by sdarron          ###   ########.fr       */
+/*   Updated: 2021/01/13 14:19:54 by sdarron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void		gat_list_plrs(char **argv, int id, t_plr *plr, int i)
 	fd = open(argv[i], O_RDONLY);
 	if (fd == -1)
 		error_file();
+	if (id > 4)
+		print_error(2);
 	create_list_plr(plr, id, fd);
 	close(fd);
 }
