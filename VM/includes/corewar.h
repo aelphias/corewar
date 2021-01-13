@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/13 18:10:46 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/13 19:50:40 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,10 +135,11 @@ void							fill_arena(t_plr *plr, t_vm *vm, uint8_t *arena);
 void							ft_copy_code(uint8_t *dst, uint8_t *src, int codesize);
 
 /*
-**	инициализация t_vm, t_op
+**	инициализация t_vm, t_op, t_plr
 */
 
-void							init_vm(t_vm *vm, t_plr *plr);
+void							init_vm(t_vm *vm);
+void							init_plr(t_vm *vm, t_plr *plr);
 
 
 /*

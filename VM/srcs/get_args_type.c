@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 18:19:27 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/13 12:42:50 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/13 19:45:06 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 {
 	int i = 0;
 
+	op->code = op->code;
 	car->arg_type[MINUS_ONE(ind)] = arg_type;
 
 	while (i < 3)
