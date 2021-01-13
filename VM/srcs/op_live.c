@@ -3,27 +3,59 @@
 /*                                                        :::      ::::::::   */
 /*   op_live.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:24:48 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/12 19:45:27 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/13 16:22:02 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
+t_plr		*get_playersid(t_plr *plrs, int plid)
+{
+	printf("{   8   }\n");
+	t_plr *p;
+
+	if (plrs)
+	{
+		p = plrs;
+		while (p)
+		{
+			if (p->id == plid)
+				return (p);
+			p = p->next;
+		}
+	}
+	return (NULL); 
+}
+
 void	op_live(t_car *car, uint8_t *arena, t_vm *vm)
 {
+	uint32_t n_plr;
+	t_plr *plr;
 
-	int arg;
+	n_plr = 0;
 
-	arg = 0;
 	if (vm && car && arena) 
 	{
+			printf("------>op_live()=== car->dir_size_status=%d\n",car->dir_size_status);
+	printf("------>op_live()=== car->arg_type[0]=%d\n", car->arg_type[0]);
 		car->last_live_cycle = vm->cycles;
-		car->position++;
-		arg = get_byte(arena, car->position);
-		printf("------>op_live() arg=%d\n",arg);
+		car->pos++;
+		n_plr = get_arg(vm, car, 1, arena);
+		vm->lived++;
+		car->last_live_cycle = vm->cycles;
+	//vm->hd_plrs->head;
+	ft_printf("CAR->REG %d \t\t N_PLR %d \n", car->reg[0], n_plr);
+	/* if (car->reg[0] == n_plr) 
+			{
+				printf("{   7   }\n");
+				vm->winner_id = plr->id;
+				ft_printf("A process shows that player %d ( %s ) is alive\n",
+					plr->id, plr->name);
+			} */
+		printf("------>op_live() arg=%d\n", n_plr);
 	}
 }
 /* void	op_live(t_car *car, uint8_t *arena, t_vm *vm)
@@ -49,18 +81,4 @@ void	op_live(t_car *car, uint8_t *arena, t_vm *vm)
 	 
 }
 
-t_plr		*get_playersid(t_plr **plrs, uint8_t plid)
-{
-	t_plr *p;
-
-	if (plrs)
-	{
-		p = *plrs;
-		while (p)
-		{
-			if (p->id == plid)
-				return (p);
-			p = p->next;
-		}
-	}
-	return (NULL); */
+*/

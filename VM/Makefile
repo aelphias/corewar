@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+         #
+#    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2021/01/11 20:15:566 by gjigglyp         ###   ########.fr        #
+#    Updated: 2021/01/13 16:30:10 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ VM_SRC_LIST	= print_error.c \
 			  introduce_plrs.c \
 			  main.c \
 			  op_add.c \
-			  get_args.c\
+			  get_args_type.c\
 			  get_byte.c\
 			  update_pos.c\
 			  op_live.c \
@@ -68,7 +68,8 @@ VM_SRC_LIST	= print_error.c \
 			  bury_car.c\
 			  parse_n_flag.c \
 			  parse_n_flag_cont.c \
-			  func_for_parsing.c 
+			  func_for_parsing.c \
+			  get_arg.c
 			  #check_winner.c
 
 #SRC_VM		= $(addprefix $(VM_SRC_DIR), $(VM_SRC_LIST))

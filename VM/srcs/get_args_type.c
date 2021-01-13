@@ -1,31 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_args.c                                         :+:      :+:    :+:   */
+/*   get_args_type.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 18:19:27 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/12 17:50:26 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/13 12:42:50 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
-
-
-
-
-/* 
-* 1  0000 0001
-# 2  0000 0010
-# 3  0000 0011
-*/
-
-/* 
-# define REG_CODE				1
-# define DIR_CODE				2
-# define IND_CODE				3 */
-
 
  void	write_arg_type(int arg_type, t_car *car, t_op *op, int ind)
 {
@@ -49,8 +34,8 @@ void	get_args_type(t_car *car, unsigned char *arena, t_op *op)
 	i = 0;
 	if (car->is_type_code)
 	{
-		car->position++;
-		arg_type = get_byte(arena, car->position);
+		car->pos++;
+		arg_type = get_byte(arena, car->pos);
 
 		printf("arg_type_code------------>%d\n", arg_type);
 		if (op->args_amount >= 1)

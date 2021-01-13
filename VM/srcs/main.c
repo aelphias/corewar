@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/13 13:40:59 by sdarron          ###   ########.fr       */
+/*   Updated: 2021/01/13 16:34:11 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int		main(int argc, char **argv)
 	//if (!(op[17] = (t_op *)ft_memalloc(sizeof(t_op[17]))))
 	//	print_error(ERR_MALLOC);
 	//init_op(op);
-	init_vm(vm);
 	//ft_printf("op[1].1 =%s\n",op[1].name);
 /*
 *	3. Парсим строку стандартного ввода и файлы .cor, plr односвязный список игроков
@@ -57,6 +56,7 @@ int		main(int argc, char **argv)
 		//ft_free_vm(vm);
 		print_error(ERR_PARSE);
 	}
+	init_vm(vm);
 	check_n_flags(argc, argv, plr);
 	print_list(plr);
 /*
@@ -64,8 +64,6 @@ int		main(int argc, char **argv)
 */
 	if (!(car = make_car(plr, vm)))
 	{
-		//ft_free_vm(vm);
-		//ft_fre_plr(plr);
 		print_error(ERR_MAKE_CAR);
 	}
 	print_list_car(car);
@@ -74,16 +72,16 @@ int		main(int argc, char **argv)
 */
 	introduce_plrs(plr);
 	fill_arena(plr, vm, arena);
-	//game(&car, arena, vm);
+	game(&car, arena, vm);
 
 
 /*
 *	6. test
 */
 	
-	//test(vm, plr);
-	//print_list(plr);
-	//print_list_car(car);
+	// test(vm, plr);
+	// print_list(plr);
+	// print_list_car(car);
 	return (0);
 }
 

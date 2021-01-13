@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/13 13:55:54 by sdarron          ###   ########.fr       */
+/*   Updated: 2021/01/13 16:29:32 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,19 @@ typedef enum { false, true }	bool;
 
 # define MINUS_ONE(X)			((X) - 1)
 
+typedef struct					s_plr
+{
+	int							id;
+	int							n_id;
+	uint8_t						*name;
+	uint8_t						*cmnt;
+	unsigned int				pos; 
+	unsigned int				codesize;
+	uint8_t						*code;
+	struct s_plr				*head;
+	struct s_plr				*next;
+}								t_plr;
+
 typedef struct					s_vm
 {
 	unsigned int				plr_count;
@@ -32,7 +45,8 @@ typedef struct					s_vm
 	long int					cycles_aff_check;
 	int							n;
 	int							dump;
-	char						*winner;
+	t_plr						*hd_plrs;
+	int							winner_id;
 }								t_vm;
 
 typedef struct					s_count
@@ -47,8 +61,8 @@ typedef struct					s_count
 typedef struct					s_car
 {
 	bool						carry;
-	unsigned int				position;
-	uint8_t						reg[REG_NUMBER];
+	unsigned int				pos;
+	int							reg[REG_NUMBER];
 	int							id;
 	bool						is_type_code;
 	int							arg[3];
@@ -59,20 +73,9 @@ typedef struct					s_car
 	unsigned int				wait;
 	unsigned int				pc;
 	unsigned int				dir_size_status;
+	unsigned int				step;
 	struct s_car				*next;
 }								t_car;
-
-typedef struct					s_plr
-{
-	int							id;
-	int							n_id;
-	uint8_t						*name;
-	uint8_t						*cmnt;
-	unsigned int				position; 
-	unsigned int				codesize;
-	uint8_t						*code;
-	struct s_plr				*next;
-}								t_plr;
 
 typedef struct					s_op
 {
@@ -155,7 +158,7 @@ t_plr	 						*ft_parse(int argc, char **argv, int i, int id);
 */
 
 unsigned int					update_pos(unsigned int pos);
-uint8_t							get_byte(uint8_t *arena, unsigned int position);
+uint8_t							get_byte(uint8_t *arena, unsigned int pos);
 void							dump(uint8_t *arena);
 void							introduce_plrs(t_plr *plr);
 int								arena_loop(uint8_t *arena, uint32_t coord);
@@ -182,6 +185,10 @@ void							check_winner(t_vm *vm);
 void							get_args_type(t_car *car, unsigned char *arena, t_op *op);
 void							write_arg_type(int arg_type, t_car *car, t_op *op, int ind);
 void							exec(t_car *car, uint8_t *arena, t_op *op, t_vm *vm);
+int								get_arg(t_vm *vm, t_car *car, int arg_number, uint8_t *arena);
+
+
+
 
 /*
 **	void	operations(t_car *car, uint8_t *arena, void (**func)(t_car *, uint8_t *));

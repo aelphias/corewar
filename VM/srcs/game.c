@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/12 14:42:52 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/13 12:42:50 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	cycle(t_car **head_car, uint8_t *arena, t_vm *vm)
 	{
 		if (car->wait == 0)
 		{
-			car->op_code = get_byte(arena, car->position); //считываем с карты
+			car->op_code = get_byte(arena, car->pos); //считываем с карты
 			if (valid_op(car))
 			{
 				op = &g_op[MINUS_ONE(car->op_code)];
@@ -57,7 +57,7 @@ void	cycle(t_car **head_car, uint8_t *arena, t_vm *vm)
 			}
 			else
 			{
-				car->position++;
+				car->pos++;
 				if (!(car->next))
 					break;
 				car = car->next;
@@ -90,8 +90,6 @@ void	game(t_car **head_car, uint8_t *arena, t_vm *vm)
 	ft_printf("vm->cycles = %d\n", vm->cycles);
 	// check_winner() ft_printf("Contestant 1, %s has won !\n", (*vm)->winner);
 }
-
-
 /* 
 ** Если же код операции ошибочен, необходимо просто переместить каретку на следующий байт.
- */
+*/

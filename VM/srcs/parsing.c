@@ -77,6 +77,7 @@ t_plr		*add_one_plr(char **argv, t_plr *plr, int i, int j)
 		(PROG_NAME_LENGTH + 1));
 	plr->cmnt = (uint8_t *)ft_memalloc(sizeof(uint8_t) * (COMMENT_LENGTH + 1));
 	plr->code = (uint8_t *)ft_memalloc(sizeof(uint8_t) * CHAMP_MAX_SIZE);
+	plr->head = plr;
 	ft_bzero(plr->code, 0);
 	read_file(fd, plr, 0);
 	close(fd);
