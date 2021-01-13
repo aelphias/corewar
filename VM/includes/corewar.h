@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/12 21:23:58 by marvin           ###   ########.fr       */
+/*   Updated: 2021/01/13 13:55:54 by sdarron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,15 @@ typedef struct					s_vm
 	int							dump;
 	char						*winner;
 }								t_vm;
+
+typedef struct					s_count
+{
+	int							c;
+	int							m;
+	int							j;
+	int							k;
+	int							l;
+}								t_count;
 
 typedef struct					s_car
 {
@@ -65,47 +74,55 @@ typedef struct					s_plr
 	struct s_plr				*next;
 }								t_plr;
 
-typedef struct		s_op
+typedef struct					s_op
 {
-	char			*name;
-	unsigned int	code;
-	unsigned int	args_amount;
-	bool			is_type_code; 
-	unsigned int	args_types[3];
-	bool			modify_carry;
-	unsigned int	dir_size_status;
-	unsigned int	cycles_wait;
-	void			(*func)(t_car *, uint8_t *, t_vm *);
-}					t_op;
+	char						*name;
+	unsigned int				code;
+	unsigned int				args_amount;
+	bool						is_type_code; 
+	unsigned int				args_types[3];
+	bool						modify_carry;
+	unsigned int				dir_size_status;
+	unsigned int				cycles_wait;
+	void						(*func)(t_car *, uint8_t *, t_vm *);
+}								t_op;
 
 /*
 **	init car
 */
 
-void							init_car(t_plr *plr, t_car **head, int pos);
+t_plr							*add_one_plr(char **argv, t_plr *plr, int i, int j);
+void							check_flags(int argc, char **argv, t_vm *vm);
+int								chek_num(int *num, int minnum, int plrs);
+void							check_same_numb(int *num, t_plr *plr, int plrs);
+void 							check_n_flags(int argc, char **argv, t_plr *plr);
+void							checkdotcor_and_chech_n(int ac, char **av, int *n, t_plr *pr);
+int								checkdotcor(char *argv);
+void							check_max_size_and_magicnum(t_plr *plr, uint8_t *magicnum, int fd);
+void							create_list_plr(t_plr *head, int val, int fd);
+void							copy_num_in_plrslist(int *num, t_plr *plr, int plrs);
+int								comparison_of_two_numbers(int a, int b);
+void							error_champ_max_size();
+void							error_file();
+void							error_magic_numb();
+void							error_one_dump();
+void							error_pos_number();
+t_plr							*ft_parse(int argc, char **argv, int i, int id);
+void							get_sizecode(t_plr *plr, uint8_t *sizecode);
+void							gat_list_plrs(char **argv, int id, t_plr *plr, int i);
+int								get_error_for_n(int i, int argc, char **argv);
 t_car							*make_car(t_plr *plr, t_vm *vm);
+int								number_after_n(int i, char **argv);
+t_plr							*sort_list_plr(t_plr *plr);
+void							print_error(int num_error);
 int								plr_count(t_plr *head);
-t_plr	*ft_parse(int argc, char **argv);
-void	check_flags(int argc, char **argv, t_vm *vm);
-int		read_from_file(t_plr *player, char *str, int nbr);
-void	print_error(int num_error);
-void 	check_n_flags(int argc, char **argv, t_plr *plr);
-void	error_one_dump();
-void	error_pos_number();
-int		is_num(char *str);
-void	check_flags(int argc, char **argv, t_vm *vm);
-int		chek_num(int *num, int minnum, int plrs);
-void	copy_num_in_plrslist(int *num, t_plr *plr, int plrs);
-int		comparison_of_two_numbers(int a, int b);
-t_plr	*sort_list_plr(t_plr *plr);
-int		right_n_flag(int argc, char **argv);
-int		number_after_n(int i, char **argv);
-void	put_number_in_arr(int *num, t_plr *plr, int plrs);
-void	check_same_numb(int *num, t_plr *plr, int plrs);
-void	checkdotcor_and_chech_n(int ac, char **av, int *n, t_plr *pr);
-void	error_file();
-void	error_champ_max_size();
-void	error_magic_numb();
+void							put_number_in_arr(int *num, t_plr *plr, int plrs);
+int								read_from_file(t_plr *player, char *str, int nbr);
+void							read_file(int fd, t_plr *plr, int i);
+t_plr							*revlist(t_plr *plr);
+int								right_n_flag(int argc, char **argv);
+void							init_car(t_plr *plr, t_car **head, int pos);
+int								is_num(char *str);
 
 /*
 **	init arena 
@@ -126,9 +143,9 @@ void							init_vm(t_vm *vm);
 */
 
 
-void 				check_flags(int argc, char **argv, t_vm *vm);
-void 				check_n_flags(int argc, char **argv, t_plr *plr);
-t_plr	 			*ft_parse(int argc, char **argv);
+void 							check_flags(int argc, char **argv, t_vm *vm);
+void 							check_n_flags(int argc, char **argv, t_plr *plr);
+t_plr	 						*ft_parse(int argc, char **argv, int i, int id);
 
 
 
@@ -137,14 +154,14 @@ t_plr	 			*ft_parse(int argc, char **argv);
 **	utils
 */
 
-unsigned int		update_pos(unsigned int pos);
-uint8_t				get_byte(uint8_t *arena, unsigned int position);
-void				dump(uint8_t *arena);
-void				introduce_plrs(t_plr *plr);
-int					arena_loop(uint8_t *arena, uint32_t coord);
-int					is_num(char *str);
-int					checkdotcor(char *argv);
-void				print_error(int num_error);
+unsigned int					update_pos(unsigned int pos);
+uint8_t							get_byte(uint8_t *arena, unsigned int position);
+void							dump(uint8_t *arena);
+void							introduce_plrs(t_plr *plr);
+int								arena_loop(uint8_t *arena, uint32_t coord);
+int								is_num(char *str);
+int								checkdotcor(char *argv);
+void							print_error(int num_error);
 
 /*
 **	зачистка всего
@@ -157,16 +174,14 @@ void							ft_free_plr(t_plr *plr);
 **	game
 */
 
-void				game(t_car **car, uint8_t *arena, t_vm *vm);
-void				cycle(t_car **head_car, uint8_t *arena, t_vm *vm);
-void				check(t_vm *vm, t_car **head_car);
-void				bury_car(t_vm *vm, t_car **head_car);
-void				check_winner(t_vm *vm);
-void				get_args_type(t_car *car, unsigned char *arena, t_op *op);
-void				write_arg_type(int arg_type, t_car *car, t_op *op, int ind);
-void				exec(t_car *car, uint8_t *arena, t_op *op, t_vm *vm);
-
-
+void							game(t_car **car, uint8_t *arena, t_vm *vm);
+void							cycle(t_car **head_car, uint8_t *arena, t_vm *vm);
+void							check(t_vm *vm, t_car **head_car);
+void							bury_car(t_vm *vm, t_car **head_car);
+void							check_winner(t_vm *vm);
+void							get_args_type(t_car *car, unsigned char *arena, t_op *op);
+void							write_arg_type(int arg_type, t_car *car, t_op *op, int ind);
+void							exec(t_car *car, uint8_t *arena, t_op *op, t_vm *vm);
 
 /*
 **	void	operations(t_car *car, uint8_t *arena, void (**func)(t_car *, uint8_t *));

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 18:35:34 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/12 16:50:06 by marvin           ###   ########.fr       */
+/*   Updated: 2021/01/13 14:04:16 by sdarron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	print_error(int num_error)
 		ft_putstr_fd("Usage: ./corewar [-dump nbr_cycles] [[-n number] champion1.cor]\n", 2);
 	else if (num_error == 2)
 	{
-		ft_putstr_fd("Too many players, %d is max ", 2);
+		ft_putstr_fd("Too many players, max is ", 2);
 		ft_putnbr_fd(MAX_PLAYERS, 2);
 		ft_putstr_fd("\n", 2);
 	}
@@ -63,6 +63,6 @@ void	error_champ_max_size()
 void	error_magic_numb()
 {
 	//free();
-	write(2, "ERROR MAGIC NUMBER\n", 20);
+	write(2, "ERROR MAGIC NUMBER\n", 19);
 	exit(1);
 }
