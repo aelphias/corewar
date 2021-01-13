@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_live.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:24:48 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/13 18:14:11 by sdarron          ###   ########.fr       */
+/*   Updated: 2021/01/13 19:04:23 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ void	op_live(t_car *car, uint8_t *arena, t_vm *vm)
 		car->last_live_cycle = vm->cycles;
 		vm->lived++;
 		cur_plr_n = get_arg(vm, car, 1, arena);
+		// дописать проверку то id игрока существует
+		vm->winner_id = -(cur_plr_n);
+		
+		printf("------>op_live()\n");
 		/* if (cur_plr_n <= -1 && cur_plr_n >= -(MAX_PLAYERS)) 
 		{
 			plr = find_plr(vm->hd_plrs, cur_plr_n);
@@ -55,7 +59,6 @@ void	op_live(t_car *car, uint8_t *arena, t_vm *vm)
 
 /* 
 
-printf("------>op_live()=== car->dir_size_status=%d\n",car->dir_size_status);
 			printf("------>op_live()=== car->arg_type[0]=%d\n", car->arg_type[0]);
 
 	ft_printf("CAR->REG %d \t\t N_PLR %d \n", car->reg[0], n_plr);
