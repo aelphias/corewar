@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/13 13:40:17 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/13 16:09:56 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ typedef struct					s_vm
 	int							n;
 	int							dump;
 	t_plr						*hd_plrs;
-	uint8_t						*winner;
+	int							winner_id;
 }								t_vm;
 
 typedef struct					s_car
 {
 	bool						carry;
 	unsigned int				pos;
-	uint8_t						reg[REG_NUMBER];
+	int							reg[REG_NUMBER];
 	int							id;
 	bool						is_type_code;
 	int							arg[3];

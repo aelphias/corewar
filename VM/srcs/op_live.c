@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:24:48 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/13 13:58:06 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/13 16:22:02 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,15 @@ void	op_live(t_car *car, uint8_t *arena, t_vm *vm)
 		n_plr = get_arg(vm, car, 1, arena);
 		vm->lived++;
 		car->last_live_cycle = vm->cycles;
-	vm->hd_plrs->head;
+	//vm->hd_plrs->head;
 	ft_printf("CAR->REG %d \t\t N_PLR %d \n", car->reg[0], n_plr);
-	if (car->reg[0] == n_plr) 
+	/* if (car->reg[0] == n_plr) 
 			{
 				printf("{   7   }\n");
-				vm->winner = plr->name;
+				vm->winner_id = plr->id;
 				ft_printf("A process shows that player %d ( %s ) is alive\n",
 					plr->id, plr->name);
-			}
+			} */
 		printf("------>op_live() arg=%d\n", n_plr);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/11 15:49:38 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/13 16:13:03 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int		main(int argc, char **argv)
 	//if (!(op[17] = (t_op *)ft_memalloc(sizeof(t_op[17]))))
 	//	print_error(ERR_MALLOC);
 	//init_op(op);
-	init_vm(vm);
 	//ft_printf("op[1].1 =%s\n",op[1].name);
 /*
 *	3. Парсим строку стандартного ввода и файлы .cor, plr односвязный список игроков
@@ -57,6 +56,7 @@ int		main(int argc, char **argv)
 		//ft_free_vm(vm);
 		print_error(ERR_PARSE);
 	}
+	init_vm(vm);
 	check_n_flags(argc, argv, plr);
 /*
 *	4. Инициализируем арену и создаем каретки
