@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_st.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 22:14:14 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/14 10:25:52 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/14 17:26:10 by sdarron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,20 @@
 
 void					op_st(t_car *car, uint8_t *arena, t_vm *vm)
 {
+	int vel_in_reg1;
+	int numb_reg2;
+	int shift;
 
+	shift = move(car);
+	vel_in_reg1 = car->reg[update_pos(arena[car->pos + 2])];
+	if (car->arg_type[1] == 1)
+		car->reg[update_pos(arena[car->pos + 3])] = vel_in_reg1;
+	if (car->arg_type[1] == 3)
+	{
+
+		
+	}
+	car->pos += shift;
 }
 /* 
 void					op_st(t_car *car, uint8_t *arena, t_vm *vm)

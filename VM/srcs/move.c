@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 16:35:08 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/14 16:36:32 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/14 16:55:38 by sdarron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int move(t_car *car)
 {
-    int i;
-    
-    i = 0;
+	int i;
+
+	i = 0;
 	while (i < 3)
 	{
 		if (car->arg_type[i] != 0)
@@ -37,5 +37,5 @@ int move(t_car *car)
 			car->move += 0;
 		i++;
 	}
-    return (car->move);
+	return (car->move);
 }
