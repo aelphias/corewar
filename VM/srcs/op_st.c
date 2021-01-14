@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 22:14:14 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/14 18:47:21 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/14 18:50:28 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,4 @@ void					op_st(t_car *car, uint8_t *arena, t_vm *vm)
 		}
 		//car->reg[] = val1;
 	}
-}
+}*/

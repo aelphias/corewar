@@ -6,17 +6,17 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:38:13 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/14 18:44:21 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/14 21:20:20 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-int			if_aff(int codage)
+int			if_aff(int c)
 {
 	int		arg1;
 
-	arg1 = bit_mask(1, codage);
+	arg1 = bitmask_corr(1, c);
 	if (arg1 != 1)
 		return (1);
 	return (0);

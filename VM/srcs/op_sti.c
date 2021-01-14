@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:34:04 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/14 18:37:21 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/14 21:19:48 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		c_c_sti(int c)
 	return (0);
 }
 
-void	op_sti(t_car *car, uint8_t *arena, t_vm **vm)
+void	op_sti(t_car *car, uint8_t *arena, t_vm *vm)
 {
 	int				i;
 	t_vm			*vm1;
@@ -38,7 +38,7 @@ void	op_sti(t_car *car, uint8_t *arena, t_vm **vm)
 	unsigned int	j;
 	int				k;
 
-	vm1 = (*vm);
+	/*vm1 = (*vm);
 	size_tmp = get_size(arena, car->pos, car->dir_size_status);
 	if (!(c_c_sti(get_map(arena, car->dir_size_status + 1))) &&
 			(i = red_arg(arena, car->pos, 3)) != -1)
@@ -53,5 +53,5 @@ void	op_sti(t_car *car, uint8_t *arena, t_vm **vm)
 			//k = (short)(pc->arg[1] + pc->arg[2]);
 			//set_bit(pc, car->dir_size_status + (k % IDX_MOD), arena, pc->arg[0]);
 		}
-	}
+	}*/
 }

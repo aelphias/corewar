@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/14 19:14:55 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/14 21:21:08 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,6 +169,7 @@ int								checkdotcor(char *argv);
 void							print_error(int num_error);
 bool							valid_op(t_car *car);
 int     						bitmask_corr(int a, int size);
+int								if_aff(int c);
 
 /*
 **	зачистка всего
