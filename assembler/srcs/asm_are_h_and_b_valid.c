@@ -6,19 +6,23 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 12:01:49 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/05 13:36:33 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/14 16:36:25 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	header_cases(char **line, t_crw *ch, int *name, int *mc)
+/*
+** проверка на случаи head и comment
+*/
+
+void	check_hdr_cases(char **line, t_crw *ch, int *name, int *mc)
 {
-	if (is_comment(*line))
+	if (is_comment_or_not(*line))
 		;
 	else if (is_name(line, ch->fd, ch, *name))
 		*name = 1;
-	else if (is_main_comment(line, ch->fd, ch, *mc))
+	else if (is_main_comment_or_not(line, ch->fd, ch, *mc))
 		*mc = 1;
 	else
 	{
@@ -27,7 +31,11 @@ void	header_cases(char **line, t_crw *ch, int *name, int *mc)
 	}
 }
 
-void	is_header_valid(int fd, t_crw *ch)
+/*
+** проверка на валидность хедера
+*/
+
+void	is_hdr_valid_or_not(int fd, t_crw *ch)
 {
 	int		name;
 	int		mc;
@@ -39,7 +47,7 @@ void	is_header_valid(int fd, t_crw *ch)
 	ch->fd = fd;
 	while ((ans = get_next_line(fd, &line)) > 0)
 	{
-		header_cases(&line, ch, &name, &mc);
+		check_hdr_cases(&line, ch, &name, &mc);
 		if (name == 1 && mc == 1)
 		{
 			free(line);
@@ -54,14 +62,18 @@ void	is_header_valid(int fd, t_crw *ch)
 	}
 }
 
-void	is_body_valid(int fd, t_crw *ch)
+/*
+** проверка на валидность того, что должно быть под именем и комментарием
+*/
+
+void	is_body_valid_or_not(int fd, t_crw *ch)
 {
 	int		ans;
 	char	*line;
 
 	while ((ans = get_next_line(fd, &line)) > 0)
 	{
-		if (is_comment(line))
+		if (is_comment_or_not(line))
 			;
 		else if (is_command_or_not(line, ch))
 			;
@@ -77,8 +89,12 @@ void	is_body_valid(int fd, t_crw *ch)
 	finish_fill_label_range(ch);
 }
 
-void	are_h_and_b_valid(int fd, t_crw *ch)
+/*
+** проверяем всё вместе на валидность
+*/
+
+void	are_h_and_b_valid_or_not(int fd, t_crw *ch)
 {
-	is_header_valid(fd, ch);
-	is_body_valid(fd, ch);
+	is_hdr_valid_or_not(fd, ch);
+	is_body_valid_or_not(fd, ch);
 }

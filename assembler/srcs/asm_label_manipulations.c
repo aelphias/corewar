@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 17:30:09 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/19 17:30:17 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/14 14:58:35 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,23 @@ int		ft_contains(char *str, t_lbl label)
 	while (tmp != NULL)
 	{
 		if (ft_strcmp(tmp->name, str) == 0)
-		{
 			return (1);
-		}
 		tmp = tmp->next;
 	}
 	return (0);
 }
 
-void	while_in_find_label(t_crw *champ, char *str, int *sum, int i)
+void	while_in_find_label(t_crw *ch, char *str, int *sum, int i)
 {
-	while (i != champ->l_size)
+	while (i != ch->l_size)
 	{
-		if (champ->labels[i].is_label_or_not == 1 &&\
-		ft_contains(str, champ->labels[i]))
+		if (ch->lbls[i].is_label_or_not == 1 &&\
+		ft_contains(str, ch->lbls[i]))
 		{
-			while (i != champ->l_size)
+			while (i != ch->l_size)
 			{
-				*sum -= champ->labels[i].arg_1 + champ->labels[i].arg_2 +\
-				champ->labels[i].arg_3 + 1 + champ->labels[i].cmd_t;
+				*sum -= ch->lbls[i].arg_1 + ch->lbls[i].arg_2 +\
+				ch->lbls[i].arg_3 + 1 + ch->lbls[i].cmd_t;
 				i++;
 			}
 			break ;
@@ -47,7 +45,7 @@ void	while_in_find_label(t_crw *champ, char *str, int *sum, int i)
 	}
 }
 
-void	find_label(t_crw *champ)
+void	find_label(t_crw *ch)
 {
 	int		i;
 	char	*str;
@@ -55,44 +53,44 @@ void	find_label(t_crw *champ)
 
 	sum = 0;
 	str = NULL;
-	if (champ->labels[champ->l_size].arg_now == 1)
-		str = champ->labels[champ->l_size].l_name_1;
-	else if (champ->labels[champ->l_size].arg_now == 2)
-		str = champ->labels[champ->l_size].l_name_2;
-	else if (champ->labels[champ->l_size].arg_now == 3)
-		str = champ->labels[champ->l_size].l_name_3;
+	if (ch->lbls[ch->l_size].arg_now == 1)
+		str = ch->lbls[ch->l_size].l_name_1;
+	else if (ch->lbls[ch->l_size].arg_now == 2)
+		str = ch->lbls[ch->l_size].l_name_2;
+	else if (ch->lbls[ch->l_size].arg_now == 3)
+		str = ch->lbls[ch->l_size].l_name_3;
 	i = 0;
-	while_in_find_label(champ, str, &sum, i);
-	if (champ->labels[champ->l_size].arg_now == 1)
-		champ->labels[champ->l_size].r1 = sum;
-	else if (champ->labels[champ->l_size].arg_now == 2)
-		champ->labels[champ->l_size].r2 = sum;
-	else if (champ->labels[champ->l_size].arg_now == 3)
-		champ->labels[champ->l_size].r3 = sum;
+	while_in_find_label(ch, str, &sum, i);
+	if (ch->lbls[ch->l_size].arg_now == 1)
+		ch->lbls[ch->l_size].r1 = sum;
+	else if (ch->lbls[ch->l_size].arg_now == 2)
+		ch->lbls[ch->l_size].r2 = sum;
+	else if (ch->lbls[ch->l_size].arg_now == 3)
+		ch->lbls[ch->l_size].r3 = sum;
 }
 
-int		find_lab_aft_cmd(t_crw *champ, char *l_name, int start, int arg)
+int		find_lab_aft_cmd(t_crw *ch, char *l_name, int start, int arg)
 {
 	int i;
 	int sum;
 
 	i = start;
 	sum = 0;
-	while (i < champ->l_size + 1)
+	while (i < ch->l_size + 1)
 	{
-		if (ft_contains(l_name, champ->labels[i]))
+		if (ft_contains(l_name, ch->lbls[i]))
 			break ;
-		sum += champ->labels[i].arg_1 + champ->labels[i].arg_2 +\
-		champ->labels[i].arg_3 + 1 + champ->labels[i].cmd_t;
+		sum += ch->lbls[i].arg_1 + ch->lbls[i].arg_2 +\
+		ch->lbls[i].arg_3 + 1 + ch->lbls[i].cmd_t;
 		i++;
-		if (i == champ->l_size + 1)
+		if (i == ch->l_size + 1)
 			return (0);
 	}
 	if (arg == 1)
-		champ->labels[start].r1 = sum;
+		ch->lbls[start].r1 = sum;
 	else if (arg == 2)
-		champ->labels[start].r2 = sum;
+		ch->lbls[start].r2 = sum;
 	else if (arg == 3)
-		champ->labels[start].r3 = sum;
+		ch->lbls[start].r3 = sum;
 	return (1);
 }

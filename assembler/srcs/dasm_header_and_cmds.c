@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 18:17:49 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/19 18:17:50 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/14 15:03:13 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,22 @@ void		disasm_cmd(int wr_fd, int rd_fd)
 
 	while ((ans = read(rd_fd, &dis.c, 1)) > 0)
 	{
-		dis.arg1 = 0;
-		dis.arg2 = 0;
-		dis.arg3 = 0;
+		dis.a1 = 0;
+		dis.a2 = 0;
+		dis.a3 = 0;
 		write(wr_fd, find_cmd(&dis), ft_strlen(dis.cmd_n));
 		write(wr_fd, " ", 1);
 		check_arg_type(&dis, rd_fd);
-		write_arg(wr_fd, &dis, rd_fd, dis.arg1);
-		if (dis.arg2)
+		write_arg(wr_fd, &dis, rd_fd, dis.a1);
+		if (dis.a2)
 		{
 			write(wr_fd, ", ", 2);
-			write_arg(wr_fd, &dis, rd_fd, dis.arg2);
+			write_arg(wr_fd, &dis, rd_fd, dis.a2);
 		}
-		if (dis.arg3)
+		if (dis.a3)
 		{
 			write(wr_fd, ", ", 2);
-			write_arg(wr_fd, &dis, rd_fd, dis.arg3);
+			write_arg(wr_fd, &dis, rd_fd, dis.a3);
 		}
 		write(wr_fd, "\n", 1);
 	}

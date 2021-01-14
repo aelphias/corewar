@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 16:42:16 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/11 19:02:24 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/14 14:53:15 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@
 
 void	op_fork(t_car *car, uint8_t *arena, t_vm *vm)
 {
-	int arg1;
+	int a1;
 	t_car *car_new;
 	
-	//car_copy = arg1 % IDX_MOD;
+	//car_copy = a1 % IDX_MOD;
 	//car_new = clone_car(car, );
 	
 }

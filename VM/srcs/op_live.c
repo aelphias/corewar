@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_live.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:24:48 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/13 21:23:35 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/14 14:53:15 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	op_live(t_car *car, uint8_t *arena, t_vm *vm)
 	t_plr *plr;
 	
 	ft_printf("----I'm op_live():\n");
-	int arg1;
+	int a1;
 	car->dir_size_status = car->dir_size_status;
 
 	 if (car && arena)

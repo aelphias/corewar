@@ -6,23 +6,23 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 17:09:33 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/10 16:50:55 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/14 14:43:17 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int				count_code_size(t_crw *champ)
+int				count_code_size(t_crw *ch)
 {
 	int i;
 	int sum;
 
 	sum = 0;
 	i = 0;
-	while (i != champ->l_size)
+	while (i != ch->l_size)
 	{
-		sum += champ->labels[i].arg_1 + champ->labels[i].arg_2 +\
-		champ->labels[i].arg_3 + champ->labels[i].cmd_t + 1;
+		sum += ch->lbls[i].arg_1 + ch->lbls[i].arg_2 +\
+		ch->lbls[i].arg_3 + ch->lbls[i].cmd_t + 1;
 		i++;
 	}
 	return (sum);
@@ -40,30 +40,30 @@ int				skip_everything(char *line)
 	return (j);
 }
 
-unsigned char	count_code_type_arg(t_crw *champ, int i)
+unsigned char	count_code_type_arg(t_crw *ch, int i)
 {
 	unsigned char ret;
 
 	ret = 0;
-	if (champ->labels[i].t1 == T_REG)
+	if (ch->lbls[i].t1 == T_REG)
 		ret += 1;
-	else if (champ->labels[i].t1 == T_DIR)
+	else if (ch->lbls[i].t1 == T_DIR)
 		ret += 2;
-	else if (champ->labels[i].t1 == T_IND)
+	else if (ch->lbls[i].t1 == T_IND)
 		ret += 3;
 	ret = ret << 2;
-	if (champ->labels[i].t2 == T_REG)
+	if (ch->lbls[i].t2 == T_REG)
 		ret += 1;
-	else if (champ->labels[i].t2 == T_DIR)
+	else if (ch->lbls[i].t2 == T_DIR)
 		ret += 2;
-	else if (champ->labels[i].t2 == T_IND)
+	else if (ch->lbls[i].t2 == T_IND)
 		ret += 3;
 	ret = ret << 2;
-	if (champ->labels[i].t3 == T_REG)
+	if (ch->lbls[i].t3 == T_REG)
 		ret += 1;
-	else if (champ->labels[i].t3 == T_DIR)
+	else if (ch->lbls[i].t3 == T_DIR)
 		ret += 2;
-	else if (champ->labels[i].t3 == T_IND)
+	else if (ch->lbls[i].t3 == T_IND)
 		ret += 3;
 	ret = ret << 2;
 	return (ret);

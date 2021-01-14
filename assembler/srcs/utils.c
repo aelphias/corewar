@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:43:09 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/05 15:03:39 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/14 16:47:32 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,22 @@ char		*ft_itoa_1(int n)
 }
 
 /*
+** вызов ошибки
+*/
+
+int			call_simple_error(char const *err)
+{
+	ft_putstr_fd("ERROR: ", 2);
+	ft_putendl_fd(err, 2);
+	exit(-1);
+}
+
+/*
 ** очистка памяти и выведение типа ошибки в терминал
 */
 
-void		free_and_call(t_crw champ, char *err)
+void		free_and_call(t_crw ch, char *err)
 {
 	ft_printf("ERROR: %s\n", err);
-	free_all(champ);
+	free_all(ch);
 }

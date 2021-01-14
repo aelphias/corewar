@@ -6,34 +6,34 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 18:17:23 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/19 18:17:25 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/14 14:53:29 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-char	*dasm_change_ex(char *filename, char *old, char *new)
+char	*dasm_change_ex(char *fn, char *old, char *new)
 {
-	char	*basename;
+	char	*bn;
 	int		len;
 
-	len = ft_strlen(filename);
-	if (len < 5 || ft_strcmp(&filename[len - 4], ".cor") != 0)
+	len = ft_strlen(fn);
+	if (len < 5 || ft_strcmp(&fn[len - 4], ".cor") != 0)
 	{
-		write(1, "Wrong extension\n", 16);
+		ft_printf(ERR_UNF);
 		exit(-1);
 	}
-	basename = ft_strsub(filename, 0, ft_strlen(filename) - ft_strlen(old));
-	if (!basename)
-	{
-		exit(-1);
-	}
-	if (!(filename = ft_strjoin(basename, new)))
+	bn = ft_strsub(fn, 0, ft_strlen(fn) - ft_strlen(old));
+	if (!bn)
 	{
 		exit(-1);
 	}
-	ft_strdel(&basename);
-	return (filename);
+	if (!(fn = ft_strjoin(bn, new)))
+	{
+		exit(-1);
+	}
+	ft_strdel(&bn);
+	return (fn);
 }
 
 char	*find_cmd(t_dasm *dis)
@@ -61,9 +61,9 @@ void	check_arg_type(t_dasm *dis, int rd_fd)
 	if (dis->arg_type == 1)
 	{
 		read(rd_fd, &dis->c, 1);
-		dis->arg1 = dis->c >> 6;
-		dis->arg2 = dis->c >> 4 & 3;
-		dis->arg3 = dis->c >> 2 & 3;
+		dis->a1 = dis->c >> 6;
+		dis->a2 = dis->c >> 4 & 3;
+		dis->a3 = dis->c >> 2 & 3;
 	}
 	else
 	{
@@ -73,6 +73,6 @@ void	check_arg_type(t_dasm *dis, int rd_fd)
 				break ;
 			i++;
 		}
-		dis->arg1 = g_op[i].args_types[0];
+		dis->a1 = g_op[i].args_types[0];
 	}
 }

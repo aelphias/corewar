@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assembler_mode.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:44:53 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/11 12:41:12 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/14 14:44:28 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 void		print_usage(void)
 {
-	ft_printf("Usage: ./asm (champion.s|champion.cor)\n\
+	ft_printf("Usage: ./asm (chion.s|champion.cor)\n\
 				\tchampion.s   — assemble->bytecode\n\
 				\tchampion.cor — assemble<-bytecode\n");
 }
 
-void		main_val(t_crw *champ, char *nof)
+void		main_val(t_crw *ch, char *nof)
 {
 	if (!nof)
 	{
 		print_usage();
 		exit(0);
 	}
-	init_crw(champ);
-	is_file_valid_or_not(nof, champ);
-	check_type_arg(champ);
-	if (champ->l_size == 0)
+	init_crw(ch);
+	is_file_valid_or_not(nof, ch);
+	check_type_arg(ch);
+	if (ch->l_size == 0)
 		exit(-1);
 }
 
