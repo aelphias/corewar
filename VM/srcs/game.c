@@ -6,16 +6,16 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/14 19:46:07 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/14 22:32:57 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	check(t_vm *vm, t_car *car)
+void	check(t_vm *vm, t_car **head_car)
 {
 	vm->check_count++;
-	bury_car(vm, car);
+	bury_car(vm, head_car);
 	if (vm->lived >= NBR_LIVE || vm->check_count == MAX_CHECKS)
 	{
 		vm->cycles_to_die -= CYCLE_DELTA;
@@ -40,47 +40,12 @@ bool	valid_op(t_car *car)
 	return (false);
 }
 
-void	cycle(t_car *car, uint8_t *arena, t_vm *vm)
+void	cycle(t_car **head_car, uint8_t *arena, t_vm *vm)
 {
 	t_op	*op;
+	t_car	*car;
 	
-	while (car && car->next != NULL)
-	{
-		if (arena[update_pos(car->pos)] != 0)
-		{
-			if (car->wait == 0)
-			{
-				car->op_code = get_byte(arena, car); //считываем с карты
-				if (valid_op(car))
-				{
-					op = &g_op[MINUS_ONE(car->op_code)];
-					car->wait = op->cycles_wait;
-				}
-				else
-				{
-					car->pos++;
-					if (!(car->next))
-						break;
-					car = car->next;
-				}
-			}
-			if (car->wait != 0)
-				car->wait--;
-			if (car->wait == 0)
-				exec(car, arena, op, vm);
-			if (!(car->next) && (car->wait != 0))
-				break;
-			car = car->next;
-		}
-		else
-			car->pos++;
-	}
-}
-
-/* void	cycle(t_car *car, uint8_t *arena, t_vm *vm)
-{
-	t_op	*op;
-	
+	car = (*head_car);
 	while (car)
 	{
 		if (car->wait == 0)
@@ -94,33 +59,33 @@ void	cycle(t_car *car, uint8_t *arena, t_vm *vm)
 			else
 			{
 				car->pos++;
-				if (!(car->next))
-					break;
-				car = car->next;
+				break ;
 			}
 		}
-		if (car->wait != 0)
+		if (car->wait > 0)
 			car->wait--;
 		if (car->wait == 0)
 			exec(car, arena, op, vm);
 		if (!(car->next) && (car->wait != 0))
-			break;
+			break ;
 		car = car->next;
 	}
-} */
+	car = (*head_car);
+}
 
-void	game(t_car *car, uint8_t *arena, t_vm *vm)
+void	game(t_car **head_car, uint8_t *arena, t_vm *vm)
 {
 	while (vm->car_count)
 	{
 		vm->cycles++;
-		cycle(car, arena, vm);
+		cycle(head_car, arena, vm);
 		if (vm->cycles_to_die <= 0 || (vm->cycles % CYCLE_TO_DIE) == 0) // условие для проверки
-			check(vm, car);
+			check(vm, head_car);
 		if (vm->cycles == vm->dump)
 			{
 				dump(arena); //CHECK THIS
-				printf("-----.>dump%d\n", vm->dump);    
+				printf("-----.>dump%d\n", vm->dump);  
+				return ;  
 			}
 				//printf("-----.>dump----not_in_IF%d\n", vm->dump);
 			//printf("----{inside game()}--Check() was called\n");
@@ -131,3 +96,5 @@ void	game(t_car *car, uint8_t *arena, t_vm *vm)
 /* 
 ** Если же код операции ошибочен, необходимо просто переместить каретку на следующий байт.
 */
+
+
