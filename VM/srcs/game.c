@@ -6,16 +6,16 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/13 18:50:40 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/14 13:41:00 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	check(t_vm *vm, t_car **head_car)
+void	check(t_vm *vm, t_car *car)
 {
 	vm->check_count++;
-	bury_car(vm, head_car);
+	bury_car(vm, car);
 	if (vm->lived >= NBR_LIVE || vm->check_count == MAX_CHECKS)
 	{
 		vm->cycles_to_die -= CYCLE_DELTA;
@@ -26,7 +26,7 @@ void	check(t_vm *vm, t_car **head_car)
  
 void	exec(t_car *car, uint8_t *arena, t_op *op, t_vm *vm)
 {
-	car->dir_size_status = op->dir_size_status;
+	car->dir_size_status = op->dir_size_status;  // (Размер T_DIR) бывает  4 и 2 byte
 	car->is_type_code = op->is_type_code;
 	get_args_type(car, arena, op);
 	car->pos++; // после считывания кода операции или типово аргументов переступили на первый байт аргументов
@@ -40,17 +40,15 @@ bool	valid_op(t_car *car)
 	return (false);
 }
 
-void	cycle(t_car **head_car, uint8_t *arena, t_vm *vm)
+void	cycle(t_car *car, uint8_t *arena, t_vm *vm)
 {
-	t_car	*car;
 	t_op	*op;
 	
-	car = (*head_car);
 	while (car)
 	{
 		if (car->wait == 0)
 		{
-			car->op_code = get_byte(arena, car->pos); //считываем с карты
+			car->op_code = get_byte(arena, car); //считываем с карты
 			if (valid_op(car))
 			{
 				op = &g_op[MINUS_ONE(car->op_code)];
@@ -78,14 +76,14 @@ void	cycle(t_car **head_car, uint8_t *arena, t_vm *vm)
 	}
 }
 
-void	game(t_car **head_car, uint8_t *arena, t_vm *vm)
+void	game(t_car *car, uint8_t *arena, t_vm *vm)
 {
 	while (vm->car_count)
 	{
 		vm->cycles++;
-		cycle(head_car, arena, vm);
+		cycle(car, arena, vm);
 		if (vm->cycles_to_die <= 0 || (vm->cycles % CYCLE_TO_DIE) == 0) // условие для проверки
-			check(vm, head_car);
+			check(vm, car);
 		if (vm->cycles == vm->dump)
 			{
 				printf("-----.>dump%d\n", vm->dump);

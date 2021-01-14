@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 19:03:32 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/13 19:44:32 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/14 11:00:50 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	op_add(t_car *car, uint8_t *arena, t_vm *vm)
 	int arg2;
 
 	vm->dump = vm->dump;
-	car->pos = update_pos(car->pos);
+	car->pos = update_pos(car->pos);   //?
 	type_arg = arena[update_pos(car->pos + 1)];
 	arg1 = car->reg[update_pos(arena[car->pos + 2])];
 	arg2 = car->reg[update_pos(arena[car->pos + 3])];

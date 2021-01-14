@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 12:14:08 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/14 10:32:09 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/14 11:29:48 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int		read_int(const uint8_t *arena, int addr, int size)
 	int			i;
 
 	result = 0;
+	
 	sign = (bool)(arena[update_pos(addr)] & 128);
 	i = 0;
 	while (size)
