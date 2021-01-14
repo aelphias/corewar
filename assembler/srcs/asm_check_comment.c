@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:59:53 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/14 16:46:42 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/14 18:20:29 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ void	skip_spaces(int i, char *line, t_crw *ch)
 		i++;
 	}
 }
+
+/*
+** пока мы находимся в главном комментарии
+*/
 
 void	while_in_m_comment(t_crw *ch, char **line, int *i, int *j)
 {
@@ -98,7 +102,7 @@ int		init_main_com(int *len_const, int *i, char **line, t_crw *ch)
 	return (1);
 }
 
-int		is_main_comment_or_not(char **line, int fd, t_crw *ch, int mc)
+int		is_main_cmnt_or_not(char **line, int fd, t_crw *ch, int mc)
 {
 	int len_const;
 	int i;

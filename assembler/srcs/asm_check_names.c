@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 12:32:17 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/14 16:45:26 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/14 17:38:10 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	while_is_name(char **line, int *i, t_crw *ch, int *j)
 		free_no_name(line, ch);
 	while ((*line)[*i] != '"')
 	{
+		ft_printf("%c", (*line)[*i]);
 		if (*j >= PROG_NAME_LENGTH)
 			if_prog_length(ch, line);
 		else if ((*line)[*i] == '\0')

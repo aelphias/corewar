@@ -5,7 +5,7 @@
 		"type": "cppdbg",
 		"request": "launch",
 		"program": "${workspaceFolder}/assembler/asm",
-		"args": ["${workspaceFolder}/assembler/Sonya.s"],
+		"args": ["${workspaceFolder}/assembler/test.s"],
 		"stopAtEntry": true,
 		"cwd": "${workspaceFolder}",
 		"environment": [],

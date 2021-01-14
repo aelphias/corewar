@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 12:01:49 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/14 16:36:25 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/14 18:20:29 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	check_hdr_cases(char **line, t_crw *ch, int *name, int *mc)
 		;
 	else if (is_name(line, ch->fd, ch, *name))
 		*name = 1;
-	else if (is_main_comment_or_not(line, ch->fd, ch, *mc))
+	else if (is_main_cmnt_or_not(line, ch->fd, ch, *mc))
 		*mc = 1;
 	else
 	{

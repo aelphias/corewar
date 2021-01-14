@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 15:15:59 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/14 16:44:45 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/14 18:20:29 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ void							while_in_m_comment(t_crw *ch, char **line,\
 									int *i, int *j);
 int								init_main_com(int *len_const, int *i,\
 									char **line, t_crw *ch);
-int								is_main_comment_or_not(char **line, int fd,\
+int								is_main_cmnt_or_not(char **line, int fd,\
 									t_crw *ch, int mc);
 void							if_in_is_label_or_not(t_crw *ch,\
 									t_l *new, char *line, int i);

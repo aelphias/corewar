@@ -44,7 +44,6 @@ t_car	*make_car(t_plr *plr, t_vm *vm)
 	count = 0;
 	equalizer = 0;
 	car = NULL;
-	vm->plr_count = plr_count(plr);
 	vm->car_count = vm->plr_count;
 	/* ПОЗИЦИЯ КАРЕТОК ПОДСЧЕТ 
 	 */

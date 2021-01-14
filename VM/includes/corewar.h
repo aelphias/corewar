@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/13 22:37:07 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/14 13:40:34 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,10 +181,10 @@ void							ft_free_plr(t_plr *plr);
 **	game
 */
 
-void							game(t_car **car, uint8_t *arena, t_vm *vm);
-void							cycle(t_car **head_car, uint8_t *arena, t_vm *vm);
-void							check(t_vm *vm, t_car **head_car);
-void							bury_car(t_vm *vm, t_car **head_car);
+void							game(t_car *car, uint8_t *arena, t_vm *vm);
+void							cycle(t_car *car, uint8_t *arena, t_vm *vm);
+void							check(t_vm *vm, t_car *car);
+void							bury_car(t_vm *vm, t_car *car);
 void							check_winner(t_vm *vm);
 void							get_args_type(t_car *car, unsigned char *arena, t_op *op);
 void							write_arg_type(int arg_type, t_car *car, t_op *op, int ind);

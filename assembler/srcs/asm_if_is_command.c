@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 16:53:30 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/14 14:44:28 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/14 18:04:40 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ int		if_in_conv_com(char **line, t_crw *ch, int *i, t_tw *arg)
 		free_and_call(*ch, ER_I_SY);
 	return (0);
 }
+
+/*
+** переводим команду
+*/
 
 void	convert_command(char *line, t_crw *ch)
 {

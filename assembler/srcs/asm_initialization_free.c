@@ -6,11 +6,15 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:44:37 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/14 14:44:49 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/14 18:05:44 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+/*
+** очищаем label
+*/
 
 void	free_label(t_lbl label)
 {
@@ -26,6 +30,10 @@ void	free_label(t_lbl label)
 	}
 }
 
+/*
+** очищаем всё
+*/
+
 void	free_all(t_crw ch)
 {
 	int i;
@@ -39,6 +47,10 @@ void	free_all(t_crw ch)
 	free(ch.lbls);
 	exit(0);
 }
+
+/*
+** обнуляем значения
+*/
 
 void	zeroing_values(t_crw *ch, int i, int j)
 {
@@ -62,6 +74,10 @@ void	zeroing_values(t_crw *ch, int i, int j)
 	ch->lbls[i].r3 = 0;
 	ch->lbls[i].arg_now = 0;
 }
+
+/*
+** инициализация структуры
+*/
 
 void	init_crw(t_crw *ch)
 {
