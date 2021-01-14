@@ -4,6 +4,25 @@
 		"name": "(lldb) Launch",
 		"type": "cppdbg",
 		"request": "launch",
+		"program": "${workspaceFolder}/VM/corewar",
+		"args": ["${workspaceFolder}/VM/live.cor", "${workspaceFolder}/VM/live.cor"],
+		"stopAtEntry": true,
+		"cwd": "${workspaceFolder}",
+		"environment": [],
+		"externalConsole": false,
+		"MIMode": "lldb"
+	}
+	]
+}
+
+
+/* 
+{
+	"configurations": [
+	{
+		"name": "(lldb) Launch",
+		"type": "cppdbg",
+		"request": "launch",
 		"program": "${workspaceFolder}/assembler/asm",
 		"args": ["${workspaceFolder}/assembler/test.s"],
 		"stopAtEntry": true,
@@ -13,4 +32,4 @@
 		"MIMode": "lldb"
 	}
 	]
-}
+} */

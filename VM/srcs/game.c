@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/14 22:32:57 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/14 22:56:43 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,21 +56,20 @@ void	cycle(t_car **head_car, uint8_t *arena, t_vm *vm)
 				op = &g_op[MINUS_ONE(car->op_code)];
 				car->wait = op->cycles_wait;
 			}
-			else
-			{
-				car->pos++;
-				break ;
-			}
 		}
 		if (car->wait > 0)
 			car->wait--;
 		if (car->wait == 0)
-			exec(car, arena, op, vm);
+		{
+			if (valid_op(car))
+				exec(car, arena, op, vm);
+			else
+				car->pos++;
+		}
 		if (!(car->next) && (car->wait != 0))
 			break ;
 		car = car->next;
 	}
-	car = (*head_car);
 }
 
 void	game(t_car **head_car, uint8_t *arena, t_vm *vm)
