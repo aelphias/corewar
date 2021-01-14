@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/14 13:41:00 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/14 16:52:09 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,7 @@ void	cycle(t_car *car, uint8_t *arena, t_vm *vm)
 		if (car->wait != 0)
 			car->wait--;
 		if (car->wait == 0)
-		{
 			exec(car, arena, op, vm);
-			car->wait = 0;
-			car->op_code = 0;
-		}
 		if (!(car->next) && (car->wait != 0))
 			break;
 		car = car->next;
@@ -86,7 +82,8 @@ void	game(t_car *car, uint8_t *arena, t_vm *vm)
 			check(vm, car);
 		if (vm->cycles == vm->dump)
 			{
-				printf("-----.>dump%d\n", vm->dump);
+				dump(arena); //CHECK THIS
+				printf("-----.>dump%d\n", vm->dump);    
 			}
 				//printf("-----.>dump----not_in_IF%d\n", vm->dump);
 			//printf("----{inside game()}--Check() was called\n");

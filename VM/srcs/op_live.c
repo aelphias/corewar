@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:24:48 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/13 21:23:35 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/14 16:53:25 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,27 +33,31 @@ void	op_live(t_car *car, uint8_t *arena, t_vm *vm)
 {
 	int			cur_plr_n;
 	t_plr		*plr;
+	int			shift;
 
-	cur_plr_n = 0;
+	/* cur_plr_n = 0;
 	plr = NULL;
+	printf("------>op_live() move=%d\n", car->move);
 	if (vm && car && arena) 
-	{
+	{	
+		shift = move(car);
+		printf("------>op_live()\n");
 		car->last_live_cycle = vm->cycles;
 		vm->lived++;
-		cur_plr_n = get_arg(vm, car, 1, arena);
+		//cur_plr_n = get_arg(vm, car, 1, arena);
 		// дописать проверку то id игрока существует
-		vm->winner_id = -(cur_plr_n);
+		//vm->winner_id = -(cur_plr_n);
 		
-		printf("------>op_live()\n");
-		/* if (cur_plr_n <= -1 && cur_plr_n >= -(MAX_PLAYERS)) 
+		if (cur_plr_n <= -1 && cur_plr_n >= -(MAX_PLAYERS)) 
 		{
 			plr = find_plr(vm->hd_plrs, cur_plr_n);
 			printf("{   7   }\n");`
 			vm->winner_id = plr->id;
 			printf("{   8   }\n");
 			printf("{   9   }\n");
-		} */
-	}
+		}
+		car->pos += shift;
+	} */
 }
 
 

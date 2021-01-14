@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 12:14:08 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/14 11:29:48 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/14 16:43:12 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		read_int(const uint8_t *arena, int addr, int size)
 	return (result);
 }
 
-int		get_arg(t_vm *vm, t_car *car, int arg_number, uint8_t *arena)
+int		 get_arg(t_vm *vm, t_car *car, int arg_number, uint8_t *arena)
 {
 	t_op	*op;
 	int		value;
@@ -59,5 +59,5 @@ int		get_arg(t_vm *vm, t_car *car, int arg_number, uint8_t *arena)
 							DIR_SIZE);
 	}
 	car->move += step_size(car->arg_type[MINUS_ONE(arg_number)], op); */
-	return (value);
+	return (value);  //
 }
