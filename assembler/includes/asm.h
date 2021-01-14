@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 15:15:59 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/11 12:40:46 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/14 18:20:29 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ typedef struct					s_crw
 	int							is_end_comment;
 	int							new_com;
 	int							l_size;
-	t_lbl						*labels;
+	t_lbl						*lbls;
 	int							len;
 	int							fd;
 }								t_crw;
@@ -124,88 +124,88 @@ typedef struct					s_dasm
 	unsigned int				arg_type;
 	unsigned char				c;
 	unsigned int				value;
-	unsigned int				arg1;
-	unsigned int				arg2;
-	unsigned int				arg3;
+	unsigned int				a1;
+	unsigned int				a2;
+	unsigned int				a3;
 	unsigned int				dir_size;
 }								t_dasm;
 
-void							header_cases(char **line, t_crw *ch,\
+void							check_hdr_cases(char **line, t_crw *ch,\
 									int *name, int *mc);
-void							is_header_valid(int fd, t_crw *ch);
-void							is_body_valid(int fd, t_crw *ch);
-void							are_h_and_b_valid(int fd, t_crw *ch);
+void							is_hdr_valid_or_not(int fd, t_crw *ch);
+void							is_body_valid_or_not(int fd, t_crw *ch);
+void							are_h_and_b_valid_or_not(int fd, t_crw *ch);
 void							writelbl(t_crw *ch, int *i, int arg_cntr,\
 									char *line);
 void							zero_exec(t_crw *ch, int exec_size);
-int								get_dir_ind_arg_val(t_crw *champ,\
+int								get_dir_ind_arg_val(t_crw *ch,\
 									char *line, int *i);
-int								is_comment(char *line);
-void							skip_spaces(int i, char *line, t_crw *champ);
-void							while_in_m_comment(t_crw *champ, char **line,\
+int								is_comment_or_not(char *line);
+void							skip_spaces(int i, char *line, t_crw *ch);
+void							while_in_m_comment(t_crw *ch, char **line,\
 									int *i, int *j);
 int								init_main_com(int *len_const, int *i,\
-									char **line, t_crw *champ);
-int								is_main_comment(char **line, int fd,\
-									t_crw *champ, int mc);
-void							if_in_is_label_or_not(t_crw *champ,\
+									char **line, t_crw *ch);
+int								is_main_cmnt_or_not(char **line, int fd,\
+									t_crw *ch, int mc);
+void							if_in_is_label_or_not(t_crw *ch,\
 									t_l *new, char *line, int i);
 void							init_is_label_or_not(int *i,\
-									t_crw *champ, char *line);
-int								is_label_or_not(char *line, t_crw *champ);
+									t_crw *ch, char *line);
+int								is_label_or_not(char *line, t_crw *ch);
 void							while_is_name(char **line, int *i,\
-									t_crw *champ, int *j);
-int								is_name(char **line, int fd, t_crw *champ,\
+									t_crw *ch, int *j);
+int								is_name(char **line, int fd, t_crw *ch,\
 									int name);
-int								is_command_or_not(char *line, t_crw *champ);
-char							*check_name_com(char *line, t_crw *champ);
-int								char_in_label(char el);
-void							finish_fill_label_range(t_crw *champ);
-void							check_type_arg(t_crw *champ);
+int								is_command_or_not(char *line, t_crw *ch);
+char							*check_name_com(char *line, t_crw *ch);
+int								char_in_lbl(char el);
+void							finish_fill_label_range(t_crw *ch);
+void							check_type_arg(t_crw *ch);
 char							*change_ex(char *filename, char *old,\
 									char *new);
 int								skip_everything(char *line);
-int								count_code_size(t_crw *champ);
-unsigned char					count_code_type_arg(t_crw *champ, int i);
+int								count_code_size(t_crw *ch);
+unsigned char					count_code_type_arg(t_crw *ch, int i);
 void							free_label(t_lbl label);
 void							free_all(t_crw champ);
-void							zeroing_values(t_crw *champ, int i, int j);
-void							init_crw(t_crw *champ);
-void							increase_crw(t_crw *champ);
+void							zeroing_values(t_crw *ch, int i, int j);
+void							init_crw(t_crw *ch);
+void							increase_crw(t_crw *ch);
 int								ft_contains(char *str, t_lbl label);
-void							while_in_find_label(t_crw *champ, char *str,\
+void							while_in_find_label(t_crw *ch, char *str,\
 									int *sum, int i);
-void							find_label(t_crw *champ);
-int								find_lab_aft_cmd(t_crw *champ, char *l_name,\
+void							find_label(t_crw *ch);
+int								find_lab_aft_cmd(t_crw *ch, char *l_name,\
 									int start, int arg);
-void							if_is_label_or_not(t_crw *champ, int arg_cntr,\
+void							if_is_label_or_not(t_crw *ch, int arg_cntr,\
 									char *line, int *i);
-int								get_reg_arg_val(t_crw *champ, char *line,\
+int								get_reg_arg_val(t_crw *ch, char *line,\
 									int *i);
-void							if_is_r(int arg_cntr, t_crw *champ,\
+void							if_is_r(int arg_cntr, t_crw *ch,\
 									char *line, int *i);
-void							if_is_ind(t_crw *champ, int arg_cntr,\
+void							if_is_ind(t_crw *ch, int arg_cntr,\
 									char *line, int *i);
-void							is_lab_in_dir_char(char *line, t_crw *champ,\
+void							is_lab_in_dir_char(char *line, t_crw *ch,\
 									int arg_cntr, int *i);
-void							if_is_dir(t_crw *champ, int arg_cntr,\
+void							if_is_dir(t_crw *ch, int arg_cntr,\
 									char *line, int *i);
 int								switching_between_args(char *line,\
-									int arg_cntr, t_crw *champ);
-void							is_end_comment(t_crw *champ, char *line);
-void							is_file_valid_or_not(char *name, t_crw *champ);
-void							write_bin_head(t_crw *champ);
-void							process_args(t_crw *champ, int i);
-void							excode_write(t_crw *champ);
-void							to_bin_code(t_crw *champ, int fd);
-void							writing_four_bytes(t_crw *champ,\
+									int arg_cntr, t_crw *ch);
+void							is_end_comment(t_crw *ch, char *line);
+void							is_file_valid_or_not(char *name, t_crw *ch);
+void							write_bin_head(t_crw *ch);
+void							process_args(t_crw *ch, int i);
+void							excode_write(t_crw *ch);
+void							to_bin_code(t_crw *ch, int fd);
+void							writing_four_bytes(t_crw *ch,\
 									unsigned int to_write);
-void							writing_two_bytes(t_crw *champ,\
+void							writing_two_bytes(t_crw *ch,\
 									unsigned int to_write);
-void							writing_one_byte(t_crw *champ,\
+void							writing_one_byte(t_crw *ch,\
 									unsigned int to_write);
 void							print_usage(void);
-void							main_val(t_crw *champ, char *nof);
+void							main_val(t_crw *ch, char *nof);
 int								assembler_mode(char *nof);
 char							*dasm_change_ex(char *filename, char *old,\
 									char *new);
@@ -215,9 +215,9 @@ void							disasm_header(int wr_fd, int rd_fd);
 void							disasm_cmd(int wr_fd, int rd_fd);
 void							write_head_elem(char *elem, int cons,\
 									int wr_fd, int rd_fd);
-void							read_value(t_dasm *dis, int rd_fd);
-void							read_first_value(t_dasm *dis, int rd_fd);
-void							write_label(int *output, t_dasm *dis,\
+void							readval(t_dasm *dis, int rd_fd);
+void							read_the_first_value(t_dasm *dis, int rd_fd);
+void							write_lbl(int *output, t_dasm *dis,\
 									int rd_fd, int wr_fd);
 void							write_arg(int wr_fd, t_dasm *dis,\
 									int rd_fd, int arg);
@@ -226,8 +226,11 @@ t_crw							*get_asm_data(t_crw *asm_data);
 int								is_filename(const char *fn, const char *ex);
 void							free_and_call(t_crw champ, char *err);
 char							*ft_itoa_1(int n);
-int								if_in_conv_com(char **line, t_crw *champ,\
+int								if_in_conv_com(char **line, t_crw *ch,\
 									int *i, t_tw *arg);
-void							convert_command(char *line, t_crw *champ);
+void							convert_command(char *line, t_crw *ch);
+int								call_simple_error(char const *err);
+void							if_prog_length(t_crw *ch, char **line);
+void							free_no_name(char **line, t_crw *ch);
 
 #endif

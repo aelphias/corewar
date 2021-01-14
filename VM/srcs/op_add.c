@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_add.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 19:03:32 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/14 16:53:39 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/14 18:48:24 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	op_add(t_car *car, uint8_t *arena, t_vm *vm)
 	car->reg[update_pos(arena[car->pos + 4])] = arg1 + arg2;
 	ft_printf("\n ### I'm op_add! ### \n");
 	ft_printf("\n type_arg %d\n", type_arg);
-	ft_printf("\n type_arg %d\n", arg2);
+	ft_printf("\n type_arg %d\n", a2);
 	ft_printf("\n car->reg[arena[car->pos + 4]] %d\n", \
 		car->reg[arena[update_pos(car->pos + 4)]]);
 	ft_printf(" +=5 =%d\n", arena[update_pos(car->pos)]);

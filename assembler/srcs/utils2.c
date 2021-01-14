@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstd_pop_front.c                                :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/14 13:34:57 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/14 13:34:58 by gjigglyp         ###   ########.fr       */
+/*   Created: 2021/01/14 16:40:54 by gjigglyp          #+#    #+#             */
+/*   Updated: 2021/01/14 16:48:00 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "asm.h"
 
-void	ft_lstd_pop_front(t_list_a **head)
+void	free_no_name(char **line, t_crw *ch)
 {
-	t_list_a *ptr;
+	free(*line);
+	free_and_call(*ch, NO_NAME);
+}
 
-	ptr = NULL;
-	if (head && *head)
-	{
-		if (!ptr)
-			ptr = *head;
-		if (ptr != (*head)->next)
-			ptr = (*head)->next;
-		else
-			ptr = NULL;
-		if (ptr != NULL)
-		{
-			ptr->prev = ptr->prev->prev;
-			ptr->prev->next = ptr;
-		}
-		ft_memdel(&((*head)->content));
-		ft_memdel((void**)head);
-		(*head) = ptr;
-	}
+void	if_prog_length(t_crw *ch, char **line)
+{
+	free(*line);
+	free_and_call(*ch, LONG_NA);
 }

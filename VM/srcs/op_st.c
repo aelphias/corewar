@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_st.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 22:14:14 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/14 17:26:10 by sdarron          ###   ########.fr       */
+/*   Updated: 2021/01/14 18:47:21 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,16 @@ void					op_st(t_car *car, uint8_t *arena, t_vm *vm)
 	int p;
 	int val1;
 	int val2;
-	t_vm	*vm;
+	t_vm	*vm1;
 
 	if (arena && car)
 	{
-		val2 = car->pc + sizeof(t_op) + sizeof(t_arg_type);
+		val2 = car->pos + sizeof(t_op) + sizeof(t_arg_type);
 		if (car->arg[1] = REG_CODE)
 		{
 			//val1 = car->reg[byteread((arena, val2 + 
 			
-			_arg(car->)))];
+			//_arg(car->)))];
 		}
 		else
 		{
@@ -53,4 +53,3 @@ void					op_st(t_car *car, uint8_t *arena, t_vm *vm)
 		//car->reg[] = val1;
 	}
 }
-*/
