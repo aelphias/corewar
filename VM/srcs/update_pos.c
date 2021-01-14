@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_pos.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 18:43:04 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/09 18:00:14 by kcharlet         ###   ########.fr       */
+/*   Updated: 2021/01/14 18:33:56 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,5 @@ unsigned int	update_pos(unsigned int pos)
 {
 	if (pos >= MEM_SIZE)
 		pos = pos % MEM_SIZE;
-	return (pos); // было так
+	return (pos);
 }

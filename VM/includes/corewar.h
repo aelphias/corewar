@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/14 16:37:18 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/14 19:14:55 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,7 +242,7 @@ static t_op					g_op[16] = {
 		.args_types = {T_DIR, 0, 0},
 		.modify_carry = false,
 		.dir_size_status = 4,
-		.cycles_wait = 10,
+		.cycles_wait = 1, // ПОМЕНЯТЬ НА 10
 		.func = &op_live
 	},
 	{

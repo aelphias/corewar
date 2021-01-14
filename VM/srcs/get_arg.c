@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 12:14:08 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/14 17:46:43 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/14 18:24:09 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int		 get_arg(t_vm *vm, t_car *car, int arg_number, uint8_t *arena)
 {
 	t_op	*op;
 	int		value;
-	int		addr;
 
 	op = &g_op[MINUS_ONE(car->op_code)];
 	value = 0;
@@ -58,6 +57,6 @@ int		 get_arg(t_vm *vm, t_car *car, int arg_number, uint8_t *arena)
 		value = read_int(arena, car->pos + (mod ? (addr % IDX_MOD) : addr),
 							DIR_SIZE);
 	} */
-	move(car);
+	//move(car);
 	return (value);  
 }

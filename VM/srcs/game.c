@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/14 16:52:09 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/14 19:46:07 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,43 @@ void	cycle(t_car *car, uint8_t *arena, t_vm *vm)
 {
 	t_op	*op;
 	
+	while (car && car->next != NULL)
+	{
+		if (arena[update_pos(car->pos)] != 0)
+		{
+			if (car->wait == 0)
+			{
+				car->op_code = get_byte(arena, car); //считываем с карты
+				if (valid_op(car))
+				{
+					op = &g_op[MINUS_ONE(car->op_code)];
+					car->wait = op->cycles_wait;
+				}
+				else
+				{
+					car->pos++;
+					if (!(car->next))
+						break;
+					car = car->next;
+				}
+			}
+			if (car->wait != 0)
+				car->wait--;
+			if (car->wait == 0)
+				exec(car, arena, op, vm);
+			if (!(car->next) && (car->wait != 0))
+				break;
+			car = car->next;
+		}
+		else
+			car->pos++;
+	}
+}
+
+/* void	cycle(t_car *car, uint8_t *arena, t_vm *vm)
+{
+	t_op	*op;
+	
 	while (car)
 	{
 		if (car->wait == 0)
@@ -70,7 +107,7 @@ void	cycle(t_car *car, uint8_t *arena, t_vm *vm)
 			break;
 		car = car->next;
 	}
-}
+} */
 
 void	game(t_car *car, uint8_t *arena, t_vm *vm)
 {
@@ -89,7 +126,7 @@ void	game(t_car *car, uint8_t *arena, t_vm *vm)
 			//printf("----{inside game()}--Check() was called\n");
 	}
 	ft_printf("vm->cycles = %d\n", vm->cycles);
-	// check_winner() ft_printf("Contestant 1, %s has won !\n", (*vm)->winner);
+	ft_printf("Contestant %d, has won !\n", vm->winner_id);
 }
 /* 
 ** Если же код операции ошибочен, необходимо просто переместить каретку на следующий байт.

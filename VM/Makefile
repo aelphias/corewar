@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+         #
+#    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2021/01/13 19:50:30 by gjigglyp         ###   ########.fr        #
+#    Updated: 2021/01/14 18:25:47 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,8 @@ VM_SRC_LIST	= print_error.c \
 			  parse_n_flag.c \
 			  parse_n_flag_cont.c \
 			  func_for_parsing.c \
-			  get_arg.c
+			  get_arg.c\
+			  move.c
 
 SRC_VM		= $(addprefix $(VM_SRC_DIR), $(VM_SRC_LIST))
 
