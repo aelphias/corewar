@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_st.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 22:14:14 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/12 21:01:37 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/14 10:25:52 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ void					op_st(t_car *car, uint8_t *arena, t_vm *vm)
 		val2 = car->pc + sizeof(t_op) + sizeof(t_arg_type);
 		if (car->arg[1] = REG_CODE)
 		{
-			//val1 = car->reg[byteread((arena, val2 + get_size_arg(car->)))];
+			//val1 = car->reg[byteread((arena, val2 + 
+			
+			_arg(car->)))];
 		}
 		else
 		{

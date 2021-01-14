@@ -60,10 +60,11 @@ typedef struct					s_count
 
 typedef struct					s_car
 {
-	bool						carry;
-	unsigned int				pos;
-	int							reg[REG_NUMBER];
 	int							id;
+	int							pos;
+	int							move;
+	int							reg[REG_NUMBER];
+	bool						carry;
 	bool						is_type_code;
 	int							arg[3];
 	int							arg_type[3];
@@ -71,10 +72,7 @@ typedef struct					s_car
 	unsigned int				last_live_cycle;  // цикл, на котором последний раз вполнилась операция live
 	unsigned int				op_code;
 	unsigned int				wait;
-	unsigned int				pc;
 	unsigned int				dir_size_status;
-	unsigned int				step;
-	int							move;
 	struct s_car				*next;
 }								t_car;
 
@@ -162,7 +160,7 @@ t_plr	 						*ft_parse(int argc, char **argv, int i, int id);
 */
 
 unsigned int					update_pos(unsigned int pos);
-uint8_t							get_byte(uint8_t *arena, unsigned int pos, t_car *car);
+uint8_t							get_byte(uint8_t *arena, t_car *car);
 void							dump(uint8_t *arena);
 void							introduce_plrs(t_plr *plr);
 int								arena_loop(uint8_t *arena, uint32_t coord);
