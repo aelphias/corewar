@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
+#    By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2021/01/14 18:25:47 by aelphias         ###   ########.fr        #
+#    Updated: 2021/01/15 17:48:41 by sdarron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,8 @@ VM_SRC_LIST	= print_error.c \
 			  parse_n_flag_cont.c \
 			  func_for_parsing.c \
 			  get_arg.c\
-			  move.c
+			  move.c \
+			  put_numb_in_arena.c
 
 SRC_VM		= $(addprefix $(VM_SRC_DIR), $(VM_SRC_LIST))
 

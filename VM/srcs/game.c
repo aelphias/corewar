@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/14 22:56:43 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/15 17:34:55 by sdarron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,11 @@ void	game(t_car **head_car, uint8_t *arena, t_vm *vm)
 		if (vm->cycles_to_die <= 0 || (vm->cycles % CYCLE_TO_DIE) == 0) // условие для проверки
 			check(vm, head_car);
 		if (vm->cycles == vm->dump)
-			{
-				dump(arena); //CHECK THIS
-				printf("-----.>dump%d\n", vm->dump);  
-				return ;  
-			}
+		{
+			dump(arena); //CHECK THIS
+			printf("-----.>dump%d\n", vm->dump);  
+			return ;  
+		}
 				//printf("-----.>dump----not_in_IF%d\n", vm->dump);
 			//printf("----{inside game()}--Check() was called\n");
 	}

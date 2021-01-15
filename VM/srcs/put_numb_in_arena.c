@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_arena.c                                       :+:      :+:    :+:   */
+/*   put_numb_in_arena.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/29 16:39:28 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/15 17:38:19 by sdarron          ###   ########.fr       */
+/*   Created: 2021/01/15 17:47:44 by sdarron           #+#    #+#             */
+/*   Updated: 2021/01/15 17:48:09 by sdarron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	ft_copy_code(uint8_t *dst, uint8_t *src, int codesize)
+void		put_numb_in_arena(uint8_t *arena, int32_t new_adr, int32_t val_in_reg1, int32_t size)
 {
-	int i;
+	int8_t	i;
 
 	i = 0;
-	while (i < codesize)
+	while (size)
 	{
-		dst[i] = src[i];
-		i++;
+		arena[update_pos(new_adr + size - 1)] = (uint8_t)((val_in_reg1 >> i) & 255);
+		i += 8;
+		size--;
 	}
-}
-
-void	fill_arena(t_plr *plr, t_vm *vm, uint8_t *arena)
-{
-	int i;
-	
-	i = 0;
-	while (plr)
-	{
-		ft_copy_code(&(arena[plr->pos]), plr->code, plr->codesize);
-		plr = plr->next;
-	}
-	// if ((vm->dump) != -1)  // add dependency from a cycle
-	// 	dump(arena);
 }
