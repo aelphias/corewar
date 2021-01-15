@@ -1,4 +1,4 @@
 .name		"st"
 .comment	"~:-{)"
 
-st    r2, 11
+st    r2, 1
