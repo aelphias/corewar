@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_st.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 22:14:14 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/14 18:50:28 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/15 12:47:56 by sdarron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,28 @@
 void					op_st(t_car *car, uint8_t *arena, t_vm *vm)
 {
 	int vel_in_reg1;
-	int numb_reg2;
+	int addr_in_arg2;
+	int new_adr;
 	int shift;
 
+	new_adr = 0;
+	addr_in_arg2 = 0;
+	vel_in_reg1 = 0;
 	shift = move(car);
-	vel_in_reg1 = car->reg[update_pos(arena[car->pos + 2])];
+	car->reg[update_pos(arena[car->pos + 3])] = vel_in_reg1;
 	if (car->arg_type[1] == 1)
-		car->reg[update_pos(arena[car->pos + 3])] = vel_in_reg1;
+	{
+		vel_in_reg1 = car->reg[update_pos(arena[car->pos + 2])];
+	}
 	if (car->arg_type[1] == 3)
 	{
-
-		
+		addr_in_arg2 = update_pos(arena[car->pos + 3]);
+		new_adr = car->pos + (addr_in_arg2 % IDX_MOD);
+		car->reg[new_adr] = vel_in_reg1;
 	}
 	car->pos += shift;
 }
+
 /* 
 void					op_st(t_car *car, uint8_t *arena, t_vm *vm)
 {
