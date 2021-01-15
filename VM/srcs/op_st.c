@@ -6,7 +6,7 @@
 /*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 22:14:14 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/15 12:47:56 by sdarron          ###   ########.fr       */
+/*   Updated: 2021/01/15 13:56:00 by sdarron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@ void					op_st(t_car *car, uint8_t *arena, t_vm *vm)
 	addr_in_arg2 = 0;
 	vel_in_reg1 = 0;
 	shift = move(car);
-	car->reg[update_pos(arena[car->pos + 3])] = vel_in_reg1;
+	vel_in_reg1 = car->reg[MINUS_ONE(update_pos(arena[car->pos + 2]))]; //?? use MINUS_ONE, exampl ch = car->reg[MINUS_ONE(get_byte(arena, car->pos))];
 	if (car->arg_type[1] == 1)
 	{
-		vel_in_reg1 = car->reg[update_pos(arena[car->pos + 2])];
+		car->reg[MINUS_ONE(update_pos(arena[car->pos + 3]))] = vel_in_reg1;
 	}
 	if (car->arg_type[1] == 3)
 	{
-		addr_in_arg2 = update_pos(arena[car->pos + 3]);
+		addr_in_arg2 = get_arg(vm, car, car->pos + 3, arena); // ????
 		new_adr = car->pos + (addr_in_arg2 % IDX_MOD);
-		car->reg[new_adr] = vel_in_reg1;
+		// побитовая запись на карту
 	}
 	car->pos += shift;
 }
