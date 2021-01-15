@@ -6,7 +6,7 @@
 /*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 22:14:14 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/15 17:51:13 by sdarron          ###   ########.fr       */
+/*   Updated: 2021/01/15 19:17:42 by sdarron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void		op_st(t_car *car, uint8_t *arena, t_vm *vm)
 {
-	int32_t	val_in_reg1;
-	int32_t	new_adr;
+	int		val_in_reg1;
+	int		new_adr;
 	int		arg1;
 	int		arg2;
 
