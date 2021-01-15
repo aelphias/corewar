@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+         #
+#    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2021/01/15 17:48:41 by sdarron          ###   ########.fr        #
+#    Updated: 2021/01/15 21:32:10 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@
 #  2. поставить зависимость от corewar.h
 #
 NAME		=	corewar
+#NAME		=	../corewar
 CC			=	gcc
 FLAGS		=	-Wall -Wextra -g
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/15 17:34:55 by sdarron          ###   ########.fr       */
+/*   Updated: 2021/01/15 21:08:47 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	game(t_car **head_car, uint8_t *arena, t_vm *vm)
 				//printf("-----.>dump----not_in_IF%d\n", vm->dump);
 			//printf("----{inside game()}--Check() was called\n");
 	}
-	ft_printf("vm->cycles = %d\n", vm->cycles);
+	//ft_printf("vm->cycles = %d\n", vm->cycles);
 	ft_printf("Contestant %d, has won !\n", vm->winner_id);
 }
 /* 
