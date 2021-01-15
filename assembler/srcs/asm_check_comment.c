@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:59:53 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/14 18:20:29 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/15 17:19:25 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		is_comment_or_not(char *ln)
 ** пропуск пробелов
 */
 
-void	skip_spaces(int i, char *line, t_crw *ch)
+void	spaceskip(int i, char *line, t_crw *ch)
 {
 	while (line[i] != '\0')
 	{
@@ -126,6 +126,6 @@ int		is_main_cmnt_or_not(char **line, int fd, t_crw *ch, int mc)
 		ch->comment[j++] = (*line)[i++];
 	}
 	ch->comment[j] = '\0';
-	skip_spaces(i + 1, *line, ch);
+	spaceskip(i + 1, *line, ch);
 	return (1);
 }

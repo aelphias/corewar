@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 17:06:03 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/14 14:52:36 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/15 14:14:29 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void		write_arg(int wr_fd, t_dasm *dis, int rd_fd, int arg)
 		readval(dis, rd_fd);
 		output = (int16_t)dis->value;
 	}
-	to_wr = ft_itoa_1(output);
+	to_wr = ft_dasm_itoa(output);
 	write(wr_fd, to_wr, ft_strlen(to_wr));
 	free(to_wr);
 }

@@ -6,13 +6,13 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:59:25 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/14 14:44:14 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/15 14:52:35 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	is_end_comment(t_crw *ch, char *line)
+void	is_end_comment_or_not(t_crw *ch, char *line)
 {
 	int i;
 
@@ -20,16 +20,16 @@ void	is_end_comment(t_crw *ch, char *line)
 	while (line[i] == ' ' || line[i] == '\t')
 		i++;
 	if (line[i] == '#' || line[i] == '\0')
-		ch->is_end_comment = 1;
+		ch->is_ec = 1;
 	else
-		ch->is_end_comment = 0;
+		ch->is_ec = 0;
 }
 
 void	is_file_valid_or_not(char *name, t_crw *ch)
 {
 	int		len;
 	int		fd;
-	char	buff;
+	char	buf;
 
 	len = ft_strlen(name);
 	fd = 0;
@@ -42,8 +42,8 @@ void	is_file_valid_or_not(char *name, t_crw *ch)
 	if (!(fd = open(name, O_RDONLY)))
 		free_and_call(*ch, ER_IN_F);
 	lseek(fd, -1L, 2);
-	read(fd, &buff, 1);
-	if (buff != '\n' && !ch->is_end_comment)
+	read(fd, &buf, 1);
+	if (buf != '\n' && !ch->is_ec)
 		free_and_call(*ch, ERR_FNL);
 	close(fd);
 }

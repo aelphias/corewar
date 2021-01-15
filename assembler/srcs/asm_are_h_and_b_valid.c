@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 12:01:49 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/14 18:20:29 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/15 14:19:54 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	is_body_valid_or_not(int fd, t_crw *ch)
 		{
 			free_and_call(*ch, ER_IN_F);
 		}
-		is_end_comment(ch, line);
+		is_end_comment_or_not(ch, line);
 		free(line);
 	}
 	finish_fill_label_range(ch);

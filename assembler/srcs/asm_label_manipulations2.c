@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:46:49 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/14 14:44:28 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/15 14:22:59 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	if_is_label_or_not(t_crw *ch, int arg_cntr, char *line, int *i)
 	}
 	(*i)++;
 	writelbl(ch, i, arg_cntr, line);
-	find_label(ch);
+	lblfind(ch);
 }
 
 int		get_reg_arg_val(t_crw *ch, char *line, int *i)

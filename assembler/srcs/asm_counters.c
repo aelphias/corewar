@@ -6,13 +6,13 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 17:09:33 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/14 14:43:17 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/15 13:51:48 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int				count_code_size(t_crw *ch)
+int				cs_count(t_crw *ch)
 {
 	int i;
 	int sum;
@@ -40,7 +40,7 @@ int				skip_everything(char *line)
 	return (j);
 }
 
-unsigned char	count_code_type_arg(t_crw *ch, int i)
+unsigned char	count_cta(t_crw *ch, int i)
 {
 	unsigned char ret;
 

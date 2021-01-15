@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 15:15:59 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/14 18:20:29 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/15 17:19:43 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ typedef struct					s_crw
 	int							code_size;
 	unsigned char				*exec_code;
 	int							ind_wr;
-	int							is_end_comment;
+	int							is_ec;
 	int							new_com;
 	int							l_size;
 	t_lbl						*lbls;
@@ -124,9 +124,7 @@ typedef struct					s_dasm
 	unsigned int				arg_type;
 	unsigned char				c;
 	unsigned int				value;
-	unsigned int				a1;
-	unsigned int				a2;
-	unsigned int				a3;
+	unsigned int				a[3];
 	unsigned int				dir_size;
 }								t_dasm;
 
@@ -141,7 +139,7 @@ void							zero_exec(t_crw *ch, int exec_size);
 int								get_dir_ind_arg_val(t_crw *ch,\
 									char *line, int *i);
 int								is_comment_or_not(char *line);
-void							skip_spaces(int i, char *line, t_crw *ch);
+void							spaceskip(int i, char *line, t_crw *ch);
 void							while_in_m_comment(t_crw *ch, char **line,\
 									int *i, int *j);
 int								init_main_com(int *len_const, int *i,\
@@ -165,17 +163,17 @@ void							check_type_arg(t_crw *ch);
 char							*change_ex(char *filename, char *old,\
 									char *new);
 int								skip_everything(char *line);
-int								count_code_size(t_crw *ch);
-unsigned char					count_code_type_arg(t_crw *ch, int i);
+int								cs_count(t_crw *ch);
+unsigned char					count_cta(t_crw *ch, int i);
 void							free_label(t_lbl label);
 void							free_all(t_crw champ);
 void							zeroing_values(t_crw *ch, int i, int j);
 void							init_crw(t_crw *ch);
 void							increase_crw(t_crw *ch);
 int								ft_contains(char *str, t_lbl label);
-void							while_in_find_label(t_crw *ch, char *str,\
+void							while_in_lblfind(t_crw *ch, char *str,\
 									int *sum, int i);
-void							find_label(t_crw *ch);
+void							lblfind(t_crw *ch);
 int								find_lab_aft_cmd(t_crw *ch, char *l_name,\
 									int start, int arg);
 void							if_is_label_or_not(t_crw *ch, int arg_cntr,\
@@ -192,18 +190,18 @@ void							if_is_dir(t_crw *ch, int arg_cntr,\
 									char *line, int *i);
 int								switching_between_args(char *line,\
 									int arg_cntr, t_crw *ch);
-void							is_end_comment(t_crw *ch, char *line);
+void							is_end_comment_or_not(t_crw *ch, char *line);
 void							is_file_valid_or_not(char *name, t_crw *ch);
 void							write_bin_head(t_crw *ch);
-void							process_args(t_crw *ch, int i);
+void							proargz(t_crw *ch, int i);
 void							excode_write(t_crw *ch);
-void							to_bin_code(t_crw *ch, int fd);
-void							writing_four_bytes(t_crw *ch,\
-									unsigned int to_write);
-void							writing_two_bytes(t_crw *ch,\
-									unsigned int to_write);
-void							writing_one_byte(t_crw *ch,\
-									unsigned int to_write);
+void							bincodeconvert(t_crw *ch, int fd);
+void							writing_4b(t_crw *ch,\
+									unsigned int wr);
+void							writing_2b(t_crw *ch,\
+									unsigned int wr);
+void							writing_1b(t_crw *ch,\
+									unsigned int wr);
 void							print_usage(void);
 void							main_val(t_crw *ch, char *nof);
 int								assembler_mode(char *nof);
@@ -223,12 +221,12 @@ void							write_arg(int wr_fd, t_dasm *dis,\
 									int rd_fd, int arg);
 int								disassembler_mode(char *nof);
 t_crw							*get_asm_data(t_crw *asm_data);
-int								is_filename(const char *fn, const char *ex);
+int								is_admitted_filename(const char *fn, const char *ex);
 void							free_and_call(t_crw champ, char *err);
-char							*ft_itoa_1(int n);
+char							*ft_dasm_itoa(int n);
 int								if_in_conv_com(char **line, t_crw *ch,\
 									int *i, t_tw *arg);
-void							convert_command(char *line, t_crw *ch);
+void							conv_cmnd(char *line, t_crw *ch);
 int								call_simple_error(char const *err);
 void							if_prog_length(t_crw *ch, char **line);
 void							free_no_name(char **line, t_crw *ch);

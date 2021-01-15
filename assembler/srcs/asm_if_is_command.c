@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 16:53:30 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/14 18:04:40 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/15 17:19:43 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		if_in_conv_com(char **line, t_crw *ch, int *i, t_tw *arg)
 ** переводим команду
 */
 
-void	convert_command(char *line, t_crw *ch)
+void	conv_cmnd(char *line, t_crw *ch)
 {
 	int		i;
 	t_tw	arg;

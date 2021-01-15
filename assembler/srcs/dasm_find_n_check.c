@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 18:17:23 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/14 14:53:29 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/15 14:08:23 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ void	check_arg_type(t_dasm *dis, int rd_fd)
 	if (dis->arg_type == 1)
 	{
 		read(rd_fd, &dis->c, 1);
-		dis->a1 = dis->c >> 6;
-		dis->a2 = dis->c >> 4 & 3;
-		dis->a3 = dis->c >> 2 & 3;
+		dis->a[0] = dis->c >> 6;
+		dis->a[1] = dis->c >> 4 & 3;
+		dis->a[2] = dis->c >> 2 & 3;
 	}
 	else
 	{
@@ -73,6 +73,6 @@ void	check_arg_type(t_dasm *dis, int rd_fd)
 				break ;
 			i++;
 		}
-		dis->a1 = g_op[i].args_types[0];
+		dis->a[0] = g_op[i].args_types[0];
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 17:30:09 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/14 14:58:35 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/15 14:22:59 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		ft_contains(char *str, t_lbl label)
 	return (0);
 }
 
-void	while_in_find_label(t_crw *ch, char *str, int *sum, int i)
+void	while_in_lblfind(t_crw *ch, char *str, int *sum, int i)
 {
 	while (i != ch->l_size)
 	{
@@ -45,7 +45,7 @@ void	while_in_find_label(t_crw *ch, char *str, int *sum, int i)
 	}
 }
 
-void	find_label(t_crw *ch)
+void	lblfind(t_crw *ch)
 {
 	int		i;
 	char	*str;
@@ -60,7 +60,7 @@ void	find_label(t_crw *ch)
 	else if (ch->lbls[ch->l_size].arg_now == 3)
 		str = ch->lbls[ch->l_size].l_name_3;
 	i = 0;
-	while_in_find_label(ch, str, &sum, i);
+	while_in_lblfind(ch, str, &sum, i);
 	if (ch->lbls[ch->l_size].arg_now == 1)
 		ch->lbls[ch->l_size].r1 = sum;
 	else if (ch->lbls[ch->l_size].arg_now == 2)

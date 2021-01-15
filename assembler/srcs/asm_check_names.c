@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 12:32:17 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/14 17:38:10 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/15 17:19:43 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int		is_name(char **line, int fd, t_crw *ch, int name)
 		i++;
 	ch->fd = fd;
 	while_is_name(line, &i, ch, &j);
-	skip_spaces(i + 1, *line, ch);
+	spaceskip(i + 1, *line, ch);
 	return (1);
 }
 
@@ -83,6 +83,6 @@ int		is_command_or_not(char *line, t_crw *ch)
 	}
 	ft_strcpy(ch->lbls[ch->l_size].cmd_n, name_com);
 	free(name_com);
-	convert_command(&line[i + ft_strlen(name_com)], ch);
+	conv_cmnd(&line[i + ft_strlen(name_com)], ch);
 	return (1);
 }
