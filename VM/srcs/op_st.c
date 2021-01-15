@@ -6,7 +6,7 @@
 /*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 22:14:14 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/15 15:29:41 by sdarron          ###   ########.fr       */
+/*   Updated: 2021/01/15 16:51:31 by sdarron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,25 +21,31 @@ void					op_st(t_car *car, uint8_t *arena, t_vm *vm)
 	int arg2;
 	int shift;
 
+	shift = 0;
 	new_adr = 0;
 	addr_in_arg2 = 0;
 	val_in_reg1 = 0;
-	shift = move(car);
 	arg1 = get_arg(vm, car, 1, arena);
+	ft_printf("arg1 - %d\n", arg1);
 	val_in_reg1 = car->reg[arg1];
+	ft_printf("val_in_reg1 - %d\n", val_in_reg1);
 	if (car->arg_type[1] == 1)
 	{
+		car->pos++;
 		arg2 = get_arg(vm, car, 2, arena);
+		ft_printf("arg2 - %d\n", arg2);
 		car->reg[arg2] = val_in_reg1;
+		ft_printf("vcar->reg[arg2] - %d\n", car->reg[arg2]);
 	}
 	if (car->arg_type[1] == 3)
 	{
+		car->pos += 2;
 		arg2 = get_arg(vm, car, 2, arena);
 		new_adr = car->pos + (arg2 % IDX_MOD);
 		// func(arena[new_adr] = val_in_reg1) 
 		// побитовая запись на карту
 	}
-	car->pos += shift;
+	car->pos++;
 }
 
 /* 
