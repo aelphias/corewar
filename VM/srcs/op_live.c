@@ -6,11 +6,20 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:24:48 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/16 16:08:40 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/16 17:27:50 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+
+
+/* bool	check_node_existance(t_vm *vm, int	player)
+{
+	bool result;
+
+	read = 
+	return()	
+} */
 
 t_plr		*get_playersid(t_plr *plrs, int plid)
 {
@@ -43,6 +52,7 @@ void	op_live(t_car *car, uint8_t *arena, t_vm *vm)
 		car->last_live_cycle = vm->cycles;
 		vm->lived++;
 		cur_plr_n = get_arg(vm, car, 1, arena);
+		//check_node_existance(vm, cur_plr_n);
 		// дописать проверку того что id игрока существует
 		if (cur_plr_n <= -1 && cur_plr_n >= -(MAX_PLAYERS)) 
 		{
