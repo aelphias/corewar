@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_fork.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 16:42:16 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/14 14:53:15 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/16 13:25:31 by sdarron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 			{
 				dst->carry = src->carry;
 				while (++i < 16)
-					new->reg[i] = tmp->reg[i];
+				new->reg[i] = tmp->reg[i];
 				new->live = tmp->live;
 				new->id = tmp->id;
 				new->parent_car = tmp->parent_car;
