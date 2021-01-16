@@ -6,27 +6,24 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:24:48 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/16 16:08:40 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/16 21:22:39 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-t_plr		*get_playersid(t_plr *plrs, int plid)
+bool	check_node_existance(t_vm *vm, int	player)
 {
-	t_plr *p;
+	t_plr *plr;
 
-	if (plrs)
+	plr = vm->hd_plrs;
+	while (plr)
 	{
-		p = plrs;
-		while (p)
-		{
-			if (p->id == plid)
-				return (p);
-			p = p->next;
-		}
+		if (plr->id == -player)
+			return(true);
+		plr = plr->next;
 	}
-	return (NULL); 
+	return(false);	
 }
 
 void	op_live(t_car *car, uint8_t *arena, t_vm *vm)
@@ -44,7 +41,7 @@ void	op_live(t_car *car, uint8_t *arena, t_vm *vm)
 		vm->lived++;
 		cur_plr_n = get_arg(vm, car, 1, arena);
 		// дописать проверку того что id игрока существует
-		if (cur_plr_n <= -1 && cur_plr_n >= -(MAX_PLAYERS)) 
+		if (check_node_existance(vm, cur_plr_n)) 
 		{
 			//plr = find_plr(vm->hd_plrs, cur_plr_n);
 			vm->winner_id = -cur_plr_n;
@@ -53,6 +50,7 @@ void	op_live(t_car *car, uint8_t *arena, t_vm *vm)
 		shift = move(car);
 		car->pos += shift;
 }
+
 
 /* 
 

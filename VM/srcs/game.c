@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/16 20:08:27 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/16 21:26:19 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	game(t_car **head_car, uint8_t *arena, t_vm *vm)
 		}
 	}
 	//ft_printf("vm->cycles = %d\n", vm->cycles);
-	//ft_printf("Contestant %d, has won !\n", vm->winner_id);
+	ft_printf("Contestant %d, has won !\n", vm->winner_id);
 }
 /* 
 ** Если же код операции ошибочен, необходимо просто переместить каретку на следующий байт.
