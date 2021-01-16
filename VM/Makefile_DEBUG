@@ -16,8 +16,8 @@
 #  1. поставить зависимость от op.h
 #  2. поставить зависимость от corewar.h
 #
-#NAME		=	corewar
-NAME		=	../corewar
+NAME		=	corewar
+#NAME		=	../corewar
 CC			=	gcc
 FLAGS		=	-Wall -Wextra -g
 
