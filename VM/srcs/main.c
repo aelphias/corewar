@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/16 17:06:08 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/16 17:35:49 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int		main(int argc, char **argv)
 */
 	//test(vm, plr);
 	introduce_plrs(plr);
-	fill_arena(plr, vm, arena);
+	fill_arena(plr, arena);
 	game(&car, arena, vm);
 /*
 *	6. test

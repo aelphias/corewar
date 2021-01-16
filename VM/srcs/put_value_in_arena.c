@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_ldi.c                                           :+:      :+:    :+:   */
+/*   put_value_in_arena.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/06 21:33:27 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/16 17:24:22 by sdarron          ###   ########.fr       */
+/*   Created: 2021/01/15 17:47:44 by sdarron           #+#    #+#             */
+/*   Updated: 2021/01/16 16:44:36 by sdarron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void		op_ldi(t_car *car, uint8_t *arena, t_vm *vm)
+void		put_value_in_arena(uint8_t *arena, int new_adr, int val_in_reg1, int size)
 {
-	int arg1;
-	int arg2;
-	int arg3;
-	int new_adr;
-	int val;
+	int8_t	i;
 
-	arg1 = get_arg(vm, car, 1, arena);
-	arg2 = get_arg(vm, car, 2, arena);
-	arg3 = get_arg(vm, car, 3, arena);
-
-	new_adr = (arg1 + arg2) % IDX_MOD;
-	val = read_int(arena, new_adr, 4);
-	car->reg[arg3] = val;
-	
+	i = 0;
+	while (size)
+	{
+		arena[update_pos(new_adr + size - 1)] = (uint8_t)((val_in_reg1 >> i) & 255);
+		i += 8;
+		size--;
+	}
 }

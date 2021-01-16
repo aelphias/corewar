@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   testing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 19:13:14 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/14 21:25:29 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/15 21:04:27 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,3 +54,20 @@ void	test(t_vm *vm, t_plr *plr)
 	printf("plr->name=%s\n", plr->name);
 	ft_printf("****Testing!****\n");
 }
+
+
+/* 
+from reading args
+printf("READING FROM ARENA%\n");
+		printf("[%d] ", arg_type);
+
+		printf("[i]", car->arg_type[i]);
+
+		int i = 0;
+	while (i < 3)
+	{
+		printf("[i]", car->arg_type[i]);
+		i++;
+	}
+		printf("<-->\n");
+ */

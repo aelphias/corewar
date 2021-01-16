@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_arg.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 12:14:08 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/15 16:43:12 by sdarron          ###   ########.fr       */
+/*   Updated: 2021/01/15 21:07:58 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int		 get_arg(t_vm *vm, t_car *car, int arg_number, uint8_t *arena)
 {
 	t_op	*op;
 	int		value;
+	int		addr;
 
 	op = &g_op[MINUS_ONE(car->op_code)];
 	value = 0;
@@ -51,17 +52,14 @@ int		 get_arg(t_vm *vm, t_car *car, int arg_number, uint8_t *arena)
 		value = get_byte(arena, car);
 	else if (car->arg_type[MINUS_ONE(arg_number)] & T_DIR)
 		value = read_int(arena, car->pos + car->move, op->dir_size_status);
-		
-		
-	/* else if (car->arg_type[MINUS_ONE(arg_number)] & T_IND)
+	else if (car->arg_type[MINUS_ONE(arg_number)] & T_IND)
 	{
-		addr = read_int(arena,car->pos + car->move, IND_SIZE);
-		value = read_int(arena, car->pos + (mod ? (addr % IDX_MOD) : addr),
-							DIR_SIZE);
-	} */
+		addr = read_int(arena, car->pos + car->move, IND_SIZE);
+		value = read_int(arena, car->pos + addr % IDX_MOD, DIR_SIZE);
+	}
 	//move(car);
-	return (value);  
-} 
+	return (value);
+}
 
 /* 
 		value = car->reg[MINUS_ONE(get_byte(arena, car))];

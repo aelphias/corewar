@@ -6,11 +6,20 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:24:48 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/14 19:58:09 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/16 17:27:50 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+
+
+/* bool	check_node_existance(t_vm *vm, int	player)
+{
+	bool result;
+
+	read = 
+	return()	
+} */
 
 t_plr		*get_playersid(t_plr *plrs, int plid)
 {
@@ -38,13 +47,13 @@ void	op_live(t_car *car, uint8_t *arena, t_vm *vm)
 	cur_plr_n = 0;
 	plr = NULL;
 	shift = 0;
-	printf("------>op_live() move=%d\n", car->move);
 	if (vm && car && arena) 
 	{	
 		car->last_live_cycle = vm->cycles;
 		vm->lived++;
 		cur_plr_n = get_arg(vm, car, 1, arena);
-		// дописать проверку то id игрока существует
+		//check_node_existance(vm, cur_plr_n);
+		// дописать проверку того что id игрока существует
 		if (cur_plr_n <= -1 && cur_plr_n >= -(MAX_PLAYERS)) 
 		{
 			//plr = find_plr(vm->hd_plrs, cur_plr_n);
@@ -53,9 +62,7 @@ void	op_live(t_car *car, uint8_t *arena, t_vm *vm)
 	}
 		shift = move(car);
 		car->pos += shift;
-		printf("------>op_live() winner id%d\n", vm->winner_id);
 }
-
 
 /* 
 

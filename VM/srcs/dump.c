@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 18:46:26 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/05 21:10:01 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/16 17:22:52 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,19 @@
 
 void	dump(uint8_t *arena)
 {
-	int i;
+	int			j;
+	int			i;
 
+	j = 0;
 	i = 0;
-	while (++i <= MEM_SIZE) 
+	ft_printf("0x0000 : ");
+	while (++i <= MEM_SIZE)
 	{
 		ft_printf("%02x ", arena[i - 1]);
-		if (i % 32 == 0 && i != 0)   // здесь можно изменить ширину вывода
+		if (i % 64 == 0 && i != 0)
+		{
 			ft_printf("\n");
-	// добавить зависимость от цикла
+			(i < MEM_SIZE) ? ft_printf("0x%04x : ", i) : 0;
+		}
 	}
 }

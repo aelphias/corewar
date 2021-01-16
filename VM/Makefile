@@ -1,12 +1,13 @@
+
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
+#    By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2021/01/14 18:25:47 by aelphias         ###   ########.fr        #
+#    Updated: 2021/01/16 16:45:42 by sdarron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +17,7 @@
 #  2. поставить зависимость от corewar.h
 #
 NAME		=	corewar
+#NAME		=	../corewar
 CC			=	gcc
 FLAGS		=	-Wall -Wextra -g
 
@@ -72,7 +74,9 @@ VM_SRC_LIST	= print_error.c \
 			  parse_n_flag_cont.c \
 			  func_for_parsing.c \
 			  get_arg.c\
-			  move.c
+			  move.c \
+			  put_value_in_arena.c
+			  #check_winner
 
 SRC_VM		= $(addprefix $(VM_SRC_DIR), $(VM_SRC_LIST))
 
@@ -129,4 +133,4 @@ fclean: clean
 	@rm -f $(NAME)
 	@echo "$(NAME): $(RED)$(NAME) was deleted$(RESET)"
 
-re: fclean all
+re: $(MAKE) fclean $(MAKE) all

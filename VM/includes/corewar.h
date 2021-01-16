@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/16 17:06:08 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/16 17:35:58 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ int								is_num(char *str);
 **	init arena 
 */
 
-void							fill_arena(t_plr *plr, t_vm *vm, uint8_t *arena);
+void							fill_arena(t_plr *plr, uint8_t *arena);
 void							ft_copy_code(uint8_t *dst, uint8_t *src, int codesize);
 
 /*
@@ -168,6 +168,7 @@ void							print_error(int num_error);
 bool							valid_op(t_car *car);
 int     						bitmask_corr(int a, int size);
 int								if_aff(int c);
+void							put_value_in_arena(uint8_t *arena, int32_t new_adr, int32_t val_in_reg1, int32_t size);
 
 /*
 **	зачистка всего
@@ -191,7 +192,7 @@ void							exec(t_car *car, uint8_t *arena, t_op *op, t_vm *vm);
 int								get_arg(t_vm *vm, t_car *car, int arg_number, uint8_t *arena);
 int								weight(int a, int c);
 int								move(t_car *car);
-
+int								read_int(const uint8_t *arena, int addr, int size);
 /*
 **	void	operations(t_car *car, uint8_t *arena, void (**func)(t_car *, uint8_t *));
 **	void	no();

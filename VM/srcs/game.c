@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/14 22:56:43 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/16 16:17:26 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,19 +81,17 @@ void	game(t_car **head_car, uint8_t *arena, t_vm *vm)
 		if (vm->cycles_to_die <= 0 || (vm->cycles % CYCLE_TO_DIE) == 0) // условие для проверки
 			check(vm, head_car);
 		if (vm->cycles == vm->dump)
-			{
-				dump(arena); //CHECK THIS
-				printf("-----.>dump%d\n", vm->dump);  
-				return ;  
-			}
-				//printf("-----.>dump----not_in_IF%d\n", vm->dump);
-			//printf("----{inside game()}--Check() was called\n");
+		{
+			dump(arena); //CHECK THIS
+			return ;  
+		}
 	}
-	ft_printf("vm->cycles = %d\n", vm->cycles);
+	//ft_printf("vm->cycles = %d\n", vm->cycles);
 	ft_printf("Contestant %d, has won !\n", vm->winner_id);
 }
 /* 
 ** Если же код операции ошибочен, необходимо просто переместить каретку на следующий байт.
 */
-
+//printf("-----.>dump----not_in_IF%d\n", vm->dump);
+			//printf("----{inside game()}--Check() was called\n");
 

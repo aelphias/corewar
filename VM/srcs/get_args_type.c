@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 18:19:27 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/14 15:03:55 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/15 21:04:33 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,8 @@
 
  void	write_arg_type(int arg_type, t_car *car, t_op *op, int ind)
 {
-	int i = 0;
-
 	op->code = op->code;
 	car->arg_type[MINUS_ONE(ind)] = arg_type;
-
-	while (i < 3)
-	{
-		printf("[i]", car->arg_type[i]);
-		i++;
-	}
-		printf("<-->\n");
 }
 
 void	get_args_type(t_car *car, unsigned char *arena, t_op *op)
@@ -37,8 +28,7 @@ void	get_args_type(t_car *car, unsigned char *arena, t_op *op)
 	{
 		car->pos++;
 		arg_type = get_byte(arena, car);
-		printf("READING FROM ARENA%\n");
-		printf("[%d] ", arg_type);
+		
 		if (op->args_amount >= 1)
 			write_arg_type((arg_type & 192) >> 6, car, op, 1);
 		if (op->args_amount >= 2)

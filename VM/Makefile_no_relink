@@ -1,14 +1,14 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   eX____MK.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/13 19:39:21 by aelphias         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile_no_relink                                 :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
+#    Updated: 2021/01/16 17:29:50 by aelphias         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 #	TODO:
 #  0. CHECK for error if you do: make re >>> make: *** No rule to make target `obj', needed by `obj/main.o'.  Stop.
@@ -64,22 +64,25 @@ VM_SRC_LIST	= print_error.c \
 			  op_lld.c\
 			  op_lldi.c\
 			  op_lfork.c\
+			  bit_mask_oper.c\
 			  op_aff.c\
 			  bury_car.c\
 			  parse_n_flag.c \
 			  parse_n_flag_cont.c \
 			  func_for_parsing.c \
-			  get_arg.c
-			  #check_winner.c
+			  get_arg.c\
+			  move.c \
+			  put_value_in_arena.c
 
-#SRC_VM		= $(
-	 $(VM_SRC_DIR), $(VM_SRC_LIST))
+SRC_VM		= $(VM_SRC_DIR), $(VM_SRC_LIST))
 			  
 
 
 OBJ_VM		=	$(VM_SRC_LIST:%.c=%.o)
 SRCS_VM		=	$(addprefix $(SRC_L_D), $(VM_SRC_LIST))
 O_VM		=	$(addprefix $(OBJ_DIR), $(OBJ_VM))
+
+
 
 all : $(OBJ_DIR) $(NAME)
 
