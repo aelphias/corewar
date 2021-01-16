@@ -6,7 +6,7 @@
 #    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2021/01/16 13:53:07 by aelphias         ###   ########.fr        #
+#    Updated: 2021/01/15 21:32:10 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@
 #  1. поставить зависимость от op.h
 #  2. поставить зависимость от corewar.h
 #
-NAME		=	../corewar
+NAME		=	corewar
+#NAME		=	../corewar
 CC			=	gcc
 FLAGS		=	-Wall -Wextra -g
 
