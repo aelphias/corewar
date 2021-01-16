@@ -6,13 +6,13 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 19:21:00 by gjigglyp          #+#    #+#             */
-/*   Updated: 2019/11/29 18:51:10 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/16 16:35:57 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*gen_help(t_printf *lstprf, int len)
+ char	*gen_help(t_printf *lstprf, int len)
 {
 	char			*temp;
 
@@ -25,7 +25,7 @@ static char	*gen_help(t_printf *lstprf, int len)
 	return (temp);
 }
 
-static int	ft_gen_unsgn(unsigned long long in, t_printf *lstprf)
+ int	ft_gen_unsgn(unsigned long long in, t_printf *lstprf)
 {
 	char	*addpart;
 	char	*retn;

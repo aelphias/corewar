@@ -6,13 +6,13 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 19:20:12 by gjigglyp          #+#    #+#             */
-/*   Updated: 2019/11/29 18:51:10 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/16 16:35:57 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_chr_gen(char c, t_printf *lstprf)
+ int	ft_chr_gen(char c, t_printf *lstprf)
 {
 	char	*addpart;
 

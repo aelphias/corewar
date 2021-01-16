@@ -6,11 +6,11 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 12:29:57 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/03/06 12:29:58 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/16 16:35:57 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	add_number(char c)
+ int	add_number(char c)
 {
 	if (c >= '0' && c <= '9')
 		return (c - '0');
@@ -20,7 +20,7 @@ static int	add_number(char c)
 		return ((c - 'A' + 10));
 }
 
-static int	check_base(char c, int base)
+ int	check_base(char c, int base)
 {
 	if (!((c >= '0' && c <= '9') || \
 		(c >= 'a' && c <= 'z') || \

@@ -6,13 +6,13 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 19:21:59 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/11 19:22:13 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/16 16:35:57 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	nuls(char *sym)
+ int	nuls(char *sym)
 {
 	int i;
 
@@ -23,7 +23,7 @@ static int	nuls(char *sym)
 	return (i);
 }
 
-static int	mins(char *sym, int i)
+ int	mins(char *sym, int i)
 {
 	if (sym[i] == '-')
 		return (-1);

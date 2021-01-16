@@ -6,13 +6,13 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 12:36:21 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/03/06 12:36:22 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/16 16:35:57 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_quick_sort_healper(int **pivot_left,
+ void	ft_quick_sort_healper(int **pivot_left,
 							int **pivot_right, int pivot)
 {
 	while (*pivot_left < *pivot_right)
