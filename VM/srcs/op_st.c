@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_st.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 22:14:14 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/15 21:07:28 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/16 16:48:07 by sdarron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void		op_st(t_car *car, uint8_t *arena, t_vm *vm)
 		car->pos += 2;
 		arg2 = get_arg(vm, car, 2, arena);
 		new_adr = car->pos + (arg2 % IDX_MOD);
-		put_numb_in_arena(arena, new_adr, val_in_reg1, DIR_SIZE);
+		put_value_in_arena(arena, new_adr, val_in_reg1, DIR_SIZE);
 	}
 	car->pos++;
 }
