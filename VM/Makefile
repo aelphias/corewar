@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
+#    By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2021/01/16 16:24:01 by aelphias         ###   ########.fr        #
+#    Updated: 2021/01/16 16:45:42 by sdarron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,7 @@ VM_SRC_LIST	= print_error.c \
 			  func_for_parsing.c \
 			  get_arg.c\
 			  move.c \
-			  put_numb_in_arena.c
+			  put_value_in_arena.c
 			  #check_winner
 
 SRC_VM		= $(VM_SRC_DIR), $(VM_SRC_LIST))

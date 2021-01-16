@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/16 15:44:38 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/16 16:45:19 by sdarron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,7 +170,7 @@ void							print_error(int num_error);
 bool							valid_op(t_car *car);
 int     						bitmask_corr(int a, int size);
 int								if_aff(int c);
-void							put_numb_in_arena(uint8_t *arena, int32_t new_adr, int32_t val_in_reg1, int32_t size);
+void							put_value_in_arena(uint8_t *arena, int32_t new_adr, int32_t val_in_reg1, int32_t size);
 
 /*
 **	зачистка всего

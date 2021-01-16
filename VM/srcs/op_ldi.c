@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_ldi.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:33:27 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/13 18:10:54 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/16 16:54:23 by sdarron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,17 @@ int		ld_or_lld(int cd)
 
 void		op_ldi(t_car *car, uint8_t *arena, t_vm *vm)
 {
-	int i;
-	int tmp_size;
-	int j;
-	unsigned int temp;
+	int arg1;
+	int arg2;
+	int arg3;
+	int new_adr;
+	int val;
 
-	//tmp_size = get_size(vm->);
+	arg1 = get_arg(vm, car, 1, arena);
+	arg2 = get_arg(vm, car, 2, arena);
+	arg3 = get_arg(vm, car, 3, arena);
 
+	new_adr = (arg1 + arg2) % IDX_MOD;
+	val = 
+	car->reg[arg3] = val;
 }

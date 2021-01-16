@@ -75,7 +75,7 @@ VM_SRC_LIST	= print_error.c \
 			  func_for_parsing.c \
 			  get_arg.c\
 			  move.c \
-			  put_numb_in_arena.c
+			  put_value_in_arena.c
 
 SRC_VM		= $(addprefix $(VM_SRC_DIR), $(VM_SRC_LIST))
 
