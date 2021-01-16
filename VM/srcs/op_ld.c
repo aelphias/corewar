@@ -6,7 +6,7 @@
 /*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:26:06 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/15 20:52:29 by sdarron          ###   ########.fr       */
+/*   Updated: 2021/01/16 13:15:04 by sdarron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,33 +33,15 @@ void	op_ld(t_car *car, uint8_t *arena, t_vm *vm)
 	// printf(" +=5 =%d\n", arena[car->pos]);
 	// car->pos += 5;
 
-
-	int		val_in_reg1;
-	int		new_adr;
 	int		arg1;
 	int		arg2;
-	int		new_val;
 
 	arg2 = get_arg(vm, car, 2, arena);
-	if (car->arg_type[0] == T_DIR)
-	{
-		arg1 = get_arg(vm, car, 1, arena);
-		car->reg[arg2] = arg1;
-		if (car->reg[arg2] == 0)
-			car->carry = 1;
-		else
-			car->carry = 0;
-	}
-	if (car->arg_type[0] = T_IND)
-	{
-		arg2 = get_arg(vm, car, 1, arena);
-		new_adr = car->pos + arg1 % IDX_MOD;
-		// new_val = С полученного адреса (new_adr) необходимо считать 4 байта.
-		car->reg[arg2] = new_val;
-		if (car->reg[arg2] == 0)
-			car->carry = 1;
-		else
-			car->carry = 0;
-	}
+	arg1 = get_arg(vm, car, 1, arena);
+	car->reg[arg2] = arg1;
+	if (car->reg[arg2] == 0)
+		car->carry = 1;
+	else
+		car->carry = 0;
 	car->pos += 2;
 }
