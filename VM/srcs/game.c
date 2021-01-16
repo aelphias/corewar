@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/15 21:08:47 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/16 16:17:26 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,8 @@ void	game(t_car **head_car, uint8_t *arena, t_vm *vm)
 		if (vm->cycles == vm->dump)
 		{
 			dump(arena); //CHECK THIS
-			printf("-----.>dump%d\n", vm->dump);  
 			return ;  
 		}
-				//printf("-----.>dump----not_in_IF%d\n", vm->dump);
-			//printf("----{inside game()}--Check() was called\n");
 	}
 	//ft_printf("vm->cycles = %d\n", vm->cycles);
 	ft_printf("Contestant %d, has won !\n", vm->winner_id);
@@ -95,5 +92,6 @@ void	game(t_car **head_car, uint8_t *arena, t_vm *vm)
 /* 
 ** Если же код операции ошибочен, необходимо просто переместить каретку на следующий байт.
 */
-
+//printf("-----.>dump----not_in_IF%d\n", vm->dump);
+			//printf("----{inside game()}--Check() was called\n");
 

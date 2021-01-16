@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:24:48 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/15 21:00:58 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/16 16:08:40 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void	op_live(t_car *car, uint8_t *arena, t_vm *vm)
 		shift = move(car);
 		car->pos += shift;
 }
-
 
 /* 
 
