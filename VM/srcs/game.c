@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/16 21:26:19 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/16 23:50:22 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	check(t_vm *vm, t_car **head_car)
 {
 	vm->check_count++;
+	vm->last_check_cycle = vm->cycles;
 	bury_car(vm, head_car);
 	if (vm->lived >= NBR_LIVE || vm->check_count == MAX_CHECKS)
 	{
@@ -78,7 +79,7 @@ void	game(t_car **head_car, uint8_t *arena, t_vm *vm)
 	{
 		vm->cycles++;
 		cycle(head_car, arena, vm);
-		if (vm->cycles_to_die <= 0 || (vm->cycles % CYCLE_TO_DIE) == 0) // условие для проверки
+		if (vm->cycles_to_die <= 0 || ((vm->cycles - vm->last_check_cycle) == CYCLE_TO_DIE))// условие для проверки
 			check(vm, head_car);
 		if (vm->cycles == vm->dump)
 		{
@@ -86,7 +87,7 @@ void	game(t_car **head_car, uint8_t *arena, t_vm *vm)
 			return ;  
 		}
 	}
-	//ft_printf("vm->cycles = %d\n", vm->cycles);
+	ft_printf("vm->cycles = %d\n", vm->cycles);
 	ft_printf("Contestant %d, has won !\n", vm->winner_id);
 }
 /* 

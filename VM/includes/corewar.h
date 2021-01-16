@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/16 16:57:34 by sdarron          ###   ########.fr       */
+/*   Updated: 2021/01/16 23:45:19 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct					s_vm
 	int							dump;
 	t_plr						*hd_plrs;
 	int							winner_id;
+	int							last_check_cycle;
 }								t_vm;
 
 typedef struct					s_count
@@ -244,7 +245,7 @@ static t_op					g_op[16] = {
 		.args_types = {T_DIR, 0, 0},
 		.modify_carry = false,
 		.dir_size_status = 4,
-		.cycles_wait = 1, // ПОМЕНЯТЬ НА 10
+		.cycles_wait = 10, // ПОМЕНЯТЬ НА 10
 		.func = &op_live
 	},
 	{
