@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:46:34 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/14 16:43:06 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/16 16:58:48 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,24 @@
 # define ARG_III "Argument(-s) is/are not valid"
 # define ER_F_RD "File could not be read"
 # define ER_IN_F "Invalid file"
-# define ERR_F_C "file could not be created"
+# define ERR_F_C "ERROR: file not created"
+# define ER_IN_C "Invalid command"
+# define NO_ARGS "NO ARGUMENT WERE FOUND"
+# define NO_VALA "NO VALID ARGUMENT IS FOUND"
+# define LEX_ERR "Lexical error(-s) is(are) found"
+# define COMXTRA "Extra comma has been found"
+# define COM_FEW "Too few commas has been found"
+# define COM_BAD "Error(-s) in commas is(are) found"
 # define ER_N_AR "Negative argument type (for operation)"
 # define ERR_INV "Invalid registry name for operation"
 # define OP_SIZE "Ircorrect size for operation"
-# define ER_I_AR "invalid arg"
-# define ER_I_SY "invalid symbol"
+# define ER_I_AR "Error: invalid arg"
+# define ER_I_SY "Error: invalid symbol"
 # define ERR_EST "empty name and/or comment"
-# define ERR_TAG "tags name/comment are wrongly written"
-# define ER_ININ "ircorrect input"
-# define ERR_COM "the file does not contain any commas"
-# define ERR_COE "extra comma was found"
+# define NO_COMM "File does not contain any commands"
+# define ER_ININ "Error: ircorrect input"
+# define ERR_COM "Error: the file does not contain any commas"
+# define ERR_COE "Error: extra comma was found"
 # define LAB_N_F "Label is not found"
 # define LAB_ARG "Incompatible combination ARG-LABEL"
 # define ARG_INV "Invalid type of an arguement"

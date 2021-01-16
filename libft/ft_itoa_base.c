@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 12:03:00 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/12/15 15:58:53 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/16 16:35:57 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	get_s(long long nb, int base)
+ int	get_s(long long nb, int base)
 {
 	int c;
 
@@ -25,7 +25,7 @@ static int	get_s(long long nb, int base)
 	return (c);
 }
 
-static char	convert(int d, int l)
+ char	convert(int d, int l)
 {
 	if (d >= 0 && d <= 9)
 		return (d + '0');

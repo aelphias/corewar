@@ -6,13 +6,13 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 13:18:19 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/03/06 13:18:20 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/16 16:35:57 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	precision_zeroes(t_param *param, int len)
+ int	precision_zeroes(t_param *param, int len)
 {
 	char	precition[param->precision - len + 1];
 	char	*temp;

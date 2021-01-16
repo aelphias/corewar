@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_arg.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 12:14:08 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/14 19:55:17 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/15 16:43:12 by sdarron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		 get_arg(t_vm *vm, t_car *car, int arg_number, uint8_t *arena)
 	op = &g_op[MINUS_ONE(car->op_code)];
 	value = 0;
 	if (car->arg_type[MINUS_ONE(arg_number)] & T_REG)
-		value = car->reg[MINUS_ONE(get_byte(arena, car))];
+		value = get_byte(arena, car);
 	else if (car->arg_type[MINUS_ONE(arg_number)] & T_DIR)
 		value = read_int(arena, car->pos + car->move, op->dir_size_status);
 		
@@ -61,4 +61,9 @@ int		 get_arg(t_vm *vm, t_car *car, int arg_number, uint8_t *arena)
 	} */
 	//move(car);
 	return (value);  
-}
+} 
+
+/* 
+		value = car->reg[MINUS_ONE(get_byte(arena, car))];
+
+ */

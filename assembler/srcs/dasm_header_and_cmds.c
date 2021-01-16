@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 18:17:49 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/15 14:11:40 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/16 17:07:15 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void		disasm_header(int wr_fd, int rd_fd)
 		read(rd_fd, &c, 1);
 }
 
-void		disasm_cmd(int wr_fd, int rd_fd)
+void		disasm_chcmd(int wr_fd, int rd_fd)
 {
 	int		ans;
 	t_dasm	dis;
@@ -41,7 +41,7 @@ void		disasm_cmd(int wr_fd, int rd_fd)
 		dis.a[0] = 0;
 		dis.a[1] = 0;
 		dis.a[2] = 0;
-		write(wr_fd, find_cmd(&dis), ft_strlen(dis.cmd_n));
+		write(wr_fd, find_chcmd(&dis), ft_strlen(dis.cmd_n));
 		write(wr_fd, " ", 1);
 		check_arg_type(&dis, rd_fd);
 		write_arg(wr_fd, &dis, rd_fd, dis.a[0]);

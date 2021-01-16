@@ -6,19 +6,19 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 19:20:44 by gjigglyp          #+#    #+#             */
-/*   Updated: 2019/11/29 18:51:10 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/16 16:35:57 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_gen_ptr_prec_add(t_printf *lstprf, int len)
+ int	ft_gen_ptr_prec_add(t_printf *lstprf, int len)
 {
 	write(lstprf->fd, "0", len);
 	return (len);
 }
 
-static int	ft_gen_ptr_prec(void *ptr, t_printf *lstprf)
+ int	ft_gen_ptr_prec(void *ptr, t_printf *lstprf)
 {
 	int		len;
 	char	*addpart;
@@ -47,7 +47,7 @@ static int	ft_gen_ptr_prec(void *ptr, t_printf *lstprf)
 	return (lstprf->prec + 2);
 }
 
-static int	ft_gen_ptr(void *ptr, t_printf *lstprf)
+ int	ft_gen_ptr(void *ptr, t_printf *lstprf)
 {
 	int		len;
 	char	*addpart;
@@ -74,7 +74,7 @@ static int	ft_gen_ptr(void *ptr, t_printf *lstprf)
 	return (len > lstprf->width ? len : lstprf->width);
 }
 
-static int	ft_gen_ptr_add(t_printf *lstprf, void *var)
+ int	ft_gen_ptr_add(t_printf *lstprf, void *var)
 {
 	char	*addpart;
 	char	*retn;

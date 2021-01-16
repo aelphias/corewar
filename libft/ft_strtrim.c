@@ -6,20 +6,20 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 19:25:31 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/11 19:25:32 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/16 16:35:57 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		spcs(char c)
+ int		spcs(char c)
 {
 	if (c == ' ' || c == '\n' || c == '\t')
 		return (1);
 	return (0);
 }
 
-static char		*recrd(char *s1, char *s2, size_t tmp, size_t i)
+ char		*recrd(char *s1, char *s2, size_t tmp, size_t i)
 {
 	size_t j;
 
