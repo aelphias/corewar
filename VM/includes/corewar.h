@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/15 17:49:32 by sdarron          ###   ########.fr       */
+/*   Updated: 2021/01/16 15:44:38 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ int								is_num(char *str);
 **	init arena 
 */
 
-void							fill_arena(t_plr *plr, t_vm *vm, uint8_t *arena);
+void							fill_arena(t_plr *plr, uint8_t *arena);
 void							ft_copy_code(uint8_t *dst, uint8_t *src, int codesize);
 
 /*
