@@ -6,24 +6,11 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:43:24 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/14 16:48:13 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/16 14:33:07 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
-
-/*
-** получение данных в ассемблере
-*/
-
-t_crw				*get_asm_data(t_crw *asm_data)
-{
-	static t_crw	*sd;
-
-	if (!sd)
-		sd = asm_data;
-	return (sd);
-}
 
 /*
 ** проверяем, является ли подаваемый аргумент файлом
@@ -46,7 +33,10 @@ int					is_filename(const char *fn, const char *ex)
 int					main(int ac, char *av[])
 {
 	if (ac != 2)
-		ft_printf("ERROR: %s\n", ERR_USE);
+	{
+		print_usage();
+		return (0);
+	}
 	else if (ac == 2 && is_filename(*(av + 1), ".s"))
 		assembler_mode(*(av + 1));
 	else if (ac == 2 && is_filename(*(av + 1), ".cor"))

@@ -6,13 +6,13 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 19:23:30 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/11 19:23:30 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/16 16:35:57 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		proff(const int fd, char **line, char **copydoc)
+ int		proff(const int fd, char **line, char **copydoc)
 {
 	if (fd < 0 || !line || fd > 200000)
 		return (-1);
@@ -22,7 +22,7 @@ static int		proff(const int fd, char **line, char **copydoc)
 	return (0);
 }
 
-static void		copy_doc(int ret, char *buf, char **copydoc)
+ void		copy_doc(int ret, char *buf, char **copydoc)
 {
 	char *tmp;
 
@@ -32,7 +32,7 @@ static void		copy_doc(int ret, char *buf, char **copydoc)
 	free(tmp);
 }
 
-static int		write_doc(char **line, char **copydoc, char *i)
+ int		write_doc(char **line, char **copydoc, char *i)
 {
 	char *tmp;
 
@@ -43,7 +43,7 @@ static int		write_doc(char **line, char **copydoc, char *i)
 	return (1);
 }
 
-static int		write_last(char **line, char **copydoc)
+ int		write_last(char **line, char **copydoc)
 {
 	(*line) = ft_strdup(*copydoc);
 	*copydoc = ft_strnew(0);
@@ -53,7 +53,7 @@ static int		write_last(char **line, char **copydoc)
 int				get_next_line_old(const int fd, char **line)
 {
 	char		buf[BUFF_SIZE + 1];
-	static char	*copydoc[200000];
+	 char	*copydoc[200000];
 	int			ret;
 	char		*i;
 

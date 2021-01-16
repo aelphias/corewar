@@ -6,27 +6,27 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 12:36:40 by gjigglyp          #+#    #+#             */
-/*   Updated: 2020/03/06 12:36:40 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/16 16:35:57 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	ft_up_char(char c)
+ char	ft_up_char(char c)
 {
 	if (c >= 'a' && c <= 'z')
 		c += 'A' - 'a';
 	return (c);
 }
 
-static char	ft_low_char(char c)
+ char	ft_low_char(char c)
 {
 	if (c >= 'A' && c <= 'Z')
 		c += 'a' - 'A';
 	return (c);
 }
 
-static int	ft_is_letter(char c)
+ int	ft_is_letter(char c)
 {
 	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
 		return (1);

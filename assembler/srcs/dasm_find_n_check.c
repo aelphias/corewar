@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 18:17:23 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/14 14:53:29 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/16 17:07:15 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ char	*dasm_change_ex(char *fn, char *old, char *new)
 	return (fn);
 }
 
-char	*find_cmd(t_dasm *dis)
+char	*find_chcmd(t_dasm *dis)
 {
 	int i;
 
 	i = 0;
 	while (i < 16)
 	{
-		if (g_op[i].code == dis->c)
+		if (g_op[i].args_types_code == dis->c)
 			break ;
 		i++;
 	}
@@ -61,18 +61,18 @@ void	check_arg_type(t_dasm *dis, int rd_fd)
 	if (dis->arg_type == 1)
 	{
 		read(rd_fd, &dis->c, 1);
-		dis->a1 = dis->c >> 6;
-		dis->a2 = dis->c >> 4 & 3;
-		dis->a3 = dis->c >> 2 & 3;
+		dis->a[0] = dis->c >> 6;
+		dis->a[1] = dis->c >> 4 & 3;
+		dis->a[2] = dis->c >> 2 & 3;
 	}
 	else
 	{
 		while (i < 16)
 		{
-			if (g_op[i].code == dis->c)
+			if (g_op[i].args_types_code == dis->c)
 				break ;
 			i++;
 		}
-		dis->a1 = g_op[i].args_types[0];
+		dis->a[0] = g_op[i].args_types[0];
 	}
 }

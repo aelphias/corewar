@@ -6,13 +6,13 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 11:50:29 by gjigglyp          #+#    #+#             */
-/*   Updated: 2019/11/29 18:51:10 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/16 16:35:57 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void		points(char *string, int c)
+ void		points(char *string, int c)
 {
 	while (*string)
 		write(1, string++, 1);
@@ -20,14 +20,14 @@ static void		points(char *string, int c)
 	write(1, "m", 1);
 }
 
-static int		init_col(char **f, int color, int len)
+ int		init_col(char **f, int color, int len)
 {
 	points("\x1b[", color);
 	(*f) = (*f + len);
 	return (0);
 }
 
-static int		without_color(char **f)
+ int		without_color(char **f)
 {
 	(*f)++;
 	return (write(1, "{", 1));

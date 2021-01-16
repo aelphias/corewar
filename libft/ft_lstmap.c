@@ -6,13 +6,13 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 19:38:20 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/11 19:38:20 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/16 16:35:57 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	del(void *content, size_t i)
+ void	del(void *content, size_t i)
 {
 	if (!content || !i)
 		return ;

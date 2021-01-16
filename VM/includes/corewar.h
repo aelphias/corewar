@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/16 16:57:34 by sdarron          ###   ########.fr       */
+/*   Updated: 2021/01/16 17:35:58 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void							error_file();
 void							error_magic_numb();
 void							error_one_dump();
 void							error_pos_number();
-t_plr							*ft_parse(int argc, char **argv, int i, int id);
+t_plr							*ft_coreparse(int argc, char **argv, int i, int id);
 void							get_sizecode(t_plr *plr, uint8_t *sizecode);
 void							gat_list_plrs(char **argv, int id, t_plr *plr, int i);
 int								get_error_for_n(int i, int argc, char **argv);
@@ -150,9 +150,7 @@ void							init_plr(t_vm *vm, t_plr *plr);
 
 void 							check_flags(int argc, char **argv, t_vm *vm);
 void 							check_n_flags(int argc, char **argv, t_plr *plr);
-t_plr	 						*ft_parse(int argc, char **argv, int i, int id);
-
-
+t_plr	 						*ft_coreparse(int argc, char **argv, int i, int id);
 
 
 /*
@@ -229,13 +227,13 @@ void							print_list_car(t_car *car);
 **	alfa version op_tab
 */
 
-static uint8_t			g_arg_code[3] = {
+ uint8_t			g_arg_code[3] = {
 	T_REG,
 	T_DIR,
 	T_IND
 };
 
-static t_op					g_op[16] = {
+ t_op					g_op[16] = {
 	{
 		.name = "live",
 		.code = 1,

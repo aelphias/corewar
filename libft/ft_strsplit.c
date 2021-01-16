@@ -6,13 +6,13 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 19:25:12 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/11 19:25:13 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/16 16:35:57 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_wds(char *s, char c)
+ int		ft_wds(char *s, char c)
 {
 	int			words;
 
@@ -31,7 +31,7 @@ static int		ft_wds(char *s, char c)
 	return (words);
 }
 
-static char		*ft_leng(char *s, char c)
+ char		*ft_leng(char *s, char c)
 {
 	char		*l;
 
@@ -42,7 +42,7 @@ static char		*ft_leng(char *s, char c)
 	return (ft_strdup(l));
 }
 
-static void		free_me(char **str, int i)
+ void		free_me(char **str, int i)
 {
 	while (i >= 0)
 	{
