@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/16 23:45:19 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/17 14:26:15 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ typedef struct					s_plr
 
 typedef struct					s_vm
 {
-	unsigned int				plr_count;
-	unsigned int				lived;  // количество выполненных операий live за c_t_d
+	int							plr_count;
+	int							lived;  // количество выполненных операий live за c_t_d
 	int							car_count;
 	long int					check_count;
 	long int					cycles;

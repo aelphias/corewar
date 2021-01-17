@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/16 23:50:22 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/17 19:54:46 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@ void	check(t_vm *vm, t_car **head_car)
 	vm->check_count++;
 	vm->last_check_cycle = vm->cycles;
 	bury_car(vm, head_car);
-	if (vm->lived >= NBR_LIVE || vm->check_count == MAX_CHECKS)
+	if ((vm->lived >= NBR_LIVE) || (vm->check_count == MAX_CHECKS))
 	{
-		vm->cycles_to_die -= CYCLE_DELTA;
+		ft_printf("have you ever tried? ----if ((vm->lived >= NBR_LIVE) || (vm->check_count == MAX_CHECKS))--\n");
+		ft_printf("{check() ))--\n");
+		vm->cycles_to_die = vm->cycles_to_die - CYCLE_DELTA;
 		vm->check_count = 0;
 	}
 	vm->lived = 0;
@@ -79,7 +81,8 @@ void	game(t_car **head_car, uint8_t *arena, t_vm *vm)
 	{
 		vm->cycles++;
 		cycle(head_car, arena, vm);
-		if (vm->cycles_to_die <= 0 || ((vm->cycles - vm->last_check_cycle) == CYCLE_TO_DIE))// условие для проверки
+		if (vm->cycles_to_die <= 0 
+		|| ((vm->cycles - vm->last_check_cycle) == CYCLE_TO_DIE))// условие для проверки
 			check(vm, head_car);
 		if (vm->cycles == vm->dump)
 		{
@@ -88,7 +91,8 @@ void	game(t_car **head_car, uint8_t *arena, t_vm *vm)
 		}
 	}
 	ft_printf("vm->cycles = %d\n", vm->cycles);
-	ft_printf("Contestant %d, has won !\n", vm->winner_id);
+	ft_printf("vm->cycles_to_die = %d\n", vm->cycles_to_die);
+	ft_printf("Player %d, won !\n", vm->winner_id);
 }
 /* 
 ** Если же код операции ошибочен, необходимо просто переместить каретку на следующий байт.
