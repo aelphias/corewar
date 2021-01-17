@@ -3,55 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   op_sti.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:34:04 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/14 21:19:48 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/16 20:35:00 by sdarron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-int		c_c_sti(int c)
-{
-	int	a1;
-	int a2;
-	int a3;
-
-	a1 = bitmask_corr(1, c);
-	a2 = bitmask_corr(2, c);
-	a3 = bitmask_corr(3, c);
-	if (a1 == 0)
-		return (1);
-	if (a2 == 0)
-		return (1);
-	if (a3 != 1 || a3 != 3)
-		return (1);
-	return (0);
-}
-
 void	op_sti(t_car *car, uint8_t *arena, t_vm *vm)
 {
-	int				i;
-	t_vm			*vm1;
-	int				size_tmp;
-	unsigned int	j;
-	int				k;
+	int arg1;
+	int arg2;
+	int arg3;
+	int val1;
+	int new_adr;
 
-	/*vm1 = (*vm);
-	size_tmp = get_size(arena, car->pos, car->dir_size_status);
-	if (!(c_c_sti(get_map(arena, car->dir_size_status + 1))) &&
-			(i = red_arg(arena, car->pos, 3)) != -1)
+	arg1 = get_arg(vm, car, 1, arena);
+	arg2 = get_arg(vm, car, 2, arena);
+	arg3 = get_arg(vm, car, 3, arena);
+	val1 = car->reg[arg1];
+	new_adr = car->pos + (arg2 + arg3) % IDX_MOD;
+	put_value_in_arena(arena, new_adr, val1, 4);
+	car->pos++;
+	if (car->arg_type[1] == T_REG)
+		car->pos++;
+	if (car->arg_type[1] == T_DIR)
 	{
-		if (bit_mask(2, get_map(arena, car->dir_size_status + 1)) == 1)
-		{
-			//j = (short)(pc->arg[1] + pc->arg[2]);
-			//set_bit(car->pos, car->dir_size_status + (j % IDX_MOD), arena, pc->arg[0]);
-		}
-		else
-		{
-			//k = (short)(pc->arg[1] + pc->arg[2]);
-			//set_bit(pc, car->dir_size_status + (k % IDX_MOD), arena, pc->arg[0]);
-		}
-	}*/
+		if (car->dir_size_status = 4)
+			car->pos += 4;
+		if (car->dir_size_status = 2)
+			car->pos += 2;
+	}
+	if (car->arg_type[1] == T_IND)
+		car->pos += 4;
+	if (car->arg_type[2] == T_REG)
+		car->pos++;
+	if (car->arg_type[2] == T_DIR)
+	{
+		if (car->dir_size_status = 4)
+			car->pos += 4;
+		if (car->dir_size_status = 2)
+			car->pos += 2;
+	}
 }

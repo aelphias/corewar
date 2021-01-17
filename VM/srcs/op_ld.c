@@ -6,7 +6,7 @@
 /*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:26:06 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/16 17:26:49 by sdarron          ###   ########.fr       */
+/*   Updated: 2021/01/16 20:36:53 by sdarron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,11 @@ void	op_ld(t_car *car, uint8_t *arena, t_vm *vm)
 		car->carry = 0;
 	if (car->arg_type[0] == T_DIR)
 	{
-		if (car->dir_size_status = 4)
+		if (car->dir_size_status == 4)
 			car->pos += 5;
-		if (car->dir_size_status = 2)
+		if (car->dir_size_status == 2)
 			car->pos += 3;
 	}
 	if (car->arg_type[0] == T_IND)
 		car->pos += 5;
-
 }
