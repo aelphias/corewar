@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:44:53 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/17 15:31:45 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/17 15:41:36 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1045,7 +1045,8 @@ int			assembler_mode(char *nof)
 	t_crw	*crw;
 	int		fd;
 
-	crw = (t_crw*)ft_memalloc(sizeof(t_crw));
+	if (!(crw = (t_crw*)ft_memalloc(sizeof(t_crw))))
+		call_simple_error(MEM_ALL);
 	fd = open(nof, O_RDONLY);
 	if (fd == -1)
 		call_simple_error(ERR_INV);
