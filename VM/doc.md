@@ -47,3 +47,25 @@ Allowed f()
 -n number sets the number of the next player. If non-existent, the player will have the next available number in the order of the parameters.
 ---------------
 -dump nbr_cyclesat the end of nbr_cycles of executions, dump the memory on the standard outputand quit the game. The memory must be dumped in the hexadecimal format with32 octets per line. Флаг получает номер цикла, после выполнения которого необходимо вывести состояние памяти на экран и прекратить работу программы corewar
+
+
+TEST VM:
+
+
+BUGS:
+
+1)
+  VM git:(master) ✗ ./corewar adder.cor adder.cor 
+Introducting contestants...
+* Player 1, weighing 5 bytes, "adder" ("") !
+* Player 2, weighing 5 bytes, "adder" ("") !
+vm->cycles = 4608
+Contestant 2, has won !
+
+2)
+➜  VM git:(master) ✗ ./corewar adder.cor          
+Introducting contestants...
+* Player 1, weighing 5 bytes, "adder" ("") !
+vm->cycles = 3072
+Contestant 1, has won !
+➜  VM git:(master) ✗ 

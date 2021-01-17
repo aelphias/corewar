@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 18:19:27 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/15 21:04:33 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/17 00:03:06 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
  void	write_arg_type(int arg_type, t_car *car, t_op *op, int ind)
 {
-	op->code = op->code;
+	op->code = op->code; // TODO: what should be here?
 	car->arg_type[MINUS_ONE(ind)] = arg_type;
 }
 

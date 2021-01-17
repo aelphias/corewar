@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 13:11:46 by marvin            #+#    #+#             */
-/*   Updated: 2021/01/16 17:06:08 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/13 16:58:30 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int			get_error_for_n(int i, int argc, char **argv)
 	return (i);
 }
 
-t_plr		*ft_coreparse(int argc, char **argv, int i, int id)
+t_plr		*ft_parse(int argc, char **argv, int i, int id)
 {
 	t_plr	*plr;
 
