@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:44:53 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/17 15:41:36 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/17 17:52:51 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void		print_usage(void)
 {
-	ft_printf("Usage: ./asm (chion.s|champion.cor)\n\
-				\tchampion.s   — assemble->bytecode\n\
-				\tchampion.cor — assemble<-bytecode\n");
+	ft_printf("Usage: ./asm [champion.cor]\n");
+	exit(0);
 }
 
 void	is_arg_in_end_or_not(t_arg **a, t_arg *b)
@@ -381,7 +380,7 @@ void	arg_dirlbl(char *line, int c, int i, t_cmnd **b)
 	else
 		buff = ft_strdup(line + 2);
 	check_namlbl(buff);
-	a = (t_arg*)malloc(sizeof(t_arg));
+	a = (t_arg*)ft_memalloc(sizeof(t_arg));
 	a->size = g_op[c].t_dir_size;
 	a->val = -1;
 	a->bin = 2;
@@ -408,7 +407,7 @@ void		parse_arg_ind(char *line, int c, int i, t_cmnd **b)
 
 	j = 0;
 	com_tr(line, ';', COMMENT_CHAR);
-	a = (t_arg*)malloc(sizeof(t_arg));
+	a = (t_arg*)ft_memalloc(sizeof(t_arg));
 	if (line[0] == LABEL_CHAR)
 		arg_label(line, c, i, &a);
 	else
@@ -447,7 +446,7 @@ void		parse_arg_dir(char *line, int c, int i, t_cmnd **b)
 			ft_printf("extra characters near 't_ind'", line);
 		if (i + 1 == g_op[c].args_num)
 			chcmd(line + j);
-		a = (t_arg*)malloc(sizeof(t_arg));
+		a = (t_arg*)ft_memalloc(sizeof(t_arg));
 		a->size = g_op[c].t_dir_size;
 		a->val = argtoi(line + 1);
 		a->lblname = 0;
@@ -513,7 +512,7 @@ void	parse_arg_reg(char *line, int command, int index, t_cmnd **b)
 	index + 1 == g_op[command].args_num ? chcmd(line + i) : 0;
 	if (i > 3)
 		ft_printf("So big value for 'r'", line);
-	a = (t_arg*)malloc(sizeof(t_arg));
+	a = (t_arg*)ft_memalloc(sizeof(t_arg));
 	a->size = 1;
 	a->val = ft_atoi(line + 1);
 	a->lblname = 0;
@@ -665,7 +664,7 @@ void		parse_command(char *line, t_crw **a, t_lbl *lbls)
 		line++;
 	command = find_command(line);
 	line += ft_strlen(g_op[command].name);
-	b = (t_cmnd*)malloc(sizeof(t_cmnd));
+	b = (t_cmnd*)ft_memalloc(sizeof(t_cmnd));
 	parse_commas(line, command);
 	b->name = ft_strdup(g_op[command].name);
 	b->in = 0;
@@ -768,7 +767,7 @@ char		**split_for_args(char *line)
 	int		k;
 	char	**end;
 
-	if (!line || !(end = (char **)malloc(sizeof(*end)
+	if (!line || !(end = (char **)ft_memalloc(sizeof(*end)
 					* countwords(line) + 1)))
 		return (NULL);
 	i = 0;
@@ -840,7 +839,7 @@ int	add_label(char *line, t_lbl **b)
 				start[i] == '%' || start[i] == '#' || start[i] == ';')
 			return (0);
 	buff = ft_strndup(start, len_to(start, LABEL_CHAR) - 1);
-	label = (t_lbl*)malloc(sizeof(t_lbl));
+	label = (t_lbl*)ft_memalloc(sizeof(t_lbl));
 	label->name = ft_strtrim(buff);
 	!ft_strlen(label->name) ? call_simple_error(NO_LABE) : 0;
 	ft_strdel(&buff);
@@ -854,7 +853,7 @@ void	label_in_end_of_file(t_crw **a, t_lbl *label)
 {
 	t_cmnd	*b;
 
-	b = (t_cmnd*)malloc(sizeof(t_cmnd));
+	b = (t_cmnd*)ft_memalloc(sizeof(t_cmnd));
 	b->name = ft_strdup("-1");
 	b->lbls = label;
 	b->in = 0;
@@ -1019,8 +1018,8 @@ void		main_val(t_crw **ch, int fd)
 	t_crw	*ch1;
 	t_crw	*s;
 
-	ch1 = (t_crw*)malloc(sizeof(t_crw));
-	s = (t_crw*)malloc(sizeof(t_crw));
+	ch1 = (t_crw*)ft_memalloc(sizeof(t_crw));
+	s = (t_crw*)ft_memalloc(sizeof(t_crw));
 	ch1->cmds = 0;
 	addval(fd, &ch1);
 	close(fd);
@@ -1040,18 +1039,33 @@ void		main_val(t_crw **ch, int fd)
 	close(fd);
 }
 
+void		core_init(t_crw *crw)
+{
+	crw->name = NULL;
+	crw->cmnt = NULL;
+	crw->cmds->argcount = 0;
+	crw->cmds->argz[0] = 0;
+	crw->cmds->argz[1] = 0;
+	crw->cmds->argz[2] = 0;
+	crw->cmds->bytenum = 0;
+	crw->cmds->c = 0;
+	crw->cmds->oper_code = 0;
+	crw->cmds->sizeoflbl = 0;
+}
+
 int			assembler_mode(char *nof)
 {
 	t_crw	*crw;
 	int		fd;
 
-	if (!(crw = (t_crw*)ft_memalloc(sizeof(t_crw))))
-		call_simple_error(MEM_ALL);
 	fd = open(nof, O_RDONLY);
 	if (fd == -1)
 		call_simple_error(ERR_INV);
+	if (!(crw = (t_crw*)ft_memalloc(sizeof(t_crw))))
+		call_simple_error(MEM_ALL);
 	else
 	{	
+		//core_init(crw);
 		main_val(&crw, fd);
 		filewrite(crw->next, nof);
 	}
