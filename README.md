@@ -41,3 +41,7 @@ git checkout похожа на  cd в bash - переходит на другу�
 6. Найти людей и записаться на проврки
 
 7. Защитить
+
+ #TESTS
+ https://docs.google.com/spreadsheets/d/1E21lOwIcS1PcFKoMY4xsvl0rVSb48lg4JJHWoKvhXP0/edit?usp=sharing
+ 
