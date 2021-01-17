@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:44:53 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/16 17:12:51 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/17 15:31:45 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1026,16 +1026,16 @@ void		main_val(t_crw **ch, int fd)
 	close(fd);
 	if (!ch1->cmds)
 		call_simple_error(NO_COMM);
-	if (*ch)
+	if (!*ch)
+	{
+		ch1->next = *ch;
+		*ch = ch1;
+	}
+	else
 	{
 		s = *ch;
 		s->next = ch1;
 		ch1->next = 0;
-	}
-	else
-	{
-		ch1->next = *ch;
-		*ch = ch1;
 	}
 	close(fd);
 }
@@ -1045,15 +1045,16 @@ int			assembler_mode(char *nof)
 	t_crw	*crw;
 	int		fd;
 
+	crw = (t_crw*)ft_memalloc(sizeof(t_crw));
 	fd = open(nof, O_RDONLY);
 	if (fd == -1)
 		call_simple_error(ERR_INV);
 	else
 	{	
 		main_val(&crw, fd);
-		filewrite(crw, nof);
+		filewrite(crw->next, nof);
 	}
 	free(nof);
-	//free_all(crw);
+	free(crw);
 	return (0);
 }
