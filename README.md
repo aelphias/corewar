@@ -44,4 +44,9 @@ git checkout похожа на  cd в bash - переходит на другу�
 
  #TESTS
  https://docs.google.com/spreadsheets/d/1E21lOwIcS1PcFKoMY4xsvl0rVSb48lg4JJHWoKvhXP0/edit?usp=sharing
+
+
+ --
+ Подключил тесты:
+ зайди в каталог checker_unit и выполни: make tests_vm_dump
  
