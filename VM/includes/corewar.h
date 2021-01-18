@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/18 17:35:25 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/18 21:38:39 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct					s_plr
 	int							n_id;
 	uint8_t						*name;
 	uint8_t						*cmnt;
-	unsigned int				pos; 
+	long int				pos; 
 	unsigned int				codesize;
 	uint8_t						*code;
 	struct s_plr				*head;
