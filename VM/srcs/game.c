@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/18 18:45:41 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/18 19:25:17 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	check(t_vm *vm, t_car **head_car)
 	bury_car(vm, head_car);
 	if ((vm->lived >= NBR_LIVE) || (vm->check_count == MAX_CHECKS))
 	{
-		ft_printf("have you ever tried? ----if ((vm->lived >= NBR_LIVE) || (vm->check_count == MAX_CHECKS))--\n");
-		ft_printf("{check() ))--\n");
+		//ft_printf("have you ever tried? ----if ((vm->lived >= NBR_LIVE) || (vm->check_count == MAX_CHECKS))--\n");
+		//ft_printf("{check() ))--\n");
 		vm->cycles_to_die = vm->cycles_to_die - CYCLE_DELTA;
 		vm->check_count = 0;
 	}
@@ -90,8 +90,8 @@ void	game(t_car **head_car, uint8_t *arena, t_vm *vm)
 			return ;  
 		}
 	}
-	ft_printf("vm->cycles = %d\n", vm->cycles);
-	ft_printf("vm->cycles_to_die = %d\n", vm->cycles_to_die);
+	//ft_printf("vm->cycles = %d\n", vm->cycles);
+	//ft_printf("vm->cycles_to_die = %d\n", vm->cycles_to_die);
 	ft_printf("Player %d, won !\n", vm->winner_id);
 }
 /* 
