@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/17 14:26:15 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/18 17:35:25 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct					s_car
 {
 	int							id;
 	int							pos;
-	int							move;
+	//int							move;
 	int							reg[REG_NUMBER];
 	bool						carry;
 	bool						is_type_code;
@@ -195,7 +195,7 @@ void							exec(t_car *car, uint8_t *arena, t_op *op, t_vm *vm);
 int								get_arg(t_vm *vm, t_car *car, int arg_number, uint8_t *arena);
 int								weight(int a, int c);
 int								move(t_car *car);
-int								read_int(const uint8_t *arena, int addr, int size);
+int								read_int(const uint8_t *arena, int pos, int size);
 /*
 **	void	operations(t_car *car, uint8_t *arena, void (**func)(t_car *, uint8_t *));
 **	void	no();

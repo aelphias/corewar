@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/17 19:54:46 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/18 16:13:07 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,3 @@ void	game(t_car **head_car, uint8_t *arena, t_vm *vm)
 */
 //printf("-----.>dump----not_in_IF%d\n", vm->dump);
 			//printf("----{inside game()}--Check() was called\n");
-

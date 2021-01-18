@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_lld.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:35:37 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/17 14:42:31 by sdarron          ###   ########.fr       */
+/*   Updated: 2021/01/18 17:36:01 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	op_lld(t_car *car, uint8_t *arena, t_vm *vm)
 		arg1 = get_arg(vm, car, 1, arena);
 	if (car->arg_type[0] == T_IND)
 	{
-		addr = read_int(arena, car->pos + car->move, IND_SIZE);
+		addr = read_int(arena, car->pos, IND_SIZE);
 		arg1 = read_int(arena, car->pos + addr, DIR_SIZE);
 	}
 	car->reg[arg2] = arg1;
