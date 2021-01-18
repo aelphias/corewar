@@ -14,7 +14,7 @@
 
 unsigned int	update_pos(unsigned int pos)
 {
-	if (pos >= MEM_SIZE)
-		pos = pos % MEM_SIZE;
+	if (pos >= MEM_SIZE - 1)
+		pos = pos % (MEM_SIZE - 1);
 	return (pos);
 }
