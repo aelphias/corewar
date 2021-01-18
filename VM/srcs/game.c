@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/18 16:13:07 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/18 18:41:16 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	game(t_car **head_car, uint8_t *arena, t_vm *vm)
 		vm->cycles++;
 		cycle(head_car, arena, vm);
 		if (vm->cycles_to_die <= 0 
-		|| ((vm->cycles - vm->last_check_cycle) == CYCLE_TO_DIE))// условие для проверки
+		|| ((vm->cycles - vm->last_check_cycle) == vm->cycles_to_die))// условие для проверки
 			check(vm, head_car);
 		if (vm->cycles == vm->dump)
 		{
