@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:33:27 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/18 15:00:41 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/18 15:05:39 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void		op_ldi(t_car *car, uint8_t *arena, t_vm *vm)
 		car->pos++;
 	if (car->arg_type[0] == T_DIR)
 	{
-		if (car->dir_size_status = 4)
+		if (car->dir_size_status == 4)
 			car->pos += 4;
-		if (car->dir_size_status = 2)
+		if (car->dir_size_status == 2)
 			car->pos += 2;
 	}
 	if (car->arg_type[0] == T_IND)
