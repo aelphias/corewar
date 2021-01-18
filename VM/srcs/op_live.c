@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:24:48 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/17 20:06:25 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/18 17:58:58 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,9 @@ void	op_live(t_car *car, uint8_t *arena, t_vm *vm)
 {
 	int			cur_plr_n;
 	t_plr		*plr;
-	int			shift;
 
 	cur_plr_n = 0;
 	plr = NULL;
-	shift = 0;
 	if (vm && car && arena) 
 	{	
 		car->last_live_cycle = vm->cycles;
@@ -51,6 +49,5 @@ void	op_live(t_car *car, uint8_t *arena, t_vm *vm)
 			announce_leader(plr);
 		}
 	}
-	shift = move(car);
-	car->pos += shift;
+	car->pos += move(car);
 }
