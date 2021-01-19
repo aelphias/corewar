@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 16:42:16 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/19 21:32:18 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/19 21:40:15 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@
 	return (src);
 }*/
 
-void push_start(t_car **head, int val)
+void push_start_car(t_car **head, int val)
 {
 	t_car *copy_car;
     copy_car = malloc(sizeof(t_car));
@@ -53,9 +53,13 @@ void push_start(t_car **head, int val)
 
 void	op_fork(t_car *car, uint8_t *arena, t_vm *vm)
 {
-
-    // add 0 to start
-    push_start(&car, 0);
+	int arg;
+    
+	arg = get_arg(vm, car, 1, arena);
+	// add 0 to start
+    
+	
+	push_start_car(&car, 0);
  
     // print updated list
 	//car_copy = a1 % IDX_MOD;
