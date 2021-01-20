@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/19 22:06:46 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/20 20:51:04 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	exec(t_car *car, uint8_t *arena, t_op *op, t_vm *vm)
 	car->dir_size_status = op->dir_size_status;  // (Размер T_DIR) бывает  4 и 2 byte
 	car->is_type_code = op->is_type_code;
 	get_args_type(car, arena, op);
-	car->pos++; // после считывания кода операции или типово аргументов переступили на первый байт аргументов
+	car->pos = update_pos(++car->pos); // после считывания кода операции или типово аргументов переступили на первый байт аргументов
 	op->func(car, arena, vm);   // и здесь мы страртуем операции
 }
 
@@ -67,7 +67,7 @@ void	cycle(t_car **head_car, uint8_t *arena, t_vm *vm)
 			if (valid_op(car))
 				exec(car, arena, op, vm);
 			else
-				car->pos++;
+				car->pos = update_pos(++car->pos);
 		}
 		if (!(car->next) && (car->wait != 0))
 			break ;
