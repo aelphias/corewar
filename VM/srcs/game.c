@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/20 21:14:45 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/20 21:44:08 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	cycle(t_car **head_car, uint8_t *arena, t_vm *vm)
 {
 	t_op	*op;
 	t_car	*car;
-	
+	car = NULL;
 	car = (*head_car);
 	while (car)
 	{
