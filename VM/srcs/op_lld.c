@@ -6,13 +6,13 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:35:37 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/18 17:36:01 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/21 21:58:45 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	op_lld(t_car *car, uint8_t *arena, t_vm *vm)
+void	op_lld(t_car *car, uint8_t *arena)
 {
 	// int type_arg;
 	// int a1;
@@ -37,9 +37,9 @@ void	op_lld(t_car *car, uint8_t *arena, t_vm *vm)
 	int		arg2;
 	int		addr;
 
-	arg2 = get_arg(vm, car, 2, arena);
+	arg2 = get_arg(car, 2, arena);
 	if (car->arg_type[0] == T_DIR)
-		arg1 = get_arg(vm, car, 1, arena);
+		arg1 = get_arg(car, 1, arena);
 	if (car->arg_type[0] == T_IND)
 	{
 		addr = read_int(arena, car->pos, IND_SIZE);

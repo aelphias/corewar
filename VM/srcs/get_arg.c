@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 12:14:08 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/18 21:03:03 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/21 21:55:28 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		read_int(const uint8_t *arena, int pos, int size)
 	return (result);
 }
 
-int		 get_arg(t_vm *vm, t_car *car, int arg_number, uint8_t *arena)
+int		 get_arg(t_car *car, int arg_number, uint8_t *arena)
 {
 	t_op		*op;
 	long int	value;

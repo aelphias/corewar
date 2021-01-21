@@ -6,13 +6,13 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:37:23 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/10 13:36:19 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/21 21:58:45 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	op_lfork(t_car *car, uint8_t *arena, t_vm *vm)
+void	op_lfork(t_car *car, uint8_t *arena)
 {
 	bool silence_make;
 	if (arena && car)

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   op_ld.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:26:06 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/16 20:36:53 by sdarron          ###   ########.fr       */
+/*   Updated: 2021/01/21 21:58:45 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	op_ld(t_car *car, uint8_t *arena, t_vm *vm)
+void	op_ld(t_car *car, uint8_t *arena)
 {
 	// int type_arg;
 	// int a1;
@@ -36,8 +36,8 @@ void	op_ld(t_car *car, uint8_t *arena, t_vm *vm)
 	int		arg1;
 	int		arg2;
 
-	arg2 = get_arg(vm, car, 2, arena);
-	arg1 = get_arg(vm, car, 1, arena);
+	arg2 = get_arg(car, 2, arena);
+	arg1 = get_arg(car, 1, arena);
 	car->reg[arg2] = arg1;
 	if (car->reg[arg2] == 0)
 		car->carry = 1;

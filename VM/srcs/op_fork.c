@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 16:42:16 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/19 21:40:15 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/21 21:58:45 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,17 @@
 void push_start_car(t_car **head, int val)
 {
 	t_car *copy_car;
-    copy_car = malloc(sizeof(t_car));
-	//copy
+	
+    copy_car = ft_memalloc(sizeof(t_car));
     copy_car->next = *head;
     *head = copy_car;
 }
 
-void	op_fork(t_car *car, uint8_t *arena, t_vm *vm)
+void	op_fork(t_car *car, uint8_t *arena)
 {
 	int arg;
     
-	arg = get_arg(vm, car, 1, arena);
+	arg = get_arg(car, 1, arena);
 	// add 0 to start
     
 	

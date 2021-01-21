@@ -36,7 +36,7 @@ t_car	*make_car(t_plr *plr, t_vm *vm)
 {
 	// создание структуры под каретки
 	int				equalizer;
-	unsigned int	count;
+	int				count;
 	int				tmp;
 	t_car			*car;
 	

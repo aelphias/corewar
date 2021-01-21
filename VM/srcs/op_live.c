@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:24:48 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/19 21:52:09 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/21 22:03:54 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	op_live(t_car *car, uint8_t *arena, t_vm *vm)
 	{	
 		car->last_live_cycle = vm->cycles;
 		vm->lived++;
-		cur_plr_n = get_arg(vm, car, 1, arena);
+		cur_plr_n = get_arg(car, 1, arena);
 		if ((plr = check_node_existance(vm, cur_plr_n)))
 		{
 			vm->winner_id = -cur_plr_n;

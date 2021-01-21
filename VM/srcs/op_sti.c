@@ -6,13 +6,13 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:34:04 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/18 15:04:53 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/21 21:58:45 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	op_sti(t_car *car, uint8_t *arena, t_vm *vm)
+void	op_sti(t_car *car, uint8_t *arena)
 {
 	int arg1;
 	int arg2;
@@ -20,9 +20,9 @@ void	op_sti(t_car *car, uint8_t *arena, t_vm *vm)
 	int val1;
 	int new_adr;
 
-	arg1 = get_arg(vm, car, 1, arena);
-	arg2 = get_arg(vm, car, 2, arena);
-	arg3 = get_arg(vm, car, 3, arena);
+	arg1 = get_arg(car, 1, arena);
+	arg2 = get_arg(car, 2, arena);
+	arg3 = get_arg(car, 3, arena);
 	val1 = car->reg[arg1];
 	new_adr = car->pos + (arg2 + arg3) % IDX_MOD;
 	put_value_in_arena(arena, new_adr, val1, 4);

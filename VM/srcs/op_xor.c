@@ -6,13 +6,13 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:31:15 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/18 15:15:36 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/21 21:58:45 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	op_xor(t_car *car, uint8_t *arena, t_vm *vm)
+void	op_xor(t_car *car, uint8_t *arena)
 {
 	// int type_arg;
 	// int a1;
@@ -32,9 +32,9 @@ void	op_xor(t_car *car, uint8_t *arena, t_vm *vm)
 	int arg3;
 	int val;
 
-	arg1 = get_arg(vm, car, 1, arena);
-	arg2 = get_arg(vm, car, 2, arena);
-	arg3 = get_arg(vm, car, 3, arena);
+	arg1 = get_arg(car, 1, arena);
+	arg2 = get_arg(car, 2, arena);
+	arg3 = get_arg(car, 3, arena);
 	val = car->reg[arg1] ^ car->reg[arg2];
 	car->reg[arg3] = val;
 	if (val == 0)
