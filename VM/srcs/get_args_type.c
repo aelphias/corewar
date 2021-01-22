@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 18:19:27 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/22 18:40:46 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/22 21:58:37 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	get_args_type(t_car *car, unsigned char *arena, t_op *op)
 	int		arg_type;
 
 	i = 0;
+	arg_type = 0;
 	if (car->is_type_code)
 	{
 		car->pos = update_pos(++car->pos);

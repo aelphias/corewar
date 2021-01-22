@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/20 21:19:58 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/22 21:51:18 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int		main(int argc, char **argv)
 	//test(vm, plr);
 	introduce_plrs(plr);
 	fill_arena(plr, arena);
+	arena[7] = 5;
 	game(&car, arena, vm);
 /*
 *	6. test

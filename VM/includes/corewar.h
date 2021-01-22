@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/22 19:27:03 by kcharlet         ###   ########.fr       */
+/*   Updated: 2021/01/22 21:34:02 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef struct					s_car
 	int							pos;
 	//int							move;
 	int							reg[REG_NUMBER];
-	bool						carry;
+	int							carry;
 	bool						is_type_code;
 	int							arg[3];
 	int							arg_type[3];
