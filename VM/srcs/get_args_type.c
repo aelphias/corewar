@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 18:19:27 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/21 21:52:26 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/22 18:40:46 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,5 @@ void	get_args_type(t_car *car, unsigned char *arena, t_op *op)
 			write_arg_type((arg_type & 0b00001100) >> 2, car, 3);
 	}
 	else
-		car->arg_type[0] = T_DIR;
+		car->arg_type[0] = DIR_CODE;
 }

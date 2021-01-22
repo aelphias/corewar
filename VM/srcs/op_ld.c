@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:26:06 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/21 21:58:45 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/22 18:49:21 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,38 @@ void	op_ld(t_car *car, uint8_t *arena)
 	int		arg1;
 	int		arg2;
 
-	arg2 = get_arg(car, 2, arena);
 	arg1 = get_arg(car, 1, arena);
+	move()
+	
+	
+	
+	
+	
+	
+	if (car->arg_type[0] == DIR_CODE)
+	{
+		
+	}
+	if (car->arg_type[0] == IND_CODE)
+	{
+		
+		
+	}
+	
+	
+	arg2 = get_arg(car, 2, arena);
 	car->reg[arg2] = arg1;
 	if (car->reg[arg2] == 0)
 		car->carry = 1;
 	else
 		car->carry = 0;
-	if (car->arg_type[0] == T_DIR)
+	if (car->arg_type[0] == DIR_CODE)
 	{
 		if (car->dir_size_status == 4)
 			car->pos += 5;
 		if (car->dir_size_status == 2)
 			car->pos += 3;
 	}
-	if (car->arg_type[0] == T_IND)
+	if (car->arg_type[0] == IND_CODE)
 		car->pos += 5;
 }
