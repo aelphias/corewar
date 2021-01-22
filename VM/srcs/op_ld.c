@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_ld.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:26:06 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/22 18:49:21 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/22 21:02:07 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,60 +14,26 @@
 
 void	op_ld(t_car *car, uint8_t *arena)
 {
-	// int type_arg;
-	// int a1;
-	// int a2;
+	int		val;
+	int		num_reg;
 
-	// car->pos = update_pos(car->pos);
-	// type_arg = arena[update_pos(car->pos + 1)];
-	// a1 = car->reg[update_pos(arena[car->pos + 2])];
-	// a2 = car->reg[update_pos(arena[car->pos + 3])];
-	// if (a1 == T_DIR)
-	// 	car->reg[update_pos(arena[car->pos + 4])] = a2;
-	// else if ((a1 = T_IND))
-	// 	car->reg[update_pos(arena[car->pos + 4])] = a1 % IDX_MOD;
-	// printf("\n ### I'm op_ld! ### \n");
-	// printf("\n type_arg %d\n", type_arg);
-	// printf("\n type_arg %d\n", a2);
-	// printf("\n car->reg[arena[car->pos + 4]] %d\n", car->reg[arena[car->pos + 4]]);
-	// printf(" +=5 =%d\n", arena[car->pos]);
-	// car->pos += 5;
-
-	int		arg1;
-	int		arg2;
-
-	arg1 = get_arg(car, 1, arena);
-	move()
-	
-	
-	
-	
-	
-	
+	num_reg	= 0;
 	if (car->arg_type[0] == DIR_CODE)
 	{
-		
+		val = get_arg(car, 1, arena);
+		car->pos = update_pos(car->pos + 4);
+		num_reg = get_arg(car, 2, arena);
+		car->reg[MINUS_ONE(num_reg)] = val;
+		fd == -1 ? ft_printf("Can't read source file ") : 0;
+		(car->reg[MINUS_ONE(num_reg)] == 0 ? car->carry = 1 : car->carry = 0;
 	}
-	if (car->arg_type[0] == IND_CODE)
+	else if (car->arg_type[0] == IND_CODE)
 	{
-		
-		
+		val = get_arg(car, 1, arena);
+		car->pos = update_pos(car->pos + 2);
+		num_reg = get_arg(car, 2, arena);
+		car->reg[MINUS_ONE(reg)] = val;
 	}
-	
-	
-	arg2 = get_arg(car, 2, arena);
-	car->reg[arg2] = arg1;
-	if (car->reg[arg2] == 0)
-		car->carry = 1;
 	else
-		car->carry = 0;
-	if (car->arg_type[0] == DIR_CODE)
-	{
-		if (car->dir_size_status == 4)
-			car->pos += 5;
-		if (car->dir_size_status == 2)
-			car->pos += 3;
-	}
-	if (car->arg_type[0] == IND_CODE)
-		car->pos += 5;
+		car->pos = update_pos(car->pos++);
 }

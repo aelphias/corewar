@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kcharlet <kcharlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 16:35:08 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/22 18:50:15 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/22 19:13:43 by kcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-int move(t_car *car)
+int		move(t_car *car)
 {
 	int i;
 	int	move;
