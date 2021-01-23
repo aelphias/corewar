@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/23 12:46:50 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/23 20:04:52 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,10 @@ void	cycle(t_car **head_car, uint8_t *arena, t_vm *vm)
 			if (valid_op(car))
 				exec(car, arena, op, vm);
 			else
+			{
 				car->pos = update_pos(++car->pos);
+				car->pc = car->pos;
+			}
 		}
 		if (!(car->next) && (car->wait != 0))
 			break ;

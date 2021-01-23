@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:26:06 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/23 15:53:53 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/23 21:14:24 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,15 @@ void			op_ld(t_car *car, uint8_t *arena)
 	/*  WARNING!
 	* TESTING! REMOVE OR COMMENT AFTER USE! --------->
 	use with following code in .s file:
-	ld 6, r16
+	ld 5, r16
 	
-	arena[11] = 4;
-	  <------------------
+	arena[8] = 4;
+	printf("for test we added arena[8] = 4\n");
+	dump(arena);
+	 <------------------
 	*	WARNING!
 	* TESTING! REMOVE OR COMMENT AFTER USE! 
 	*/
-	
 	val = 0;
 	num_reg = 0;
 	if (car->arg_type[0] == DIR_CODE)
@@ -46,19 +47,18 @@ void			op_ld(t_car *car, uint8_t *arena)
 		car->reg[MINUS_ONE(num_reg)] = val;
 		check_carry_status(car->reg[MINUS_ONE(num_reg)], car);
 		car->pos = update_pos(car->pos + 1);
+		car->pc = car->pos;
 	}
 	else if (car->arg_type[0] == IND_CODE)
 	{
 		val = get_arg(car, 1, arena);
-		/* DEBUG!--> */
-		ft_printf("IND_VAL=%d\n",val);
-		/* <--DEBUG! */
-		car->pos = update_pos(car->pos + 2);
 		num_reg = get_arg(car, 2, arena);
- 		car->reg[MINUS_ONE(num_reg)] = val;
 		check_carry_status(car->reg[MINUS_ONE(num_reg)], car);
-		car->pos = update_pos(car->pos + 1);
+ 		car->reg[MINUS_ONE(num_reg)] = val;
+		car->pos = update_pos(car->pos + 3);
+		car->pc = car->pos;
 	}
 	else
 		car->pos = update_pos(car->pos++);
+		car->pc = car->pos;
 }

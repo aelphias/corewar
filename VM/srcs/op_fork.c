@@ -42,27 +42,36 @@
 	return (src);
 }*/
 
-void push_start_car(t_car **head, int val)
+void push_start_car(t_car **head, t_car *car, int new_adr)
 {
 	t_car *copy_car;
-	
+	int i;
+
+	i = 0;
     copy_car = ft_memalloc(sizeof(t_car));
     copy_car->next = *head;
     *head = copy_car;
+
+	copy_car->carry = car->carry;
+	while (i < 16)
+	{
+		copy_car->reg[i] = car->reg[i];
+		i++;
+	}
+	copy_car->last_live_cycle = car->last_live_cycle;
+	copy_car->pos = new_adr;
 }
 
 void	op_fork(t_car *car, uint8_t *arena)
 {
 	int arg;
+	int new_adr;
     
 	arg = get_arg(car, 1, arena);
-	// add 0 to start
-    
-	
-	push_start_car(&car, 0);
- 
-    // print updated list
-	//car_copy = a1 % IDX_MOD;
-	//car_new = clone_car(car, );
-	
+	new_adr = car->pos + (arg % IDX_MOD);
+	push_start_car(&(car->hd_cars), car, new_adr);
+	if (car->dir_size_status == 4)
+		car->pos += 4;
+	if (car->dir_size_status == 2)
+			car->pos += 2;
 }
