@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 12:14:08 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/22 22:18:45 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/23 15:55:19 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,9 @@ int		 get_arg(t_car *car, int arg_number, uint8_t *arena)
 	else if (car->arg_type[MINUS_ONE(arg_number)] == IND_CODE)
 	{
 		pos = read_int(arena, car->pos, IND_SIZE);
-		pos %= IDX_MOD;
-		value = read_int(arena, car->pos + pos, DIR_SIZE);
+		pos = update_pos(car->pos + (pos % IDX_MOD));
+		value = read_int(arena, pos, car->dir_size_status); //to check
 	}
-	//move(car);
+	//move(car); МОЖЕТ использовать ?
 	return (value);
 }
-
-/* 
-		value = car->reg[MINUS_ONE(get_byte(arena, car))];
-
- */
