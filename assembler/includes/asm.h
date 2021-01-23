@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 15:15:59 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/17 17:16:22 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/23 12:02:11 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ typedef struct			s_cmnd
 
 typedef struct			s_crw
 {
+	int					fd;
 	char				*name;
 	char				*cmnt;
 	t_cmnd				*cmds;
@@ -197,7 +198,7 @@ void	check_arg_type(t_dasm *dis, int rd_fd);
 void		write_arg(int wr_fd, t_dasm *dis, int rd_fd, int arg);
 char	*find_chcmd(t_dasm *dis);
 char		*ft_dasm_itoa(int n);
-void		core_init(t_crw *crw);
+void		core_init(int fd);
 
 
 #endif

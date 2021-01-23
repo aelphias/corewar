@@ -5,7 +5,7 @@
 		"type": "cppdbg",
 		"request": "launch",
 		"program": "${workspaceFolder}/assembler/asm",
-		"args": ["${workspaceFolder}/assembler/Gagnant.s"],
+		"args": ["${workspaceFolder}/champs/Gagnant.s"],
 		"stopAtEntry": true,
 		"cwd": "${workspaceFolder}",
 		"environment": [],

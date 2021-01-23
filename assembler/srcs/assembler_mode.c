@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:44:53 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/17 17:52:51 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/23 12:48:12 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -990,7 +990,7 @@ void		writing_command(int fd, t_crw *a)
 	}
 }
 
-void		filewrite(t_crw *a, char *line)
+void		filewrite(t_crw *crw, char *line)
 {
 	char	*file_name;
 	int		fd;
@@ -1006,8 +1006,8 @@ void		filewrite(t_crw *a, char *line)
 	file_name = join_free(file_name, ".cor", 0);
 	file_name[ft_strlen(file_name) - 1] = 0;
 	fd = open(file_name, O_WRONLY | O_CREAT | O_TRUNC, 0600);
-	write_name_comment(fd, a);
-	writing_command(fd, a);
+	write_name_comment(fd, crw);
+	writing_command(fd, crw);
 	ft_printf("Writing output program to %s\n", file_name);
 	close(fd);
 	ft_strdel(&file_name);
@@ -1039,18 +1039,39 @@ void		main_val(t_crw **ch, int fd)
 	close(fd);
 }
 
-void		core_init(t_crw *crw)
+void		core_init(int fd)
 {
-	crw->name = NULL;
+	t_crw	*crw;
+	t_cmnd	*cmnd;
+	t_lbl	*lbl;
+	t_arg	*argu;
+	
+	if (!(crw = (t_crw*)ft_memalloc(sizeof(t_crw))))
+		call_simple_error(MEM_ALL);
+	if (!(cmnd = (t_cmnd*)ft_memalloc(sizeof(t_cmnd))))
+		call_simple_error(MEM_ALL);
+	if (!(lbl = (t_lbl*)ft_memalloc(sizeof(t_lbl))))
+		call_simple_error(MEM_ALL);
+	if (!(argu = (t_arg*)ft_memalloc(sizeof(t_arg))))
+		call_simple_error(MEM_ALL);
+	crw->fd = fd;
 	crw->cmnt = NULL;
-	crw->cmds->argcount = 0;
-	crw->cmds->argz[0] = 0;
-	crw->cmds->argz[1] = 0;
-	crw->cmds->argz[2] = 0;
-	crw->cmds->bytenum = 0;
-	crw->cmds->c = 0;
-	crw->cmds->oper_code = 0;
-	crw->cmds->sizeoflbl = 0;
+	crw->name = NULL;
+	crw->next = NULL;
+	lbl->name = NULL;
+	lbl->next = NULL;
+	cmnd->argcount = 0;
+	cmnd->bytenum = 0;
+	cmnd->c = 0;
+	cmnd->name = NULL;
+	cmnd->oper_code = 0;
+	cmnd->sizeoflbl = 0;
+	cmnd->next = NULL;
+	argu->bin = 0;
+	argu->lblname = NULL;
+	argu->size = 0;
+	argu->val = 0;
+	argu->next = NULL;
 }
 
 int			assembler_mode(char *nof)
@@ -1059,17 +1080,14 @@ int			assembler_mode(char *nof)
 	int		fd;
 
 	fd = open(nof, O_RDONLY);
+	crw = NULL;
 	if (fd == -1)
 		call_simple_error(ERR_INV);
-	if (!(crw = (t_crw*)ft_memalloc(sizeof(t_crw))))
-		call_simple_error(MEM_ALL);
 	else
 	{	
-		//core_init(crw);
+		core_init(fd);
 		main_val(&crw, fd);
-		filewrite(crw->next, nof);
+		filewrite(crw, nof);
 	}
-	free(nof);
-	free(crw);
 	return (0);
 }
