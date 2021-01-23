@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+         #
+#    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/14 13:36:08 by gjigglyp          #+#    #+#              #
-#    Updated: 2021/01/16 17:13:56 by gjigglyp         ###   ########.fr        #
+#    Updated: 2021/01/18 18:52:05 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,10 +55,9 @@ $(ODIR)/%.o: %.c libft.h
 	$(CC) $(CFLAGS) $(DFLAGS) -c $(INC) $< -o $@
 
 clean:
-	@rm -rf $(ODIR)
+#	@rm -rf $(ODIR)
 
 fclean: clean
-	@rm -rf $(NAME)
+#	@rm -rf $(NAME)
 
-re: fclean all
-.SILENT: clean all re  fclean  $(NAME)
+re: all #fclean all

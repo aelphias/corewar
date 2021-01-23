@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/16 23:45:19 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/22 21:34:02 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct					s_plr
 	int							n_id;
 	uint8_t						*name;
 	uint8_t						*cmnt;
-	unsigned int				pos; 
+	long int				pos; 
 	unsigned int				codesize;
 	uint8_t						*code;
 	struct s_plr				*head;
@@ -36,8 +36,8 @@ typedef struct					s_plr
 
 typedef struct					s_vm
 {
-	unsigned int				plr_count;
-	unsigned int				lived;  // количество выполненных операий live за c_t_d
+	int							plr_count;
+	int							lived;  // количество выполненных операий live за c_t_d
 	int							car_count;
 	long int					check_count;
 	long int					cycles;
@@ -63,9 +63,9 @@ typedef struct					s_car
 {
 	int							id;
 	int							pos;
-	int							move;
+	//int							move;
 	int							reg[REG_NUMBER];
-	bool						carry;
+	int							carry;
 	bool						is_type_code;
 	int							arg[3];
 	int							arg_type[3];
@@ -87,7 +87,7 @@ typedef struct					s_op
 	bool						modify_carry;
 	unsigned int				dir_size_status;
 	unsigned int				cycles_wait;
-	void						(*func)(t_car *, uint8_t *, t_vm *);
+	void						(*func)(t_car *, uint8_t *);
 }								t_op;
 
 // pc это pos; move это step
@@ -190,33 +190,34 @@ void							check(t_vm *vm, t_car **head_car);
 void							bury_car(t_vm *vm, t_car **head_car);
 void							check_winner(t_vm *vm);
 void							get_args_type(t_car *car, unsigned char *arena, t_op *op);
-void							write_arg_type(int arg_type, t_car *car, t_op *op, int ind);
+void							write_arg_type(int arg_type, t_car *car, int ind);
 void							exec(t_car *car, uint8_t *arena, t_op *op, t_vm *vm);
-int								get_arg(t_vm *vm, t_car *car, int arg_number, uint8_t *arena);
+int								get_arg(t_car *car, int arg_number, uint8_t *arena);
 int								weight(int a, int c);
 int								move(t_car *car);
-int								read_int(const uint8_t *arena, int addr, int size);
+int								read_int(const uint8_t *arena, int pos, int size);
 /*
 **	void	operations(t_car *car, uint8_t *arena, void (**func)(t_car *, uint8_t *));
 **	void	no();
 */
 
 void							op_live(t_car *car, uint8_t *arena, t_vm *vm);
-void							op_ld(t_car *car, uint8_t *arena, t_vm *vm);
-void							op_st(t_car *car, uint8_t *arena, t_vm *vm);
-void							op_add(t_car *car, uint8_t *arena, t_vm *vm);
-void							op_sub(t_car *car, uint8_t *arena, t_vm *vm);
-void							op_and(t_car *car, uint8_t *arena, t_vm *vm);
-void							op_or(t_car *car, uint8_t *arena, t_vm *vm);
-void							op_xor(t_car *car, uint8_t *arena, t_vm *vm);
-void							op_zjmp(t_car *car, uint8_t *arena, t_vm *vm);
-void							op_ldi(t_car *car, uint8_t *arena, t_vm *vm);
-void							op_sti(t_car *car, uint8_t *arena, t_vm *vm);
-void							op_fork(t_car *car, uint8_t *arena, t_vm *vm);
-void							op_lld(t_car *car, uint8_t *arena, t_vm *vm);
-void							op_lldi(t_car *car, uint8_t *arena, t_vm *vm);
-void							op_lfork(t_car *car, uint8_t *arena, t_vm *vm);
-void							op_aff(t_car *car, uint8_t *arena, t_vm *vm);
+void							op_ld(t_car *car, uint8_t *arena);
+void							op_st(t_car *car, uint8_t *arena);
+void							op_add(t_car *car, uint8_t *arena);
+void							op_sub(t_car *car, uint8_t *arena);
+void							op_and(t_car *car, uint8_t *arena);
+void							op_or(t_car *car, uint8_t *arena);
+void							op_xor(t_car *car, uint8_t *arena);
+void							op_zjmp(t_car *car, uint8_t *arena);
+void							op_ldi(t_car *car, uint8_t *arena);
+void							op_sti(t_car *car, uint8_t *arena);
+void							op_fork(t_car *car, uint8_t *arena);
+void							op_lld(t_car *car, uint8_t *arena);
+void							op_lldi(t_car *car, uint8_t *arena);
+void							op_lfork(t_car *car, uint8_t *arena);
+void							op_aff(t_car *car, uint8_t *arena);
+
 
 /*
 **	testing
@@ -246,7 +247,7 @@ static t_op					g_op[16] = {
 		.modify_carry = false,
 		.dir_size_status = 4,
 		.cycles_wait = 10, // ПОМЕНЯТЬ НА 10
-		.func = &op_live
+		.func = NULL
 	},
 	{
 		.name = "ld",

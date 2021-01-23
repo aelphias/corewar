@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 12:14:08 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/15 21:07:58 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/22 22:18:45 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 **	^	bitwise XOR (exclusive OR)
 */
 
-int		read_int(const uint8_t *arena, int addr, int size)
+int		read_int(const uint8_t *arena, int pos, int size)
 {
 	int		result;
 	bool		sign;
@@ -25,14 +25,14 @@ int		read_int(const uint8_t *arena, int addr, int size)
 
 	result = 0;
 	
-	sign = (bool)(arena[update_pos(addr)] & 128);
+	sign = (bool)(arena[update_pos(pos)] & 128);
 	i = 0;
 	while (size)
 	{
 		if (sign)
-			result += ((arena[update_pos(addr + size - 1)] ^ 255) << (i++ * 8));
+			result += ((arena[update_pos(pos + size - 1)] ^ 255) << (i++ * 8));
 		else
-			result += arena[update_pos(addr + size - 1)] << (i++ * 8);
+			result += arena[update_pos(pos + size - 1)] << (i++ * 8);
 		size--;
 	}
 	if (sign)
@@ -40,22 +40,24 @@ int		read_int(const uint8_t *arena, int addr, int size)
 	return (result);
 }
 
-int		 get_arg(t_vm *vm, t_car *car, int arg_number, uint8_t *arena)
+int		 get_arg(t_car *car, int arg_number, uint8_t *arena)
 {
-	t_op	*op;
-	int		value;
-	int		addr;
+	t_op		*op;
+	long int	value;
+	int			pos;
 
-	op = &g_op[MINUS_ONE(car->op_code)];
+	pos = 0;
 	value = 0;
-	if (car->arg_type[MINUS_ONE(arg_number)] & T_REG)
+	op = &g_op[MINUS_ONE(car->op_code)];
+	if (car->arg_type[MINUS_ONE(arg_number)] == REG_CODE)
 		value = get_byte(arena, car);
-	else if (car->arg_type[MINUS_ONE(arg_number)] & T_DIR)
-		value = read_int(arena, car->pos + car->move, op->dir_size_status);
-	else if (car->arg_type[MINUS_ONE(arg_number)] & T_IND)
+	else if (car->arg_type[MINUS_ONE(arg_number)] == DIR_CODE)
+		value = read_int(arena, car->pos, op->dir_size_status);
+	else if (car->arg_type[MINUS_ONE(arg_number)] == IND_CODE)
 	{
-		addr = read_int(arena, car->pos + car->move, IND_SIZE);
-		value = read_int(arena, car->pos + addr % IDX_MOD, DIR_SIZE);
+		pos = read_int(arena, car->pos, IND_SIZE);
+		pos %= IDX_MOD;
+		value = read_int(arena, car->pos + pos, DIR_SIZE);
 	}
 	//move(car);
 	return (value);

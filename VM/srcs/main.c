@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/16 23:54:17 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/22 21:51:18 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,24 @@ void ft_free_vm(t_vm *vm)
 {
 	
 }
+*/
 void ft_free_plr(t_plr *plr)
 {
-	
-} */
+	t_plr *tmp;
+
+	while (plr != NULL)
+    {
+       tmp = plr;
+       plr = plr->next;
+       //free(tmp);
+	   ft_memdel((void**)&tmp->cmnt);
+	   ft_memdel((void**)&tmp->code);
+	   ft_memdel((void**)&tmp->name);
+	   ft_memdel((void**)&tmp);
+    }
+} 
+
+
 
 int		main(int argc, char **argv)
 {
@@ -73,6 +87,7 @@ int		main(int argc, char **argv)
 	//test(vm, plr);
 	introduce_plrs(plr);
 	fill_arena(plr, arena);
+	arena[7] = 5;
 	game(&car, arena, vm);
 /*
 *	6. test
@@ -80,11 +95,18 @@ int		main(int argc, char **argv)
 	
 	// print_list(plr);
 	// print_list_car(car);
-	return (0);
-}
 
 /*
+*	7. free
+*/
+
+	ft_free_plr(plr);
+	ft_memdel((void**)&vm);
+	
+	return (0);
+}
+/*
 * TODO
-* 0. free() структуры при ошибке
-* 1. развернуть список игроков/
+* 0. free() структуры при ошибке  
+* [+] 1. развернуть список игроков/
 */

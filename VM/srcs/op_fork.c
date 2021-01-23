@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_fork.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 16:42:16 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/16 13:25:31 by sdarron          ###   ########.fr       */
+/*   Updated: 2021/01/22 18:16:52 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,27 @@
 	}
 	return (src);
 }*/
- 
 
-void	op_fork(t_car *car, uint8_t *arena, t_vm *vm)
+void push_start_car(t_car **head, int val)
 {
-	int a1;
-	t_car *car_new;
+	t_car *copy_car;
 	
+    copy_car = ft_memalloc(sizeof(t_car));
+    copy_car->next = *head;
+    *head = copy_car;
+}
+
+void	op_fork(t_car *car, uint8_t *arena)
+{
+	int arg;
+    
+	arg = get_arg(car, 1, arena);
+	// add 0 to start
+    
+	
+	push_start_car(&car, 0);
+ 
+    // print updated list
 	//car_copy = a1 % IDX_MOD;
 	//car_new = clone_car(car, );
 	

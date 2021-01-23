@@ -1,4 +1,4 @@
 .name		"affer"
 .comment	":-)"
 
-aff r1
+aff r2

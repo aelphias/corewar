@@ -22,7 +22,6 @@ void	init_car(t_plr *plr, t_car **head, int pos)
 	car->parent_car = plr->id;
 	car->pos = pos;
 	car->next = NULL;
-	//car->live = 1;
 	car->id = plr->id; // инициализацию вызываем в цикле для каждой каретки, id растет на единицу
 	if (!(*head))
 		*head = car;
@@ -37,7 +36,7 @@ t_car	*make_car(t_plr *plr, t_vm *vm)
 {
 	// создание структуры под каретки
 	int				equalizer;
-	unsigned int	count;
+	int				count;
 	int				tmp;
 	t_car			*car;
 	

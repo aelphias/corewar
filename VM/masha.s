@@ -1,4 +1,4 @@
-.name		"masha"
-.comment	"ou eeh"
+.name		"sveta"
+.comment	"oh eeh"
 
-and %1,%1,r3
+and %192,%1,r3

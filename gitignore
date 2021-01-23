@@ -5,8 +5,7 @@ corewar
 VM/obj/
 asm/obj/
 libft/libft.a
-libft/objects/ft_atoi.o
-.DS_Store
+libft/objects/*
 corewar
 libft/libft.a
 .gitignore
