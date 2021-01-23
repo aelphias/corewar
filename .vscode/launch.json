@@ -15,7 +15,6 @@
 	]
 }
 
-
 /* 
 {
 	"configurations": [
@@ -33,3 +32,9 @@
 	}
 	]
 } */
+
+/* 
+заготовки для дебаггинга:
+
+		"args": ["${workspaceFolder}/VM/ld_dir.cor"],
+*/

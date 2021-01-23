@@ -6,35 +6,26 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:11:43 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/22 21:51:18 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/23 12:36:35 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-/*
-void ft_free_vm(t_vm *vm)
-{
-	
-}
-*/
 void ft_free_plr(t_plr *plr)
 {
 	t_plr *tmp;
 
 	while (plr != NULL)
-    {
-       tmp = plr;
-       plr = plr->next;
-       //free(tmp);
-	   ft_memdel((void**)&tmp->cmnt);
-	   ft_memdel((void**)&tmp->code);
-	   ft_memdel((void**)&tmp->name);
-	   ft_memdel((void**)&tmp);
-    }
+	{
+		tmp = plr;
+		plr = plr->next;
+		ft_memdel((void**)&tmp->cmnt);
+		ft_memdel((void**)&tmp->code);
+		ft_memdel((void**)&tmp->name);
+		ft_memdel((void**)&tmp);
+	}
 } 
-
-
 
 int		main(int argc, char **argv)
 {
@@ -87,7 +78,7 @@ int		main(int argc, char **argv)
 	//test(vm, plr);
 	introduce_plrs(plr);
 	fill_arena(plr, arena);
-	arena[7] = 5;
+	//arena[7] = 5;
 	game(&car, arena, vm);
 /*
 *	6. test

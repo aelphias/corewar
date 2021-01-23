@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:28:19 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/21 21:58:45 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/23 10:08:46 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	op_sub(t_car *car, uint8_t *arena)
 	arg1 = get_arg(car, 1, arena);
 	arg2 = get_arg(car, 2, arena);
 	arg3 = get_arg(car, 3, arena);
-	val = car->reg[arg1] - car->reg[arg2];
+	val = car->reg[arg1] - car->reg[arg2];//  TO_DO обращение к reg через MINUS_ONE
 	car->reg[arg3] = val;
 	if (val)
 		car->carry = 1;
