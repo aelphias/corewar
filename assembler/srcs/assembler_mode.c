@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:44:53 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/23 14:56:04 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/23 15:56:43 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,6 @@ char	*coreparse(int fd, int size, char *cmd)
 	char	*end;
 	int		err;
 
-	err = 1;
 	while ((err = get_next_line(fd, &line)) > 0)
 	{
 		if (!ft_strstr(line, cmd))
@@ -307,7 +306,7 @@ int	find_label(t_crw *a, char *name, int num)
 	return (i);
 }
 
-void	parse_codage(t_cmnd **c)
+void	parse_c(t_cmnd **c)
 {
 	t_arg	*args;
 	int		codage;
@@ -357,7 +356,7 @@ void		addval(int fd, t_crw **a)
 	{
 		arg = start->in;
 		if (start->c)
-			parse_codage(&start);
+			parse_c(&start);
 		while (arg)
 		{
 			if ((int)arg->val == -1 && arg->lblname)

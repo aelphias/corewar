@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 15:15:59 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/23 14:26:38 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/23 15:56:43 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ int		checker_end(char *line, int len2, char **line2);
 int				copy_to(char *line, char **line2, int len, int size);
 void	ft_what_byte(t_crw **a);
 int	find_label(t_crw *a, char *name, int num);
-void	parse_codage(t_cmnd **c);
+void	parse_c(t_cmnd **c);
 void	check_commands(t_cmnd *a);
 char	*j_f(char *line, char *line2, int flag);
 void		addval(int fd, t_crw **a);
