@@ -6,13 +6,13 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 16:40:54 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/16 16:47:15 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/23 14:26:02 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-char	*join_free(char *line, char *line2, int flag)
+char	*j_f(char *line, char *line2, int flag)
 {
 	char	*line3;
 	char	*line4;
@@ -40,11 +40,11 @@ int	len_to(char *str, char c)
 
 	i = 0;
 	c == '%' ? i += 1 : i + 0;
-	while (str[i])
+	i = -1;
+	while (str[++i])
 	{
 		if (str[i] == c)
 			break ;
-		i++;
 	}
 	return (i + 1);
 }

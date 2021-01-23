@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 15:15:59 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/23 12:02:11 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/23 14:26:38 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,14 +146,14 @@ char	*write_in_str(char *line, int fd, int size);
 char	*coreparse(int fd, int size, char *cmnd);
 char	**comname(int fd, t_crw **a);
 void	check_lenth(char *line, int size);
-void		remove_newline(char **line);
+void		remnl(char **line);
 int		checker_end(char *line, int len2, char **line2);
 int				copy_to(char *line, char **line2, int len, int size);
 void	ft_what_byte(t_crw **a);
 int	find_label(t_crw *a, char *name, int num);
 void	parse_codage(t_cmnd **c);
 void	check_commands(t_cmnd *a);
-char	*join_free(char *line, char *line2, int flag);
+char	*j_f(char *line, char *line2, int flag);
 void		addval(int fd, t_crw **a);
 int	len_to(char *str, char c);
 void	matclean(char **matrix);
@@ -199,6 +199,7 @@ void		write_arg(int wr_fd, t_dasm *dis, int rd_fd, int arg);
 char	*find_chcmd(t_dasm *dis);
 char		*ft_dasm_itoa(int n);
 void		core_init(int fd);
+void 		free_crw(t_crw	*crw);
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 19:26:03 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/16 16:35:57 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/23 14:22:00 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,9 @@ int	ft_read_line(char **line, int fd, char **left)
 
 int	get_next_line(const int fd, char **line)
 {
-	 char *left[11000];
+	char *left[11000];
 
+	ft_bzero(left, 11000);
 	if (!line || fd < 0 || fd > 11000 || read(fd, NULL, 0) < 0)
 		return (-1);
 	if (left[fd] && ft_strchr(left[fd], '\n'))

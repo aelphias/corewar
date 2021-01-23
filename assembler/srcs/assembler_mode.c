@@ -6,7 +6,7 @@
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:44:53 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/23 12:48:12 by gjigglyp         ###   ########.fr       */
+/*   Updated: 2021/01/23 14:56:04 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,15 +82,14 @@ void	chcmd(char *line)
 {
 	int	i;
 
-	i = 0;
+	i = -1;
 	com_tr(line, ';', COMMENT_CHAR);
-	while (line[i])
+	while (line[i++])
 	{
 		if (line[i] == COMMENT_CHAR)
 			break ;
 		else if (line[i] != ' ' && line[i] != '\t')
 			call_simple_error(LEX_ERR);
-		i++;
 	}
 }
 
@@ -161,6 +160,7 @@ char	*coreparse(int fd, int size, char *cmd)
 	char	*end;
 	int		err;
 
+	err = 1;
 	while ((err = get_next_line(fd, &line)) > 0)
 	{
 		if (!ft_strstr(line, cmd))
@@ -183,17 +183,17 @@ char	*coreparse(int fd, int size, char *cmd)
 	return (end);
 }
 
-char		**comname(int fd, t_crw **a)
+char		**comname(int fd, t_crw **crw)
 {
 	char	*line;
 	char	*end;
 	char	**arr;
 
 	end = ft_memalloc(1);
-	(*a)->name = coreparse(fd, PROG_NAME_LENGTH, NAME_CMD_STRING);
-	(*a)->cmnt = coreparse(fd, COMMENT_LENGTH, COMMENT_CMD_STRING);
+	(*crw)->name = coreparse(fd, PROG_NAME_LENGTH, NAME_CMD_STRING);
+	(*crw)->cmnt = coreparse(fd, COMMENT_LENGTH, COMMENT_CMD_STRING);
 	while (get_next_line(fd, &line))
-		end = join_free(end, line, 1);
+		end = j_f(end, line, 1);
 	arr = ft_strsplit(end, '\n');
 	ft_strdel(&end);
 	return (arr);
@@ -210,7 +210,7 @@ void	check_lenth(char *line, int size)
 	}
 }
 
-void		remove_newline(char **line)
+void		remnl(char **line)
 {
 	char	*buf;
 
@@ -224,35 +224,35 @@ int		checker_end(char *line, int len2, char **line2)
 {
 	if (line[len2 + len_to(line + len2, '"') - 1] == '"')
 	{
-		remove_newline(line2);
+		remnl(line2);
 		ft_strdel(&line);
 		return (1);
 	}
 	return (0);
 }
 
-int				copy_to(char *line, char **line2, int len, int size)
+int				copy_to(char *line, char **line2, int ln, int size)
 {
-	int			len2;
+	int			ln2;
 	char		*buf;
 	int			check;
 
-	len2 = 0;
+	ln2 = 0;
 	check = 0;
-	if (len == 1)
-		while (line[len2] && line[len2] != '"')
-			len2++;
-	if (len == 1)
-		len2++;
-	if (len_to(line + len2, '"') == 1)
-		*line2 = join_free(*line2, "", 0);
+	if (ln == 1)
+		while (line[ln2] && line[ln2] != '"')
+			ln2++;
+	if (ln == 1)
+		ln2++;
+	if (len_to(line + ln2, '"') == 1)
+		*line2 = j_f(*line2, "", 0);
 	else
 	{
-		buf = ft_strndup(line + len2, len_to(line + len2, '"') - 1);
-		*line2 = join_free(*line2, buf, 1);
+		buf = ft_strndup(line + ln2, len_to(line + ln2, '"') - 1);
+		*line2 = j_f(*line2, buf, 1);
 	}
 	check_lenth(*line2, size);
-	if (checker_end(line, len2, line2) == 1)
+	if (checker_end(line, ln2, line2) == 1)
 		return (1);
 	ft_strdel(&line);
 	return (0);
@@ -380,7 +380,7 @@ void	arg_dirlbl(char *line, int c, int i, t_cmnd **b)
 	else
 		buff = ft_strdup(line + 2);
 	check_namlbl(buff);
-	a = (t_arg*)ft_memalloc(sizeof(t_arg));
+	a = (t_arg*)malloc(sizeof(t_arg));
 	a->size = g_op[c].t_dir_size;
 	a->val = -1;
 	a->bin = 2;
@@ -1003,7 +1003,7 @@ void		filewrite(t_crw *crw, char *line)
 		file_name = ft_strdup(".cor");
 	else
 		file_name = ft_strndup(line, size_file);
-	file_name = join_free(file_name, ".cor", 0);
+	file_name = j_f(file_name, ".cor", 0);
 	file_name[ft_strlen(file_name) - 1] = 0;
 	fd = open(file_name, O_WRONLY | O_CREAT | O_TRUNC, 0600);
 	write_name_comment(fd, crw);
@@ -1033,6 +1033,8 @@ void		main_val(t_crw **ch, int fd)
 	else
 	{
 		s = *ch;
+		while (s->next)
+			s = s->next;
 		s->next = ch1;
 		ch1->next = 0;
 	}
@@ -1046,13 +1048,13 @@ void		core_init(int fd)
 	t_lbl	*lbl;
 	t_arg	*argu;
 	
-	if (!(crw = (t_crw*)ft_memalloc(sizeof(t_crw))))
+	if (!(crw = (t_crw*)malloc(sizeof(t_crw))))
 		call_simple_error(MEM_ALL);
-	if (!(cmnd = (t_cmnd*)ft_memalloc(sizeof(t_cmnd))))
+	if (!(cmnd = (t_cmnd*)malloc(sizeof(t_cmnd))))
 		call_simple_error(MEM_ALL);
-	if (!(lbl = (t_lbl*)ft_memalloc(sizeof(t_lbl))))
+	if (!(lbl = (t_lbl*)malloc(sizeof(t_lbl))))
 		call_simple_error(MEM_ALL);
-	if (!(argu = (t_arg*)ft_memalloc(sizeof(t_arg))))
+	if (!(argu = (t_arg*)malloc(sizeof(t_arg))))
 		call_simple_error(MEM_ALL);
 	crw->fd = fd;
 	crw->cmnt = NULL;
@@ -1062,6 +1064,9 @@ void		core_init(int fd)
 	lbl->next = NULL;
 	cmnd->argcount = 0;
 	cmnd->bytenum = 0;
+	cmnd->argz[0] = 0;
+	cmnd->argz[1] = 0;
+	cmnd->argz[2] = 0;
 	cmnd->c = 0;
 	cmnd->name = NULL;
 	cmnd->oper_code = 0;
@@ -1072,6 +1077,13 @@ void		core_init(int fd)
 	argu->size = 0;
 	argu->val = 0;
 	argu->next = NULL;
+}
+
+void 		free_crw(t_crw	*crw)
+{
+	free(crw->cmnt);
+	free(crw->name);
+	free(crw->next);
 }
 
 int			assembler_mode(char *nof)
@@ -1089,5 +1101,6 @@ int			assembler_mode(char *nof)
 		main_val(&crw, fd);
 		filewrite(crw, nof);
 	}
+	free_crw(crw);
 	return (0);
 }
