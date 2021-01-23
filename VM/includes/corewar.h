@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/23 13:00:16 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/23 19:59:27 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct					s_car
 {
 	int							id;
 	int							pos;
-	//int							move;
+	int							pc;
 	int							reg[REG_NUMBER];
 	int							carry;
 	bool						is_type_code;

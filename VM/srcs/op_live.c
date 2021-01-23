@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:24:48 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/21 22:03:54 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/23 20:08:36 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,5 @@ void	op_live(t_car *car, uint8_t *arena, t_vm *vm)
 		}
 	}
 	car->pos = update_pos(car->pos + move(car));
+	car->pc = car->pos;
 }
