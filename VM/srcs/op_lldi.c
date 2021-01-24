@@ -47,4 +47,5 @@ void	op_lldi(t_car *car, uint8_t *arena)
 			car->pos += 2;
 	}
 	car->pos++;
+	car->pc = car->pos;
 }

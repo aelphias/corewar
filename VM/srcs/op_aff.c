@@ -25,5 +25,6 @@ void	op_aff(t_car *car, uint8_t *arena)
 		val = car->reg[MINUS_ONE(arg)];
 		ft_printf("Aff: %c\n", (char)val % 256);
 		car->pos += 1;
+		car->pc = car->pos;
 	}
 }

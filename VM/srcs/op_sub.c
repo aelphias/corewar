@@ -29,4 +29,5 @@ void	op_sub(t_car *car, uint8_t *arena)
 	else
 		car->carry = 0;
 	car->pos += 3;
+	car->pc = car->pos;
 }

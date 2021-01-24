@@ -39,6 +39,7 @@ void		op_st(t_car *car, uint8_t *arena)
 		put_value_in_arena(arena, new_adr, val_in_reg1, DIR_SIZE);
 	}
 	car->pos = update_pos(car->pos + 1);
+	car->pc = car->pos;
 }
 
 

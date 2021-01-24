@@ -51,4 +51,5 @@ void	op_and(t_car *car, uint8_t *arena)
 	if (car->arg_type[1] == T_IND)
 		car->pos += 4;
 	car->pos++;
+	car->pc = car->pos;
 }

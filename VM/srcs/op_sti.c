@@ -47,4 +47,5 @@ void	op_sti(t_car *car, uint8_t *arena)
 		if (car->dir_size_status == 2)
 			car->pos += 2;
 	}
+	car->pc = car->pos;
 }

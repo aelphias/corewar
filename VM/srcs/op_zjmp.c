@@ -19,4 +19,5 @@ void	op_zjmp(t_car *car, uint8_t *arena)
 	arg = get_arg(car, 1, arena);
 	if (car->carry == 1)
 		car->pos = car->pos + (arg % IDX_MOD);
+	car->pc = car->pos;
 }
