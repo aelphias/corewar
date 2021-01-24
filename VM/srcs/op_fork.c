@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 16:42:16 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/24 12:53:10 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/24 13:00:32 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,5 @@ void	op_fork(t_car *car, uint8_t *arena)
 		car->pos += 4;
 	if (car->dir_size_status == 2)
 			car->pos += 2;
+	car->pc = car->pos;
 }

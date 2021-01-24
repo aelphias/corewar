@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:37:23 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/24 12:54:26 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/24 13:00:46 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	op_lfork(t_car *car, uint8_t *arena)
 {
 	int arg;
-    int new_adr;
+	int new_adr;
 
 	new_adr = 0;
 	arg = get_arg(car, 1, arena);
@@ -25,4 +25,5 @@ void	op_lfork(t_car *car, uint8_t *arena)
 		car->pos += 4;
 	if (car->dir_size_status == 2)
 		car->pos += 2;
+	car->pc = car->pos;
 }
