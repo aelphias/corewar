@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_st.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 22:14:14 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/24 20:20:11 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/25 00:22:51 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void		op_st(t_car *car, uint8_t *arena)
 	val_in_reg1 = 0;
 	arg2 = 0;
 	val_in_reg1 = car->reg[MINUS_ONE(get_arg(car, 1, arena))];
+	car->pos = update_pos(car->pos + 1);
 	if (car->arg_type[1] == REG_CODE)
 	{
 		arg2 = get_arg(car, 2, arena);
@@ -35,7 +36,6 @@ void		op_st(t_car *car, uint8_t *arena)
 		put_value_in_arena(arena, new_adr, val_in_reg1, DIR_SIZE);
 		car->pos = update_pos(car->pos + 2);
 	}
-	car->pos = update_pos(car->pos + 1);
 	car->pc = car->pos;
 }
 
