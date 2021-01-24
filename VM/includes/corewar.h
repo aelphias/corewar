@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/24 12:53:10 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/24 18:15:02 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ typedef struct					s_count
 /*
 **  t_car  Struct for carriges(processes)
 **	car->pos = has every step of carrriage
-**	car->pc jumps from command to command
+**	car->pc jumps from command to command ()
 */
 
 typedef struct					s_car
@@ -105,7 +105,6 @@ typedef struct					s_op
 	unsigned int				cycles_wait;
 	void						(*func)(t_car *, uint8_t *);
 }								t_op;
-
 
 /*
 **	init car
@@ -210,6 +209,9 @@ int								weight(int a, int c);
 int								move(t_car *car);
 int								read_int(const uint8_t *arena, int pos, int size);
 void							push_new_car(t_car **head, t_car *car, int new_adr);
+void							choose_1(t_car *car, uint8_t *arena);
+void							choose_2(t_car *car, uint8_t *arena);
+
 /*
 **	void	operations(t_car *car, uint8_t *arena, void (**func)(t_car *, uint8_t *));
 **	void	no();
@@ -425,7 +427,8 @@ static t_op					g_op[16] = {
 		.modify_carry = false,
 		.dir_size_status = 4,
 		.cycles_wait = 2,
-		.func = &op_aff
+		.func = NULL
+		//.func = &op_aff
 	}
 };
 

@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:56:48 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/23 20:04:52 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/24 19:14:01 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	check(t_vm *vm, t_car **head_car)
 	vm->lived = 0;
 }
  
-void	exec(t_car *car, uint8_t *arena, t_op *op, t_vm *vm)
+void	 exec(t_car *car, uint8_t *arena, t_op *op, t_vm *vm)
 {
 	car->dir_size_status = op->dir_size_status;  // (Размер T_DIR) бывает  4 и 2 byte
 	car->is_type_code = op->is_type_code;
@@ -36,7 +36,7 @@ void	exec(t_car *car, uint8_t *arena, t_op *op, t_vm *vm)
 	if (car->op_code == 1)
 		op_live(car, arena, vm);
 	else
-		op->func(car, arena);   // и здесь мы страртуем операции
+		choose_1(car, arena);
 }
 
 bool	valid_op(t_car *car)
@@ -68,7 +68,10 @@ void	cycle(t_car **head_car, uint8_t *arena, t_vm *vm)
 		if (car->wait == 0)
 		{
 			if (valid_op(car))
+			{
+				op = &g_op[MINUS_ONE(car->op_code)];
 				exec(car, arena, op, vm);
+			}
 			else
 			{
 				car->pos = update_pos(++car->pos);
@@ -93,13 +96,13 @@ void	game(t_car **head_car, uint8_t *arena, t_vm *vm)
 		if (vm->cycles == vm->dump)
 		{
 			dump(arena); //CHECK THIS
-			return ;  
+			return ;
 		}
 	}
 	ft_printf("vm->cycles = %d\n", vm->cycles);
 	ft_printf("vm->cycles_to_die = %d\n", vm->cycles_to_die);
 	ft_printf("Player %d, won !\n", vm->winner_id);
 }
-/* 
+/*
 ** Если код операции ошибочен, переместить каретку на следующий байт.
 */

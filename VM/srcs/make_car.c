@@ -21,6 +21,7 @@ void	init_car(t_plr *plr, t_car **head, int pos)
 	car->reg[0] = -(plr->id);
 	car->parent_car = plr->id;
 	car->pos = pos;
+	car->pc = car->pos;
 	car->next = NULL;
 	car->id = plr->id; // инициализацию вызываем в цикле для каждой каретки, id растет на единицу
 	if (!(*head))
