@@ -21,7 +21,6 @@ void push_new_car(t_car **head, t_car *car, int new_adr)
 	copy_car = ft_memalloc(sizeof(t_car));
 	copy_car->next = *head;
 	*head = copy_car;
-
 	copy_car->carry = car->carry;
 	while (i < 16)
 	{

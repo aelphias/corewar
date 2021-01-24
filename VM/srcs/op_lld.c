@@ -26,8 +26,8 @@ void	op_lld(t_car *car, uint8_t *arena)
 		addr = read_int(arena, car->pos, IND_SIZE);
 		arg1 = read_int(arena, car->pos + addr, DIR_SIZE);
 	}
-	car->reg[arg2] = arg1;
-	if (car->reg[arg2] == 0)
+	car->reg[arg2 - 1] = arg1;
+	if (car->reg[arg2 - 1] == 0)
 		car->carry = 1;
 	else
 		car->carry = 0;

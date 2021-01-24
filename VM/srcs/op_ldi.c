@@ -25,7 +25,7 @@ void		op_ldi(t_car *car, uint8_t *arena)
 	arg3 = get_arg(car, 3, arena);
 	new_adr = (arg1 + arg2) % IDX_MOD;
 	val = read_int(arena, new_adr, 4);
-	car->reg[arg3] = val;
+	car->reg[arg3 - 1] = val;
 	if (car->arg_type[0] == T_REG)
 		car->pos++;
 	if (car->arg_type[0] == T_DIR)

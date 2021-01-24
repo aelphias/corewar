@@ -22,8 +22,8 @@ void	op_xor(t_car *car, uint8_t *arena)
 	arg1 = get_arg(car, 1, arena);
 	arg2 = get_arg(car, 2, arena);
 	arg3 = get_arg(car, 3, arena);
-	val = car->reg[arg1] ^ car->reg[arg2];
-	car->reg[arg3] = val;
+	val = car->reg[arg1 - 1] ^ car->reg[arg2 - 1];
+	car->reg[arg3 - 1] = val;
 	if (val == 0)
 		car->carry = 1;
 	else
