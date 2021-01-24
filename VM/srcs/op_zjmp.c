@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_zjmp.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:32:30 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/21 21:58:45 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/24 23:44:14 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@ void	op_zjmp(t_car *car, uint8_t *arena)
 	arg = get_arg(car, 1, arena);
 	if (car->carry == 1)
 		car->pos = car->pos + (arg % IDX_MOD);
+
 	car->pc = car->pos;
 }

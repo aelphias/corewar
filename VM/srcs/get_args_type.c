@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_args_type.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 18:19:27 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/24 19:04:33 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/24 23:30:36 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,7 @@ void	get_args_type(t_car *car, unsigned char *arena, t_op *op)
 			write_arg_type((arg_type & 0b00001100) >> 2, car, 3);
 	}
 	else
-	{
 		car->arg_type[0] = DIR_CODE;
-		//car->arg_type[0] = op->args_types[0] == DIR_CODE;
-	}
 }
 
 /* 
