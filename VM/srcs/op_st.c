@@ -24,16 +24,16 @@ void		op_st(t_car *car, uint8_t *arena)
 	val_in_reg1 = car->reg[MINUS_ONE(get_arg(car, 1, arena))];
 	if (car->arg_type[1] == REG_CODE)
 	{
-		car->pos = update_pos(car->pos + 1);
 		arg2 = get_arg(car, 2, arena);
 		car->reg[MINUS_ONE(arg2)] = val_in_reg1;
+		car->pos = update_pos(car->pos + 1);
 	}
 	else if(car->arg_type[1] == IND_CODE)
 	{
-		car->pos = update_pos(car->pos + 2);
 		arg2 = get_arg(car, 2, arena);
 		new_adr = update_pos(car->pos + (arg2 % IDX_MOD)); //check +1 here
 		put_value_in_arena(arena, new_adr, val_in_reg1, DIR_SIZE);
+		car->pos = update_pos(car->pos + 2);
 	}
 	car->pos = update_pos(car->pos + 1);
 	car->pc = car->pos;
