@@ -1,0 +1,14 @@
+.DS_Store
+*.o
+*.a
+corewar
+VM/obj/
+asm/obj/
+libft/libft.a
+libft/objects/*
+corewar
+libft/libft.a
+*.cor
+assembler/asm
+*.dSYM
+VM/corewar.dSYM
