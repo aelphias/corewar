@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 16:42:16 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/24 12:37:46 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/24 12:53:10 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@
 	return (src);
 }*/
 
-void push_start_car(t_car **head, t_car *car, int new_adr)
+void push_new_car(t_car **head, t_car *car, int new_adr)
 {
-/* 	t_car *copy_car;
+	t_car *copy_car;
 	int i;
 
 	i = 0;
@@ -59,19 +59,19 @@ void push_start_car(t_car **head, t_car *car, int new_adr)
 		i++;
 	}
 	copy_car->last_live_cycle = car->last_live_cycle;
-	copy_car->pos = new_adr; */
+	copy_car->pos = new_adr;
 }
 
 void	op_fork(t_car *car, uint8_t *arena)
 {
-/* 	int arg;
+	int arg;
 	int new_adr;
 
 	arg = get_arg(car, 1, arena);
 	new_adr = car->pos + (arg % IDX_MOD);
-	push_start_car(&(car->hd_cars), car, new_adr);
+	push_new_car(&(car->hd_cars), car, new_adr);
 	if (car->dir_size_status == 4)
 		car->pos += 4;
 	if (car->dir_size_status == 2)
-			car->pos += 2; */
+			car->pos += 2;
 }

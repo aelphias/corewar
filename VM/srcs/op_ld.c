@@ -6,13 +6,13 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:26:06 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/23 21:14:24 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/24 12:42:20 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static int		check_carry_status(int val, t_car *car)
+void		check_carry_status(int val, t_car *car)
 {
 	if (val == 0)
 		car->carry = 1;

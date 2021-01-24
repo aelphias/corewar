@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/24 12:31:13 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/24 12:53:10 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,7 +209,7 @@ int								get_arg(t_car *car, int arg_number, uint8_t *arena);
 int								weight(int a, int c);
 int								move(t_car *car);
 int								read_int(const uint8_t *arena, int pos, int size);
-void							push_start_car(t_car **head, t_car *car, int new_adr);
+void							push_new_car(t_car **head, t_car *car, int new_adr);
 /*
 **	void	operations(t_car *car, uint8_t *arena, void (**func)(t_car *, uint8_t *));
 **	void	no();
