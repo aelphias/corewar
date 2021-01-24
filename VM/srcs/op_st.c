@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 22:14:14 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/24 11:30:12 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/24 20:20:11 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,12 @@ void		op_st(t_car *car, uint8_t *arena)
 {
 	int		val_in_reg1;
 	int		new_adr;
-	int		arg1;
 	int		arg2;
 	
 	new_adr = 0;
 	val_in_reg1 = 0;
-	arg1 = 0;
 	arg2 = 0;
-	arg1 = get_arg(car, 1, arena);
-	val_in_reg1 = car->reg[MINUS_ONE(arg1)];
+	val_in_reg1 = car->reg[MINUS_ONE(get_arg(car, 1, arena))];
 	if (car->arg_type[1] == REG_CODE)
 	{
 		car->pos = update_pos(car->pos + 1);
