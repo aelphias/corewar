@@ -73,5 +73,6 @@ void	op_fork(t_car *car, uint8_t *arena)
 	if (car->dir_size_status == 4)
 		car->pos += 4;
 	if (car->dir_size_status == 2)
-			car->pos += 2;
+		car->pos += 2;
+	car->pc = car->pos;
 }
