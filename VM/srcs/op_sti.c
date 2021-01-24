@@ -23,7 +23,7 @@ void	op_sti(t_car *car, uint8_t *arena)
 	arg1 = get_arg(car, 1, arena);
 	arg2 = get_arg(car, 2, arena);
 	arg3 = get_arg(car, 3, arena);
-	val1 = car->reg[arg1];
+	val1 = car->reg[arg1 - 1];
 	new_adr = car->pos + (arg2 + arg3) % IDX_MOD;
 	put_value_in_arena(arena, new_adr, val1, 4);
 	car->pos++;
