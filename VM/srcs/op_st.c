@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 22:14:14 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/23 18:15:28 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/24 11:30:12 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@ void		op_st(t_car *car, uint8_t *arena)
 	int		val_in_reg1;
 	int		new_adr;
 	int		arg1;
-	int		arg2; //занулить
-	car->reg[MINUS_ONE(2)]= 3;
-	arena[11] = 4;
+	int		arg2;
+	
 	new_adr = 0;
 	val_in_reg1 = 0;
 	arg1 = 0;
@@ -40,7 +39,6 @@ void		op_st(t_car *car, uint8_t *arena)
 		put_value_in_arena(arena, new_adr, val_in_reg1, DIR_SIZE);
 	}
 	car->pos = update_pos(car->pos + 1);
-	dump(arena);
 }
 
 
@@ -51,7 +49,8 @@ void		op_st(t_car *car, uint8_t *arena)
 	use with following code in .s file:
 	st r2, 1
 	<------------------
-
+car->reg[MINUS_ONE(2)]= 3;
+	arena[11] = 4;
 	dump(arena);
 	arena[11] = 4;
 	car->reg[MINUS_ONE(2)] = 42;
