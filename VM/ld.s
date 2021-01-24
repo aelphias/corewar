@@ -1,4 +1,4 @@
 .name		"ld"
 .comment	""
 
-ld %0, r2
+ld %4, r2

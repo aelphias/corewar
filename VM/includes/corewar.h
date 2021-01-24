@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/24 18:15:02 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/24 19:35:14 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,12 @@ typedef struct					s_op
 	unsigned int				cycles_wait;
 	void						(*func)(t_car *, uint8_t *);
 }								t_op;
+
+typedef struct					s_op_ld
+{
+	int		val;
+	int		num_reg;
+}								t_op_ld;
 
 /*
 **	init car

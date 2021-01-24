@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 19:13:14 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/22 21:39:45 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/24 19:42:10 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,3 +71,16 @@ printf("READING FROM ARENA%\n");
 	}
 		printf("<-->\n");
  */
+
+/*  WARNING!
+** TESTING! REMOVE OR COMMENT AFTER USE! --------->
+**use with following code in .s file:
+**ld 5, r16
+**
+**arena[8] = 4;
+**printf("for test we added arena[8] = 4\n");
+**dump(arena);
+** <------------------
+**	WARNING!
+**TESTING! REMOVE OR COMMENT AFTER USE!
+*/
