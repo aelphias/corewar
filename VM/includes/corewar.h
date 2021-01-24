@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/23 19:59:27 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/24 12:31:13 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,15 @@ typedef struct					s_plr
 	struct s_plr				*next;
 }								t_plr;
 
+/*
+** t_vm - main struct keeps variables to count essentials for the game
+** lived  - number of live operations performed per c_t_d
+*/
+
 typedef struct					s_vm
 {
 	int							plr_count;
-	int							lived;  // количество выполненных операий live за c_t_d
+	int							lived;
 	int							car_count;
 	long int					check_count;
 	long int					cycles;
@@ -50,6 +55,10 @@ typedef struct					s_vm
 	int							last_check_cycle;
 }								t_vm;
 
+/*
+**	t_count is needed to parse champion file
+*/
+
 typedef struct					s_count
 {
 	int							c;
@@ -58,6 +67,12 @@ typedef struct					s_count
 	int							k;
 	int							l;
 }								t_count;
+
+/*
+**  t_car  Struct for carriges(processes)
+**	car->pos = has every step of carrriage
+**	car->pc jumps from command to command
+*/
 
 typedef struct					s_car
 {
@@ -74,6 +89,7 @@ typedef struct					s_car
 	unsigned int				op_code;
 	unsigned int				wait;
 	unsigned int				dir_size_status;
+	struct s_car				*hd_cars;
 	struct s_car				*next;
 }								t_car;
 
@@ -90,7 +106,6 @@ typedef struct					s_op
 	void						(*func)(t_car *, uint8_t *);
 }								t_op;
 
-// pc это pos; move это step
 
 /*
 **	init car
@@ -137,7 +152,7 @@ void							fill_arena(t_plr *plr, uint8_t *arena);
 void							ft_copy_code(uint8_t *dst, uint8_t *src, int codesize);
 
 /*
-**	инициализация t_vm, t_op, t_plr
+**	init t_vm, t_op, t_plr
 */
 
 void							init_vm(t_vm *vm);
@@ -152,8 +167,6 @@ void							init_plr(t_vm *vm, t_plr *plr);
 void 							check_flags(int argc, char **argv, t_vm *vm);
 void 							check_n_flags(int argc, char **argv, t_plr *plr);
 t_plr	 						*ft_parse(int argc, char **argv, int i, int id);
-
-
 
 
 /*
@@ -196,6 +209,7 @@ int								get_arg(t_car *car, int arg_number, uint8_t *arena);
 int								weight(int a, int c);
 int								move(t_car *car);
 int								read_int(const uint8_t *arena, int pos, int size);
+void							push_start_car(t_car **head, t_car *car, int new_adr);
 /*
 **	void	operations(t_car *car, uint8_t *arena, void (**func)(t_car *, uint8_t *));
 **	void	no();
@@ -217,7 +231,6 @@ void							op_lld(t_car *car, uint8_t *arena);
 void							op_lldi(t_car *car, uint8_t *arena);
 void							op_lfork(t_car *car, uint8_t *arena);
 void							op_aff(t_car *car, uint8_t *arena);
-
 
 /*
 **	testing
