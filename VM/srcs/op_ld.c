@@ -46,3 +46,4 @@ void			op_ld(t_car *car, uint8_t *arena)
 		car->pos = update_pos(car->pos + 1);
 	car->pc = car->pos;
 }
+ 

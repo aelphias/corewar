@@ -40,7 +40,10 @@ void	get_args_type(t_car *car, unsigned char *arena, t_op *op)
 			write_arg_type((arg_type & 0b00001100) >> 2, car, 3);
 	}
 	else
-		car->arg_type[0] = op->args_types[0]; DIR_CODE;
+	{
+		car->arg_type[0] = DIR_CODE;
+		//car->arg_type[0] = op->args_types[0] == DIR_CODE;
+	}
 }
 
 /* 
