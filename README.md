@@ -1,4 +1,4 @@
-# corewar
+# Сorewar
 
 Как пушить в нужную ветку (VM):
 git clone https://github.com/aelphias/corewar.git
@@ -38,7 +38,7 @@ git checkout похожа на  cd в bash - переходит на другу�
 
 7. Защитить
 
- #TESTS
+ # Тесты
 Тестируем и записываем:
  https://docs.google.com/spreadsheets/d/1E21lOwIcS1PcFKoMY4xsvl0rVSb48lg4JJHWoKvhXP0/edit?usp=sharing
 
