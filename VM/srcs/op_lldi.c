@@ -36,7 +36,7 @@ void	op_lldi(t_car *car, uint8_t *arena)
 			car->pos += 2;
 	}
 	if (car->arg_type[0] == T_IND)
-		car->pos += 4;
+		car->pos += 2;
 	if (car->arg_type[1] == T_REG)
 		car->pos++;
 	if (car->arg_type[1] == T_DIR)

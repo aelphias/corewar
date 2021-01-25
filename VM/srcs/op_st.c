@@ -26,16 +26,15 @@ void		op_st(t_car *car, uint8_t *arena)
 	{
 		arg2 = get_arg(car, 2, arena);
 		car->reg[MINUS_ONE(arg2)] = val_in_reg1;
-		car->pos = update_pos(car->pos + 1);
+		car->pos = update_pos(car->pos + 2);
 	}
 	else if(car->arg_type[1] == IND_CODE)
 	{
 		arg2 = get_arg(car, 2, arena);
 		new_adr = update_pos(car->pos + (arg2 % IDX_MOD)); //check +1 here
 		put_value_in_arena(arena, new_adr, val_in_reg1, DIR_SIZE);
-		car->pos = update_pos(car->pos + 2);
+		car->pos = update_pos(car->pos + 4);
 	}
-	car->pos = update_pos(car->pos + 1);
 	car->pc = car->pos;
 }
 
@@ -47,7 +46,7 @@ void		op_st(t_car *car, uint8_t *arena)
 	use with following code in .s file:
 	st r2, 1
 	<------------------
-car->reg[MINUS_ONE(2)]= 3;
+	car->reg[MINUS_ONE(2)]= 3;
 	arena[11] = 4;
 	dump(arena);
 	arena[11] = 4;

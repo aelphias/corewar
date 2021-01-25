@@ -39,6 +39,6 @@ void	op_lld(t_car *car, uint8_t *arena)
 			car->pos += 3;
 	}
 	if (car->arg_type[0] == T_IND)
-		car->pos += 5;
+		car->pos += 3;
 	car->pc = car->pos;
 }
