@@ -5,7 +5,7 @@
 		"type": "cppdbg",
 		"request": "launch",
 		"program": "${workspaceFolder}/VM/corewar",
-		 "args": ["${workspaceFolder}/VM/st.cor"],
+		 "args": ["${workspaceFolder}/VM/st_reg_to_reg.cor"],
 		"stopAtEntry": true,
 		"cwd": "${workspaceFolder}",
 		"environment": [],

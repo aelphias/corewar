@@ -12,3 +12,5 @@ libft/libft.a
 assembler/asm
 *.dSYM
 VM/corewar.dSYM
+unit-tests/*
+checker_unit
