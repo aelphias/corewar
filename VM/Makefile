@@ -6,7 +6,7 @@
 #    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2021/01/24 18:06:28 by aelphias         ###   ########.fr        #
+#    Updated: 2021/01/25 21:04:10 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -109,12 +109,13 @@ directory: $(OBJDIR)
 clean:
 	rm -rf $(OBJ_DIR) $(LIB_A)
 	make -C $(LIB_DIR) clean
-	echo "\\033[31m Deleting object files... \033[0m"
+	echo "\\033[31m Deleting object files...  \033[0m"
 
 fclean: clean
 	rm -f $(NAME) $(LIB_A)
 	make -C $(LIB_DIR) fclean
-	echo "\\033[31m Deleting $(NAME)... \033[0m"
+	rm *.cor
+	echo "\\033[31m Deleting $(NAME)... and *.cor \033[0m"
 
 re: fclean all
 
