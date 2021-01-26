@@ -6,7 +6,7 @@
 #    By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2021/01/16 16:47:30 by gjigglyp         ###   ########.fr        #
+#    Updated: 2021/01/24 15:47:08 by gjigglyp         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,8 @@ SRC_L_D		=	./srcs/
 HEAD		=	$(INC_DIR)asm.h
 INC			=	-I$(LIB_DIR) -I$(INC_DIR)
 
-SRC_ASM 	=	main.c assembler_mode.c dasm_find_n_check.c dasm_header_and_cmds.c \
-				dasm_writing_manipulations.c disassembler_mode.c utils.c utils2.c utils3.c
+SRC_ASM 	=	main.c assembler_mode.c asm_split_n_check.c asm_skip.c asm_reader.c asm_writer.c asm_check1.c utils1.c \
+				asm_filler.c utils2.c asm_label_operations.c asm_cmd_ops.c utils3.c asm_getsetarg.c asm_types.c
 OBJ_AS		=	$(SRC_ASM:%.c=%.o)
 SRCS_AS		=	$(addprefix $(SRC_L_D), $(SRC_ASM))
 OBJ_ASM		=	$(addprefix $(OBJ_DIR), $(OBJ_AS))
