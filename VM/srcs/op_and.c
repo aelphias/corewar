@@ -20,16 +20,8 @@ void	op_and(t_car *car, uint8_t *arena)
 	int val;
 
 	arg1 = get_arg(car, 1, arena);
-	arg2 = get_arg(car, 2, arena);
-	arg3 = get_arg(car, 3, arena);
-	val = car->reg[arg1 - 1] & car->reg[arg2 - 1];
-	car->reg[arg3 - 1] = val;
-	if (val == 0)
-		car->carry = 1;
-	else
-		car->carry = 0;
 	if (car->arg_type[0] == T_REG)
-		car->pos++;
+		car->pos += 1;
 	if (car->arg_type[0] == T_DIR)
 	{
 		if (car->dir_size_status == 4)
@@ -39,8 +31,9 @@ void	op_and(t_car *car, uint8_t *arena)
 	}
 	if (car->arg_type[0] == T_IND)
 		car->pos += 2;
+	arg2 = get_arg(car, 2, arena);
 	if (car->arg_type[1] == T_REG)
-		car->pos++;
+		car->pos += 1;
 	if (car->arg_type[1] == T_DIR)
 	{
 		if (car->dir_size_status == 4)
@@ -50,6 +43,13 @@ void	op_and(t_car *car, uint8_t *arena)
 	}
 	if (car->arg_type[1] == T_IND)
 		car->pos += 2;
-	car->pos++;
+	arg3 = get_arg(car, 3, arena);
+	car->pos += 1;
+	val = car->reg[arg1 - 1] & car->reg[arg2 - 1];
+	car->reg[arg3 - 1] = val;
+	if (val == 0)
+		car->carry = 1;
+	else
+		car->carry = 0;
 	car->pc = car->pos;
 }

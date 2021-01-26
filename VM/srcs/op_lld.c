@@ -18,7 +18,6 @@ void	op_lld(t_car *car, uint8_t *arena)
 	int		arg2;
 	int		addr;
 
-	arg2 = get_arg(car, 2, arena);
 	if (car->arg_type[0] == T_DIR)
 		arg1 = get_arg(car, 1, arena);
 	if (car->arg_type[0] == T_IND)
@@ -26,19 +25,21 @@ void	op_lld(t_car *car, uint8_t *arena)
 		addr = read_int(arena, car->pos, IND_SIZE);
 		arg1 = read_int(arena, car->pos + addr, DIR_SIZE);
 	}
+	if (car->arg_type[0] == T_DIR)
+	{
+		if (car->dir_size_status == 4)
+			car->pos += 4;
+		if (car->dir_size_status == 2)
+			car->pos += 2;
+	}
+	if (car->arg_type[0] == T_IND)
+		car->pos += 2;
+	arg2 = get_arg(car, 2, arena);
+	car->pos += 1;
 	car->reg[arg2 - 1] = arg1;
 	if (car->reg[arg2 - 1] == 0)
 		car->carry = 1;
 	else
 		car->carry = 0;
-	if (car->arg_type[0] == T_DIR)
-	{
-		if (car->dir_size_status == 4)
-			car->pos += 5;
-		if (car->dir_size_status == 2)
-			car->pos += 3;
-	}
-	if (car->arg_type[0] == T_IND)
-		car->pos += 3;
 	car->pc = car->pos;
 }

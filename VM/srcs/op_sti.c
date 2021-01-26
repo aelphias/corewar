@@ -21,14 +21,10 @@ void	op_sti(t_car *car, uint8_t *arena)
 	int new_adr;
 
 	arg1 = get_arg(car, 1, arena);
+	car->pos += 1;
 	arg2 = get_arg(car, 2, arena);
-	arg3 = get_arg(car, 3, arena);
-	val1 = car->reg[arg1 - 1];
-	new_adr = car->pos + (arg2 + arg3) % IDX_MOD;
-	put_value_in_arena(arena, new_adr, val1, 4);
-	car->pos++;
 	if (car->arg_type[1] == T_REG)
-		car->pos++;
+		car->pos += 1;
 	if (car->arg_type[1] == T_DIR)
 	{
 		if (car->dir_size_status == 4)
@@ -38,8 +34,9 @@ void	op_sti(t_car *car, uint8_t *arena)
 	}
 	if (car->arg_type[1] == T_IND)
 		car->pos += 2;
+	arg3 = get_arg(car, 3, arena);
 	if (car->arg_type[2] == T_REG)
-		car->pos++;
+		car->pos += 1;
 	if (car->arg_type[2] == T_DIR)
 	{
 		if (car->dir_size_status == 4)
@@ -47,5 +44,8 @@ void	op_sti(t_car *car, uint8_t *arena)
 		if (car->dir_size_status == 2)
 			car->pos += 2;
 	}
+	val1 = car->reg[arg1 - 1];
+	new_adr = car->pos + (arg2 + arg3) % IDX_MOD;
+	put_value_in_arena(arena, new_adr, val1, 4);
 	car->pc = car->pos;
 }

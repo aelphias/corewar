@@ -27,7 +27,7 @@ void	op_lldi(t_car *car, uint8_t *arena)
 	val = read_int(arena, new_adr, 4);
 	car->reg[arg3 - 1] = val;
 	if (car->arg_type[0] == T_REG)
-		car->pos++;
+		car->pos += 1;
 	if (car->arg_type[0] == T_DIR)
 	{
 		if (car->dir_size_status == 4)
@@ -46,6 +46,6 @@ void	op_lldi(t_car *car, uint8_t *arena)
 		if (car->dir_size_status == 2)
 			car->pos += 2;
 	}
-	car->pos++;
+	car->pos += 1;
 	car->pc = car->pos;
 }

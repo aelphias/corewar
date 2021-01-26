@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 12:14:08 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/24 15:59:02 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/25 12:47:44 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int		 get_arg(t_car *car, int arg_number, uint8_t *arena)
 	if (car->arg_type[MINUS_ONE(arg_number)] == REG_CODE)
 		value = get_byte(arena, car);
 	else if (car->arg_type[MINUS_ONE(arg_number)] == DIR_CODE)
-		value = read_int(arena, car->pos, op->dir_size_status);
+		value = read_int(arena, car->pos, car->dir_size_status); //car->dir_size_status changed from op->dir_size_status - 25.01.2021
 	else if (car->arg_type[MINUS_ONE(arg_number)] == IND_CODE)
 	{
 		addr = read_int(arena, car->pos, IND_SIZE);

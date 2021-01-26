@@ -6,34 +6,41 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 22:14:14 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/24 20:20:11 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/25 13:12:20 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
+/*
+**	st: take a registry and a registry or an indirect and store the value of the
+**	registry toward a second argument. Its opcode is 0x03. For example,st r1,
+**	42store thevalue of r1 at the address (PC + (42 % IDX_MOD))
+*/
+
 void		op_st(t_car *car, uint8_t *arena)
 {
-	int		val_in_reg1;
+	int		value;
 	int		new_adr;
-	int		arg2;
+	int		destination;
 	
 	new_adr = 0;
-	val_in_reg1 = 0;
-	arg2 = 0;
-	val_in_reg1 = car->reg[MINUS_ONE(get_arg(car, 1, arena))];
+	value = 0;
+	destination = 0;
+	value = car->reg[MINUS_ONE(get_arg(car, 1, arena))];
+	car->pos = update_pos(car->pos + 1);
 	if (car->arg_type[1] == REG_CODE)
 	{
-		arg2 = get_arg(car, 2, arena);
-		car->reg[MINUS_ONE(arg2)] = val_in_reg1;
-		car->pos = update_pos(car->pos + 2);
+		destination = get_arg(car, 2, arena);
+		car->reg[MINUS_ONE(destination)] = value;
+		car->pos = update_pos(car->pos + 1);
 	}
 	else if(car->arg_type[1] == IND_CODE)
 	{
-		arg2 = get_arg(car, 2, arena);
-		new_adr = update_pos(car->pos + (arg2 % IDX_MOD)); //check +1 here
-		put_value_in_arena(arena, new_adr, val_in_reg1, DIR_SIZE);
-		car->pos = update_pos(car->pos + 4);
+		destination = read_int(arena, update_pos(car->pos), IND_SIZE); // read_int size IND
+		new_adr = update_pos(car->pc + (destination % IDX_MOD)); //check +1 here
+		put_value_in_arena(arena, new_adr, value, DIR_SIZE);
+		car->pos = update_pos(car->pos + 2);
 	}
 	car->pc = car->pos;
 }
