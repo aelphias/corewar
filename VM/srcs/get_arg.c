@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 12:14:08 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/22 22:18:45 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/25 12:47:44 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,26 +44,20 @@ int		 get_arg(t_car *car, int arg_number, uint8_t *arena)
 {
 	t_op		*op;
 	long int	value;
-	int			pos;
+	int			addr;
 
-	pos = 0;
+	addr = 0;
 	value = 0;
 	op = &g_op[MINUS_ONE(car->op_code)];
 	if (car->arg_type[MINUS_ONE(arg_number)] == REG_CODE)
 		value = get_byte(arena, car);
 	else if (car->arg_type[MINUS_ONE(arg_number)] == DIR_CODE)
-		value = read_int(arena, car->pos, op->dir_size_status);
+		value = read_int(arena, car->pos, car->dir_size_status); //car->dir_size_status changed from op->dir_size_status - 25.01.2021
 	else if (car->arg_type[MINUS_ONE(arg_number)] == IND_CODE)
 	{
-		pos = read_int(arena, car->pos, IND_SIZE);
-		pos %= IDX_MOD;
-		value = read_int(arena, car->pos + pos, DIR_SIZE);
+		addr = read_int(arena, car->pos, IND_SIZE);
+		addr = update_pos(car->pc + (addr % IDX_MOD));
+		value = read_int(arena, addr, car->dir_size_status); //to check car->dir_size_status
 	}
-	//move(car);
 	return (value);
 }
-
-/* 
-		value = car->reg[MINUS_ONE(get_byte(arena, car))];
-
- */

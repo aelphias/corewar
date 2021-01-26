@@ -4,32 +4,38 @@
 		"name": "(lldb) Launch",
 		"type": "cppdbg",
 		"request": "launch",
-		"program": "${workspaceFolder}/assembler/asm",
-		"args": ["${workspaceFolder}/champs/Gagnant.s"],
+		"program": "${workspaceFolder}/VM/corewar",
+		 "args": ["${workspaceFolder}/VM/st_reg_to_reg.cor"],
 		"stopAtEntry": true,
 		"cwd": "${workspaceFolder}",
 		"environment": [],
 		"externalConsole": false,
 		"MIMode": "lldb"
 	}
-	]
+]
 }
-
 
 /* 
 {
 	"configurations": [
-	{
-		"name": "(lldb) Launch",
-		"type": "cppdbg",
-		"request": "launch",
-		"program": "${workspaceFolder}/assembler/asm",
-		"args": ["${workspaceFolder}/assembler/test.s"],
-		"stopAtEntry": true,
-		"cwd": "${workspaceFolder}",
-		"environment": [],
-		"externalConsole": false,
-		"MIMode": "lldb"
-	}
+		{
+			"name": "(lldb) Launch",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/assembler/asm",
+			"args": ["${workspaceFolder}/assembler/test.s"],
+			"stopAtEntry": true,
+			"cwd": "${workspaceFolder}",
+			"environment": [],
+			"externalConsole": false,
+			"MIMode": "lldb"
+		}
 	]
-} */
+	} */
+	
+	/* 
+	заготовки для дебаггинга, просто перетащите строку зажав OPTION KEY + стрелочка
+	"args": ["${workspaceFolder}/VM/live.cor", "${workspaceFolder}/VM/live.cor", "${workspaceFolder}/VM/live.cor", "${workspaceFolder}/VM/live.cor"],
+	"args": ["${workspaceFolder}/VM/ld_ind.cor"],
+
+*/

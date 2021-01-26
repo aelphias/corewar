@@ -5,47 +5,98 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/16 14:13:50 by gjigglyp          #+#    #+#             */
-/*   Updated: 2021/01/16 14:22:48 by gjigglyp         ###   ########.fr       */
+/*   Created: 2021/01/24 15:11:39 by gjigglyp          #+#    #+#             */
+/*   Updated: 2021/01/26 17:03:33 by gjigglyp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-/*
-** подсчет длины числа
-*/
-
-static int	ft_numlen(int n, int minus)
+t_cmnd			*init_cm_lst(t_cmnd *cmnd, int id_cm, t_crw *crw)
 {
-	int		numlen;
+	t_cmnd		*cmnds;
+	int			i;
 
-	numlen = 1;
-	while ((n /= 10))
-		numlen++;
-	return (numlen + minus);
+	i = 0;
+	cmnds = crw->cmnd;
+	while (cmnds->next != NULL)
+	{
+		i += cmnds->size;
+		cmnds = cmnds->next;
+	}
+	cmnd->cm_code = g_op[id_cm - 1].code;
+	ft_bzero(cmnd->argument, 3);
+	ft_bzero(cmnd->arg_is_lbl, 3);
+	ft_bzero(cmnd->argument_size, 3);
+	cmnd->size = 0;
+	cmnd->pos = crw->size_code;
+	crw->last_cmnd = cmnd;
+	return (cmnd);
 }
 
-char		*ft_dasm_itoa(int n)
+char			**get_clean(char **args, int nb_arg)
 {
-	char	*str;
-	int		nl;
-	int		minus_sign_marker;
-	int		dig;
+	char		**res;
+	char		***tmp;
+	int			i;
 
-	minus_sign_marker = (n < 0) ? 1 : 0;
-	nl = ft_numlen(n, minus_sign_marker);
-	if ((str = ft_strnew((size_t)nl)))
+	res = (char**)ft_memalloc(sizeof(char*) * 4);
+	tmp = (char***)ft_memalloc(sizeof(char**) * (nb_arg + 1));
+	i = 0;
+	while (i < nb_arg)
 	{
-		str[nl--] = '\0';
-		while (nl >= minus_sign_marker)
-		{
-			dig = n % 10;
-			str[nl--] = (char)((dig < 0 ? -dig : dig) + '0');
-			n /= 10;
-		}
-		if (minus_sign_marker)
-			str[0] = '-';
+		tmp[i] = ft_strsplit(args[i], ',');
+		i++;
 	}
-	return (str);
+	split_args(res, tmp, nb_arg);
+	free(tmp);
+	return (res);
+}
+
+void			commcheck(char **args, int nb_arg)
+{
+	int			i;
+	int			j;
+	int			c;
+
+	c = 0;
+	i = 0;
+	while (i < nb_arg)
+	{
+		j = 0;
+		while (args[i][j])
+		{
+			if (args[i][j] == ',')
+				c += 1;
+			j++;
+		}
+		i++;
+	}
+	if (nb_arg == 3 && c != 2)
+		call_simple_error("ERROR: invalid argument(s) at line\n");
+	if (nb_arg == 2 && c != 1)
+		call_simple_error("ERROR: invalid argument(s) at line\n");
+	if (nb_arg == 1 && c != 0)
+		call_simple_error("ERROR: invalid argument(s) at line\n");
+}
+
+void			minch(char **args, int nb_arg)
+{
+	int			i;
+	int			j;
+
+	i = 0;
+	while (i < nb_arg)
+	{
+		j = 1;
+		if (args[i][0] == '%')
+			j = 2;
+		while (args[i][j])
+		{
+			if (args[i][j] == '-')
+				call_simple_error("ERROR: invalid argument(s) at line\n");
+			j++;
+		}
+		i++;
+	}
 }

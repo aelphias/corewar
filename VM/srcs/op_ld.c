@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   op_ld.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:26:06 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/22 21:53:22 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/24 23:53:30 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static int		check_carry_status(int val, t_car *car)
+void			check_carry_status(int val, t_car *car)
 {
 	if (val == 0)
 		car->carry = 1;
@@ -22,29 +22,28 @@ static int		check_carry_status(int val, t_car *car)
 
 void			op_ld(t_car *car, uint8_t *arena)
 {
-	int		val;
-	int		num_reg;
+	t_op_ld		ld;
 
-	val = 0;
-	num_reg = 0;
+	ft_bzero(&ld, sizeof(t_op_ld));
 	if (car->arg_type[0] == DIR_CODE)
 	{
-		val = get_arg(car, 1, arena);
+		ld.val = get_arg(car, 1, arena);
 		car->pos = update_pos(car->pos + 4);
-		num_reg = get_arg(car, 2, arena);
-		car->reg[MINUS_ONE(num_reg)] = val;
-		check_carry_status(car->reg[MINUS_ONE(num_reg)], car);
+		ld.num_reg = get_arg(car, 2, arena);
+		car->reg[MINUS_ONE(ld.num_reg)] = ld.val;
+		check_carry_status(car->reg[MINUS_ONE(ld.num_reg)], car);
 		car->pos = update_pos(car->pos + 1);
 	}
 	else if (car->arg_type[0] == IND_CODE)
 	{
-		val = get_arg(car, 1, arena);
-		car->pos = update_pos(car->pos + 2);
-		num_reg = get_arg(car, 2, arena);
- 		car->reg[MINUS_ONE(num_reg)] = val;
-		check_carry_status(car->reg[MINUS_ONE(num_reg)], car);
-		car->pos = update_pos(car->pos + 1);
+		ld.val = get_arg(car, 1, arena);
+		ld.num_reg = get_arg(car, 2, arena);
+		check_carry_status(car->reg[MINUS_ONE(ld.num_reg)], car);
+		car->reg[MINUS_ONE(ld.num_reg)] = ld.val;
+		car->pos = update_pos(car->pos + 3);
 	}
 	else
-		car->pos = update_pos(car->pos++);
+		car->pos = update_pos(car->pos + 1);
+	car->pc = car->pos;
 }
+ 

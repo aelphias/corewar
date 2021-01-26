@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_args_type.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 18:19:27 by kcharlet          #+#    #+#             */
-/*   Updated: 2021/01/22 21:58:37 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/01/24 23:30:36 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	get_args_type(t_car *car, unsigned char *arena, t_op *op)
 	{
 		car->pos = update_pos(++car->pos);
 		arg_type = get_byte(arena, car);
-		
 		if (op->args_amount >= 1)
 			write_arg_type((arg_type & 0b11000000) >> 6, car, 1);
 		if (op->args_amount >= 2)
@@ -43,3 +42,7 @@ void	get_args_type(t_car *car, unsigned char *arena, t_op *op)
 	else
 		car->arg_type[0] = DIR_CODE;
 }
+
+/* 
+** нужна проветка на подавемые аргументы
+*/

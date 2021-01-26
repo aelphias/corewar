@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sdarron <sdarron@student.42.fr>            +#+  +:+       +#+         #
+#    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2021/01/16 16:45:42 by sdarron          ###   ########.fr        #
+#    Updated: 2021/01/25 21:04:10 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,8 @@ VM_SRC_LIST	= print_error.c \
 			  func_for_parsing.c \
 			  get_arg.c\
 			  move.c \
-			  put_value_in_arena.c
+			  put_value_in_arena.c\
+			  choose.c
 			  #check_winner
 
 SRC_VM		= $(VM_SRC_DIR), $(VM_SRC_LIST))
@@ -108,12 +109,13 @@ directory: $(OBJDIR)
 clean:
 	rm -rf $(OBJ_DIR) $(LIB_A)
 	make -C $(LIB_DIR) clean
-	echo "\\033[31m Deleting object files... \033[0m"
+	echo "\\033[31m Deleting object files...  \033[0m"
 
 fclean: clean
 	rm -f $(NAME) $(LIB_A)
 	make -C $(LIB_DIR) fclean
-	echo "\\033[31m Deleting $(NAME)... \033[0m"
+	rm *.cor
+	echo "\\033[31m Deleting $(NAME)... and *.cor \033[0m"
 
 re: fclean all
 

@@ -21,13 +21,8 @@ void		op_ldi(t_car *car, uint8_t *arena)
 	int val;
 
 	arg1 = get_arg(car, 1, arena);
-	arg2 = get_arg(car, 2, arena);
-	arg3 = get_arg(car, 3, arena);
-	new_adr = (arg1 + arg2) % IDX_MOD;
-	val = read_int(arena, new_adr, 4);
-	car->reg[arg3] = val;
 	if (car->arg_type[0] == T_REG)
-		car->pos++;
+		car->pos += 1;
 	if (car->arg_type[0] == T_DIR)
 	{
 		if (car->dir_size_status == 4)
@@ -36,9 +31,10 @@ void		op_ldi(t_car *car, uint8_t *arena)
 			car->pos += 2;
 	}
 	if (car->arg_type[0] == T_IND)
-		car->pos += 4;
+		car->pos += 2;
+	arg2 = get_arg(car, 2, arena);
 	if (car->arg_type[1] == T_REG)
-		car->pos++;
+		car->pos += 1;
 	if (car->arg_type[1] == T_DIR)
 	{
 		if (car->dir_size_status == 4)
@@ -46,5 +42,10 @@ void		op_ldi(t_car *car, uint8_t *arena)
 		if (car->dir_size_status == 2)
 			car->pos += 2;
 	}
-	car->pos++;
+	arg3 = get_arg(car, 3, arena);
+	car->pos += 1;
+	new_adr = (arg1 + arg2) % IDX_MOD;
+	val = read_int(arena, new_adr, 4);
+	car->reg[arg3 - 1] = val;
+	car->pc = car->pos;
 }
