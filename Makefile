@@ -6,7 +6,7 @@
 #    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/24 20:51:23 by aelphias          #+#    #+#              #
-#    Updated: 2021/02/02 20:24:52 by aelphias         ###   ########.fr        #
+#    Updated: 2021/02/02 20:27:19 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -146,7 +146,7 @@ $(LIB_A):
 
 #make obj
 $(OBJ_DIR_VM)%.o: $(SRC_L_D_VM)%.c $(HEAD_VM) $(LIB_HEAD)
-	$(CC) $(FLAGS) -c $(INC_VM) $< -o $@
+	@$(CC) $(FLAGS) -c $(INC_VM) $< -o $@
 $(OBJ_DIR_ASM)%.o: $(SRC_L_D_ASM)%.c $(HEAD_ASM)
 	@$(CC) $(FLAGS) -c $(INC_ASM) $< -o $@
 
@@ -159,7 +159,7 @@ clean:
 
 fclean: clean
 	@rm -rf $(COREWAR) $(ASM) $(LIB_A)
-	@echo "\\033[31m Deleting $(NAME)... and *.cor \033[0m"
+	@echo "\\033[31m Deleting $(NAME)... \033[0m"
 	@echo " \033[1;31m▆\\033[1;31m▆\\033[1;31m▆\\033[1;31m▆\\033[1;31m▆\\033[1;31m▆\\033[1;31m▆\033[0m"
 	@echo "\\033[31m COREWAR project's binaries and .o/.cor files were completely deleted!!! \033[0m"
 	@echo " \033[1;31m▆\\033[1;31m▆\\033[1;31m▆\\033[1;31m▆\\033[1;31m▆\\033[1;31m▆\\033[1;31m▆\n\033[0m"
