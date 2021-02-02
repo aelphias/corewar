@@ -1,0 +1,30 @@
+**COREWAR -> VM**
+
+We have:
+	- REG_NUMBER registers
+	- PC - a register that has address of next set of instructions to execute
+	- a flag carry
+champions posed evenly on arena
+Processes executed sequantially.
+VM must check processes after every CYCLE_TO_DIE periods 
+---> to answer the question if process executed "live" at least 1 time.
+if at least 1 NBR_LIVE execution of live has been since last check
+	---> decrease CYCLE_TO_DIE of CYCLE_DELTA units
+GAME OVER when all processes are dead
+WINNER -->  who last reported alive
+
+Given asm can show code with annotation: ./asm -a file.s
+Good champions:
+./corewar -n Octobre_Rouge_V4.2.cor Gagnant.cor  
+--
+	if live executed --> decrease CYCLE_TO_DIE units
+--
+memory is circular
+--
+Чтобы player жил --> execute live with plr_id
+--
+live: The instruction that allows a process to stay alive. 
+It can also record that the player whose number is the argument
+ is indeed alive. No argument’s coding byte, opcode 0x01.
+ Oh and its only argument is on 4 bytes.
+
