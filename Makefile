@@ -6,7 +6,7 @@
 #    By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/24 20:51:23 by aelphias          #+#    #+#              #
-#    Updated: 2021/02/02 18:59:02 by gjigglyp         ###   ########.fr        #
+#    Updated: 2021/02/02 20:19:07 by gjigglyp         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -114,39 +114,53 @@ SRCS_AS		=	$(addprefix $(SRC_L_D_ASM), $(ASM_SRC_LIST))
 OBJ_ASM		=	$(addprefix $(OBJ_DIR_ASM), $(OBJ_AS))
 
 all:  $(OBJ_DIR_VM) $(COREWAR) $(OBJ_DIR_ASM) $(ASM)
+	@echo " \033[1;37m▆\\033[1;33m▆\\033[1;36m▆\\033[1;32m▆\\033[1;35m▆\\033[1;31m▆\\033[1;34m▆\\033[1;30m▆\033[0m"
+	@echo "\\033[33m COREWAR project has been compliled successfully!\033[0m"
+	@echo " \033[1;37m▆\\033[1;33m▆\\033[1;36m▆\\033[1;32m▆\\033[1;35m▆\\033[1;31m▆\\033[1;34m▆\\033[1;30m▆\033[0m"
 
 #create obj dir
 $(OBJ_DIR_VM):
-	mkdir -p $(OBJ_DIR_VM)
+	@mkdir -p $(OBJ_DIR_VM)
 
 $(OBJ_DIR_ASM):
-	mkdir -p $(OBJ_DIR_ASM)
+	@mkdir -p $(OBJ_DIR_ASM)
 
 #create ASM proj
 $(ASM): $(LIB_A) $(OBJ_ASM)
-	$(CC) $(FLAGS) $(INC_ASM) $(OBJ_ASM) $(LIB_A) -o $(ASM)
+	@echo "\\033[32m Prepare assembler for the COREWAR project... \033[0m"
+	@$(CC) $(FLAGS) $(INC_ASM) $(OBJ_ASM) $(LIB_A) -o $(ASM)
+	@echo "\033[1;36mASM is compliled successfully\033[0m"
 
 
 #create VM proj
 $(COREWAR): $(LIB_A) $(O_VM)
-	$(CC) $(FLAGS) $(INC_VM) $(O_VM) $(LIB_A) -o $(COREWAR)
+	@echo "\\033[32m Prepare virtual machine for the COREWAR project... \033[0m"
+	@$(CC) $(FLAGS) $(INC_VM) $(O_VM) $(LIB_A) -o $(COREWAR)
+	@echo "\033[1;36mVM is compliled successfully\033[0m"
 
 #create libc
 $(LIB_A):
-	$(MAKE) -sC $(LIB_DIR) CFLAGS="$(CFLAGS)"
+	@echo "\\033[34m Prepare libft... \033[0m"
+	@$(MAKE) -sC $(LIB_DIR) CFLAGS="$(CFLAGS)"
 
 #make obj
 $(OBJ_DIR_VM)%.o: $(SRC_L_D_VM)%.c $(HEAD_VM)
-	$(CC) $(FLAGS) -c $(INC_VM) $< -o $@
+	@$(CC) $(FLAGS) -c $(INC_VM) $< -o $@
 $(OBJ_DIR_ASM)%.o: $(SRC_L_D_ASM)%.c $(HEAD_ASM)
-	$(CC) $(FLAGS) -c $(INC_ASM) $< -o $@
+	@$(CC) $(FLAGS) -c $(INC_ASM) $< -o $@
 
 #directory: @$(OBJ_DIR)
 
 clean:
-	rm -rf $(OBJ_DIR_ASM) $(OBJ_DIR_VM) $(LIB_OBJ)
+	@rm -rf $(OBJ_DIR_ASM) $(OBJ_DIR_VM) $(LIB_OBJ)
+	@echo "\\033[31m Deleting object files...  \033[0m"
+	@echo "\\033[31m Object files were deleted!!! \033[0m"
 
 fclean: clean
-	rm -rf $(COREWAR) $(ASM) $(LIB_A)
+	@rm -rf $(COREWAR) $(ASM) $(LIB_A)
+	@echo "\\033[31m Deleting $(NAME)... and *.cor \033[0m"
+	@echo " \033[1;31m▆\\033[1;31m▆\\033[1;31m▆\\033[1;31m▆\\033[1;31m▆\\033[1;31m▆\\033[1;31m▆\033[0m"
+	@echo "\\033[31m COREWAR project's binaries and .o/.cor files were completely deleted!!! \033[0m"
+	@echo " \033[1;31m▆\\033[1;31m▆\\033[1;31m▆\\033[1;31m▆\\033[1;31m▆\\033[1;31m▆\\033[1;31m▆\n\033[0m"
 	
 re: fclean all
