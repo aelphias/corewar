@@ -3,111 +3,61 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+         #
+#    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/12/14 20:15:08 by aelphias          #+#    #+#              #
-#    Updated: 2021/02/01 15:02:57 by gjigglyp         ###   ########.fr        #
+#    Created: 2021/01/14 13:36:08 by gjigglyp          #+#    #+#              #
+#    Updated: 2021/02/02 19:17:42 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	../corewar
-CC			=	gcc
-FLAGS		=	-Wall -Wextra -Werror -g
+NAME = libft.a
 
-LIB_DIR		=	../libft/
-LIB_A		=	$(LIB_DIR)libft.a
-LIB_HEAD	=	$(LIB_DIR)libft.h
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror 
 
-####################DIRS########################################################
+INC = -I ./includes
+SOURCES =	ft_abs.c ft_absi.c ft_absll.c ft_apply_flags.c ft_atoi.c ft_atoi_base.c ft_atol.c ft_bubblesort_array.c \
+			ft_bzero.c ft_ceil.c ft_clamp.c ft_cmp.c ft_data.c  ft_double_tool.c ft_error.c ft_fclamp.c ft_foreach.c \
+			ft_freesplit.c ft_hash.c ft_htoi.c ft_intnew.c ft_delcontent.c ft_is_power_of_x.c ft_isalnum.c ft_isalpha.c \
+			ft_isascii.c ft_isblank.c ft_isdigit.c ft_isempty.c ft_isgraph.c ft_islower.c \
+			ft_isprint.c ft_ispunct.c ft_isspace.c ft_isupper.c ft_iswascii.c ft_itoa.c ft_itoa_base.c \
+			ft_lennb.c ft_lltoa_base.c ft_lltoa_base_ten.c ft_lstadd.c ft_lstd_collapse.c ft_lstd_del.c \
+			ft_lstd_pop_front.c ft_lstd_push_back.c ft_lstd_push_front.c ft_lstdel.c ft_lstdelone.c\
+			ft_lstiter.c ft_lstlen.c ft_lstmap.c ft_lstnew.c ft_lstswap.c ft_massize.c ft_max.c ft_memalloc.c\
+			ft_memccpy.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memdel.c ft_memjoin.c ft_memmove.c \
+			ft_memset.c ft_memswap.c ft_merge_sort.c ft_min.c ft_nbrlen.c ft_pf_bonus.c \
+			ft_pf_colors.c ft_pf_errors.c ft_pf_oct_t.c ft_pf_parse2.c ft_pf_parser.c ft_pf_ptr_t.c ft_pf_str_t.c \
+			ft_pf_tools.c ft_pf_uint_t.c ft_pow.c ft_printf.c ft_printing.c ft_putchar.c ft_putchar_fd.c \
+			ft_putchar_fd_smpl.c ft_putendl.c ft_putendl_fd.c ft_puthex.c ft_putnbr.c ft_putnbr_fd.c ft_putstr.c ft_putstr_ptr_fd.c \
+			ft_putstr_fd.c ft_putstr_free.c ft_putwchar.c ft_putwstrn_fd.c ft_quick_sort.c ft_rand.c ft_round.c \
+			ft_sort_str_table.c ft_str_tools.c ft_str2lower.c ft_strcapitalize.c ft_strcat.c ft_strch.c ft_strchr.c ft_strclr.c \
+			ft_strcmp.c ft_strcpy.c ft_strctrim.c ft_strdel.c ft_strdup.c ft_strequ.c ft_striter.c ft_striteri.c \
+			ft_strjoin.c ft_strjoinfree.c ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strlencmp.c ft_strlowcase.c ft_strmap.c \
+			ft_strmapi.c ft_strncat.c ft_strncmp.c ft_strncpy.c ft_strndup.c ft_strnequ.c ft_strnew.c ft_strnew.c ft_strnjoin.c \
+			ft_strjoinfree.c ft_strjoin_free_second.c ft_strnstr.c ft_strrchr.c ft_strrev.c ft_strsplit.c ft_strstr.c ft_strsub.c \
+			ft_strtrim.c ft_strupcase.c ft_strupr.c ft_swap.c ft_tolower.c ft_tools.c ft_toupper.c ft_tree_new.c ft_ulltoa_base.c \
+			ft_wcharlen.c ft_wstrdup.c ft_wstrjoin.c ft_wstrlen.c ft_wstrsub.c get_next_line.c int_funcions.c
 
-INC_DIR		=	./includes/
-OBJ_DIR		=	./obj/
-SRC_L_D		=	./srcs/
+OBJECTS = $(SOURCES:.c=.o)
 
-HEAD		=	$(INC_DIR)corewar.h
-INC			=	-I$(LIB_DIR) -I$(INC_DIR)
+ODIR = objects
 
-#####################VM_SOURSES##################################################
+all: $(ODIR) $(addprefix $(ODIR)/, $(OBJECTS)) $(NAME)
 
-VM_SRC_LIST	= print_error.c \
-			  parsing.c \
-			  parse_flags.c \
-			  plr_count.c \
-			  make_car.c \
-			  fill_arena.c \
-			  dump.c \
-			  game.c \
-			  init_strcts.c \
-			  introduce_plrs.c \
-			  main.c \
-			  op_add.c \
-			  get_args_type.c\
-			  update_pos.c\
-			  op_live.c \
-			  op_ld.c \
-			  op_st.c \
-			  op_sub.c\
-			  op_and.c\
-			  op_or.c\
-			  op_xor.c\
-			  op_ldi.c\
-			  op_zjmp.c\
-			  op_sti.c\
-			  op_fork.c\
-			  op_lld.c\
-			  op_lldi.c\
-			  op_lfork.c\
-			  op_aff.c\
-			  bury_car.c\
-			  parse_n_flag.c \
-			  parse_n_flag_cont.c \
-			  func_for_parsing.c \
-			  get_arg.c\
-			  move.c \
-			  put_value_in_arena.c\
-			  choose.c\
-			  check.c\
-			  utils_for_op.c \
-			  print_error2.c 
+$(NAME):
+	ar rc $(NAME) $(addprefix $(ODIR)/, $(OBJECTS))
+	ranlib $(NAME)
 
-SRC_VM		= $(VM_SRC_DIR), $(VM_SRC_LIST))
-OBJ_VM		=	$(VM_SRC_LIST:%.c=%.o)
-SRCS_VM		=	$(addprefix $(SRC_L_D), $(VM_SRC_LIST))
-O_VM		=	$(addprefix $(OBJ_DIR), $(OBJ_VM))
+$(ODIR):
+	mkdir $(ODIR)
 
-all : $(OBJ_DIR) $(NAME)
-
-#create obj dir
-$(OBJ_DIR):
-	@mkdir -p $(OBJ_DIR)
-
-#create VM proj
-$(NAME): $(LIB_A) $(O_VM)
-	@echo "\\033[32m Prepare virtual machine for the COREWAR project... \033[0m"
-	@$(CC) $(FLAGS) $(INC) $(O_VM) $(LIB_A) -o $(NAME)
-	@echo "\033[1;36mVM is compliled successfully\033[0m"
-
-#create libc
-$(LIB_A):
-	@echo "\\033[34m Prepare libft... \033[0m"
-	@$(MAKE) -sC $(LIB_DIR) CFLAGS="$(CFLAGS)"
-
-#make obj
-$(OBJ_DIR)%.o: $(SRC_L_D)%.c $(HEAD)
-	@$(CC) $(FLAGS) -c $(INC) $< -o $@
-
-directory: @$(OBJDIR)
+$(ODIR)/%.o: %.c libft.h
+	$(CC) $(CFLAGS) $(DFLAGS) -c $(INC) $< -o $@
 
 clean:
-	@rm -rf $(OBJ_DIR) $(LIB_A)
-	@make -C $(LIB_DIR) clean
-	@echo "\\033[31m Deleting object files...  \033[0m"
+	@rm -rf $(ODIR)
 
 fclean: clean
-	@rm -f $(NAME) $(LIB_A)
-	@make -C $(LIB_DIR) fclean
-	@echo "\\033[31m Deleting $(NAME)... and *.cor \033[0m"
+	@rm -rf $(NAME)
 
-re: fclean all
-
-.PHONY: clean all re pwdfclean directory
+re: all fclean all
