@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
+#    By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/24 20:51:23 by aelphias          #+#    #+#              #
-#    Updated: 2021/02/02 18:57:06 by aelphias         ###   ########.fr        #
+#    Updated: 2021/02/02 18:59:02 by gjigglyp         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -148,5 +148,5 @@ clean:
 
 fclean: clean
 	rm -rf $(COREWAR) $(ASM) $(LIB_A)
-
+	
 re: fclean all
