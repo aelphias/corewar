@@ -22,6 +22,7 @@ FLAGS		=	-Wall -Wextra -Werror -g
 LIB_DIR		=	libft/
 LIB_A		=	$(LIB_DIR)libft.a
 LIB_HEAD	=	$(LIB_DIR)libft.h
+LIB_OBJ		= 	libft/objects/
 INC_ALL		=	includes/op.h
 
 ####################DIRS_VM########################################################
@@ -114,7 +115,6 @@ OBJ_ASM		=	$(addprefix $(OBJ_DIR_ASM), $(OBJ_AS))
 
 all:  $(OBJ_DIR_VM) $(COREWAR) $(OBJ_DIR_ASM) $(ASM)
 
-
 #create obj dir
 $(OBJ_DIR_VM):
 	mkdir -p $(OBJ_DIR_VM)
@@ -144,7 +144,7 @@ $(OBJ_DIR_ASM)%.o: $(SRC_L_D_ASM)%.c $(HEAD_ASM)
 #directory: @$(OBJ_DIR)
 
 clean:
-	rm -rf $(OBJ_DIR_ASM) $(OBJ_DIR_VM)
+	rm -rf $(OBJ_DIR_ASM) $(OBJ_DIR_VM) $(LIB_OBJ)
 
 fclean: clean
 	rm -rf $(COREWAR) $(ASM) $(LIB_A)
