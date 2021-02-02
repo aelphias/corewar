@@ -24,4 +24,4 @@ aff r5
 aff r6
 sub r5, r4, r3
 live %0
-live %43
+live %-1
