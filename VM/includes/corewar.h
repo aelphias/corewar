@@ -6,7 +6,7 @@
 /*   By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 21:13:58 by aelphias          #+#    #+#             */
-/*   Updated: 2021/01/31 20:48:04 by aelphias         ###   ########.fr       */
+/*   Updated: 2021/02/02 18:52:35 by aelphias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,12 @@
 
 # include "../../libft/libft.h"
 # include "../../includes/op.h"
-# include "errors.h"
+
+# define ERR_USE		1
+# define ERR_M_PLRS		2
+# define ERR_MALLOC		3
+# define ERR_PARSE		4
+# define ERR_MAKE_CAR	5
 
 typedef enum
 {
