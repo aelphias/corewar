@@ -6,7 +6,7 @@
 #    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/24 20:51:23 by aelphias          #+#    #+#              #
-#    Updated: 2021/02/02 20:27:19 by aelphias         ###   ########.fr        #
+#    Updated: 2021/02/02 20:36:57 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -128,20 +128,20 @@ $(OBJ_DIR_ASM):
 
 #create ASM proj
 $(ASM): $(LIB_A) $(OBJ_ASM)
-	@echo "\\033[32m Prepare assembler for the COREWAR project... \033[0m"
+	@echo "\\033[32m Preparing assembler for the COREWAR project... \033[0m"
 	@$(CC) $(FLAGS) $(INC_ASM) $(OBJ_ASM) $(LIB_A) -o $(ASM)
 	@echo "\033[1;36mASM is compliled successfully\033[0m"
 
 
 #create VM proj
 $(COREWAR): $(LIB_A) $(O_VM)
-	@echo "\\033[32m Prepare virtual machine for the COREWAR project... \033[0m"
+	@echo "\\033[32m Preparing virtual machine for the COREWAR project... \033[0m"
 	@$(CC) $(FLAGS) $(INC_VM) $(O_VM) $(LIB_A) -o $(COREWAR)
 	@echo "\033[1;36mVM is compliled successfully\033[0m"
 
 #create libc
 $(LIB_A):
-	@echo "\\033[34m Prepare libft... \033[0m"
+	@echo "\\033[34m Preparing libft... ☕☕☕ \033[0m"
 	@$(MAKE) -sC $(LIB_DIR) CFLAGS="$(CFLAGS)"
 
 #make obj
@@ -155,13 +155,13 @@ $(OBJ_DIR_ASM)%.o: $(SRC_L_D_ASM)%.c $(HEAD_ASM)
 clean:
 	@rm -rf $(OBJ_DIR_ASM) $(OBJ_DIR_VM) $(LIB_OBJ)
 	@echo "\\033[31m Deleting object files...  \033[0m"
-	@echo "\\033[31m Object files were deleted!!! \033[0m"
+	@echo "\\033[31m Object files were deleted! \033[0m"
 
 fclean: clean
 	@rm -rf $(COREWAR) $(ASM) $(LIB_A)
 	@echo "\\033[31m Deleting $(NAME)... \033[0m"
 	@echo " \033[1;31m▆\\033[1;31m▆\\033[1;31m▆\\033[1;31m▆\\033[1;31m▆\\033[1;31m▆\\033[1;31m▆\033[0m"
-	@echo "\\033[31m COREWAR project's binaries and .o/.cor files were completely deleted!!! \033[0m"
+	@echo "\\033[31m COREWAR project's binaries and .o files were completely deleted. \033[0m"
 	@echo " \033[1;31m▆\\033[1;31m▆\\033[1;31m▆\\033[1;31m▆\\033[1;31m▆\\033[1;31m▆\\033[1;31m▆\n\033[0m"
 	
 re: fclean all
