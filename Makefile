@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gjigglyp <gjigglyp@student.42.fr>          +#+  +:+       +#+         #
+#    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/24 20:51:23 by aelphias          #+#    #+#              #
-#    Updated: 2021/02/02 18:59:02 by gjigglyp         ###   ########.fr        #
+#    Updated: 2021/02/02 20:23:10 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ INC_ALL		=	includes/op.h
 INC_DIR_VM		=	./VM/includes/
 OBJ_DIR_VM		=	./VM/obj/
 SRC_L_D_VM		=	./VM/srcs/
+SRC_LIB			=	./libft/
 
 HEAD_VM		=	$(INC_DIR_VM)corewar.h
 INC_VM		=	-I$(LIB_DIR) -I$(INC_DIR_VM)
@@ -136,7 +137,7 @@ $(LIB_A):
 	$(MAKE) -sC $(LIB_DIR) CFLAGS="$(CFLAGS)"
 
 #make obj
-$(OBJ_DIR_VM)%.o: $(SRC_L_D_VM)%.c $(HEAD_VM)
+$(OBJ_DIR_VM)%.o: $(SRC_L_D_VM)%.c $(HEAD_VM) $(LIB_HEAD) 
 	$(CC) $(FLAGS) -c $(INC_VM) $< -o $@
 $(OBJ_DIR_ASM)%.o: $(SRC_L_D_ASM)%.c $(HEAD_ASM)
 	$(CC) $(FLAGS) -c $(INC_ASM) $< -o $@

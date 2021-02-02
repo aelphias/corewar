@@ -6,7 +6,7 @@
 #    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/14 13:36:08 by gjigglyp          #+#    #+#              #
-#    Updated: 2021/02/02 19:17:42 by aelphias         ###   ########.fr        #
+#    Updated: 2021/02/02 20:10:31 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ $(ODIR):
 	mkdir $(ODIR)
 
 $(ODIR)/%.o: %.c libft.h
-	$(CC) $(CFLAGS) $(DFLAGS) -c $(INC) $< -o $@
+	$(CC) $(CFLAGS) -c $(INC) $< -o $@
 
 clean:
 	@rm -rf $(ODIR)
