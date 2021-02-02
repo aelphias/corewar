@@ -6,7 +6,7 @@
 #    By: aelphias <aelphias@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/24 20:51:23 by aelphias          #+#    #+#              #
-#    Updated: 2021/02/02 18:46:48 by aelphias         ###   ########.fr        #
+#    Updated: 2021/02/02 18:57:06 by aelphias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -146,7 +146,8 @@ $(OBJ_DIR_ASM)%.o: $(SRC_L_D_ASM)%.c $(HEAD_ASM)
 clean:
 	rm -rf $(OBJ_DIR_ASM) $(OBJ_DIR_VM)
 
-fclean:
+fclean: clean
+	
 	rm -rf $(COREWAR) $(ASM) $(LIB_A)
 
 re: fclean all
