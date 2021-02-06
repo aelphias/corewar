@@ -12,8 +12,9 @@ to compile run make
 
 ##### How to use it ?
 
+For now the program works only in text mode.
 * First you'll need to write a .s file with a set of assembly instructions
     * You can find this set in either [corewar.pdf](https://raw.githubusercontent.com/kcosta42/Corewar/master/corewar.pdf)
     * Or you can just use one of the many warriors in the resources/champions directory
-* Then you'll have to compile it using the `asm` binary
-* Then just execute the `corewar` binary with your warrior(s) as arguments
+* Then you'll have to compile it using the `./asm  [file.s]`
+* Then just execute the `./corewar  [file.cor] [file.cor]` binary with your warrior(s) as arguments
