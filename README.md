@@ -17,4 +17,4 @@ For now the program works only in text mode.
     * You can find this set in either [corewar.pdf](https://raw.githubusercontent.com/kcosta42/Corewar/master/corewar.pdf)
     * Or you can just use one of the many warriors in the resources/champions directory
 * Then you'll have to compile it using the `./asm  [file.s]`
-* Then just execute the `./corewar  [file.cor] [file.cor]` binary with your warrior(s) as arguments
+* Then just execute the `./corewar  [file.cor] [file.cor]` 
